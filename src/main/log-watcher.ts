@@ -2,6 +2,10 @@ import fs from 'node:fs'
 import path from 'node:path'
 
 const ENTER_RE = /\] : You have entered (.+)\.\s*$/
+// левелап пишется одинаково для своего персонажа и согрупников — берём последний
+const LEVEL_RE = /\] : .+? \(\w+\) is now level (\d+)\s*$/
+// строка генерации инстанса идёт непосредственно перед "You have entered"
+const GEN_RE = /Generating level (\d+) area "[^"]*"/
 
 const POLL_INTERVAL_MS = 500
 const TAIL_BYTES = 64 * 1024
@@ -41,6 +45,22 @@ export function extractZone(line: string): string | null {
   return m ? m[1] : null
 }
 
+export function extractLevel(line: string): number | null {
+  const m = LEVEL_RE.exec(line)
+  return m ? parseInt(m[1], 10) : null
+}
+
+export function extractAreaGen(line: string): number | null {
+  const m = GEN_RE.exec(line)
+  return m ? parseInt(m[1], 10) : null
+}
+
+export interface LogEvents {
+  /** вход в зону; areaLevel — уровень инстанса из строки Generating (если была) */
+  onZone: (zone: string, areaLevel: number | null) => void
+  onLevel: (level: number) => void
+}
+
 /**
  * Tails Client.txt by polling file size and reading only appended bytes.
  * Handles truncation (PoE may reset the file on restart) by rewinding.
@@ -49,13 +69,14 @@ export class LogWatcher {
   private timer: NodeJS.Timeout | null = null
   private position = 0
   private partial = ''
+  private pendingAreaLevel: number | null = null
 
   constructor(
     private filePath: string,
-    private onZone: (zone: string) => void
+    private events: LogEvents
   ) {}
 
-  /** Reads the existing tail to recover the current zone, then starts polling. */
+  /** Reads the existing tail to recover the current zone and level, then starts polling. */
   start(): void {
     let size = 0
     try {
@@ -65,13 +86,27 @@ export class LogWatcher {
     }
     const from = Math.max(0, size - TAIL_BYTES)
     const tail = this.readRange(from, size)
-    const lastZone = tail
-      .split('\n')
-      .map(extractZone)
-      .filter((z): z is string => z !== null)
-      .pop()
+    let lastLevel: number | null = null
+    let lastZone: { name: string; areaLevel: number | null } | null = null
+    for (const raw of tail.split('\n')) {
+      const line = raw.trimEnd()
+      const gen = extractAreaGen(line)
+      if (gen !== null) {
+        this.pendingAreaLevel = gen
+        continue
+      }
+      const zone = extractZone(line)
+      if (zone) {
+        lastZone = { name: zone, areaLevel: this.pendingAreaLevel }
+        this.pendingAreaLevel = null
+        continue
+      }
+      const level = extractLevel(line)
+      if (level !== null) lastLevel = level
+    }
     this.position = size
-    if (lastZone) this.onZone(lastZone)
+    if (lastLevel !== null) this.events.onLevel(lastLevel)
+    if (lastZone) this.events.onZone(lastZone.name, lastZone.areaLevel)
     this.timer = setInterval(() => this.poll(), POLL_INTERVAL_MS)
   }
 
@@ -91,6 +126,7 @@ export class LogWatcher {
       // file truncated on game restart — start over from the top
       this.position = 0
       this.partial = ''
+      this.pendingAreaLevel = null
     }
     if (size === this.position) return
     const chunk = this.readRange(this.position, size)
@@ -102,9 +138,23 @@ export class LogWatcher {
     const text = this.partial + chunk
     const lines = text.split('\n')
     this.partial = lines.pop() ?? ''
-    for (const line of lines) {
-      const zone = extractZone(line.trimEnd())
-      if (zone) this.onZone(zone)
+    for (const raw of lines) {
+      const line = raw.trimEnd()
+      const gen = extractAreaGen(line)
+      if (gen !== null) {
+        this.pendingAreaLevel = gen
+        continue
+      }
+      const zone = extractZone(line)
+      if (zone) {
+        // pending сбрасывается всегда: залётная строка Generating не должна
+        // прилипнуть к следующей зоне
+        this.events.onZone(zone, this.pendingAreaLevel)
+        this.pendingAreaLevel = null
+        continue
+      }
+      const level = extractLevel(line)
+      if (level !== null) this.events.onLevel(level)
     }
   }
 

@@ -1,5 +1,7 @@
 import { contextBridge, ipcRenderer } from 'electron'
-import type { AppState } from '../shared/types'
+import type { AppState, PresetSource } from '../shared/types'
+
+type SaveResult = { ok: true } | { ok: false; error: string }
 
 const api = {
   getState: (): Promise<AppState> => ipcRenderer.invoke('get-state'),
@@ -23,12 +25,22 @@ const api = {
   toggleLayout: (): void => {
     ipcRenderer.send('toggle-layout')
   },
+  toggleRoute: (): void => {
+    ipcRenderer.send('toggle-route')
+  },
   resetProgress: (): void => {
     ipcRenderer.send('reset-progress')
   },
   openGuidesFolder: (): void => {
     ipcRenderer.send('open-guides-folder')
-  }
+  },
+  openSettings: (): void => {
+    ipcRenderer.send('open-settings')
+  },
+  getPresetSource: (id: string): Promise<PresetSource | null> =>
+    ipcRenderer.invoke('get-preset-source', id),
+  savePreset: (src: PresetSource): Promise<SaveResult> => ipcRenderer.invoke('save-preset', src),
+  deletePreset: (id: string): Promise<SaveResult> => ipcRenderer.invoke('delete-preset', id)
 }
 
 contextBridge.exposeInMainWorld('api', api)

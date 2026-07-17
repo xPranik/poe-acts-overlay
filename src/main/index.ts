@@ -13,13 +13,16 @@ import {
 } from 'electron'
 import path from 'node:path'
 import { pathToFileURL } from 'node:url'
-import type { AppState, Guide } from '../shared/types'
+import type { AppState, Guide, PresetSource } from '../shared/types'
+import { getStaticArea } from './area-levels'
 import { loadGuide, watchGuide } from './guide-loader'
 import { extractZone, findClientLog, LogWatcher } from './log-watcher'
+import { deletePreset, readPresetSource, writePreset } from './preset-store'
 import { guidesRoot, loadProgress, loadSettings, saveProgress, saveSettings } from './settings'
 import { resolveZone } from './zone-tracker'
 
 let win: BrowserWindow | null = null
+let settingsWin: BrowserWindow | null = null
 let tray: Tray | null = null
 let logWatcher: LogWatcher | null = null
 
@@ -33,15 +36,39 @@ const state: AppState = {
   activePreset: settings.gemPreset,
   interactive: false,
   layoutVisible: false,
+  routeVisible: settings.routeVisible,
+  charLevel: settings.charLevel,
+  areaLevel: null,
   logStatus: { kind: 'missing', message: 'Client.txt не найден' },
   progress: loadProgress(settings.profile)
 }
 
+// реальные уровни инстансов из строк "Generating level N area ..." по имени зоны
+const instanceLevels = new Map<string, number>()
+
 function pushState(): void {
   win?.webContents.send('state', state)
+  settingsWin?.webContents.send('state', state)
 }
 
-function onZoneEntered(zoneName: string): void {
+/** Уровень текущей зоны: реальный инстанс из лога, иначе статика exile-leveling; город — null. */
+function updateAreaLevel(): void {
+  const name = state.currentZone
+  if (!name) {
+    state.areaLevel = null
+    return
+  }
+  const stat = getStaticArea(name, state.currentAct)
+  if (stat?.town) {
+    // штраф опыта в городе — шум, индикатор не показываем
+    state.areaLevel = null
+    return
+  }
+  state.areaLevel = instanceLevels.get(name) ?? stat?.level ?? null
+}
+
+function onZoneEntered(zoneName: string, areaLevel: number | null = null): void {
+  if (areaLevel !== null) instanceLevels.set(zoneName, areaLevel)
   state.currentZone = zoneName
   const pos = resolveZone(state.guide, state.currentAct, zoneName)
   if (pos) {
@@ -50,6 +77,23 @@ function onZoneEntered(zoneName: string): void {
   } else {
     state.currentZoneIndex = -1
   }
+  updateAreaLevel()
+  pushState()
+}
+
+function onLevelUp(level: number): void {
+  state.charLevel = level
+  settings.charLevel = level
+  saveSettings(settings)
+  updateTrayMenu()
+  pushState()
+}
+
+function resetCharLevel(): void {
+  state.charLevel = null
+  settings.charLevel = null
+  saveSettings(settings)
+  updateTrayMenu()
   pushState()
 }
 
@@ -69,7 +113,15 @@ function setGuide(guide: Guide): void {
   if (!state.activePreset && ids.length === 1) {
     state.activePreset = ids[0]
   }
+  updateAreaLevel()
   updateTrayMenu()
+  pushState()
+}
+
+function toggleRoute(): void {
+  state.routeVisible = !state.routeVisible
+  settings.routeVisible = state.routeVisible
+  saveSettings(settings)
   pushState()
 }
 
@@ -100,7 +152,7 @@ function startLogWatcher(): void {
     saveSettings(settings)
   }
   state.logStatus = { kind: 'ok', path: logPath }
-  logWatcher = new LogWatcher(logPath, onZoneEntered)
+  logWatcher = new LogWatcher(logPath, { onZone: onZoneEntered, onLevel: onLevelUp })
   logWatcher.start()
   pushState()
 }
@@ -138,6 +190,7 @@ function navZone(delta: number): void {
   state.currentAct = acts[actIdx].number
   state.currentZoneIndex = zoneIdx
   state.currentZone = acts[actIdx].zones[zoneIdx]?.name ?? state.currentZone
+  updateAreaLevel()
   pushState()
 }
 
@@ -150,6 +203,7 @@ function navAct(delta: number): void {
   state.currentAct = acts[actIdx].number
   state.currentZoneIndex = 0
   state.currentZone = acts[actIdx].zones[0]?.name ?? null
+  updateAreaLevel()
   pushState()
 }
 
@@ -220,6 +274,10 @@ function updateTrayMenu(): void {
       }
     },
     {
+      label: 'Настройки камней...',
+      click: openSettingsWindow
+    },
+    {
       label: 'Открыть папку гайдов',
       click: () => {
         shell.openPath(path.join(guidesRoot(), settings.profile))
@@ -230,6 +288,11 @@ function updateTrayMenu(): void {
       click: () => setGuide(loadGuide(guidesRoot(), settings.profile))
     },
     { type: 'separator' },
+    {
+      label: state.charLevel !== null ? `Сбросить уровень (сейчас ${state.charLevel})` : 'Сбросить уровень',
+      enabled: state.charLevel !== null,
+      click: resetCharLevel
+    },
     {
       label: 'Сбросить прогресс',
       click: () => {
@@ -281,6 +344,32 @@ function createWindow(): void {
   win.once('ready-to-show', () => win?.showInactive())
 }
 
+/** Окно настроек камней: обычное окно с рамкой, без always-on-top и click-through. */
+function openSettingsWindow(): void {
+  if (settingsWin) {
+    settingsWin.focus()
+    return
+  }
+  settingsWin = new BrowserWindow({
+    width: 780,
+    height: 620,
+    autoHideMenuBar: true,
+    title: 'Настройки камней — PoE Acts Overlay',
+    webPreferences: {
+      preload: path.join(__dirname, '../preload/index.js'),
+      sandbox: false
+    }
+  })
+  settingsWin.on('closed', () => {
+    settingsWin = null
+  })
+  if (process.env.ELECTRON_RENDERER_URL) {
+    settingsWin.loadURL(`${process.env.ELECTRON_RENDERER_URL}#settings`)
+  } else {
+    settingsWin.loadFile(path.join(__dirname, '../renderer/index.html'), { hash: 'settings' })
+  }
+}
+
 function debounce(fn: () => void, ms: number): () => void {
   let t: NodeJS.Timeout | null = null
   return () => {
@@ -306,6 +395,7 @@ function registerHotkeys(): void {
   })
   bind(hk.prevZone, () => navZone(-1))
   bind(hk.nextZone, () => navZone(1))
+  bind(hk.openSettings, openSettingsWindow)
   bind(hk.toggleDevTools, () => {
     const wc = win?.webContents
     if (!wc) return
@@ -331,6 +421,7 @@ function registerIpc(): void {
     state.layoutVisible = !state.layoutVisible
     pushState()
   })
+  ipcMain.on('toggle-route', toggleRoute)
   ipcMain.on('reset-progress', () => {
     state.progress = {}
     saveProgress(settings.profile, state.progress)
@@ -338,6 +429,30 @@ function registerIpc(): void {
   })
   ipcMain.on('open-guides-folder', () => {
     shell.openPath(path.join(guidesRoot(), settings.profile))
+  })
+  ipcMain.on('open-settings', openSettingsWindow)
+  ipcMain.handle('get-preset-source', (_e, id: string) => {
+    try {
+      return readPresetSource(guidesRoot(), settings.profile, id)
+    } catch {
+      return null
+    }
+  })
+  ipcMain.handle('save-preset', (_e, src: PresetSource) => {
+    try {
+      writePreset(guidesRoot(), settings.profile, src)
+      return { ok: true as const }
+    } catch (e) {
+      return { ok: false as const, error: e instanceof Error ? e.message : String(e) }
+    }
+  })
+  ipcMain.handle('delete-preset', (_e, id: string) => {
+    try {
+      deletePreset(guidesRoot(), settings.profile, id)
+      return { ok: true as const }
+    } catch (e) {
+      return { ok: false as const, error: e instanceof Error ? e.message : String(e) }
+    }
   })
 }
 

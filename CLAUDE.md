@@ -21,14 +21,18 @@ gem plan, zone layouts) from hot-reloaded TOML guides.
 - `npm run typecheck` — type-check main + renderer
 - `npm run build` — production build
 - `npm run import-guide [profile]` — regenerate route guides from exile-leveling
-- `npm run fake-log -- <file> "<Zone>"` — append a zone to a test log; `--reset` truncates, `--demo` replays
+- `npm run import-data` — refresh vendored gem list + zone levels from exile-leveling (committed JSONs)
+- `npm run fake-log -- <file> "<Zone>"` — append a zone to a test log; `--gen <n>` adds an instance-level
+  line, `--level <n>` appends a level-up, `--reset` truncates, `--demo` replays
 
 Test without the game: `POE_OVERLAY_LOG=<path> npm run dev`, then drive the log with `fake-log`.
 
 ## Layout
 
-- `src/main/` — Electron main: `log-watcher.ts` (Client.txt tailer), `guide-loader.ts`
-  (TOML + hot-reload), `zone-tracker.ts` (zone→act resolution), `settings.ts`, `index.ts`
-- `src/renderer/` — React overlay UI
+- `src/main/` — Electron main: `log-watcher.ts` (Client.txt tailer: zones, char level, instance
+  levels), `guide-loader.ts` (TOML + hot-reload), `preset-store.ts` (structured gem-preset
+  read/write), `area-levels.ts` (zone→monster level), `zone-tracker.ts` (zone→act resolution),
+  `settings.ts`, `index.ts`
+- `src/renderer/` — React overlay UI; `src/settings/` — gem-preset editor window (`#settings` hash)
 - `src/shared/` — types and inline markup shared across processes
 - `guides/<profile>/` — route TOMLs (`act-N.toml`) + gem presets (`gems/<build>.toml`) + `layouts/`

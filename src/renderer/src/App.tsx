@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
+import { expMultiplier, fullExpRange } from '../../shared/exp'
 import type { AppState, GuideAct, GuideZone } from '../../shared/types'
 import { gemStepKey, stepKey } from '../../shared/types'
 import { Markup } from './Markup'
@@ -17,7 +18,9 @@ export default function App(): React.JSX.Element {
   const zone = act && state.currentZoneIndex >= 0 ? act.zones[state.currentZoneIndex] : undefined
 
   return (
-    <div className={`panel ${state.interactive ? 'interactive' : ''}`}>
+    <div
+      className={`panel ${state.interactive ? 'interactive' : ''} ${state.routeVisible ? '' : 'collapsed'}`}
+    >
       <Header state={state} act={act} zone={zone} />
       {state.guide.errors.length > 0 && (
         <div className="errors">
@@ -26,7 +29,7 @@ export default function App(): React.JSX.Element {
           ))}
         </div>
       )}
-      {state.layoutVisible && zone?.layout && (
+      {state.routeVisible && state.layoutVisible && zone?.layout && (
         <div className="layout-box">
           <img src={`guide:///${zone.layout}`} alt="layout" />
         </div>
@@ -68,8 +71,45 @@ function Header({
           <button onClick={() => window.api.navZone(-1)}>‹</button>
           <button onClick={() => window.api.navZone(1)}>›</button>
         </div>
+        <div className="header-actions">
+          <button
+            className={state.routeVisible ? 'active' : ''}
+            title={state.routeVisible ? 'Скрыть маршрут' : 'Показать маршрут'}
+            onClick={() => window.api.toggleRoute()}
+          >
+            ▤
+          </button>
+          <button title="Настройки камней (Ctrl+Alt+G)" onClick={() => window.api.openSettings()}>
+            ⚙
+          </button>
+        </div>
       </div>
+      <ExpStrip state={state} />
       <div className="header-divider" />
+    </div>
+  )
+}
+
+/** Индикатор опыта: зелёный «min | уровень | max» без штрафа, красный «NN% (−d)» со штрафом. */
+function ExpStrip({ state }: { state: AppState }): React.JSX.Element | null {
+  const lvl = state.charLevel
+  const area = state.areaLevel
+  if (lvl === null || area === null) return null
+  const mult = expMultiplier(lvl, area)
+  const hint = `Зона ${area} ур. · персонаж ${lvl} ур.`
+  if (mult >= 0.995) {
+    const { min, max } = fullExpRange(lvl)
+    return (
+      <div className="exp-strip exp-ok" title={hint}>
+        {min} | {lvl} | {max}
+      </div>
+    )
+  }
+  const diff = area - lvl
+  return (
+    <div className="exp-strip exp-penalty" title={hint}>
+      {Math.round(mult * 100)}% опыта ({diff > 0 ? '+' : '−'}
+      {Math.abs(diff)})
     </div>
   )
 }
@@ -81,30 +121,42 @@ function ZoneView({ state, zone }: { state: AppState; zone: GuideZone }): React.
 
   const presets = state.guide.presets
   const preset = presets.find((p) => p.id === state.activePreset) ?? null
-  const presetGems = preset?.zones[zone.name] ?? []
+  // предпочитаем точное совпадение (акт, имя); иначе — по имени (легаси/повтор города)
+  const presetZone =
+    preset?.zones.find((z) => z.name === zone.name && z.act === act) ??
+    preset?.zones.find((z) => z.name === zone.name)
+  const presetGems = presetZone?.steps ?? []
   const hasGems = inlineGems.length + presetGems.length > 0
 
   return (
-    <div className="zone">
-      {zone.notes && (
-        <div className="notes">
-          <Markup text={zone.notes} />
-        </div>
-      )}
-      {normal.length > 0 && (
-        <ul className="steps">
-          {normal.map((s) => (
-            <StepRow
-              key={s.text}
-              state={state}
-              keyValue={stepKey(act, zone.name, s.text)}
-              text={s.text}
-              kind={s.kind}
-            />
-          ))}
-        </ul>
-      )}
-      {(presets.length > 0 || hasGems) && (
+    <>{state.routeVisible && (
+      <div className="zone">
+        {zone.notes && (
+          <div className="notes">
+            <Markup text={zone.notes} />
+          </div>
+        )}
+        {normal.length > 0 && (
+          <ul className="steps">
+            {normal.map((s) => (
+              <StepRow
+                key={s.text}
+                state={state}
+                keyValue={stepKey(act, zone.name, s.text)}
+                text={s.text}
+                kind={s.kind}
+              />
+            ))}
+          </ul>
+        )}
+        {zone.layout && (
+          <button className="layout-toggle" onClick={() => window.api.toggleLayout()}>
+            {state.layoutVisible ? 'Скрыть лайаут' : 'Показать лайаут (Ctrl+Alt+L)'}
+          </button>
+        )}
+      </div>
+    )}
+    {(presets.length > 0 || hasGems) && (
         <div className="gems">
           <div className="gems-head">
             <span className="gems-title">💎 Камни</span>
@@ -152,12 +204,7 @@ function ZoneView({ state, zone }: { state: AppState; zone: GuideZone }): React.
           )}
         </div>
       )}
-      {zone.layout && (
-        <button className="layout-toggle" onClick={() => window.api.toggleLayout()}>
-          {state.layoutVisible ? 'Скрыть лайаут' : 'Показать лайаут (Ctrl+Alt+L)'}
-        </button>
-      )}
-    </div>
+    </>
   )
 }
 

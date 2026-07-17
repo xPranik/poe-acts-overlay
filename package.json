@@ -10,7 +10,8 @@
     "start": "electron-vite preview",
     "typecheck": "tsc --noEmit -p tsconfig.node.json && tsc --noEmit -p tsconfig.web.json",
     "fake-log": "tsx scripts/fake-log.ts",
-    "import-guide": "tsx scripts/import-exile-leveling.ts"
+    "import-guide": "tsx scripts/import-exile-leveling.ts",
+    "import-data": "tsx scripts/import-data.ts"
   },
   "dependencies": {
     "chokidar": "^5.0.0",

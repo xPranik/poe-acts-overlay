@@ -22,13 +22,43 @@ export interface GuideAct {
  * Build-specific gem plan, layered on top of the shared route by zone name.
  * Lets one route serve many builds (Witch, Ranger, ...) without duplication.
  */
+/** Зона внутри пресета: имя + акт (акт различает повторные города — Lioneye's Watch в 1 и 6). */
+export interface PresetZone {
+  name: string
+  act: number
+  steps: GuideStep[]
+}
+
 export interface GemPreset {
   /** stable id = preset file name without extension */
   id: string
   /** display name from [preset].name, falls back to id */
   name: string
-  /** zone name -> gem steps to show while in that zone */
-  zones: Record<string, GuideStep[]>
+  /** зоны с камнями; ищутся по (акт, имя) с фолбэком на имя */
+  zones: PresetZone[]
+}
+
+/**
+ * Запись камня в исходном TOML пресета: либо готовый text (легаси/ручные файлы),
+ * либо структурные поля, из которых текст синтезируется при загрузке.
+ */
+export interface GemEntry {
+  kind: 'gem-buy' | 'gem-reward'
+  /** готовый текст с маркапом — используется как есть, если задан */
+  text?: string
+  /** квест-источник награды (kind = gem-reward) */
+  quest?: string
+  /** продавец (kind = gem-buy) */
+  vendor?: string
+  /** имена камней */
+  items?: string[]
+}
+
+/** Пресет в исходном (редактируемом) виде — то, что лежит в gems/<id>.toml. */
+export interface PresetSource {
+  id: string
+  name: string
+  zones: Array<{ name: string; act: number; gems: GemEntry[] }>
 }
 
 export interface Guide {
@@ -54,6 +84,12 @@ export interface AppState {
   activePreset: string | null
   interactive: boolean
   layoutVisible: boolean
+  /** показывать ли блок маршрута (заметки + шаги акта); false = только камни */
+  routeVisible: boolean
+  /** уровень персонажа из Client.txt (последний "... is now level N"), null = неизвестен */
+  charLevel: number | null
+  /** уровень монстров текущей зоны (из лога или данных exile-leveling), null = неизвестен/город */
+  areaLevel: number | null
   logStatus: LogStatus
   /** checked step keys */
   progress: Record<string, boolean>

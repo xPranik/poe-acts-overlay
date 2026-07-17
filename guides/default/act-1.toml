@@ -20,57 +20,6 @@ name = "The Twilight Strand"
 [[zone]]
 name = "Lioneye's Watch"
 
-  [[zone.steps]]
-  text = "Hand in {quest|Enemy at the Gate}"
-
-  [[zone.steps]]
-  text = "→ {zone|The Coast}"
-
-  [[zone.steps]]
-  text = "Hand in {quest|Breaking Some Eggs}"
-
-  [[zone.steps]]
-  text = "Hand in {quest|Mercy Mission}"
-
-  [[zone.steps]]
-  text = "{waypoint|The Submerged Passage}"
-
-  [[zone.steps]]
-  text = "Take {portal}"
-
-  [[zone.steps]]
-  text = "→ {zone|The Flooded Depths}"
-
-  [[zone.steps]]
-  text = "Hand in {quest|The Dweller of the Deep}"
-
-  [[zone.steps]]
-  text = "Hand in {quest|The Caged Brute}"
-
-  [[zone.steps]]
-  text = "{waypoint|The Lower Prison}"
-
-  [[zone.steps]]
-  text = "Hand in {quest|The Caged Brute}"
-
-  [[zone.steps]]
-  text = "{waypoint|Prisoner's Gate}"
-
-  [[zone.steps]]
-  text = "Take {portal}"
-
-  [[zone.steps]]
-  text = "→ {zone|The Ship Graveyard Cave}"
-
-  [[zone.steps]]
-  text = "Hand in {quest|The Marooned Mariner}"
-
-  [[zone.steps]]
-  text = "Hand in {quest|The Siren's Cadence}"
-
-  [[zone.steps]]
-  text = "{waypoint|The Cavern of Wrath}"
-
 [[zone]]
 name = "The Coast"
 
@@ -88,7 +37,7 @@ name = "The Mud Flats"
 
   [[zone.steps]]
   text = """
-Find 3x{item|Glyph}
+Find 3x {item|Glyph}
 · Little streams connect the 3 Rhoa nests
 · Usually form a triangle, but will rarely form a line"""
 
