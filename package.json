@@ -1,0 +1,32 @@
+{
+  "name": "poe-acts-overlay",
+  "version": "0.1.0",
+  "description": "Path of Exile acts leveling overlay with Client.txt zone tracking",
+  "main": "out/main/index.js",
+  "private": true,
+  "scripts": {
+    "dev": "electron-vite dev",
+    "build": "electron-vite build",
+    "start": "electron-vite preview",
+    "typecheck": "tsc --noEmit -p tsconfig.node.json && tsc --noEmit -p tsconfig.web.json",
+    "fake-log": "tsx scripts/fake-log.ts",
+    "import-guide": "tsx scripts/import-exile-leveling.ts"
+  },
+  "dependencies": {
+    "chokidar": "^5.0.0",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "smol-toml": "^1.7.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.1",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.2.0",
+    "electron": "^43.1.1",
+    "electron-vite": "^5.0.0",
+    "tsx": "^4.23.1",
+    "typescript": "^7.0.2",
+    "vite": "^7.3.6"
+  }
+}

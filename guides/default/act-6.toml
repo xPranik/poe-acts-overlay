@@ -1,0 +1,197 @@
+# Сгенерировано из exile-leveling (https://github.com/HeartofPhos/exile-leveling, MIT).
+# Редактируй свободно: notes — текст под названием зоны, steps — чеклист.
+# kind шага: не указан = обычный, "gem-buy" = купить камень, "gem-reward" = награда за квест.
+# Разметка в тексте (цвет + иконка): {zone|Имя} {kill|Босс} {quest|Квест} {item|Предмет}
+#   {waypoint} {waypoint|Зона} {portal} {trial} {logout} {lab} {crafting}
+
+[act]
+number = 6
+title = "Act 6"
+
+[[zone]]
+name = "The Cathedral Rooftop"
+
+  [[zone.steps]]
+  text = "→ {zone|Lioneye's Watch}"
+
+[[zone]]
+name = "Lioneye's Watch"
+
+  [[zone.steps]]
+  text = "→ {zone|The Twilight Strand}"
+
+  [[zone.steps]]
+  text = "Hand in {quest|Fallen from Grace}"
+
+  [[zone.steps]]
+  text = "→ {zone|The Coast}"
+
+  [[zone.steps]]
+  text = "Hand in {quest|The Father of War}"
+
+  [[zone.steps]]
+  text = "Hand in {quest|Essence of Umbra}"
+
+  [[zone.steps]]
+  text = "Hand in {quest|The Puppet Mistress}"
+
+  [[zone.steps]]
+  text = "{waypoint|The Riverways}"
+
+  [[zone.steps]]
+  text = "Select Pantheons"
+
+[[zone]]
+name = "The Twilight Strand"
+
+  [[zone.steps]]
+  text = "Kill {kill|Everything}"
+
+  [[zone.steps]]
+  text = "{logout}"
+
+[[zone]]
+name = "The Coast"
+
+  [[zone.steps]]
+  text = "→ {zone|The Mud Flats}"
+
+[[zone]]
+name = "The Mud Flats"
+
+  [[zone.steps]]
+  text = """
+Find and kill {kill|The Dishonoured Queen}, take {item|Eye of Conquest}
+· ↗ corner of area, normally by a house"""
+
+  [[zone.steps]]
+  text = "→ {zone|The Karui Fortress}"
+
+[[zone]]
+name = "The Karui Fortress"
+
+  [[zone.steps]]
+  text = "→ {zone|Tukohama's Keep}, kill {kill|Tukohama, Karui God of War}"
+
+  [[zone.steps]]
+  text = "Get {crafting}"
+
+  [[zone.steps]]
+  text = "→ {zone|The Ridge}"
+
+[[zone]]
+name = "The Ridge"
+
+  [[zone.steps]]
+  text = "→ {zone|The Lower Prison}"
+
+[[zone]]
+name = "The Lower Prison"
+
+  [[zone.steps]]
+  text = "Complete {trial}"
+
+  [[zone.steps]]
+  text = "Get {crafting}"
+
+  [[zone.steps]]
+  text = "→ {zone|Shavronne's Tower}"
+
+[[zone]]
+name = "Shavronne's Tower"
+
+  [[zone.steps]]
+  text = "→ {zone|Prison Rooftop}, kill {kill|Shavronne the Returned} & {kill|Reassembled Brutus}"
+
+  [[zone.steps]]
+  text = "→ {zone|The Warden's Chambers}"
+
+  [[zone.steps]]
+  text = "Get {crafting}"
+
+  [[zone.steps]]
+  text = "→ {zone|Prisoner's Gate}"
+
+[[zone]]
+name = "Prisoner's Gate"
+
+  [[zone.steps]]
+  text = "→ {zone|The Western Forest}"
+
+[[zone]]
+name = "The Western Forest"
+
+  [[zone.steps]]
+  text = """
+Get {crafting}
+· Look for the torch touching the road
+· Follow the trail in the direction of the torch"""
+
+  [[zone.steps]]
+  text = "→ {zone|The Riverways}"
+
+[[zone]]
+name = "The Riverways"
+
+  [[zone.steps]]
+  text = """
+Get {waypoint}
+· Follow the road"""
+
+  [[zone.steps]]
+  text = "→ {zone|The Wetlands}"
+
+  [[zone.steps]]
+  text = "→ {zone|The Southern Forest}"
+
+[[zone]]
+name = "The Wetlands"
+
+  [[zone.steps]]
+  text = """
+→ {zone|The Spawning Ground}, kill {kill|Ryslatha, the Puppet Mistress}
+· Go ↖"""
+
+  [[zone.steps]]
+  text = "{logout}"
+
+[[zone]]
+name = "The Southern Forest"
+
+  [[zone.steps]]
+  text = "→ {zone|The Cavern of Anger}"
+
+[[zone]]
+name = "The Cavern of Anger"
+
+  [[zone.steps]]
+  text = "Take {item|The Black Flag}"
+
+  [[zone.steps]]
+  text = "→ {zone|The Beacon}"
+
+[[zone]]
+name = "The Beacon"
+
+  [[zone.steps]]
+  text = """
+Get {crafting}
+· Follow the shore"""
+
+  [[zone.steps]]
+  text = "Complete {item|Pillar Push}"
+
+  [[zone.steps]]
+  text = "Light the {item|Beacon}, throw in {item|The Black Flag}"
+
+  [[zone.steps]]
+  text = "Talk to Weylam Roth, sail to {zone|The Brine King's Reef}"
+
+[[zone]]
+name = "The Brine King's Reef"
+
+  [[zone.steps]]
+  text = "→ {zone|The Bring King's Throne}, kill {kill|Tsoagoth, The Brine King}"
+
+  [[zone.steps]]
+  text = "{logout}"

@@ -1,0 +1,196 @@
+# Сгенерировано из exile-leveling (https://github.com/HeartofPhos/exile-leveling, MIT).
+# Редактируй свободно: notes — текст под названием зоны, steps — чеклист.
+# kind шага: не указан = обычный, "gem-buy" = купить камень, "gem-reward" = награда за квест.
+# Разметка в тексте (цвет + иконка): {zone|Имя} {kill|Босс} {quest|Квест} {item|Предмет}
+#   {waypoint} {waypoint|Зона} {portal} {trial} {logout} {lab} {crafting}
+
+[act]
+number = 2
+title = "Act 2"
+
+[[zone]]
+name = "The Cavern of Anger"
+
+  [[zone.steps]]
+  text = "→ {zone|The Southern Forest}"
+
+[[zone]]
+name = "The Southern Forest"
+
+  [[zone.steps]]
+  text = "→ {zone|The Forest Encampment}"
+
+[[zone]]
+name = "The Forest Encampment"
+
+  [[zone.steps]]
+  text = """
+→ {zone|The Old Fields}
+· Follow the road"""
+
+  [[zone.steps]]
+  text = "Take {portal}"
+
+  [[zone.steps]]
+  text = "→ {zone|The Den}"
+
+  [[zone.steps]]
+  text = "Hand in {quest|The Great White Beast}"
+
+  [[zone.steps]]
+  text = "{waypoint|The Crossroads}"
+
+  [[zone.steps]]
+  text = "Hand in {quest|Intruders in Black}"
+
+  [[zone.steps]]
+  text = "{waypoint|The Crossroads}"
+
+  [[zone.steps]]
+  text = "Hand in {quest|Through Sacred Ground}"
+
+  [[zone.steps]]
+  text = "→ {zone|The Riverways}"
+
+  [[zone.steps]]
+  text = "Hand in {quest|Sharp and Cruel}"
+
+  [[zone.steps]]
+  text = "→ {zone|The Northern Forest}"
+
+[[zone]]
+name = "The Old Fields"
+
+  [[zone.steps]]
+  text = "Find {zone|The Den}, place {portal}"
+
+  [[zone.steps]]
+  text = "→ {zone|The Crossroads}"
+
+[[zone]]
+name = "The Crossroads"
+
+  [[zone.steps]]
+  text = "{waypoint|The Forest Encampment}"
+
+  [[zone.steps]]
+  text = "→ {zone|The Chamber of Sins Level 1}"
+
+  [[zone.steps]]
+  text = "→ {zone|The Fellshrine Ruins}"
+
+[[zone]]
+name = "The Den"
+
+  [[zone.steps]]
+  text = "Find and kill {kill|The Great White Beast}"
+
+  [[zone.steps]]
+  text = "{logout}"
+
+[[zone]]
+name = "The Chamber of Sins Level 1"
+
+  [[zone.steps]]
+  text = "→ {zone|The Chamber of Sins Level 2}"
+
+[[zone]]
+name = "The Chamber of Sins Level 2"
+
+  [[zone.steps]]
+  text = "Complete {trial}"
+
+  [[zone.steps]]
+  text = """
+Kill {kill|Fidelitas, the Mourning}, take {item|Baleful Gem}
+· Look for the long hallway
+· Recommended Level: 14-15"""
+
+  [[zone.steps]]
+  text = "{logout}"
+
+[[zone]]
+name = "The Fellshrine Ruins"
+
+  [[zone.steps]]
+  text = "→ {zone|The Crypt Level 1}"
+
+[[zone]]
+name = "The Crypt Level 1"
+
+  [[zone.steps]]
+  text = "Complete {trial}"
+
+  [[zone.steps]]
+  text = "→ {zone|The Crypt Level 2}"
+
+[[zone]]
+name = "The Crypt Level 2"
+
+  [[zone.steps]]
+  text = "Find {item|Altar}, take {item|Golden Hand}"
+
+  [[zone.steps]]
+  text = "{logout}"
+
+[[zone]]
+name = "The Riverways"
+
+  [[zone.steps]]
+  text = """
+Get {waypoint}
+· Follow the road"""
+
+  [[zone.steps]]
+  text = "→ {zone|The Western Forest}"
+
+[[zone]]
+name = "The Western Forest"
+
+  [[zone.steps]]
+  text = """
+Get {waypoint}
+· Follow the road"""
+
+  [[zone.steps]]
+  text = "→ {zone|The Weaver's Chambers}"
+
+[[zone]]
+name = "The Weaver's Chambers"
+
+  [[zone.steps]]
+  text = """
+→ {zone|The Weaver's Nest}, kill {kill|The Weaver}, take {item|Maligaro's Spike}
+· Try go ←, if it's blocked go ↗
+· Recommended Level: 16"""
+
+  [[zone.steps]]
+  text = "{logout}"
+
+[[zone]]
+name = "The Northern Forest"
+
+  [[zone.steps]]
+  text = "→ {zone|The Caverns}"
+
+[[zone]]
+name = "The Caverns"
+
+  [[zone.steps]]
+  text = "Get {crafting}"
+
+  [[zone.steps]]
+  text = "→ {zone|The Ancient Pyramid}"
+
+[[zone]]
+name = "The Ancient Pyramid"
+
+  [[zone.steps]]
+  text = """
+→ {zone|Pyramid Apex}, kill {kill|Vaal Oversoul}
+· First floor exit will be in one of the 3 corners
+· Remaining floors will have the exit diagonally across from the entrance
+· Recommended Level: 20-22"""
+
+  [[zone.steps]]
+  text = "Get {crafting}"

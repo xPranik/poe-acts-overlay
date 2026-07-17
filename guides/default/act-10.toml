@@ -1,0 +1,175 @@
+# Сгенерировано из exile-leveling (https://github.com/HeartofPhos/exile-leveling, MIT).
+# Редактируй свободно: notes — текст под названием зоны, steps — чеклист.
+# kind шага: не указан = обычный, "gem-buy" = купить камень, "gem-reward" = награда за квест.
+# Разметка в тексте (цвет + иконка): {zone|Имя} {kill|Босс} {quest|Квест} {item|Предмет}
+#   {waypoint} {waypoint|Зона} {portal} {trial} {logout} {lab} {crafting}
+
+[act]
+number = 10
+title = "Act 10"
+
+[[zone]]
+name = "The Rotting Core"
+
+  [[zone.steps]]
+  text = "{waypoint|Oriath Docks}"
+
+[[zone]]
+name = "Oriath Docks"
+
+  [[zone.steps]]
+  text = "→ {zone|The Cathedral Rooftop}"
+
+  [[zone.steps]]
+  text = "Hand in {quest|Safe Passage}"
+
+  [[zone.steps]]
+  text = "Take {portal}"
+
+  [[zone.steps]]
+  text = """
+Get {waypoint}
+· Go ↗"""
+
+  [[zone.steps]]
+  text = "→ {zone|The Ossuary}"
+
+  [[zone.steps]]
+  text = "{waypoint|The Control Blocks}"
+
+  [[zone.steps]]
+  text = "Hand in {quest|Vilenta's Vengeance}"
+
+  [[zone.steps]]
+  text = "{waypoint|Aspirants' Plaza}"
+
+  [[zone.steps]]
+  text = "{lab}"
+
+  [[zone.steps]]
+  text = "Get {crafting}"
+
+  [[zone.steps]]
+  text = "{waypoint|The Ravaged Square}"
+
+  [[zone.steps]]
+  text = "Talk to Bannon"
+
+  [[zone.steps]]
+  text = "Hand in {quest|Death and Rebirth}"
+
+  [[zone.steps]]
+  text = "{waypoint|The Ravaged Square}"
+
+  [[zone.steps]]
+  text = "Talk to Lilly Roth, Set Sail from Oriath"
+
+  [[zone.steps]]
+  text = "→ {zone|Karui Shores}"
+
+[[zone]]
+name = "The Cathedral Rooftop"
+
+  [[zone.steps]]
+  text = """
+→ {zone|Cathedral Apex}, kill {kill|Plaguewing}
+· Go ↑"""
+
+  [[zone.steps]]
+  text = "→ {zone|The Ravaged Square}"
+
+[[zone]]
+name = "The Ravaged Square"
+
+  [[zone.steps]]
+  text = "Place {portal} in the plaza"
+
+  [[zone.steps]]
+  text = "→ {zone|The Control Blocks}"
+
+  [[zone.steps]]
+  text = "→ {zone|The Torched Courts}"
+
+  [[zone.steps]]
+  text = """
+Talk to Innocence
+· Go ↗"""
+
+  [[zone.steps]]
+  text = "→ {zone|The Canals}"
+
+[[zone]]
+name = "The Control Blocks"
+
+  [[zone.steps]]
+  text = "{waypoint|Oriath Docks}"
+
+  [[zone.steps]]
+  text = "Find and kill {kill|Vilenta}"
+
+  [[zone.steps]]
+  text = "{logout}"
+
+[[zone]]
+name = "The Ossuary"
+
+  [[zone.steps]]
+  text = "Get {crafting}"
+
+  [[zone.steps]]
+  text = "Complete {trial}"
+
+  [[zone.steps]]
+  text = "{logout}"
+
+[[zone]]
+name = "The Torched Courts"
+
+  [[zone.steps]]
+  text = "→ {zone|The Desecrated Chambers}"
+
+[[zone]]
+name = "The Desecrated Chambers"
+
+  [[zone.steps]]
+  text = "Get {crafting}"
+
+  [[zone.steps]]
+  text = """
+→ {zone|Sanctum of Innocence}, kill {kill|Avarius, Reassembled}, take {item|The Staff of Purity}
+· Go ↖ counter-clockwise spiral"""
+
+  [[zone.steps]]
+  text = "{logout}"
+
+[[zone]]
+name = "The Canals"
+
+  [[zone.steps]]
+  text = "→ {zone|The Feeding Trough}"
+
+[[zone]]
+name = "The Feeding Trough"
+
+  [[zone.steps]]
+  text = "Get {crafting}"
+
+  [[zone.steps]]
+  text = "Talk to Sin"
+
+  [[zone.steps]]
+  text = "→ {zone|Altar of Hunger}, kill {kill|Kitava, the Insatiable}"
+
+  [[zone.steps]]
+  text = "Talk to Sin ➞ {zone|Oriath Docks}"
+
+[[zone]]
+name = "Karui Shores"
+
+  [[zone.steps]]
+  text = "Get {crafting}"
+
+  [[zone.steps]]
+  text = """
+Hand in {quest|An End to Hunger}
+· Type /passives in chat to confirm that you have all 23 passives from quests"""

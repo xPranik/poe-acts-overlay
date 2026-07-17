@@ -1,0 +1,266 @@
+# Сгенерировано из exile-leveling (https://github.com/HeartofPhos/exile-leveling, MIT).
+# Редактируй свободно: notes — текст под названием зоны, steps — чеклист.
+# kind шага: не указан = обычный, "gem-buy" = купить камень, "gem-reward" = награда за квест.
+# Разметка в тексте (цвет + иконка): {zone|Имя} {kill|Босс} {quest|Квест} {item|Предмет}
+#   {waypoint} {waypoint|Зона} {portal} {trial} {logout} {lab} {crafting}
+
+[act]
+number = 3
+title = "Act 3"
+
+[[zone]]
+name = "The Ancient Pyramid"
+
+  [[zone.steps]]
+  text = "→ {zone|The City of Sarn}"
+
+[[zone]]
+name = "The City of Sarn"
+
+  [[zone.steps]]
+  text = "Get {crafting}"
+
+  [[zone.steps]]
+  text = "Help and talk to Clarissa"
+
+  [[zone.steps]]
+  text = "→ {zone|The Sarn Encampment}"
+
+[[zone]]
+name = "The Sarn Encampment"
+
+  [[zone.steps]]
+  text = "→ {zone|The Slums}"
+
+  [[zone.steps]]
+  text = "Talk to Clarissa, take {item|Sewer Keys}"
+
+  [[zone.steps]]
+  text = "Hand in {quest|Lost in Love}"
+
+  [[zone.steps]]
+  text = "→ {zone|The Slums}"
+
+  [[zone.steps]]
+  text = "Hand in {quest|Victario's Secrets}"
+
+  [[zone.steps]]
+  text = "{waypoint|The Marketplace}"
+
+  [[zone.steps]]
+  text = "{waypoint|The Solaris Temple Level 2}"
+
+  [[zone.steps]]
+  text = "Hand in {quest|Piety's Pets}"
+
+  [[zone.steps]]
+  text = "Hand in {quest|Sever the Right Hand}"
+
+  [[zone.steps]]
+  text = "{waypoint|The Ebony Barracks}"
+
+  [[zone.steps]]
+  text = "{waypoint|The Imperial Gardens}"
+
+[[zone]]
+name = "The Slums"
+
+  [[zone.steps]]
+  text = """
+→ {zone|The Crematorium}
+· Go ↑"""
+
+  [[zone.steps]]
+  text = "→ {zone|The Sewers}"
+
+[[zone]]
+name = "The Crematorium"
+
+  [[zone.steps]]
+  text = "Complete {trial}"
+
+  [[zone.steps]]
+  text = "Find and kill {kill|Piety}, take {item|Tolman's Bracelet}"
+
+  [[zone.steps]]
+  text = "Get {crafting}"
+
+  [[zone.steps]]
+  text = "{logout}"
+
+[[zone]]
+name = "The Sewers"
+
+  [[zone.steps]]
+  text = "Find 1x{item|Platinum Bust}"
+
+  [[zone.steps]]
+  text = "Get {waypoint}"
+
+  [[zone.steps]]
+  text = "Find 2x{item|Platinum Bust}"
+
+  [[zone.steps]]
+  text = "→ {zone|The Marketplace}"
+
+  [[zone.steps]]
+  text = "Burn the {item|Undying Blockage}"
+
+  [[zone.steps]]
+  text = "Get {crafting}"
+
+  [[zone.steps]]
+  text = "→ {zone|The Ebony Barracks}"
+
+[[zone]]
+name = "The Marketplace"
+
+  [[zone.steps]]
+  text = "Get {waypoint}"
+
+  [[zone.steps]]
+  text = "→ {zone|The Catacombs}"
+
+  [[zone.steps]]
+  text = "→ {zone|The Battlefront}"
+
+[[zone]]
+name = "The Catacombs"
+
+  [[zone.steps]]
+  text = "Complete {trial}"
+
+  [[zone.steps]]
+  text = "Get {crafting}"
+
+  [[zone.steps]]
+  text = "{logout}"
+
+[[zone]]
+name = "The Battlefront"
+
+  [[zone.steps]]
+  text = """
+Get {waypoint}
+· Go ↖"""
+
+  [[zone.steps]]
+  text = """
+Find and take {item|Ribbon Spool}
+· Go ↙"""
+
+  [[zone.steps]]
+  text = "→ {zone|The Solaris Temple Level 1}"
+
+  [[zone.steps]]
+  text = "→ {zone|The Docks}"
+
+[[zone]]
+name = "The Solaris Temple Level 1"
+
+  [[zone.steps]]
+  text = "→ {zone|The Solaris Temple Level 2}"
+
+[[zone]]
+name = "The Solaris Temple Level 2"
+
+  [[zone.steps]]
+  text = "→ {zone|Eternal Laboratory}, get {crafting}"
+
+  [[zone.steps]]
+  text = "{waypoint|The Battlefront}"
+
+  [[zone.steps]]
+  text = "Talk to Lady Dialla"
+
+  [[zone.steps]]
+  text = "Hand in {quest|The Ribbon Spool}"
+
+  [[zone.steps]]
+  text = "Hand in {quest|Fiery Dust}, take {item|Infernal Talc}"
+
+  [[zone.steps]]
+  text = "{waypoint|The Sewers}"
+
+[[zone]]
+name = "The Docks"
+
+  [[zone.steps]]
+  text = "Find and take {item|Thaumetic Sulphite}"
+
+  [[zone.steps]]
+  text = "{logout}"
+
+[[zone]]
+name = "The Ebony Barracks"
+
+  [[zone.steps]]
+  text = "Get {waypoint}"
+
+  [[zone.steps]]
+  text = """
+Kill {kill|General Gravicius}
+· Go ↖"""
+
+  [[zone.steps]]
+  text = "→ {zone|The Lunaris Temple Level 1}"
+
+  [[zone.steps]]
+  text = "→ {zone|The Imperial Gardens}"
+
+[[zone]]
+name = "The Lunaris Temple Level 1"
+
+  [[zone.steps]]
+  text = "→ {zone|The Lunaris Temple Level 2}"
+
+[[zone]]
+name = "The Lunaris Temple Level 2"
+
+  [[zone.steps]]
+  text = """
+Find and kill {kill|Piety}, take {item|Tower Key}
+· Follow stairs that are going up
+· At the fork in the road with wagons, go the route with 1 wagon, not 2"""
+
+  [[zone.steps]]
+  text = "Get {crafting}"
+
+  [[zone.steps]]
+  text = "{logout}"
+
+[[zone]]
+name = "The Imperial Gardens"
+
+  [[zone.steps]]
+  text = """
+Get {waypoint}
+· Follow the road"""
+
+  [[zone.steps]]
+  text = """
+Complete {trial}
+· Go ↑"""
+
+  [[zone.steps]]
+  text = "Get {crafting}"
+
+  [[zone.steps]]
+  text = "{logout}"
+
+  [[zone.steps]]
+  text = "→ {zone|The Sceptre of God}"
+
+[[zone]]
+name = "The Sceptre of God"
+
+  [[zone.steps]]
+  text = "→ {zone|The Upper Sceptre of God}"
+
+[[zone]]
+name = "The Upper Sceptre of God"
+
+  [[zone.steps]]
+  text = """
+→ {zone|Tower Rooftop}, Kill {kill|Dominus, High Templar}
+· Look for barricades"""

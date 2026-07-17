@@ -1,0 +1,215 @@
+# Сгенерировано из exile-leveling (https://github.com/HeartofPhos/exile-leveling, MIT).
+# Редактируй свободно: notes — текст под названием зоны, steps — чеклист.
+# kind шага: не указан = обычный, "gem-buy" = купить камень, "gem-reward" = награда за квест.
+# Разметка в тексте (цвет + иконка): {zone|Имя} {kill|Босс} {quest|Квест} {item|Предмет}
+#   {waypoint} {waypoint|Зона} {portal} {trial} {logout} {lab} {crafting}
+
+[act]
+number = 4
+title = "Act 4"
+
+[[zone]]
+name = "The Upper Sceptre of God"
+
+  [[zone.steps]]
+  text = "→ {zone|The Aqueduct}"
+
+[[zone]]
+name = "The Aqueduct"
+
+  [[zone.steps]]
+  text = "→ {zone|Highgate}"
+
+[[zone]]
+name = "Highgate"
+
+  [[zone.steps]]
+  text = "→ {zone|The Dried Lake}"
+
+  [[zone.steps]]
+  text = "Break {item|Deshret's Seal}"
+
+  [[zone.steps]]
+  text = "Hand in {quest|Breaking the Seal}"
+
+  [[zone.steps]]
+  text = "→ {zone|The Mines Level 1}"
+
+  [[zone.steps]]
+  text = "Hand in {quest|An Indomitable Spirit}"
+
+  [[zone.steps]]
+  text = "{waypoint|The Sarn Encampment}"
+
+  [[zone.steps]]
+  text = "{waypoint|The Crystal Veins}"
+
+  [[zone.steps]]
+  text = "Hand in {quest|The Eternal Nightmare}"
+
+  [[zone.steps]]
+  text = "→ {zone|The Ascent}"
+
+[[zone]]
+name = "The Dried Lake"
+
+  [[zone.steps]]
+  text = "Find and kill {kill|Voll, Emperor of Purity}, take {item|Deshret's Banner}"
+
+  [[zone.steps]]
+  text = "Get {crafting}"
+
+  [[zone.steps]]
+  text = "{logout}"
+
+[[zone]]
+name = "The Mines Level 1"
+
+  [[zone.steps]]
+  text = "Get {crafting}"
+
+  [[zone.steps]]
+  text = "→ {zone|The Mines Level 2}"
+
+[[zone]]
+name = "The Mines Level 2"
+
+  [[zone.steps]]
+  text = "Free {item|Deshret}"
+
+  [[zone.steps]]
+  text = "→ {zone|The Crystal Veins}"
+
+[[zone]]
+name = "The Crystal Veins"
+
+  [[zone.steps]]
+  text = "Get {crafting}"
+
+  [[zone.steps]]
+  text = "{waypoint|Highgate}"
+
+  [[zone.steps]]
+  text = "→ {zone|Daresso's Dream}"
+
+  [[zone.steps]]
+  text = "→ {zone|Kaom's Dream}"
+
+  [[zone.steps]]
+  text = "Talk to Lady Dialla"
+
+  [[zone.steps]]
+  text = "→ {zone|The Belly of the Beast Level 1}"
+
+[[zone]]
+name = "The Sarn Encampment"
+
+  [[zone.steps]]
+  text = "→ {zone|Aspirants' Plaza}, get {waypoint}"
+
+[[zone]]
+name = "Aspirants' Plaza"
+
+  [[zone.steps]]
+  text = "{lab}"
+
+  [[zone.steps]]
+  text = "Get {crafting}"
+
+  [[zone.steps]]
+  text = "{waypoint|The Crystal Veins}"
+
+[[zone]]
+name = "Daresso's Dream"
+
+  [[zone.steps]]
+  text = "→ {zone|The Grand Arena}"
+
+[[zone]]
+name = "The Grand Arena"
+
+  [[zone.steps]]
+  text = "Get {crafting}"
+
+  [[zone.steps]]
+  text = "{waypoint|The Crystal Veins}"
+
+  [[zone.steps]]
+  text = """
+→ {zone|The Ring of Blades}, kill {kill|Daresso, King of Swords}, take {item|The Eye of Desire}
+· Go ↙ follow the exits keeping ←"""
+
+  [[zone.steps]]
+  text = "{logout}"
+
+[[zone]]
+name = "Kaom's Dream"
+
+  [[zone.steps]]
+  text = "→ {zone|Kaom's Stronghold}"
+
+[[zone]]
+name = "Kaom's Stronghold"
+
+  [[zone.steps]]
+  text = "Get {crafting}"
+
+  [[zone.steps]]
+  text = "→ {zone|Caldera of the King}, kill {kill|King Kaom}, take {item|The Eye of Fury}"
+
+  [[zone.steps]]
+  text = "{portal}"
+
+  [[zone.steps]]
+  text = "{waypoint|The Grand Arena}"
+
+[[zone]]
+name = "The Belly of the Beast Level 1"
+
+  [[zone.steps]]
+  text = "→ {zone|The Belly of the Beast Level 2}"
+
+[[zone]]
+name = "The Belly of the Beast Level 2"
+
+  [[zone.steps]]
+  text = "→ {zone|The Bowels of the Beast}, kill {kill|Piety, the Abomination}"
+
+  [[zone.steps]]
+  text = "Talk to Piety"
+
+  [[zone.steps]]
+  text = "Get {crafting}"
+
+  [[zone.steps]]
+  text = "→ {zone|The Harvest}"
+
+[[zone]]
+name = "The Harvest"
+
+  [[zone.steps]]
+  text = "Find and kill {kill|Doedre Darktongue}, take {item|Malachai's Lungs}"
+
+  [[zone.steps]]
+  text = "Find and kill {kill|Maligaro, The Inquisitor}, take {item|Malachai's Heart}"
+
+  [[zone.steps]]
+  text = "Find and kill {kill|Shavronne of Umbra}, take {item|Malachai's Entrails}"
+
+  [[zone.steps]]
+  text = "Hand in {quest|Corpus Malachus}"
+
+  [[zone.steps]]
+  text = "→ {zone|The Black Core}, kill {kill|Malachai, The Nightmare}"
+
+  [[zone.steps]]
+  text = "{logout}"
+
+[[zone]]
+name = "The Ascent"
+
+  [[zone.steps]]
+  text = "Get {crafting}"
+
+  [[zone.steps]]
+  text = "Activate {item|The Resonator}, use {item|Oriath Portal}"

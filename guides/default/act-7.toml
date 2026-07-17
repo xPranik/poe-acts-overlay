@@ -1,0 +1,255 @@
+# Сгенерировано из exile-leveling (https://github.com/HeartofPhos/exile-leveling, MIT).
+# Редактируй свободно: notes — текст под названием зоны, steps — чеклист.
+# kind шага: не указан = обычный, "gem-buy" = купить камень, "gem-reward" = награда за квест.
+# Разметка в тексте (цвет + иконка): {zone|Имя} {kill|Босс} {quest|Квест} {item|Предмет}
+#   {waypoint} {waypoint|Зона} {portal} {trial} {logout} {lab} {crafting}
+
+[act]
+number = 7
+title = "Act 7"
+
+[[zone]]
+name = "Lioneye's Watch"
+
+  [[zone.steps]]
+  text = "{waypoint|The Bridge Encampment}"
+
+[[zone]]
+name = "The Bridge Encampment"
+
+  [[zone.steps]]
+  text = "→ {zone|The Broken Bridge}"
+
+  [[zone.steps]]
+  text = "{waypoint|The Crossroads}"
+
+  [[zone.steps]]
+  text = "Hand in {quest|Essence of the Artist}"
+
+  [[zone.steps]]
+  text = "Hand in {quest|The Silver Locket}"
+
+  [[zone.steps]]
+  text = "{waypoint|The Chamber of Sins Level 1}"
+
+  [[zone.steps]]
+  text = "Hand in {quest|The Master of a Million Faces}"
+
+  [[zone.steps]]
+  text = "{waypoint|Prisoner's Gate}"
+
+[[zone]]
+name = "The Broken Bridge"
+
+  [[zone.steps]]
+  text = """
+Find and take {item|Silver Locket}
+· Follow the road, look for the broken {waypoint|}"""
+
+  [[zone.steps]]
+  text = "→ {zone|The Crossroads}"
+
+[[zone]]
+name = "The Crossroads"
+
+  [[zone.steps]]
+  text = "Get {waypoint}"
+
+  [[zone.steps]]
+  text = "→ {zone|The Fellshrine Ruins}"
+
+  [[zone.steps]]
+  text = "→ {zone|The Chamber of Sins Level 1}"
+
+[[zone]]
+name = "The Fellshrine Ruins"
+
+  [[zone.steps]]
+  text = "→ {zone|The Crypt}"
+
+[[zone]]
+name = "The Crypt"
+
+  [[zone.steps]]
+  text = "Complete {trial}"
+
+  [[zone.steps]]
+  text = "Get {crafting}"
+
+  [[zone.steps]]
+  text = "Find Sarcophagus to next floor"
+
+  [[zone.steps]]
+  text = "Find and take {item|Maligaro's Map}"
+
+  [[zone.steps]]
+  text = "{logout}"
+
+[[zone]]
+name = "The Chamber of Sins Level 1"
+
+  [[zone.steps]]
+  text = "Get {crafting}"
+
+  [[zone.steps]]
+  text = "Get {waypoint}"
+
+  [[zone.steps]]
+  text = "Activate {item|Map Device} with {item|Maligaro's Map}"
+
+  [[zone.steps]]
+  text = "→ {zone|Maligaro's Sanctum}"
+
+  [[zone.steps]]
+  text = "Hand in {quest|Web of Secrets}, take {item|Obsidian Key}"
+
+  [[zone.steps]]
+  text = "→ {zone|The Chamber of Sins Level 2}"
+
+[[zone]]
+name = "Maligaro's Sanctum"
+
+  [[zone.steps]]
+  text = """
+→ {zone|Maligaro's Workshop}, kill {kill|Maligaro, the Artist}, take {item|Black Venom}
+· Follow edges of the zone and cross bridges in the corners
+· Typically bridges spawn in the opposite diagonal corners"""
+
+  [[zone.steps]]
+  text = "{logout}"
+
+[[zone]]
+name = "The Chamber of Sins Level 2"
+
+  [[zone.steps]]
+  text = "Complete {trial}"
+
+  [[zone.steps]]
+  text = "Get {crafting}"
+
+  [[zone.steps]]
+  text = "Open Secret Passage ➞ {zone|The Den}"
+
+[[zone]]
+name = "The Den"
+
+  [[zone.steps]]
+  text = "→ {zone|The Ashen Fields}"
+
+[[zone]]
+name = "The Ashen Fields"
+
+  [[zone.steps]]
+  text = """
+→ {zone|The Forest Encampment}, kill {kill|Greust, Lord of the Forest}
+· Go ↙"""
+
+  [[zone.steps]]
+  text = "→ {zone|The Northern Forest}"
+
+[[zone]]
+name = "The Northern Forest"
+
+  [[zone.steps]]
+  text = "{waypoint|The Bridge Encampment}"
+
+  [[zone.steps]]
+  text = "→ {zone|The Causeway}"
+
+  [[zone.steps]]
+  text = "→ {zone|The Dread Thicket}"
+
+[[zone]]
+name = "Prisoner's Gate"
+
+  [[zone.steps]]
+  text = """
+→ {zone|Valley of the Fire Drinker}, kill {kill|Abberath, the Cloven One}
+· Go down the ledge next to the road"""
+
+  [[zone.steps]]
+  text = "{portal}"
+
+  [[zone.steps]]
+  text = "Hand in {quest|The Cloven One}"
+
+  [[zone.steps]]
+  text = "{waypoint|The Northern Forest}"
+
+[[zone]]
+name = "The Causeway"
+
+  [[zone.steps]]
+  text = "Get {crafting}"
+
+  [[zone.steps]]
+  text = "Find and take {item|Kishara's Star}"
+
+  [[zone.steps]]
+  text = "→ {zone|The Vaal City}"
+
+[[zone]]
+name = "The Vaal City"
+
+  [[zone.steps]]
+  text = "Find {waypoint}"
+
+  [[zone.steps]]
+  text = "{waypoint|The Northern Forest}"
+
+  [[zone.steps]]
+  text = "Hand in {quest|Lighting the Way}"
+
+  [[zone.steps]]
+  text = "→ {zone|The Temple of Decay Level 1}"
+
+[[zone]]
+name = "The Dread Thicket"
+
+  [[zone.steps]]
+  text = "Find and take 7x{item|Firefly}"
+
+  [[zone.steps]]
+  text = "Get {crafting}"
+
+  [[zone.steps]]
+  text = "→ {zone|Den of Despair}, kill {kill|Gruthkul, Mother of Despair}"
+
+  [[zone.steps]]
+  text = "{portal}"
+
+  [[zone.steps]]
+  text = "Hand in {quest|Queen of Despair}"
+
+  [[zone.steps]]
+  text = "Hand in {quest|Kishara's Star}"
+
+  [[zone.steps]]
+  text = "{waypoint|Aspirants' Plaza}"
+
+[[zone]]
+name = "Aspirants' Plaza"
+
+  [[zone.steps]]
+  text = "{lab}"
+
+  [[zone.steps]]
+  text = "Get {crafting}"
+
+  [[zone.steps]]
+  text = "{waypoint|The Vaal City}"
+
+[[zone]]
+name = "The Temple of Decay Level 1"
+
+  [[zone.steps]]
+  text = "→ {zone|The Temple of Decay Level 2}"
+
+[[zone]]
+name = "The Temple of Decay Level 2"
+
+  [[zone.steps]]
+  text = "Get {crafting}"
+
+  [[zone.steps]]
+  text = "→ {zone|Arakaali's Web}, kill {kill|Arakaali, Spinner of Shadows}"

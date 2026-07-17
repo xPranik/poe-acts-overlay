@@ -1,0 +1,220 @@
+# Сгенерировано из exile-leveling (https://github.com/HeartofPhos/exile-leveling, MIT).
+# Редактируй свободно: notes — текст под названием зоны, steps — чеклист.
+# kind шага: не указан = обычный, "gem-buy" = купить камень, "gem-reward" = награда за квест.
+# Разметка в тексте (цвет + иконка): {zone|Имя} {kill|Босс} {quest|Квест} {item|Предмет}
+#   {waypoint} {waypoint|Зона} {portal} {trial} {logout} {lab} {crafting}
+
+[act]
+number = 8
+title = "Act 8"
+
+[[zone]]
+name = "The Temple of Decay Level 2"
+
+  [[zone.steps]]
+  text = "→ {zone|The Sarn Ramparts}"
+
+[[zone]]
+name = "The Sarn Ramparts"
+
+  [[zone.steps]]
+  text = "→ {zone|The Sarn Encampment}"
+
+[[zone]]
+name = "The Sarn Encampment"
+
+  [[zone.steps]]
+  text = "→ {zone|The Toxic Conduits}"
+
+  [[zone.steps]]
+  text = "Hand in {quest|Essence of the Hag}"
+
+  [[zone.steps]]
+  text = "Hand in {quest|The Gemling Legion}"
+
+  [[zone.steps]]
+  text = "Hand in {quest|Love is Dead}"
+
+  [[zone.steps]]
+  text = "{waypoint|The Solaris Temple Level 1}"
+
+  [[zone.steps]]
+  text = "{waypoint|The Lunaris Concourse}"
+
+[[zone]]
+name = "The Toxic Conduits"
+
+  [[zone.steps]]
+  text = "→ {zone|Doedre's Cesspool}"
+
+[[zone]]
+name = "Doedre's Cesspool"
+
+  [[zone.steps]]
+  text = "→ {zone|The Cauldron}, kill {kill|Doedre the Vile}"
+
+  [[zone.steps]]
+  text = "→ {zone|Sewer Outlet}"
+
+  [[zone.steps]]
+  text = "Get {crafting}"
+
+  [[zone.steps]]
+  text = "→ {zone|The Quay}"
+
+[[zone]]
+name = "The Quay"
+
+  [[zone.steps]]
+  text = """
+Find and take {item|Ankh of Eternity}
+· Follow ← wall"""
+
+  [[zone.steps]]
+  text = """
+→ {zone|Resurrection Site}
+· Go ↘"""
+
+  [[zone.steps]]
+  text = "Talk to Clarissa, kill {kill|Tolman}"
+
+  [[zone.steps]]
+  text = "→ {zone|The Grain Gate}"
+
+[[zone]]
+name = "The Grain Gate"
+
+  [[zone.steps]]
+  text = """
+Find and kill {kill|Gemling Legionnaires}
+· Follow the dead guards by doorways
+· Look for a book icon"""
+
+  [[zone.steps]]
+  text = "→ {zone|The Imperial Fields}"
+
+[[zone]]
+name = "The Imperial Fields"
+
+  [[zone.steps]]
+  text = "→ {zone|The Solaris Temple Level 1}"
+
+[[zone]]
+name = "The Solaris Temple Level 1"
+
+  [[zone.steps]]
+  text = "Get {waypoint}"
+
+  [[zone.steps]]
+  text = "→ {zone|The Solaris Temple Level 2}"
+
+  [[zone.steps]]
+  text = "→ {zone|The Solaris Concourse}"
+
+[[zone]]
+name = "The Solaris Temple Level 2"
+
+  [[zone.steps]]
+  text = "Find and kill {kill|Dawn, Harbinger of Solaris}, take {item|Sun Orb}"
+
+  [[zone.steps]]
+  text = "Get {crafting}"
+
+  [[zone.steps]]
+  text = "{logout}"
+
+[[zone]]
+name = "The Solaris Concourse"
+
+  [[zone.steps]]
+  text = "→ {zone|The Harbour Bridge}"
+
+[[zone]]
+name = "The Harbour Bridge"
+
+  [[zone.steps]]
+  text = """
+→ {zone|The Lunaris Concourse}
+· Go ↘"""
+
+  [[zone.steps]]
+  text = "→ {zone|The Sky Shrine}, activate Statue of the Sisters"
+
+  [[zone.steps]]
+  text = "Kill {kill|Lunaris, Eternal Moon} & {kill|Solaris, Eternal Sun}"
+
+  [[zone.steps]]
+  text = "→ {zone|The Blood Aqueduct}"
+
+[[zone]]
+name = "The Lunaris Concourse"
+
+  [[zone.steps]]
+  text = """
+Get {waypoint}
+· Go ↖"""
+
+  [[zone.steps]]
+  text = "→ {zone|The Lunaris Temple Level 1}"
+
+  [[zone.steps]]
+  text = "→ {zone|The Harbour Bridge}"
+
+  [[zone.steps]]
+  text = "→ {zone|The Bath House}"
+
+[[zone]]
+name = "The Lunaris Temple Level 1"
+
+  [[zone.steps]]
+  text = "→ {zone|The Lunaris Temple Level 2}"
+
+[[zone]]
+name = "The Lunaris Temple Level 2"
+
+  [[zone.steps]]
+  text = "Find and kill {kill|Dusk, Harbinger of Lunaris}, take {item|Moon Orb}"
+
+  [[zone.steps]]
+  text = "Get {crafting}"
+
+  [[zone.steps]]
+  text = "{logout}"
+
+[[zone]]
+name = "The Blood Aqueduct"
+
+  [[zone.steps]]
+  text = "→ {zone|Highgate}"
+
+[[zone]]
+name = "Highgate"
+
+  [[zone.steps]]
+  text = "{waypoint|The Lunaris Concourse}"
+
+[[zone]]
+name = "The Bath House"
+
+  [[zone.steps]]
+  text = """
+Complete {trial}
+· Search ← side"""
+
+  [[zone.steps]]
+  text = "Get {crafting}"
+
+  [[zone.steps]]
+  text = "→ {zone|The High Gardens}"
+
+[[zone]]
+name = "The High Gardens"
+
+  [[zone.steps]]
+  text = "→ {zone|The Pools of Terror}, kill {kill|Yugul, Reflection of Terror}"
+
+  [[zone.steps]]
+  text = "{portal}"
+
+  [[zone.steps]]
+  text = "Hand in {quest|Reflection of Terror}"

@@ -1,0 +1,158 @@
+# Сгенерировано из exile-leveling (https://github.com/HeartofPhos/exile-leveling, MIT).
+# Редактируй свободно: notes — текст под названием зоны, steps — чеклист.
+# kind шага: не указан = обычный, "gem-buy" = купить камень, "gem-reward" = награда за квест.
+# Разметка в тексте (цвет + иконка): {zone|Имя} {kill|Босс} {quest|Квест} {item|Предмет}
+#   {waypoint} {waypoint|Зона} {portal} {trial} {logout} {lab} {crafting}
+
+[act]
+number = 5
+title = "Act 5"
+
+[[zone]]
+name = "The Ascent"
+
+  [[zone.steps]]
+  text = "→ {zone|The Slave Pens}"
+
+[[zone]]
+name = "The Slave Pens"
+
+  [[zone.steps]]
+  text = """
+Find and kill {kill|Overseer Krow}
+· Go ↓ until you find the hanged Kauri
+· Loop around clockwise to go ←"""
+
+  [[zone.steps]]
+  text = "→ {zone|Overseer's Tower}"
+
+[[zone]]
+name = "Overseer's Tower"
+
+  [[zone.steps]]
+  text = "Hand in {quest|Return to Oriath}"
+
+  [[zone.steps]]
+  text = "→ {zone|The Control Blocks}"
+
+  [[zone.steps]]
+  text = "Hand in {quest|The Key to Freedom}"
+
+  [[zone.steps]]
+  text = "Hand in {quest|In Service to Science}"
+
+  [[zone.steps]]
+  text = "Hand in {quest|Death to Purity}"
+
+  [[zone.steps]]
+  text = "{waypoint|The Chamber of Innocence}"
+
+  [[zone.steps]]
+  text = "{waypoint|The Ruined Square}"
+
+  [[zone.steps]]
+  text = "Hand in {quest|Kitava's Torments}"
+
+  [[zone.steps]]
+  text = "{waypoint|The Ruined Square}"
+
+[[zone]]
+name = "The Control Blocks"
+
+  [[zone.steps]]
+  text = """
+Find and take {item|Miasmeter}
+· Go ← as much as possible"""
+
+  [[zone.steps]]
+  text = """
+Find and kill {kill|Justicar Casticus}, take {item|Eyes of Zeal}
+· Go ↗ from {item|Miasmeter}"""
+
+  [[zone.steps]]
+  text = "→ {zone|Oriath Square}"
+
+[[zone]]
+name = "Oriath Square"
+
+  [[zone.steps]]
+  text = "→ {zone|The Templar Courts}"
+
+[[zone]]
+name = "The Templar Courts"
+
+  [[zone.steps]]
+  text = "→ {zone|The Chamber of Innocence}"
+
+[[zone]]
+name = "The Chamber of Innocence"
+
+  [[zone.steps]]
+  text = "Get {crafting}"
+
+  [[zone.steps]]
+  text = """
+→ {zone|Sanctum of Innocence}, kill {kill|High Templar Avarius}
+· Go ↖ counter-clockwise spiral"""
+
+  [[zone.steps]]
+  text = "{logout}"
+
+  [[zone.steps]]
+  text = "→ {zone|The Torched Courts}"
+
+[[zone]]
+name = "The Torched Courts"
+
+  [[zone.steps]]
+  text = "→ {zone|The Ruined Square}"
+
+[[zone]]
+name = "The Ruined Square"
+
+  [[zone.steps]]
+  text = """
+Get {waypoint}
+· Go ↖"""
+
+  [[zone.steps]]
+  text = "→ {zone|The Ossuary}"
+
+  [[zone.steps]]
+  text = "→ {zone|The Reliquary}"
+
+  [[zone.steps]]
+  text = "→ {zone|The Cathedral Rooftop}"
+
+[[zone]]
+name = "The Ossuary"
+
+  [[zone.steps]]
+  text = "Find and take {item|Sign of Purity}"
+
+  [[zone.steps]]
+  text = "Get {crafting}"
+
+  [[zone.steps]]
+  text = "{logout}"
+
+[[zone]]
+name = "The Reliquary"
+
+  [[zone.steps]]
+  text = "Find 3x{item|Kitava's Torment}, search in the corners of the map"
+
+  [[zone.steps]]
+  text = "Get {crafting}"
+
+  [[zone.steps]]
+  text = "{logout}"
+
+[[zone]]
+name = "The Cathedral Rooftop"
+
+  [[zone.steps]]
+  text = "→ {zone|Cathedral Apex}, kill {kill|Kitava, the Insatiable}"
+
+  [[zone.steps]]
+  text = "Talk to Lilly Roth, Sail to Wraeclast"

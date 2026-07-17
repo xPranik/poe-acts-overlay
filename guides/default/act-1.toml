@@ -1,0 +1,225 @@
+# Сгенерировано из exile-leveling (https://github.com/HeartofPhos/exile-leveling, MIT).
+# Редактируй свободно: notes — текст под названием зоны, steps — чеклист.
+# kind шага: не указан = обычный, "gem-buy" = купить камень, "gem-reward" = награда за квест.
+# Разметка в тексте (цвет + иконка): {zone|Имя} {kill|Босс} {quest|Квест} {item|Предмет}
+#   {waypoint} {waypoint|Зона} {portal} {trial} {logout} {lab} {crafting}
+
+[act]
+number = 1
+title = "Act 1"
+
+[[zone]]
+name = "The Twilight Strand"
+
+  [[zone.steps]]
+  text = "Find and kill {kill|Hillock}"
+
+  [[zone.steps]]
+  text = "→ {zone|Lioneye's Watch}"
+
+[[zone]]
+name = "Lioneye's Watch"
+
+  [[zone.steps]]
+  text = "Hand in {quest|Enemy at the Gate}"
+
+  [[zone.steps]]
+  text = "→ {zone|The Coast}"
+
+  [[zone.steps]]
+  text = "Hand in {quest|Breaking Some Eggs}"
+
+  [[zone.steps]]
+  text = "Hand in {quest|Mercy Mission}"
+
+  [[zone.steps]]
+  text = "{waypoint|The Submerged Passage}"
+
+  [[zone.steps]]
+  text = "Take {portal}"
+
+  [[zone.steps]]
+  text = "→ {zone|The Flooded Depths}"
+
+  [[zone.steps]]
+  text = "Hand in {quest|The Dweller of the Deep}"
+
+  [[zone.steps]]
+  text = "Hand in {quest|The Caged Brute}"
+
+  [[zone.steps]]
+  text = "{waypoint|The Lower Prison}"
+
+  [[zone.steps]]
+  text = "Hand in {quest|The Caged Brute}"
+
+  [[zone.steps]]
+  text = "{waypoint|Prisoner's Gate}"
+
+  [[zone.steps]]
+  text = "Take {portal}"
+
+  [[zone.steps]]
+  text = "→ {zone|The Ship Graveyard Cave}"
+
+  [[zone.steps]]
+  text = "Hand in {quest|The Marooned Mariner}"
+
+  [[zone.steps]]
+  text = "Hand in {quest|The Siren's Cadence}"
+
+  [[zone.steps]]
+  text = "{waypoint|The Cavern of Wrath}"
+
+[[zone]]
+name = "The Coast"
+
+  [[zone.steps]]
+  text = "Get {waypoint}"
+
+  [[zone.steps]]
+  text = "→ {zone|The Mud Flats}"
+
+  [[zone.steps]]
+  text = "→ {zone|The Tidal Island}"
+
+[[zone]]
+name = "The Mud Flats"
+
+  [[zone.steps]]
+  text = """
+Find 3x{item|Glyph}
+· Little streams connect the 3 Rhoa nests
+· Usually form a triangle, but will rarely form a line"""
+
+  [[zone.steps]]
+  text = "→ {zone|The Submerged Passage}"
+
+[[zone]]
+name = "The Submerged Passage"
+
+  [[zone.steps]]
+  text = "{waypoint|The Coast}"
+
+  [[zone.steps]]
+  text = "Find bridge, place {portal}"
+
+  [[zone.steps]]
+  text = "→ {zone|The Ledge}"
+
+[[zone]]
+name = "The Tidal Island"
+
+  [[zone.steps]]
+  text = """
+Find and kill {kill|Hailrake}, take {item|Medicine Chest}
+· Go ←
+· If you find a ledge, turn around and go →
+· Recommended Level: 4"""
+
+  [[zone.steps]]
+  text = "{logout}"
+
+[[zone]]
+name = "The Ledge"
+
+  [[zone.steps]]
+  text = "→ {zone|The Climb}"
+
+[[zone]]
+name = "The Climb"
+
+  [[zone.steps]]
+  text = "→ {zone|The Lower Prison}"
+
+[[zone]]
+name = "The Lower Prison"
+
+  [[zone.steps]]
+  text = "{waypoint|Lioneye's Watch}"
+
+  [[zone.steps]]
+  text = """
+Complete {trial}
+· Usually ↗"""
+
+  [[zone.steps]]
+  text = "→ {zone|The Upper Prison}"
+
+[[zone]]
+name = "The Flooded Depths"
+
+  [[zone.steps]]
+  text = """
+Find and kill {kill|The Dweller of the Deep}
+· Search opposite the entrance
+· Look for the large empty room"""
+
+  [[zone.steps]]
+  text = "{logout}"
+
+[[zone]]
+name = "The Upper Prison"
+
+  [[zone.steps]]
+  text = """
+Find Chemist's Strongbox
+· Look for map icon, access with nearby switch
+· High chance for Quicksilver Flask
+· Vendor Quicksilver Flask + Orb of Augmentation + Normal Boots
+· Vendor Quicksilver Flask + Orb of Augmentation + Movement Speed Boots"""
+
+  [[zone.steps]]
+  text = """
+→ {zone|The Warden's Quarters}, kill {kill|Brutus, Lord Incarcerator}
+· Recommended Level: 8"""
+
+  [[zone.steps]]
+  text = "{logout}"
+
+[[zone]]
+name = "Prisoner's Gate"
+
+  [[zone.steps]]
+  text = "→ {zone|The Ship Graveyard}"
+
+[[zone]]
+name = "The Ship Graveyard"
+
+  [[zone.steps]]
+  text = "Find {zone|The Ship Graveyard Cave}, place {portal}"
+
+  [[zone.steps]]
+  text = "→ {zone|The Cavern of Wrath}"
+
+  [[zone.steps]]
+  text = "{logout}"
+
+[[zone]]
+name = "The Cavern of Wrath"
+
+  [[zone.steps]]
+  text = "{waypoint|Lioneye's Watch}"
+
+  [[zone.steps]]
+  text = "→ {zone|The Cavern of Anger}"
+
+[[zone]]
+name = "The Ship Graveyard Cave"
+
+  [[zone.steps]]
+  text = """
+Find {item|Slave Girl}, take {item|Allflame}
+· Search opposite the entrance"""
+
+  [[zone.steps]]
+  text = "→ {zone|The Ship Graveyard}, kill {kill|Captain Fairgraves}"
+
+[[zone]]
+name = "The Cavern of Anger"
+
+  [[zone.steps]]
+  text = """
+→ {zone|Merveil's Lair}, kill {kill|Merveil, the Siren}
+· Follow the water
+· Recommended Level: 12"""
