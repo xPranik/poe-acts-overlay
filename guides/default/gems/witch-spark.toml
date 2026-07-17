@@ -1,0 +1,30 @@
+# Пример пресета камней для билда. Замени под свой билд.
+# Пресет накладывается на общий маршрут по имени зоны (name должно совпадать с act-N.toml).
+# Камни по умолчанию kind = "gem-buy" (купить у торговца). Для награды за квест ставь kind = "gem-reward".
+# В text работает разметка: {item|Камень}, {quest|Квест}, {kill|Босс} — цвет + иконка.
+
+[preset]
+name = "Ведьма — Spark"
+
+[[zone]]
+name = "Lioneye's Watch"
+
+  [[zone.gems]]
+  text = "Награда за {quest|Enemy at the Gate}: {item|Freezing Pulse}"
+  kind = "gem-reward"
+
+  [[zone.gems]]
+  text = "Купить у Nessa: {item|Arcane Surge}, {item|Added Cold Damage}"
+
+[[zone]]
+name = "The Submerged Passage"
+
+  [[zone.gems]]
+  text = "Награда за {quest|The Caged Brute}: {item|Frostblink}"
+  kind = "gem-reward"
+
+[[zone]]
+name = "The Upper Prison"
+
+  [[zone.gems]]
+  text = "Купить: {item|Frost Bomb} + {item|Onslaught} на одиночные цели"

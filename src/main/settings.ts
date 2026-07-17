@@ -8,11 +8,14 @@ export interface Hotkeys {
   toggleLayout: string
   prevZone: string
   nextZone: string
+  toggleDevTools: string
 }
 
 export interface Settings {
   clientLogPath: string | null
   profile: string
+  /** id of the selected gem preset (build); null = none */
+  gemPreset: string | null
   bounds: { x?: number; y?: number; width: number; height: number }
   hotkeys: Hotkeys
 }
@@ -20,13 +23,15 @@ export interface Settings {
 const DEFAULTS: Settings = {
   clientLogPath: null,
   profile: 'default',
+  gemPreset: null,
   bounds: { width: 400, height: 640 },
   hotkeys: {
     toggleOverlay: 'Ctrl+Alt+O',
     toggleInteractive: 'Ctrl+Alt+I',
     toggleLayout: 'Ctrl+Alt+L',
     prevZone: 'Ctrl+Alt+Left',
-    nextZone: 'Ctrl+Alt+Right'
+    nextZone: 'Ctrl+Alt+Right',
+    toggleDevTools: 'Ctrl+Alt+D'
   }
 }
 

@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import type { AppState, GuideAct, GuideZone } from '../../shared/types'
-import { stepKey } from '../../shared/types'
+import { gemStepKey, stepKey } from '../../shared/types'
 import { Markup } from './Markup'
 
 export default function App(): React.JSX.Element {
@@ -57,25 +57,32 @@ function Header({
   return (
     <div className="header">
       <div className="drag-strip" title="Перетащить оверлей" />
-      <div className="nav-row">
+      <div className="header-row">
         <div className="act-nav">
           <button onClick={() => window.api.navAct(-1)}>‹</button>
           <span className="act-title">{act ? act.title : `Act ${state.currentAct}`}</span>
           <button onClick={() => window.api.navAct(1)}>›</button>
         </div>
+        <span className="zone-title">{zone?.name ?? state.currentZone ?? '—'}</span>
         <div className="zone-nav">
           <button onClick={() => window.api.navZone(-1)}>‹</button>
-          <span className="zone-title">{zone?.name ?? state.currentZone ?? '—'}</span>
           <button onClick={() => window.api.navZone(1)}>›</button>
         </div>
       </div>
+      <div className="header-divider" />
     </div>
   )
 }
 
 function ZoneView({ state, zone }: { state: AppState; zone: GuideZone }): React.JSX.Element {
-  const gems = useMemo(() => zone.steps.filter((s) => s.kind !== 'normal'), [zone])
+  const act = state.currentAct
   const normal = useMemo(() => zone.steps.filter((s) => s.kind === 'normal'), [zone])
+  const inlineGems = useMemo(() => zone.steps.filter((s) => s.kind !== 'normal'), [zone])
+
+  const presets = state.guide.presets
+  const preset = presets.find((p) => p.id === state.activePreset) ?? null
+  const presetGems = preset?.zones[zone.name] ?? []
+  const hasGems = inlineGems.length + presetGems.length > 0
 
   return (
     <div className="zone">
@@ -87,18 +94,62 @@ function ZoneView({ state, zone }: { state: AppState; zone: GuideZone }): React.
       {normal.length > 0 && (
         <ul className="steps">
           {normal.map((s) => (
-            <StepRow key={s.text} state={state} zone={zone} text={s.text} kind={s.kind} />
+            <StepRow
+              key={s.text}
+              state={state}
+              keyValue={stepKey(act, zone.name, s.text)}
+              text={s.text}
+              kind={s.kind}
+            />
           ))}
         </ul>
       )}
-      {gems.length > 0 && (
+      {(presets.length > 0 || hasGems) && (
         <div className="gems">
-          <div className="gems-title">💎 Камни</div>
-          <ul className="steps">
-            {gems.map((s) => (
-              <StepRow key={s.text} state={state} zone={zone} text={s.text} kind={s.kind} />
-            ))}
-          </ul>
+          <div className="gems-head">
+            <span className="gems-title">💎 Камни</span>
+            {presets.length > 0 && (
+              <select
+                className="preset-select"
+                value={state.activePreset ?? ''}
+                onChange={(e) => window.api.setPreset(e.target.value || null)}
+              >
+                <option value="">— без билда —</option>
+                {presets.map((p) => (
+                  <option key={p.id} value={p.id}>
+                    {p.name}
+                  </option>
+                ))}
+              </select>
+            )}
+          </div>
+          {hasGems ? (
+            <ul className="steps">
+              {inlineGems.map((s) => (
+                <StepRow
+                  key={`i:${s.text}`}
+                  state={state}
+                  keyValue={stepKey(act, zone.name, s.text)}
+                  text={s.text}
+                  kind={s.kind}
+                />
+              ))}
+              {preset &&
+                presetGems.map((s) => (
+                  <StepRow
+                    key={`p:${s.text}`}
+                    state={state}
+                    keyValue={gemStepKey(act, zone.name, preset.id, s.text)}
+                    text={s.text}
+                    kind={s.kind}
+                  />
+                ))}
+            </ul>
+          ) : (
+            <div className="gems-empty">
+              {state.activePreset ? 'В этой зоне камней нет' : 'Выбери билд для плана камней'}
+            </div>
+          )}
         </div>
       )}
       {zone.layout && (
@@ -112,20 +163,22 @@ function ZoneView({ state, zone }: { state: AppState; zone: GuideZone }): React.
 
 function StepRow({
   state,
-  zone,
+  keyValue,
   text,
   kind
 }: {
   state: AppState
-  zone: GuideZone
+  keyValue: string
   text: string
   kind: string
 }): React.JSX.Element {
-  const key = stepKey(state.currentAct, zone.name, text)
-  const done = !!state.progress[key]
+  const done = !!state.progress[keyValue]
   const [first, ...subs] = text.split('\n')
   return (
-    <li className={`step ${kind} ${done ? 'done' : ''}`} onClick={() => window.api.toggleStep(key)}>
+    <li
+      className={`step ${kind} ${done ? 'done' : ''}`}
+      onClick={() => window.api.toggleStep(keyValue)}
+    >
       <span className="check">{done ? '✔' : '○'}</span>
       <span className="step-text">
         <Markup text={first} />

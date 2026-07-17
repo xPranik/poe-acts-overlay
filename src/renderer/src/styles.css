@@ -23,91 +23,99 @@ body {
   display: flex;
   flex-direction: column;
   height: 100%;
-  background: rgba(12, 10, 8, 0.78);
-  border: 1px solid rgba(230, 140, 40, 0.25);
+  background: rgba(14, 17, 20, 0.68);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(127, 163, 176, 0.18);
   border-radius: 8px;
   overflow: hidden;
 }
 
 .panel.interactive {
-  border-color: rgba(230, 140, 40, 0.9);
-  box-shadow: 0 0 12px rgba(230, 140, 40, 0.35) inset;
-}
-
-.header {
-  background: rgba(230, 140, 40, 0.12);
-  border-bottom: 1px solid rgba(230, 140, 40, 0.2);
+  border-color: rgba(127, 163, 176, 0.55);
 }
 
 .drag-strip {
-  height: 10px;
+  height: 8px;
   -webkit-app-region: drag;
-  background: repeating-linear-gradient(
-    90deg,
-    transparent,
-    transparent 6px,
-    rgba(230, 140, 40, 0.25) 6px,
-    rgba(230, 140, 40, 0.25) 8px
-  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.nav-row {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  padding: 4px 8px 6px;
+.drag-strip::after {
+  content: '';
+  width: 28px;
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(127, 163, 176, 0.35);
+}
+
+.header-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 8px;
+  padding: 2px 10px 9px;
 }
 
 .act-nav,
 .zone-nav {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
+  -webkit-app-region: no-drag;
 }
 
 .act-nav button,
 .zone-nav button,
 .layout-toggle {
-  background: rgba(230, 140, 40, 0.15);
-  border: 1px solid rgba(230, 140, 40, 0.3);
-  color: #e8b072;
-  border-radius: 4px;
-  min-width: 22px;
-  padding: 0 6px;
+  background: transparent;
+  border: none;
+  color: #5b6570;
   cursor: pointer;
   font-size: 13px;
   line-height: 18px;
+  padding: 0 3px;
 }
 
 .act-nav button:hover,
-.zone-nav button:hover,
-.layout-toggle:hover {
-  background: rgba(230, 140, 40, 0.3);
+.zone-nav button:hover {
+  color: #7fa3b0;
 }
 
 .act-title {
   font-weight: 600;
-  color: #e8b072;
-  font-size: 12px;
+  color: #7fa3b0;
+  font-size: 10px;
   text-transform: uppercase;
-  letter-spacing: 0.4px;
+  letter-spacing: 0.8px;
+  white-space: nowrap;
+}
+
+.spacer {
+  flex: 1;
 }
 
 .zone-title {
   font-weight: 700;
   font-size: 15px;
-  color: #ffcf91;
-  flex: 1;
-  text-align: center;
+  color: #e9eef2;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  width: 100%;
+  text-align: end;
+}
+
+.header-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(127, 163, 176, 0.4), transparent);
 }
 
 .errors {
-  background: rgba(180, 40, 40, 0.35);
-  border-bottom: 1px solid rgba(220, 80, 80, 0.5);
-  padding: 6px 8px;
+  background: rgba(180, 40, 40, 0.3);
+  border-bottom: 1px solid rgba(220, 80, 80, 0.4);
+  padding: 6px 10px;
   font-size: 12px;
   color: #ffd7d7;
   white-space: pre-wrap;
@@ -116,10 +124,10 @@ body {
 .zone {
   flex: 1;
   overflow-y: auto;
-  padding: 8px 10px;
+  padding: 10px 12px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 9px;
 }
 
 .zone::-webkit-scrollbar {
@@ -127,61 +135,66 @@ body {
 }
 
 .zone::-webkit-scrollbar-thumb {
-  background: rgba(230, 140, 40, 0.3);
+  background: rgba(127, 163, 176, 0.3);
   border-radius: 3px;
 }
 
 .notes {
   white-space: pre-wrap;
   line-height: 1.45;
-  color: #e8e2d0;
+  color: #c9d2d8;
 }
 
 .steps {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 2px;
 }
 
 .step {
   display: flex;
-  gap: 7px;
+  gap: 8px;
   align-items: baseline;
-  padding: 3px 6px;
-  border-radius: 4px;
+  padding: 4px 8px;
+  border-radius: 5px;
   cursor: pointer;
-  line-height: 1.35;
+  line-height: 1.4;
+  color: #c9d2d8;
 }
 
 .step:hover {
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(127, 163, 176, 0.08);
 }
 
 .step .check {
-  color: #9a927e;
+  color: #5b6570;
   flex-shrink: 0;
 }
 
 .step.done {
-  opacity: 0.45;
+  opacity: 0.4;
 }
 
 .step.done .step-text {
   text-decoration: line-through;
 }
 
+.step.done .check {
+  color: #7fa3b0;
+}
+
 .step.gem-buy {
-  background: rgba(60, 120, 200, 0.15);
+  background: rgba(90, 160, 232, 0.08);
   border-left: 2px solid #5aa0e8;
 }
 
 .step.gem-reward {
-  background: rgba(60, 180, 120, 0.15);
+  background: rgba(78, 201, 138, 0.08);
   border-left: 2px solid #4ec98a;
 }
 
-/* цветовая схема токенов — как в exile-leveling */
+/* цветовая схема токенов — как в exile-leveling (не менять) */
 .mk {
   font-weight: 600;
 }
@@ -226,7 +239,7 @@ body {
 .step-sub {
   display: block;
   font-size: 12px;
-  color: #9a927e;
+  color: #7f8a93;
   padding-left: 10px;
 }
 
@@ -234,17 +247,60 @@ body {
   font-weight: 500;
 }
 
+.gems {
+  padding: 9px 10px;
+  border-radius: 6px;
+  background: rgba(90, 160, 232, 0.05);
+  border: 1px solid rgba(90, 160, 232, 0.16);
+}
+
+.gems-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 5px;
+}
+
 .gems-title {
-  font-size: 11px;
+  font-size: 10px;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: #9a927e;
-  margin-bottom: 3px;
+  letter-spacing: 0.6px;
+  color: #8ab3c0;
+  font-weight: 600;
+}
+
+.preset-select {
+  -webkit-app-region: no-drag;
+  background: rgba(90, 160, 232, 0.12);
+  color: #cfe0ee;
+  border: 1px solid rgba(90, 160, 232, 0.3);
+  border-radius: 4px;
+  font-size: 11px;
+  padding: 1px 4px;
+  max-width: 60%;
+  cursor: pointer;
+}
+
+.preset-select:focus {
+  outline: none;
+  border-color: rgba(90, 160, 232, 0.7);
+}
+
+.preset-select option {
+  background: #12171c;
+  color: #cfe0ee;
+}
+
+.gems-empty {
+  font-size: 12px;
+  color: #6c7680;
+  font-style: italic;
 }
 
 .layout-box {
-  border-bottom: 1px solid rgba(230, 140, 40, 0.2);
-  background: rgba(0, 0, 0, 0.5);
+  border-bottom: 1px solid rgba(127, 163, 176, 0.18);
+  background: rgba(0, 0, 0, 0.35);
   max-height: 45%;
   display: flex;
   justify-content: center;
@@ -258,7 +314,12 @@ body {
 
 .layout-toggle {
   align-self: flex-start;
-  padding: 2px 8px;
+  padding: 2px 4px;
+  color: #7fa3b0;
+}
+
+.layout-toggle:hover {
+  color: #a7c5cf;
 }
 
 .no-zone {
@@ -266,23 +327,23 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #9a927e;
+  color: #7f8a93;
   text-align: center;
   padding: 12px;
 }
 
 .footer {
-  padding: 4px 8px;
-  border-top: 1px solid rgba(230, 140, 40, 0.15);
+  padding: 7px 12px;
+  border-top: 1px solid rgba(127, 163, 176, 0.12);
   font-size: 11px;
-  color: #9a927e;
+  color: #6c7680;
   display: flex;
   flex-direction: column;
   gap: 2px;
 }
 
 .footer .mode.on {
-  color: #e8b072;
+  color: #7fa3b0;
 }
 
 .footer .log-missing {

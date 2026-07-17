@@ -17,6 +17,9 @@ const api = {
   navAct: (delta: number): void => {
     ipcRenderer.send('nav-act', delta)
   },
+  setPreset: (id: string | null): void => {
+    ipcRenderer.send('set-preset', id)
+  },
   toggleLayout: (): void => {
     ipcRenderer.send('toggle-layout')
   },

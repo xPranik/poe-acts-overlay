@@ -26,10 +26,11 @@ let logWatcher: LogWatcher | null = null
 const settings = loadSettings()
 
 const state: AppState = {
-  guide: { profile: settings.profile, acts: [], errors: [] },
+  guide: { profile: settings.profile, acts: [], presets: [], errors: [] },
   currentAct: 1,
   currentZone: null,
   currentZoneIndex: -1,
+  activePreset: settings.gemPreset,
   interactive: false,
   layoutVisible: false,
   logStatus: { kind: 'missing', message: 'Client.txt не найден' },
@@ -60,6 +61,23 @@ function setGuide(guide: Guide): void {
     state.currentZoneIndex = pos ? pos.zoneIndex : -1
     if (pos) state.currentAct = pos.act
   }
+  // keep the active preset valid: drop it if gone, auto-pick the only one
+  const ids = guide.presets.map((p) => p.id)
+  if (state.activePreset && !ids.includes(state.activePreset)) {
+    state.activePreset = null
+  }
+  if (!state.activePreset && ids.length === 1) {
+    state.activePreset = ids[0]
+  }
+  updateTrayMenu()
+  pushState()
+}
+
+function setActivePreset(id: string | null): void {
+  state.activePreset = id
+  settings.gemPreset = id
+  saveSettings(settings)
+  updateTrayMenu()
   pushState()
 }
 
@@ -151,11 +169,39 @@ function trayIcon(): Electron.NativeImage {
 function buildTray(): void {
   tray = new Tray(trayIcon())
   tray.setToolTip('PoE Acts Overlay')
+  updateTrayMenu()
+  tray.on('click', toggleOverlay)
+}
+
+/** (Re)builds the tray menu — called on startup and whenever presets change. */
+function updateTrayMenu(): void {
+  if (!tray) return
+  const presetItems: Electron.MenuItemConstructorOptions[] = [
+    {
+      label: '— без камней —',
+      type: 'radio',
+      checked: state.activePreset === null,
+      click: () => setActivePreset(null)
+    },
+    ...state.guide.presets.map((p) => ({
+      label: p.name,
+      type: 'radio' as const,
+      checked: state.activePreset === p.id,
+      click: () => setActivePreset(p.id)
+    }))
+  ]
   const menu = Menu.buildFromTemplate([
     { label: 'Показать/скрыть оверлей', click: toggleOverlay },
     {
       label: 'Режим кликов (interactive)',
       click: () => setInteractive(!state.interactive)
+    },
+    { type: 'separator' },
+    {
+      label: 'Билд (камни)',
+      submenu: state.guide.presets.length > 0
+        ? presetItems
+        : [{ label: 'Нет пресетов — создай gems/<билд>.toml', enabled: false }]
     },
     { type: 'separator' },
     {
@@ -196,7 +242,6 @@ function buildTray(): void {
     { label: 'Выход', click: () => app.quit() }
   ])
   tray.setContextMenu(menu)
-  tray.on('click', toggleOverlay)
 }
 
 function createWindow(): void {
@@ -261,6 +306,14 @@ function registerHotkeys(): void {
   })
   bind(hk.prevZone, () => navZone(-1))
   bind(hk.nextZone, () => navZone(1))
+  bind(hk.toggleDevTools, () => {
+    const wc = win?.webContents
+    if (!wc) return
+    // detach so DevTools opens as its own window — the overlay itself is
+    // frameless + click-through and can't host docked tools
+    if (wc.isDevToolsOpened()) wc.closeDevTools()
+    else wc.openDevTools({ mode: 'detach' })
+  })
 }
 
 function registerIpc(): void {
@@ -273,6 +326,7 @@ function registerIpc(): void {
   })
   ipcMain.on('nav-zone', (_e, delta: number) => navZone(delta))
   ipcMain.on('nav-act', (_e, delta: number) => navAct(delta))
+  ipcMain.on('set-preset', (_e, id: string | null) => setActivePreset(id))
   ipcMain.on('toggle-layout', () => {
     state.layoutVisible = !state.layoutVisible
     pushState()
