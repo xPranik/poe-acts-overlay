@@ -1,0 +1,802 @@
+[
+ {
+  "name": "The Twilight Strand",
+  "act": 1,
+  "level": 1
+ },
+ {
+  "name": "The Coast",
+  "act": 1,
+  "level": 2
+ },
+ {
+  "name": "The Tidal Island",
+  "act": 1,
+  "level": 3
+ },
+ {
+  "name": "The Mud Flats",
+  "act": 1,
+  "level": 4
+ },
+ {
+  "name": "The Fetid Pool",
+  "act": 1,
+  "level": 5
+ },
+ {
+  "name": "The Submerged Passage",
+  "act": 1,
+  "level": 5
+ },
+ {
+  "name": "The Flooded Depths",
+  "act": 1,
+  "level": 6
+ },
+ {
+  "name": "The Ledge",
+  "act": 1,
+  "level": 6
+ },
+ {
+  "name": "The Climb",
+  "act": 1,
+  "level": 7
+ },
+ {
+  "name": "The Lower Prison",
+  "act": 1,
+  "level": 8
+ },
+ {
+  "name": "The Upper Prison",
+  "act": 1,
+  "level": 9
+ },
+ {
+  "name": "Prisoner's Gate",
+  "act": 1,
+  "level": 10
+ },
+ {
+  "name": "The Ship Graveyard",
+  "act": 1,
+  "level": 11
+ },
+ {
+  "name": "The Cavern of Wrath",
+  "act": 1,
+  "level": 12
+ },
+ {
+  "name": "The Ship Graveyard Cave",
+  "act": 1,
+  "level": 12
+ },
+ {
+  "name": "Lioneye's Watch",
+  "act": 1,
+  "level": 13,
+  "town": true
+ },
+ {
+  "name": "The Cavern of Anger",
+  "act": 1,
+  "level": 13
+ },
+ {
+  "name": "The Southern Forest",
+  "act": 2,
+  "level": 13
+ },
+ {
+  "name": "The Old Fields",
+  "act": 2,
+  "level": 14
+ },
+ {
+  "name": "The Chamber of Sins Level 1",
+  "act": 2,
+  "level": 15
+ },
+ {
+  "name": "The Crossroads",
+  "act": 2,
+  "level": 15
+ },
+ {
+  "name": "The Den",
+  "act": 2,
+  "level": 15
+ },
+ {
+  "name": "The Riverways",
+  "act": 2,
+  "level": 15
+ },
+ {
+  "name": "The Broken Bridge",
+  "act": 2,
+  "level": 16
+ },
+ {
+  "name": "The Chamber of Sins Level 2",
+  "act": 2,
+  "level": 16
+ },
+ {
+  "name": "The Fellshrine Ruins",
+  "act": 2,
+  "level": 16
+ },
+ {
+  "name": "The Crypt Level 1",
+  "act": 2,
+  "level": 17
+ },
+ {
+  "name": "The Western Forest",
+  "act": 2,
+  "level": 17
+ },
+ {
+  "name": "The Crypt Level 2",
+  "act": 2,
+  "level": 18
+ },
+ {
+  "name": "The Weaver's Chambers",
+  "act": 2,
+  "level": 18
+ },
+ {
+  "name": "The Wetlands",
+  "act": 2,
+  "level": 19
+ },
+ {
+  "name": "The Vaal Ruins",
+  "act": 2,
+  "level": 20
+ },
+ {
+  "name": "The Dread Thicket",
+  "act": 2,
+  "level": 21
+ },
+ {
+  "name": "The Northern Forest",
+  "act": 2,
+  "level": 21
+ },
+ {
+  "name": "The Caverns",
+  "act": 2,
+  "level": 22
+ },
+ {
+  "name": "The Ancient Pyramid",
+  "act": 2,
+  "level": 23
+ },
+ {
+  "name": "The Forest Encampment",
+  "act": 2,
+  "level": 23,
+  "town": true
+ },
+ {
+  "name": "The City of Sarn",
+  "act": 3,
+  "level": 23
+ },
+ {
+  "name": "The Slums",
+  "act": 3,
+  "level": 24
+ },
+ {
+  "name": "The Crematorium",
+  "act": 3,
+  "level": 25
+ },
+ {
+  "name": "The Marketplace",
+  "act": 3,
+  "level": 26
+ },
+ {
+  "name": "The Sewers",
+  "act": 3,
+  "level": 26
+ },
+ {
+  "name": "The Battlefront",
+  "act": 3,
+  "level": 27
+ },
+ {
+  "name": "The Catacombs",
+  "act": 3,
+  "level": 27
+ },
+ {
+  "name": "The Solaris Temple Level 1",
+  "act": 3,
+  "level": 27
+ },
+ {
+  "name": "The Solaris Temple Level 2",
+  "act": 3,
+  "level": 28
+ },
+ {
+  "name": "The Docks",
+  "act": 3,
+  "level": 29
+ },
+ {
+  "name": "The Ebony Barracks",
+  "act": 3,
+  "level": 29
+ },
+ {
+  "name": "The Lunaris Temple Level 1",
+  "act": 3,
+  "level": 29
+ },
+ {
+  "name": "The Imperial Gardens",
+  "act": 3,
+  "level": 30
+ },
+ {
+  "name": "The Library",
+  "act": 3,
+  "level": 30
+ },
+ {
+  "name": "The Lunaris Temple Level 2",
+  "act": 3,
+  "level": 30
+ },
+ {
+  "name": "The Archives",
+  "act": 3,
+  "level": 31
+ },
+ {
+  "name": "The Sceptre of God",
+  "act": 3,
+  "level": 32
+ },
+ {
+  "name": "Aspirant's Trial",
+  "act": 3,
+  "level": 33
+ },
+ {
+  "name": "Aspirants' Plaza",
+  "act": 3,
+  "level": 33
+ },
+ {
+  "name": "The Sarn Encampment",
+  "act": 3,
+  "level": 33,
+  "town": true
+ },
+ {
+  "name": "The Upper Sceptre of God",
+  "act": 3,
+  "level": 33
+ },
+ {
+  "name": "Sarn Arena",
+  "act": 3,
+  "level": 36
+ },
+ {
+  "name": "The Aqueduct",
+  "act": 4,
+  "level": 33
+ },
+ {
+  "name": "The Dried Lake",
+  "act": 4,
+  "level": 34
+ },
+ {
+  "name": "The Mines Level 1",
+  "act": 4,
+  "level": 34
+ },
+ {
+  "name": "The Mines Level 2",
+  "act": 4,
+  "level": 35
+ },
+ {
+  "name": "The Crystal Veins",
+  "act": 4,
+  "level": 36
+ },
+ {
+  "name": "Daresso's Dream",
+  "act": 4,
+  "level": 37
+ },
+ {
+  "name": "Kaom's Dream",
+  "act": 4,
+  "level": 37
+ },
+ {
+  "name": "Kaom's Stronghold",
+  "act": 4,
+  "level": 38
+ },
+ {
+  "name": "The Belly of the Beast Level 1",
+  "act": 4,
+  "level": 38
+ },
+ {
+  "name": "The Grand Arena",
+  "act": 4,
+  "level": 38
+ },
+ {
+  "name": "The Belly of the Beast Level 2",
+  "act": 4,
+  "level": 39
+ },
+ {
+  "name": "Highgate",
+  "act": 4,
+  "level": 40,
+  "town": true
+ },
+ {
+  "name": "The Ascent",
+  "act": 4,
+  "level": 40
+ },
+ {
+  "name": "The Harvest",
+  "act": 4,
+  "level": 40
+ },
+ {
+  "name": "The Control Blocks",
+  "act": 5,
+  "level": 41
+ },
+ {
+  "name": "The Slave Pens",
+  "act": 5,
+  "level": 41
+ },
+ {
+  "name": "Oriath Square",
+  "act": 5,
+  "level": 42
+ },
+ {
+  "name": "The Templar Courts",
+  "act": 5,
+  "level": 42
+ },
+ {
+  "name": "The Chamber of Innocence",
+  "act": 5,
+  "level": 43
+ },
+ {
+  "name": "The Ossuary",
+  "act": 5,
+  "level": 44
+ },
+ {
+  "name": "The Reliquary",
+  "act": 5,
+  "level": 44
+ },
+ {
+  "name": "The Ruined Square",
+  "act": 5,
+  "level": 44
+ },
+ {
+  "name": "The Torched Courts",
+  "act": 5,
+  "level": 44
+ },
+ {
+  "name": "Overseer's Tower",
+  "act": 5,
+  "level": 45,
+  "town": true
+ },
+ {
+  "name": "The Cathedral Rooftop",
+  "act": 5,
+  "level": 45
+ },
+ {
+  "name": "The Coast",
+  "act": 6,
+  "level": 45
+ },
+ {
+  "name": "The Tidal Island",
+  "act": 6,
+  "level": 45
+ },
+ {
+  "name": "The Twilight Strand",
+  "act": 6,
+  "level": 45
+ },
+ {
+  "name": "The Karui Fortress",
+  "act": 6,
+  "level": 46
+ },
+ {
+  "name": "The Mud Flats",
+  "act": 6,
+  "level": 46
+ },
+ {
+  "name": "The Ridge",
+  "act": 6,
+  "level": 46
+ },
+ {
+  "name": "Prisoner's Gate",
+  "act": 6,
+  "level": 47
+ },
+ {
+  "name": "Shavronne's Tower",
+  "act": 6,
+  "level": 47
+ },
+ {
+  "name": "The Lower Prison",
+  "act": 6,
+  "level": 47
+ },
+ {
+  "name": "The Riverways",
+  "act": 6,
+  "level": 48
+ },
+ {
+  "name": "The Western Forest",
+  "act": 6,
+  "level": 48
+ },
+ {
+  "name": "The Wetlands",
+  "act": 6,
+  "level": 48
+ },
+ {
+  "name": "The Beacon",
+  "act": 6,
+  "level": 49
+ },
+ {
+  "name": "The Cavern of Anger",
+  "act": 6,
+  "level": 49
+ },
+ {
+  "name": "The Southern Forest",
+  "act": 6,
+  "level": 49
+ },
+ {
+  "name": "Lioneye's Watch",
+  "act": 6,
+  "level": 50,
+  "town": true
+ },
+ {
+  "name": "The Brine King's Reef",
+  "act": 6,
+  "level": 50
+ },
+ {
+  "name": "The Forbidden Sanctum",
+  "act": 7,
+  "level": 1
+ },
+ {
+  "name": "The Broken Bridge",
+  "act": 7,
+  "level": 50
+ },
+ {
+  "name": "The Crossroads",
+  "act": 7,
+  "level": 51
+ },
+ {
+  "name": "The Crypt",
+  "act": 7,
+  "level": 51
+ },
+ {
+  "name": "The Fellshrine Ruins",
+  "act": 7,
+  "level": 51
+ },
+ {
+  "name": "Maligaro's Sanctum",
+  "act": 7,
+  "level": 52
+ },
+ {
+  "name": "The Chamber of Sins Level 1",
+  "act": 7,
+  "level": 52
+ },
+ {
+  "name": "The Chamber of Sins Level 2",
+  "act": 7,
+  "level": 52
+ },
+ {
+  "name": "The Ashen Fields",
+  "act": 7,
+  "level": 53
+ },
+ {
+  "name": "The Den",
+  "act": 7,
+  "level": 53
+ },
+ {
+  "name": "The Dread Thicket",
+  "act": 7,
+  "level": 53
+ },
+ {
+  "name": "The Northern Forest",
+  "act": 7,
+  "level": 53
+ },
+ {
+  "name": "The Causeway",
+  "act": 7,
+  "level": 54
+ },
+ {
+  "name": "The Temple of Decay Level 1",
+  "act": 7,
+  "level": 54
+ },
+ {
+  "name": "The Vaal City",
+  "act": 7,
+  "level": 54
+ },
+ {
+  "name": "The Bridge Encampment",
+  "act": 7,
+  "level": 55,
+  "town": true
+ },
+ {
+  "name": "The Temple of Decay Level 2",
+  "act": 7,
+  "level": 55
+ },
+ {
+  "name": "The Sarn Ramparts",
+  "act": 8,
+  "level": 55
+ },
+ {
+  "name": "Doedre's Cesspool",
+  "act": 8,
+  "level": 56
+ },
+ {
+  "name": "The Grand Promenade",
+  "act": 8,
+  "level": 56
+ },
+ {
+  "name": "The Toxic Conduits",
+  "act": 8,
+  "level": 56
+ },
+ {
+  "name": "The Bath House",
+  "act": 8,
+  "level": 57
+ },
+ {
+  "name": "The Grain Gate",
+  "act": 8,
+  "level": 57
+ },
+ {
+  "name": "The Quay",
+  "act": 8,
+  "level": 57
+ },
+ {
+  "name": "The Hidden Underbelly",
+  "act": 8,
+  "level": 58
+ },
+ {
+  "name": "The High Gardens",
+  "act": 8,
+  "level": 58
+ },
+ {
+  "name": "The Imperial Fields",
+  "act": 8,
+  "level": 58
+ },
+ {
+  "name": "The Lunaris Concourse",
+  "act": 8,
+  "level": 58
+ },
+ {
+  "name": "The Solaris Concourse",
+  "act": 8,
+  "level": 58
+ },
+ {
+  "name": "The Lunaris Temple Level 1",
+  "act": 8,
+  "level": 59
+ },
+ {
+  "name": "The Lunaris Temple Level 2",
+  "act": 8,
+  "level": 59
+ },
+ {
+  "name": "The Solaris Temple Level 1",
+  "act": 8,
+  "level": 59
+ },
+ {
+  "name": "The Solaris Temple Level 2",
+  "act": 8,
+  "level": 59
+ },
+ {
+  "name": "The Harbour Bridge",
+  "act": 8,
+  "level": 60
+ },
+ {
+  "name": "The Sarn Encampment",
+  "act": 8,
+  "level": 60,
+  "town": true
+ },
+ {
+  "name": "The Blood Aqueduct",
+  "act": 9,
+  "level": 61
+ },
+ {
+  "name": "The Descent",
+  "act": 9,
+  "level": 61
+ },
+ {
+  "name": "The Oasis",
+  "act": 9,
+  "level": 61
+ },
+ {
+  "name": "The Vastiri Desert",
+  "act": 9,
+  "level": 61
+ },
+ {
+  "name": "The Boiling Lake",
+  "act": 9,
+  "level": 62
+ },
+ {
+  "name": "The Foothills",
+  "act": 9,
+  "level": 62
+ },
+ {
+  "name": "The Tunnel",
+  "act": 9,
+  "level": 62
+ },
+ {
+  "name": "The Belly of the Beast",
+  "act": 9,
+  "level": 63
+ },
+ {
+  "name": "The Quarry",
+  "act": 9,
+  "level": 63
+ },
+ {
+  "name": "The Refinery",
+  "act": 9,
+  "level": 63
+ },
+ {
+  "name": "The Rotting Core",
+  "act": 9,
+  "level": 64
+ },
+ {
+  "name": "Highgate",
+  "act": 9,
+  "level": 67,
+  "town": true
+ },
+ {
+  "name": "The Cathedral Rooftop",
+  "act": 10,
+  "level": 64
+ },
+ {
+  "name": "The Ravaged Square",
+  "act": 10,
+  "level": 64
+ },
+ {
+  "name": "The Desecrated Chambers",
+  "act": 10,
+  "level": 65
+ },
+ {
+  "name": "The Torched Courts",
+  "act": 10,
+  "level": 65
+ },
+ {
+  "name": "The Canals",
+  "act": 10,
+  "level": 66
+ },
+ {
+  "name": "The Control Blocks",
+  "act": 10,
+  "level": 66
+ },
+ {
+  "name": "The Feeding Trough",
+  "act": 10,
+  "level": 67
+ },
+ {
+  "name": "The Ossuary",
+  "act": 10,
+  "level": 67
+ },
+ {
+  "name": "The Reliquary",
+  "act": 10,
+  "level": 67
+ },
+ {
+  "name": "Oriath Docks",
+  "act": 10,
+  "level": 69,
+  "town": true
+ }
+]

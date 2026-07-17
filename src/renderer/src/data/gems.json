@@ -1,0 +1,4022 @@
+[
+ {
+  "name": "Order: To me!",
+  "attr": "none",
+  "level": 0,
+  "support": false
+ },
+ {
+  "name": "...",
+  "attr": "str",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Arcane Surge Support",
+  "attr": "int",
+  "level": 1,
+  "support": true
+ },
+ {
+  "name": "Backstab",
+  "attr": "dex",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Blight",
+  "attr": "int",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Blinding Aura",
+  "attr": "none",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Burning Arrow",
+  "attr": "dex",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Call the Pyre",
+  "attr": "str",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Capture Monster",
+  "attr": "none",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Caustic Arrow",
+  "attr": "dex",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Chance to Bleed Support",
+  "attr": "str",
+  "level": 1,
+  "support": true
+ },
+ {
+  "name": "Chance to Poison Support",
+  "attr": "dex",
+  "level": 1,
+  "support": true
+ },
+ {
+  "name": "Cleave",
+  "attr": "str",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Cobra Lash",
+  "attr": "dex",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Dance in the White",
+  "attr": "dex",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Double Strike",
+  "attr": "dex",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Dual Strike",
+  "attr": "dex",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Elemental Projectiles",
+  "attr": "int",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Elemental Proliferation Support",
+  "attr": "int",
+  "level": 1,
+  "support": true
+ },
+ {
+  "name": "Empower Support",
+  "attr": "str",
+  "level": 1,
+  "support": true
+ },
+ {
+  "name": "Enervating Grasp",
+  "attr": "int",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Enhance Support",
+  "attr": "dex",
+  "level": 1,
+  "support": true
+ },
+ {
+  "name": "Enlighten Support",
+  "attr": "int",
+  "level": 1,
+  "support": true
+ },
+ {
+  "name": "Ethereal Knives",
+  "attr": "dex",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Explosive Trap",
+  "attr": "dex",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Falling Crystals",
+  "attr": "dex",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Fireball",
+  "attr": "int",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Freezing Pulse",
+  "attr": "int",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Frost Blades",
+  "attr": "dex",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Frostbolt",
+  "attr": "int",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Galvanic Arrow",
+  "attr": "dex",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Glacial Hammer",
+  "attr": "str",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Glowing Silhouette",
+  "attr": "int",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Gluttony of Elements",
+  "attr": "none",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Ground Slam",
+  "attr": "str",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Hallow Support",
+  "attr": "str",
+  "level": 1,
+  "support": true
+ },
+ {
+  "name": "Heart of Flame",
+  "attr": "str",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Heavy Strike",
+  "attr": "str",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "His Burning Message",
+  "attr": "str",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Holy Strike",
+  "attr": "str",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Ice Shot",
+  "attr": "dex",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Icefire",
+  "attr": "int",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Kinetic Bolt",
+  "attr": "int",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Lesser Reduced Mana Cost Support",
+  "attr": "str",
+  "level": 1,
+  "support": true
+ },
+ {
+  "name": "Lightning Channel",
+  "attr": "int",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Lightning Circle",
+  "attr": "int",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Lightning Tendrils",
+  "attr": "int",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Molten Strike",
+  "attr": "str",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Momentum Support",
+  "attr": "dex",
+  "level": 1,
+  "support": true
+ },
+ {
+  "name": "Overcharged Sinews",
+  "attr": "int",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Perforate",
+  "attr": "str",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Preserving Stillness",
+  "attr": "dex",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Prismatic Burst Support",
+  "attr": "int",
+  "level": 1,
+  "support": true
+ },
+ {
+  "name": "Purifying Flame",
+  "attr": "int",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Quickstep",
+  "attr": "none",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Raise Zombie",
+  "attr": "int",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Return to Dust",
+  "attr": "str",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Rolling Magma",
+  "attr": "int",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Ruthless Support",
+  "attr": "str",
+  "level": 1,
+  "support": true
+ },
+ {
+  "name": "Seize the Flesh",
+  "attr": "str",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Shadow Blades",
+  "attr": "dex",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Shield Crush",
+  "attr": "str",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Smite",
+  "attr": "str",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Spark",
+  "attr": "int",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Spectral Spinning Weapon",
+  "attr": "dex",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Spectral Throw",
+  "attr": "dex",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Split Arrow",
+  "attr": "dex",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Splitting Steel",
+  "attr": "dex",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Static Tether",
+  "attr": "int",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Stormblast Mine",
+  "attr": "int",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Sweep",
+  "attr": "str",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Tender Embrace",
+  "attr": "str",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "The Great Avalanche",
+  "attr": "int",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "The Grey Wind Howls",
+  "attr": "str",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Vaal Blight",
+  "attr": "int",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Vaal Burning Arrow",
+  "attr": "dex",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Vaal Caustic Arrow",
+  "attr": "dex",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Vaal Cleave",
+  "attr": "str",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Vaal Double Strike",
+  "attr": "dex",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Vaal Fireball",
+  "attr": "int",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Vaal FireTrap",
+  "attr": "dex",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Vaal Glacial Hammer",
+  "attr": "str",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Vaal Ground Slam",
+  "attr": "str",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Vaal Heavy Strike",
+  "attr": "str",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Vaal Ice Shot",
+  "attr": "dex",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Vaal Molten Strike",
+  "attr": "str",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Vaal Smite",
+  "attr": "str",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Vaal Spark",
+  "attr": "int",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Vaal Spectral Throw",
+  "attr": "dex",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Vaal Split Arrow",
+  "attr": "dex",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Violent Desire",
+  "attr": "str",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Viper Strike",
+  "attr": "dex",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Vortex Mine",
+  "attr": "dex",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "WIP Support",
+  "attr": "none",
+  "level": 1,
+  "support": true
+ },
+ {
+  "name": "Wreathed in Light",
+  "attr": "int",
+  "level": 1,
+  "support": false
+ },
+ {
+  "name": "Damage Infusion",
+  "attr": "int",
+  "level": 2,
+  "support": false
+ },
+ {
+  "name": "Ancestral Call Support",
+  "attr": "str",
+  "level": 4,
+  "support": true
+ },
+ {
+  "name": "Ancestral Protector",
+  "attr": "str",
+  "level": 4,
+  "support": false
+ },
+ {
+  "name": "Animate Weapon",
+  "attr": "dex",
+  "level": 4,
+  "support": false
+ },
+ {
+  "name": "Bear Trap",
+  "attr": "dex",
+  "level": 4,
+  "support": false
+ },
+ {
+  "name": "Blood and Sand",
+  "attr": "str",
+  "level": 4,
+  "support": false
+ },
+ {
+  "name": "Contagion",
+  "attr": "int",
+  "level": 4,
+  "support": false
+ },
+ {
+  "name": "Conversion Trap",
+  "attr": "int",
+  "level": 4,
+  "support": false
+ },
+ {
+  "name": "Crushing Fist",
+  "attr": "str",
+  "level": 4,
+  "support": false
+ },
+ {
+  "name": "Dash",
+  "attr": "dex",
+  "level": 4,
+  "support": false
+ },
+ {
+  "name": "Decoy Totem",
+  "attr": "str",
+  "level": 4,
+  "support": false
+ },
+ {
+  "name": "Detonate Dead",
+  "attr": "dex",
+  "level": 4,
+  "support": false
+ },
+ {
+  "name": "Devouring Totem",
+  "attr": "str",
+  "level": 4,
+  "support": false
+ },
+ {
+  "name": "Flame Wall",
+  "attr": "int",
+  "level": 4,
+  "support": false
+ },
+ {
+  "name": "Frost Bomb",
+  "attr": "int",
+  "level": 4,
+  "support": false
+ },
+ {
+  "name": "Frost Wall",
+  "attr": "int",
+  "level": 4,
+  "support": false
+ },
+ {
+  "name": "Frostblink",
+  "attr": "int",
+  "level": 4,
+  "support": false
+ },
+ {
+  "name": "Holy Flame Totem",
+  "attr": "str",
+  "level": 4,
+  "support": false
+ },
+ {
+  "name": "Increased Duration Support",
+  "attr": "str",
+  "level": 4,
+  "support": true
+ },
+ {
+  "name": "Infused Channelling Support",
+  "attr": "int",
+  "level": 4,
+  "support": true
+ },
+ {
+  "name": "Mirage Archer Support",
+  "attr": "dex",
+  "level": 4,
+  "support": true
+ },
+ {
+  "name": "Orb of Storms",
+  "attr": "int",
+  "level": 4,
+  "support": false
+ },
+ {
+  "name": "Pierce Support",
+  "attr": "dex",
+  "level": 4,
+  "support": true
+ },
+ {
+  "name": "Puncture",
+  "attr": "dex",
+  "level": 4,
+  "support": false
+ },
+ {
+  "name": "Rejuvenation Totem",
+  "attr": "str",
+  "level": 4,
+  "support": false
+ },
+ {
+  "name": "Shield Charge",
+  "attr": "str",
+  "level": 4,
+  "support": false
+ },
+ {
+  "name": "Shrapnel Ballista",
+  "attr": "dex",
+  "level": 4,
+  "support": false
+ },
+ {
+  "name": "Sniper's Mark",
+  "attr": "dex",
+  "level": 4,
+  "support": false
+ },
+ {
+  "name": "Spell Cascade Support",
+  "attr": "int",
+  "level": 4,
+  "support": true
+ },
+ {
+  "name": "Steelskin",
+  "attr": "str",
+  "level": 4,
+  "support": false
+ },
+ {
+  "name": "Summon Holy Relic",
+  "attr": "int",
+  "level": 4,
+  "support": false
+ },
+ {
+  "name": "Summon Phantasm Support",
+  "attr": "int",
+  "level": 4,
+  "support": true
+ },
+ {
+  "name": "Summon Raging Spirit",
+  "attr": "int",
+  "level": 4,
+  "support": false
+ },
+ {
+  "name": "Swift Assembly Support",
+  "attr": "dex",
+  "level": 4,
+  "support": true
+ },
+ {
+  "name": "Vaal Animate Weapon",
+  "attr": "dex",
+  "level": 4,
+  "support": false
+ },
+ {
+  "name": "Vaal Detonate Dead",
+  "attr": "dex",
+  "level": 4,
+  "support": false
+ },
+ {
+  "name": "Vaal Rejuvenation Totem",
+  "attr": "str",
+  "level": 4,
+  "support": false
+ },
+ {
+  "name": "Vigilant Strike",
+  "attr": "str",
+  "level": 4,
+  "support": false
+ },
+ {
+  "name": "Volley Support",
+  "attr": "dex",
+  "level": 4,
+  "support": true
+ },
+ {
+  "name": "War Banner",
+  "attr": "str",
+  "level": 4,
+  "support": false
+ },
+ {
+  "name": "Wildfire",
+  "attr": "int",
+  "level": 4,
+  "support": false
+ },
+ {
+  "name": "Fire Weapon",
+  "attr": "int",
+  "level": 5,
+  "support": false
+ },
+ {
+  "name": "Added Cold Damage Support",
+  "attr": "dex",
+  "level": 8,
+  "support": true
+ },
+ {
+  "name": "Added Fire Damage Support",
+  "attr": "str",
+  "level": 8,
+  "support": true
+ },
+ {
+  "name": "Added Lightning Damage Support",
+  "attr": "int",
+  "level": 8,
+  "support": true
+ },
+ {
+  "name": "Additional Accuracy Support",
+  "attr": "dex",
+  "level": 8,
+  "support": true
+ },
+ {
+  "name": "Arrow Nova Support",
+  "attr": "dex",
+  "level": 8,
+  "support": true
+ },
+ {
+  "name": "Ballista Totem Support",
+  "attr": "str",
+  "level": 8,
+  "support": true
+ },
+ {
+  "name": "Blastchain Mine Support",
+  "attr": "int",
+  "level": 8,
+  "support": true
+ },
+ {
+  "name": "Blind Support",
+  "attr": "dex",
+  "level": 8,
+  "support": true
+ },
+ {
+  "name": "Chance to Flee Support",
+  "attr": "dex",
+  "level": 8,
+  "support": true
+ },
+ {
+  "name": "Combustion Support",
+  "attr": "int",
+  "level": 8,
+  "support": true
+ },
+ {
+  "name": "Detonate Mines",
+  "attr": "none",
+  "level": 8,
+  "support": false
+ },
+ {
+  "name": "Devour Support",
+  "attr": "int",
+  "level": 8,
+  "support": true
+ },
+ {
+  "name": "Earthbreaker Support",
+  "attr": "str",
+  "level": 8,
+  "support": true
+ },
+ {
+  "name": "Efficacy Support",
+  "attr": "int",
+  "level": 8,
+  "support": true
+ },
+ {
+  "name": "Faster Attacks Support",
+  "attr": "dex",
+  "level": 8,
+  "support": true
+ },
+ {
+  "name": "Flamewood Support",
+  "attr": "str",
+  "level": 8,
+  "support": true
+ },
+ {
+  "name": "Increased Critical Strikes Support",
+  "attr": "int",
+  "level": 8,
+  "support": true
+ },
+ {
+  "name": "Infernal Legion Support",
+  "attr": "int",
+  "level": 8,
+  "support": true
+ },
+ {
+  "name": "Knockback Support",
+  "attr": "str",
+  "level": 8,
+  "support": true
+ },
+ {
+  "name": "Life Gain on Hit Support",
+  "attr": "str",
+  "level": 8,
+  "support": true
+ },
+ {
+  "name": "Lifetap Support",
+  "attr": "str",
+  "level": 8,
+  "support": true
+ },
+ {
+  "name": "Locus Mine Support",
+  "attr": "dex",
+  "level": 8,
+  "support": true
+ },
+ {
+  "name": "Maim Support",
+  "attr": "str",
+  "level": 8,
+  "support": true
+ },
+ {
+  "name": "Manaforged Arrows Support",
+  "attr": "dex",
+  "level": 8,
+  "support": true
+ },
+ {
+  "name": "Melee Splash Support",
+  "attr": "str",
+  "level": 8,
+  "support": true
+ },
+ {
+  "name": "Minion Damage Support",
+  "attr": "int",
+  "level": 8,
+  "support": true
+ },
+ {
+  "name": "Multiple Projectiles Support",
+  "attr": "dex",
+  "level": 8,
+  "support": true
+ },
+ {
+  "name": "Multiple Traps Support",
+  "attr": "dex",
+  "level": 8,
+  "support": true
+ },
+ {
+  "name": "Spell Totem Support",
+  "attr": "str",
+  "level": 8,
+  "support": true
+ },
+ {
+  "name": "Stun Support",
+  "attr": "str",
+  "level": 8,
+  "support": true
+ },
+ {
+  "name": "Trap Support",
+  "attr": "dex",
+  "level": 8,
+  "support": true
+ },
+ {
+  "name": "Unbound Ailments Support",
+  "attr": "int",
+  "level": 8,
+  "support": true
+ },
+ {
+  "name": "Void Manipulation Support",
+  "attr": "dex",
+  "level": 8,
+  "support": true
+ },
+ {
+  "name": "Blink Arrow",
+  "attr": "dex",
+  "level": 10,
+  "support": false
+ },
+ {
+  "name": "Bodyswap",
+  "attr": "int",
+  "level": 10,
+  "support": false
+ },
+ {
+  "name": "Clarity",
+  "attr": "int",
+  "level": 10,
+  "support": false
+ },
+ {
+  "name": "Enduring Cry",
+  "attr": "str",
+  "level": 10,
+  "support": false
+ },
+ {
+  "name": "Flame Dash",
+  "attr": "int",
+  "level": 10,
+  "support": false
+ },
+ {
+  "name": "Flicker Strike",
+  "attr": "dex",
+  "level": 10,
+  "support": false
+ },
+ {
+  "name": "Intimidating Cry",
+  "attr": "str",
+  "level": 10,
+  "support": false
+ },
+ {
+  "name": "Leap Slam",
+  "attr": "str",
+  "level": 10,
+  "support": false
+ },
+ {
+  "name": "Lightning Warp",
+  "attr": "int",
+  "level": 10,
+  "support": false
+ },
+ {
+  "name": "Mirror Arrow",
+  "attr": "dex",
+  "level": 10,
+  "support": false
+ },
+ {
+  "name": "Portal",
+  "attr": "none",
+  "level": 10,
+  "support": false
+ },
+ {
+  "name": "Precision",
+  "attr": "dex",
+  "level": 10,
+  "support": false
+ },
+ {
+  "name": "Siphoning Trap",
+  "attr": "int",
+  "level": 10,
+  "support": false
+ },
+ {
+  "name": "Smoke Mine",
+  "attr": "dex",
+  "level": 10,
+  "support": false
+ },
+ {
+  "name": "Summon Skeletons",
+  "attr": "int",
+  "level": 10,
+  "support": false
+ },
+ {
+  "name": "Summon Skeletons Channelled",
+  "attr": "int",
+  "level": 10,
+  "support": false
+ },
+ {
+  "name": "Unearth",
+  "attr": "dex",
+  "level": 10,
+  "support": false
+ },
+ {
+  "name": "Vaal Breach",
+  "attr": "none",
+  "level": 10,
+  "support": false
+ },
+ {
+  "name": "Vaal Clarity",
+  "attr": "int",
+  "level": 10,
+  "support": false
+ },
+ {
+  "name": "Vaal Flicker Strike",
+  "attr": "dex",
+  "level": 10,
+  "support": false
+ },
+ {
+  "name": "Vaal Lightning Warp",
+  "attr": "int",
+  "level": 10,
+  "support": false
+ },
+ {
+  "name": "Vaal Summon Skeletons",
+  "attr": "int",
+  "level": 10,
+  "support": false
+ },
+ {
+  "name": "Vitality",
+  "attr": "str",
+  "level": 10,
+  "support": false
+ },
+ {
+  "name": "Wand Teleport",
+  "attr": "none",
+  "level": 10,
+  "support": false
+ },
+ {
+  "name": "Whirling Blades",
+  "attr": "dex",
+  "level": 10,
+  "support": false
+ },
+ {
+  "name": "Wither",
+  "attr": "int",
+  "level": 10,
+  "support": false
+ },
+ {
+  "name": "Withering Step",
+  "attr": "dex",
+  "level": 10,
+  "support": false
+ },
+ {
+  "name": "Absolution",
+  "attr": "str",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Ancestral Blademaster",
+  "attr": "str",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Arc",
+  "attr": "int",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Barrage",
+  "attr": "dex",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Blade Trap",
+  "attr": "dex",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Blade Vortex",
+  "attr": "dex",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Blazing Salvo",
+  "attr": "int",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Blood Offering",
+  "attr": "int",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Bone Offering",
+  "attr": "int",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Chain Hook",
+  "attr": "str",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Creeping Frost",
+  "attr": "int",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Earthshatter",
+  "attr": "str",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Elemental Hit",
+  "attr": "dex",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Essence Drain",
+  "attr": "int",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Exsanguinate",
+  "attr": "str",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Fire Trap",
+  "attr": "dex",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Flame Surge",
+  "attr": "int",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Flammable Shot",
+  "attr": "dex",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Flesh Offering",
+  "attr": "int",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Holy Sweep",
+  "attr": "str",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Ice Nova",
+  "attr": "int",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Ice Spear",
+  "attr": "int",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Icicle Mine",
+  "attr": "int",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Incinerate",
+  "attr": "int",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Infernal Blow",
+  "attr": "str",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Kinetic Fusillade",
+  "attr": "int",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Lacerate",
+  "attr": "dex",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Lightning Arrow",
+  "attr": "dex",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Lightning Strike",
+  "attr": "dex",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Lightning Trap",
+  "attr": "int",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Manabond",
+  "attr": "int",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "New Blade Vortex",
+  "attr": "dex",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Poisonous Concoction",
+  "attr": "dex",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Power Siphon",
+  "attr": "int",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Rain of Arrows",
+  "attr": "dex",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Reave",
+  "attr": "dex",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Rending Steel",
+  "attr": "str",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Scorching Ray",
+  "attr": "int",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Searing Bond",
+  "attr": "str",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Shattering Steel",
+  "attr": "dex",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Siege Ballista",
+  "attr": "dex",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Spectral Helix",
+  "attr": "dex",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Spirit Offering",
+  "attr": "int",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Static Strike",
+  "attr": "str",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Storm Brand",
+  "attr": "int",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Storm Burst",
+  "attr": "int",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Storm Call",
+  "attr": "int",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Sunder",
+  "attr": "str",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Toxic Rain",
+  "attr": "dex",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Vaal Absolution",
+  "attr": "str",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Vaal Arc",
+  "attr": "int",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Vaal Blade Vortex",
+  "attr": "dex",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Vaal Flesh Offering",
+  "attr": "int",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Vaal Ice Nova",
+  "attr": "int",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Vaal Lightning Arrow",
+  "attr": "dex",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Vaal Lightning Strike",
+  "attr": "dex",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Vaal Lightning Trap",
+  "attr": "int",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Vaal Power Siphon",
+  "attr": "int",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Vaal Rain of Arrows",
+  "attr": "dex",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Vaal Reave",
+  "attr": "dex",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Vaal Storm Call",
+  "attr": "int",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Vaal Sweep",
+  "attr": "str",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Vaal Venom Gyre",
+  "attr": "dex",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Vaal Volcanic Fissure",
+  "attr": "str",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Venom Gyre",
+  "attr": "dex",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Volatile Dead",
+  "attr": "dex",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Volcanic Fissure",
+  "attr": "str",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Voltaxic Burst",
+  "attr": "int",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Wintertide Brand",
+  "attr": "int",
+  "level": 12,
+  "support": false
+ },
+ {
+  "name": "Ignite",
+  "attr": "int",
+  "level": 14,
+  "support": false
+ },
+ {
+  "name": "Ancestral Cry",
+  "attr": "str",
+  "level": 16,
+  "support": false
+ },
+ {
+  "name": "Arcane Cloak",
+  "attr": "int",
+  "level": 16,
+  "support": false
+ },
+ {
+  "name": "Arctic Armour",
+  "attr": "dex",
+  "level": 16,
+  "support": false
+ },
+ {
+  "name": "Assassin's Mark",
+  "attr": "int",
+  "level": 16,
+  "support": false
+ },
+ {
+  "name": "Blade Blast",
+  "attr": "dex",
+  "level": 16,
+  "support": false
+ },
+ {
+  "name": "Blood Rage",
+  "attr": "dex",
+  "level": 16,
+  "support": false
+ },
+ {
+  "name": "Brand Recall",
+  "attr": "int",
+  "level": 16,
+  "support": false
+ },
+ {
+  "name": "Cold Snap",
+  "attr": "int",
+  "level": 16,
+  "support": false
+ },
+ {
+  "name": "Corrupting Fever",
+  "attr": "str",
+  "level": 16,
+  "support": false
+ },
+ {
+  "name": "Defiance Banner",
+  "attr": "str",
+  "level": 16,
+  "support": false
+ },
+ {
+  "name": "Desecrate",
+  "attr": "dex",
+  "level": 16,
+  "support": false
+ },
+ {
+  "name": "Divine Retribution",
+  "attr": "int",
+  "level": 16,
+  "support": false
+ },
+ {
+  "name": "Ensnaring Arrow",
+  "attr": "dex",
+  "level": 16,
+  "support": false
+ },
+ {
+  "name": "Eviscerate",
+  "attr": "str",
+  "level": 16,
+  "support": false
+ },
+ {
+  "name": "Flesh and Stone",
+  "attr": "str",
+  "level": 16,
+  "support": false
+ },
+ {
+  "name": "Forbidden Rite",
+  "attr": "int",
+  "level": 16,
+  "support": false
+ },
+ {
+  "name": "Frenzy",
+  "attr": "dex",
+  "level": 16,
+  "support": false
+ },
+ {
+  "name": "Galvanic Field",
+  "attr": "int",
+  "level": 16,
+  "support": false
+ },
+ {
+  "name": "Glacial Shield Swipe",
+  "attr": "dex",
+  "level": 16,
+  "support": false
+ },
+ {
+  "name": "Herald of Agony",
+  "attr": "dex",
+  "level": 16,
+  "support": false
+ },
+ {
+  "name": "Herald of Ash",
+  "attr": "str",
+  "level": 16,
+  "support": false
+ },
+ {
+  "name": "Herald of Ice",
+  "attr": "dex",
+  "level": 16,
+  "support": false
+ },
+ {
+  "name": "Herald of Purity",
+  "attr": "str",
+  "level": 16,
+  "support": false
+ },
+ {
+  "name": "Herald of Thunder",
+  "attr": "int",
+  "level": 16,
+  "support": false
+ },
+ {
+  "name": "Molten Shell",
+  "attr": "str",
+  "level": 16,
+  "support": false
+ },
+ {
+  "name": "Poacher's Mark",
+  "attr": "dex",
+  "level": 16,
+  "support": false
+ },
+ {
+  "name": "Righteous Fire",
+  "attr": "int",
+  "level": 16,
+  "support": false
+ },
+ {
+  "name": "Righteous Lightning",
+  "attr": "int",
+  "level": 16,
+  "support": false
+ },
+ {
+  "name": "Seismic Cry",
+  "attr": "str",
+  "level": 16,
+  "support": false
+ },
+ {
+  "name": "Shield of Light",
+  "attr": "str",
+  "level": 16,
+  "support": false
+ },
+ {
+  "name": "Summon Skitterbots",
+  "attr": "int",
+  "level": 16,
+  "support": false
+ },
+ {
+  "name": "Swordstorm",
+  "attr": "str",
+  "level": 16,
+  "support": false
+ },
+ {
+  "name": "Tempest Shield",
+  "attr": "int",
+  "level": 16,
+  "support": false
+ },
+ {
+  "name": "Vaal Arctic Armour",
+  "attr": "dex",
+  "level": 16,
+  "support": false
+ },
+ {
+  "name": "Vaal Cold Snap",
+  "attr": "int",
+  "level": 16,
+  "support": false
+ },
+ {
+  "name": "Vaal Molten Shell",
+  "attr": "str",
+  "level": 16,
+  "support": false
+ },
+ {
+  "name": "Vaal Righteous Fire",
+  "attr": "int",
+  "level": 16,
+  "support": false
+ },
+ {
+  "name": "Wall of Force",
+  "attr": "int",
+  "level": 16,
+  "support": false
+ },
+ {
+  "name": "Warlord's Mark",
+  "attr": "str",
+  "level": 16,
+  "support": false
+ },
+ {
+  "name": "Wave of Conviction",
+  "attr": "int",
+  "level": 16,
+  "support": false
+ },
+ {
+  "name": "Block Chance Reduction Support",
+  "attr": "dex",
+  "level": 18,
+  "support": true
+ },
+ {
+  "name": "Bloodlust Support",
+  "attr": "str",
+  "level": 18,
+  "support": true
+ },
+ {
+  "name": "Close Combat Support",
+  "attr": "dex",
+  "level": 18,
+  "support": true
+ },
+ {
+  "name": "Cold to Fire Support",
+  "attr": "str",
+  "level": 18,
+  "support": true
+ },
+ {
+  "name": "Concentrated Effect Support",
+  "attr": "int",
+  "level": 18,
+  "support": true
+ },
+ {
+  "name": "Controlled Destruction Support",
+  "attr": "int",
+  "level": 18,
+  "support": true
+ },
+ {
+  "name": "Cruelty Support",
+  "attr": "str",
+  "level": 18,
+  "support": true
+ },
+ {
+  "name": "Culling Strike Support",
+  "attr": "dex",
+  "level": 18,
+  "support": true
+ },
+ {
+  "name": "Damage on Full Life Support",
+  "attr": "str",
+  "level": 18,
+  "support": true
+ },
+ {
+  "name": "Deadly Ailments Support",
+  "attr": "dex",
+  "level": 18,
+  "support": true
+ },
+ {
+  "name": "Elemental Damage with Attacks Support",
+  "attr": "str",
+  "level": 18,
+  "support": true
+ },
+ {
+  "name": "Elemental Focus Support",
+  "attr": "int",
+  "level": 18,
+  "support": true
+ },
+ {
+  "name": "Endurance Charge on Melee Stun Support",
+  "attr": "str",
+  "level": 18,
+  "support": true
+ },
+ {
+  "name": "Exemplar Support",
+  "attr": "int",
+  "level": 18,
+  "support": true
+ },
+ {
+  "name": "Faster Casting Support",
+  "attr": "int",
+  "level": 18,
+  "support": true
+ },
+ {
+  "name": "Fresh Meat Support",
+  "attr": "int",
+  "level": 18,
+  "support": true
+ },
+ {
+  "name": "Increased Critical Damage Support",
+  "attr": "int",
+  "level": 18,
+  "support": true
+ },
+ {
+  "name": "Iron Grip Support",
+  "attr": "str",
+  "level": 18,
+  "support": true
+ },
+ {
+  "name": "Iron Will Support",
+  "attr": "str",
+  "level": 18,
+  "support": true
+ },
+ {
+  "name": "Kinetic Instability Support",
+  "attr": "int",
+  "level": 18,
+  "support": true
+ },
+ {
+  "name": "Living Lightning Support",
+  "attr": "int",
+  "level": 18,
+  "support": true
+ },
+ {
+  "name": "Melee Physical Damage Support",
+  "attr": "str",
+  "level": 18,
+  "support": true
+ },
+ {
+  "name": "Minion Life Support",
+  "attr": "int",
+  "level": 18,
+  "support": true
+ },
+ {
+  "name": "Minion Speed Support",
+  "attr": "int",
+  "level": 18,
+  "support": true
+ },
+ {
+  "name": "Nightblade Support",
+  "attr": "dex",
+  "level": 18,
+  "support": true
+ },
+ {
+  "name": "Overcharge Support",
+  "attr": "int",
+  "level": 18,
+  "support": true
+ },
+ {
+  "name": "Physical to Lightning Support",
+  "attr": "int",
+  "level": 18,
+  "support": true
+ },
+ {
+  "name": "Point Blank Support",
+  "attr": "dex",
+  "level": 18,
+  "support": true
+ },
+ {
+  "name": "Power Charge On Critical Support",
+  "attr": "int",
+  "level": 18,
+  "support": true
+ },
+ {
+  "name": "Predator Support",
+  "attr": "int",
+  "level": 18,
+  "support": true
+ },
+ {
+  "name": "Rage Support",
+  "attr": "str",
+  "level": 18,
+  "support": true
+ },
+ {
+  "name": "Sacred Wisps Support",
+  "attr": "int",
+  "level": 18,
+  "support": true
+ },
+ {
+  "name": "Sadism Support",
+  "attr": "dex",
+  "level": 18,
+  "support": true
+ },
+ {
+  "name": "Shockwave Support",
+  "attr": "str",
+  "level": 18,
+  "support": true
+ },
+ {
+  "name": "Trap and Mine Damage Support",
+  "attr": "dex",
+  "level": 18,
+  "support": true
+ },
+ {
+  "name": "Trinity Support",
+  "attr": "int",
+  "level": 18,
+  "support": true
+ },
+ {
+  "name": "Vicious Projectiles Support",
+  "attr": "dex",
+  "level": 18,
+  "support": true
+ },
+ {
+  "name": "Volatility Support",
+  "attr": "str",
+  "level": 18,
+  "support": true
+ },
+ {
+  "name": "Alchemist's Mark",
+  "attr": "dex",
+  "level": 24,
+  "support": false
+ },
+ {
+  "name": "Anger",
+  "attr": "str",
+  "level": 24,
+  "support": false
+ },
+ {
+  "name": "Autoexertion",
+  "attr": "str",
+  "level": 24,
+  "support": false
+ },
+ {
+  "name": "Automation",
+  "attr": "int",
+  "level": 24,
+  "support": false
+ },
+ {
+  "name": "Bane",
+  "attr": "int",
+  "level": 24,
+  "support": false
+ },
+ {
+  "name": "Battlemage's Cry",
+  "attr": "str",
+  "level": 24,
+  "support": false
+ },
+ {
+  "name": "Conductivity",
+  "attr": "int",
+  "level": 24,
+  "support": false
+ },
+ {
+  "name": "Convocation",
+  "attr": "none",
+  "level": 24,
+  "support": false
+ },
+ {
+  "name": "Despair",
+  "attr": "int",
+  "level": 24,
+  "support": false
+ },
+ {
+  "name": "Determination",
+  "attr": "str",
+  "level": 24,
+  "support": false
+ },
+ {
+  "name": "Discipline",
+  "attr": "int",
+  "level": 24,
+  "support": false
+ },
+ {
+  "name": "Dread Banner",
+  "attr": "str",
+  "level": 24,
+  "support": false
+ },
+ {
+  "name": "Elemental Weakness",
+  "attr": "int",
+  "level": 24,
+  "support": false
+ },
+ {
+  "name": "Energy Blade",
+  "attr": "int",
+  "level": 24,
+  "support": false
+ },
+ {
+  "name": "Enfeeble",
+  "attr": "int",
+  "level": 24,
+  "support": false
+ },
+ {
+  "name": "Flammability",
+  "attr": "int",
+  "level": 24,
+  "support": false
+ },
+ {
+  "name": "Frostbite",
+  "attr": "int",
+  "level": 24,
+  "support": false
+ },
+ {
+  "name": "General's Cry",
+  "attr": "str",
+  "level": 24,
+  "support": false
+ },
+ {
+  "name": "Grace",
+  "attr": "dex",
+  "level": 24,
+  "support": false
+ },
+ {
+  "name": "Haste",
+  "attr": "dex",
+  "level": 24,
+  "support": false
+ },
+ {
+  "name": "Hatred",
+  "attr": "dex",
+  "level": 24,
+  "support": false
+ },
+ {
+  "name": "Infernal Cry",
+  "attr": "str",
+  "level": 24,
+  "support": false
+ },
+ {
+  "name": "Item Quantity Support",
+  "attr": "str",
+  "level": 24,
+  "support": true
+ },
+ {
+  "name": "Malevolence",
+  "attr": "int",
+  "level": 24,
+  "support": false
+ },
+ {
+  "name": "NewPunishment",
+  "attr": "str",
+  "level": 24,
+  "support": false
+ },
+ {
+  "name": "Petrified Blood",
+  "attr": "str",
+  "level": 24,
+  "support": false
+ },
+ {
+  "name": "Plague Bearer",
+  "attr": "dex",
+  "level": 24,
+  "support": false
+ },
+ {
+  "name": "Pride",
+  "attr": "str",
+  "level": 24,
+  "support": false
+ },
+ {
+  "name": "Punishment",
+  "attr": "str",
+  "level": 24,
+  "support": false
+ },
+ {
+  "name": "Purity of Elements",
+  "attr": "int",
+  "level": 24,
+  "support": false
+ },
+ {
+  "name": "Purity of Fire",
+  "attr": "str",
+  "level": 24,
+  "support": false
+ },
+ {
+  "name": "Purity of Ice",
+  "attr": "dex",
+  "level": 24,
+  "support": false
+ },
+ {
+  "name": "Purity of Lightning",
+  "attr": "int",
+  "level": 24,
+  "support": false
+ },
+ {
+  "name": "Rallying Cry",
+  "attr": "str",
+  "level": 24,
+  "support": false
+ },
+ {
+  "name": "Spellslinger",
+  "attr": "int",
+  "level": 24,
+  "support": false
+ },
+ {
+  "name": "Split Projectiles Support",
+  "attr": "dex",
+  "level": 24,
+  "support": true
+ },
+ {
+  "name": "Temporal Chains",
+  "attr": "dex",
+  "level": 24,
+  "support": false
+ },
+ {
+  "name": "Vaal Discipline",
+  "attr": "int",
+  "level": 24,
+  "support": false
+ },
+ {
+  "name": "Vaal Grace",
+  "attr": "dex",
+  "level": 24,
+  "support": false
+ },
+ {
+  "name": "Vaal Haste",
+  "attr": "dex",
+  "level": 24,
+  "support": false
+ },
+ {
+  "name": "Vaal Impurity of Fire",
+  "attr": "str",
+  "level": 24,
+  "support": false
+ },
+ {
+  "name": "Vaal Impurity of Ice",
+  "attr": "dex",
+  "level": 24,
+  "support": false
+ },
+ {
+  "name": "Vaal Impurity of Lightning",
+  "attr": "int",
+  "level": 24,
+  "support": false
+ },
+ {
+  "name": "Vengeful Cry",
+  "attr": "str",
+  "level": 24,
+  "support": false
+ },
+ {
+  "name": "Vulnerability",
+  "attr": "str",
+  "level": 24,
+  "support": false
+ },
+ {
+  "name": "Wrath",
+  "attr": "int",
+  "level": 24,
+  "support": false
+ },
+ {
+  "name": "Zealotry",
+  "attr": "int",
+  "level": 24,
+  "support": false
+ },
+ {
+  "name": "[DNT] Call of the Wild",
+  "attr": "dex",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Ancestral Warchief",
+  "attr": "str",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Animate Guardian",
+  "attr": "str",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Armageddon Brand",
+  "attr": "int",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Artillery Ballista",
+  "attr": "dex",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Ball Lightning",
+  "attr": "int",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Blade Flurry",
+  "attr": "dex",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Bladefall",
+  "attr": "dex",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Bladestorm",
+  "attr": "str",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Blast Rain",
+  "attr": "dex",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Boneshatter",
+  "attr": "str",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Charged Dash",
+  "attr": "dex",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Conflagration",
+  "attr": "dex",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Consecrated Path",
+  "attr": "str",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Crackling Lance",
+  "attr": "int",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Cremation",
+  "attr": "dex",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Cyclone",
+  "attr": "dex",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Dark Pact",
+  "attr": "int",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Discharge",
+  "attr": "int",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Discorectangle Slam",
+  "attr": "str",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Divine Blast",
+  "attr": "str",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Divine Ire",
+  "attr": "int",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Dominating Blow",
+  "attr": "str",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Earthquake",
+  "attr": "str",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Explosive Arrow",
+  "attr": "dex",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Explosive Concoction",
+  "attr": "dex",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Eye of Winter",
+  "attr": "int",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Firestorm",
+  "attr": "int",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Flameblast",
+  "attr": "int",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Flamethrower Trap",
+  "attr": "dex",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Glacial Cascade",
+  "attr": "int",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Hexblast",
+  "attr": "int",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Holy Hammers",
+  "attr": "str",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Ice Crash",
+  "attr": "str",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Ice Trap",
+  "attr": "dex",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Infernal Sweep",
+  "attr": "str",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Kinetic Blast",
+  "attr": "int",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Kinetic Rain",
+  "attr": "int",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Lancing Steel",
+  "attr": "dex",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Lightning Conduit",
+  "attr": "int",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Lightning Spire Trap",
+  "attr": "int",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "New Shock Nova",
+  "attr": "int",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Penance Brand",
+  "attr": "int",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Pestilent Strike",
+  "attr": "dex",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Pyroclast Mine",
+  "attr": "int",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Rage Vortex",
+  "attr": "str",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Raise Spectre",
+  "attr": "int",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Reap",
+  "attr": "str",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Riptide",
+  "attr": "int",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Scourge Arrow",
+  "attr": "dex",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Seismic Trap",
+  "attr": "dex",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Shock Nova",
+  "attr": "int",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Shockwave Totem",
+  "attr": "str",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Somatic Shell",
+  "attr": "int",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Soulrend",
+  "attr": "int",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Spectral Shield Throw",
+  "attr": "dex",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Storm Rain",
+  "attr": "dex",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Stormbind",
+  "attr": "int",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Summon Reaper",
+  "attr": "int",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Tectonic Slam",
+  "attr": "str",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Thunderstorm",
+  "attr": "dex",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Tornado Shot",
+  "attr": "dex",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Touch of God",
+  "attr": "str",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Vaal Ancestral Warchief",
+  "attr": "str",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Vaal Blade Flurry",
+  "attr": "dex",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Vaal Cyclone",
+  "attr": "dex",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Vaal Domination",
+  "attr": "str",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Vaal Earthquake",
+  "attr": "str",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Vaal Firestorm",
+  "attr": "int",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Vaal Flameblast",
+  "attr": "int",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Vaal Reap",
+  "attr": "str",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Vortex",
+  "attr": "int",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Wild Strike",
+  "attr": "dex",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Winter Orb",
+  "attr": "int",
+  "level": 28,
+  "support": false
+ },
+ {
+  "name": "Added Chaos Damage Support",
+  "attr": "int",
+  "level": 31,
+  "support": true
+ },
+ {
+  "name": "Advanced Traps Support",
+  "attr": "dex",
+  "level": 31,
+  "support": true
+ },
+ {
+  "name": "Archmage Support",
+  "attr": "int",
+  "level": 31,
+  "support": true
+ },
+ {
+  "name": "Arrogance Support",
+  "attr": "str",
+  "level": 31,
+  "support": true
+ },
+ {
+  "name": "Blasphemy Support",
+  "attr": "int",
+  "level": 31,
+  "support": true
+ },
+ {
+  "name": "Blessed Call Support",
+  "attr": "str",
+  "level": 31,
+  "support": true
+ },
+ {
+  "name": "Bloodthirst Support",
+  "attr": "str",
+  "level": 31,
+  "support": true
+ },
+ {
+  "name": "Burning Damage Support",
+  "attr": "str",
+  "level": 31,
+  "support": true
+ },
+ {
+  "name": "Charged Mines Support",
+  "attr": "int",
+  "level": 31,
+  "support": true
+ },
+ {
+  "name": "Charged Traps Support",
+  "attr": "dex",
+  "level": 31,
+  "support": true
+ },
+ {
+  "name": "Cold Penetration Support",
+  "attr": "dex",
+  "level": 31,
+  "support": true
+ },
+ {
+  "name": "Controlled Blaze Support",
+  "attr": "str",
+  "level": 31,
+  "support": true
+ },
+ {
+  "name": "Corrupting Cry Support",
+  "attr": "str",
+  "level": 31,
+  "support": true
+ },
+ {
+  "name": "Critical Strike Affliction Support",
+  "attr": "dex",
+  "level": 31,
+  "support": true
+ },
+ {
+  "name": "Cursed Ground Support",
+  "attr": "int",
+  "level": 31,
+  "support": true
+ },
+ {
+  "name": "Divine Blessing Support",
+  "attr": "str",
+  "level": 31,
+  "support": true
+ },
+ {
+  "name": "Elemental Army Support",
+  "attr": "int",
+  "level": 31,
+  "support": true
+ },
+ {
+  "name": "Elemental Penetration Support",
+  "attr": "int",
+  "level": 31,
+  "support": true
+ },
+ {
+  "name": "Energy Leech Support",
+  "attr": "int",
+  "level": 31,
+  "support": true
+ },
+ {
+  "name": "Excommunicate Support",
+  "attr": "str",
+  "level": 31,
+  "support": true
+ },
+ {
+  "name": "Expert Retaliation Support",
+  "attr": "str",
+  "level": 31,
+  "support": true
+ },
+ {
+  "name": "Faster Projectiles Support",
+  "attr": "dex",
+  "level": 31,
+  "support": true
+ },
+ {
+  "name": "Feeding Frenzy Support",
+  "attr": "int",
+  "level": 31,
+  "support": true
+ },
+ {
+  "name": "Fire Penetration Support",
+  "attr": "str",
+  "level": 31,
+  "support": true
+ },
+ {
+  "name": "Focused Ballista Support",
+  "attr": "dex",
+  "level": 31,
+  "support": true
+ },
+ {
+  "name": "Focused Channelling Support",
+  "attr": "int",
+  "level": 31,
+  "support": true
+ },
+ {
+  "name": "Fork Support",
+  "attr": "dex",
+  "level": 31,
+  "support": true
+ },
+ {
+  "name": "Fortify Support",
+  "attr": "str",
+  "level": 31,
+  "support": true
+ },
+ {
+  "name": "Generosity Support",
+  "attr": "str",
+  "level": 31,
+  "support": true
+ },
+ {
+  "name": "Guardian's Blessing Support",
+  "attr": "str",
+  "level": 31,
+  "support": true
+ },
+ {
+  "name": "High-Impact Mine Support",
+  "attr": "int",
+  "level": 31,
+  "support": true
+ },
+ {
+  "name": "Hypothermia Support",
+  "attr": "dex",
+  "level": 31,
+  "support": true
+ },
+ {
+  "name": "Ice Bite Support",
+  "attr": "dex",
+  "level": 31,
+  "support": true
+ },
+ {
+  "name": "Impale Support",
+  "attr": "dex",
+  "level": 31,
+  "support": true
+ },
+ {
+  "name": "Impending Doom Support",
+  "attr": "int",
+  "level": 31,
+  "support": true
+ },
+ {
+  "name": "Innervate Support",
+  "attr": "int",
+  "level": 31,
+  "support": true
+ },
+ {
+  "name": "Inspiration Support",
+  "attr": "str",
+  "level": 31,
+  "support": true
+ },
+ {
+  "name": "Intensify Support",
+  "attr": "int",
+  "level": 31,
+  "support": true
+ },
+ {
+  "name": "Item Rarity Support",
+  "attr": "int",
+  "level": 31,
+  "support": true
+ },
+ {
+  "name": "Less Duration Support",
+  "attr": "str",
+  "level": 31,
+  "support": true
+ },
+ {
+  "name": "Life Leech Support",
+  "attr": "str",
+  "level": 31,
+  "support": true
+ },
+ {
+  "name": "Lightning Penetration Support",
+  "attr": "int",
+  "level": 31,
+  "support": true
+ },
+ {
+  "name": "Mana Leech Support",
+  "attr": "dex",
+  "level": 31,
+  "support": true
+ },
+ {
+  "name": "Meat Shield Support",
+  "attr": "int",
+  "level": 31,
+  "support": true
+ },
+ {
+  "name": "More Duration Support",
+  "attr": "str",
+  "level": 31,
+  "support": true
+ },
+ {
+  "name": "Pinpoint Support",
+  "attr": "int",
+  "level": 31,
+  "support": true
+ },
+ {
+  "name": "Pulverise Support",
+  "attr": "str",
+  "level": 31,
+  "support": true
+ },
+ {
+  "name": "Sacrifice Support",
+  "attr": "int",
+  "level": 31,
+  "support": true
+ },
+ {
+  "name": "Second Wind Support",
+  "attr": "dex",
+  "level": 31,
+  "support": true
+ },
+ {
+  "name": "Slower Projectiles Support",
+  "attr": "dex",
+  "level": 31,
+  "support": true
+ },
+ {
+  "name": "Swift Affliction Support",
+  "attr": "dex",
+  "level": 31,
+  "support": true
+ },
+ {
+  "name": "Swiftbrand Support",
+  "attr": "int",
+  "level": 31,
+  "support": true
+ },
+ {
+  "name": "Urgent Orders Support",
+  "attr": "str",
+  "level": 31,
+  "support": true
+ },
+ {
+  "name": "Windburst Support",
+  "attr": "dex",
+  "level": 31,
+  "support": true
+ },
+ {
+  "name": "Ambush",
+  "attr": "dex",
+  "level": 34,
+  "support": false
+ },
+ {
+  "name": "Berserk",
+  "attr": "str",
+  "level": 34,
+  "support": false
+ },
+ {
+  "name": "Destructive Link",
+  "attr": "int",
+  "level": 34,
+  "support": false
+ },
+ {
+  "name": "Flame Link",
+  "attr": "str",
+  "level": 34,
+  "support": false
+ },
+ {
+  "name": "Frost Shield",
+  "attr": "int",
+  "level": 34,
+  "support": false
+ },
+ {
+  "name": "Frozen Legion",
+  "attr": "str",
+  "level": 34,
+  "support": false
+ },
+ {
+  "name": "Hydrosphere",
+  "attr": "int",
+  "level": 34,
+  "support": false
+ },
+ {
+  "name": "Immortal Call",
+  "attr": "str",
+  "level": 34,
+  "support": false
+ },
+ {
+  "name": "Intuitive Link",
+  "attr": "dex",
+  "level": 34,
+  "support": false
+ },
+ {
+  "name": "Phase Run",
+  "attr": "dex",
+  "level": 34,
+  "support": false
+ },
+ {
+  "name": "Protective Link",
+  "attr": "str",
+  "level": 34,
+  "support": false
+ },
+ {
+  "name": "Sigil of Power",
+  "attr": "int",
+  "level": 34,
+  "support": false
+ },
+ {
+  "name": "Snipe",
+  "attr": "dex",
+  "level": 34,
+  "support": false
+ },
+ {
+  "name": "Soul Link",
+  "attr": "int",
+  "level": 34,
+  "support": false
+ },
+ {
+  "name": "Summon Carrion Golem",
+  "attr": "int",
+  "level": 34,
+  "support": false
+ },
+ {
+  "name": "Summon Chaos Golem",
+  "attr": "int",
+  "level": 34,
+  "support": false
+ },
+ {
+  "name": "Summon Flame Golem",
+  "attr": "str",
+  "level": 34,
+  "support": false
+ },
+ {
+  "name": "Summon Ice Golem",
+  "attr": "dex",
+  "level": 34,
+  "support": false
+ },
+ {
+  "name": "Summon Lightning Golem",
+  "attr": "int",
+  "level": 34,
+  "support": false
+ },
+ {
+  "name": "Summon Stone Golem",
+  "attr": "str",
+  "level": 34,
+  "support": false
+ },
+ {
+  "name": "Temporal Rift",
+  "attr": "dex",
+  "level": 34,
+  "support": false
+ },
+ {
+  "name": "Tornado",
+  "attr": "dex",
+  "level": 34,
+  "support": false
+ },
+ {
+  "name": "Vaal Immortal Call",
+  "attr": "str",
+  "level": 34,
+  "support": false
+ },
+ {
+  "name": "Vampiric Link",
+  "attr": "dex",
+  "level": 34,
+  "support": false
+ },
+ {
+  "name": "Void Sphere",
+  "attr": "int",
+  "level": 34,
+  "support": false
+ },
+ {
+  "name": "Arcanist Brand",
+  "attr": "int",
+  "level": 38,
+  "support": false
+ },
+ {
+  "name": "Barrage Support",
+  "attr": "dex",
+  "level": 38,
+  "support": true
+ },
+ {
+  "name": "Behead Support",
+  "attr": "str",
+  "level": 38,
+  "support": true
+ },
+ {
+  "name": "Bonechill Support",
+  "attr": "int",
+  "level": 38,
+  "support": true
+ },
+ {
+  "name": "Brutality Support",
+  "attr": "str",
+  "level": 38,
+  "support": true
+ },
+ {
+  "name": "Cast On Critical Strike Support",
+  "attr": "dex",
+  "level": 38,
+  "support": true
+ },
+ {
+  "name": "Cast on Death Support",
+  "attr": "dex",
+  "level": 38,
+  "support": true
+ },
+ {
+  "name": "Cast on Melee Kill Support",
+  "attr": "str",
+  "level": 38,
+  "support": true
+ },
+ {
+  "name": "Cast when Damage Taken Support",
+  "attr": "str",
+  "level": 38,
+  "support": true
+ },
+ {
+  "name": "Cast when Stunned Support",
+  "attr": "int",
+  "level": 38,
+  "support": true
+ },
+ {
+  "name": "Cast while Channelling Support",
+  "attr": "int",
+  "level": 38,
+  "support": true
+ },
+ {
+  "name": "Chain Support",
+  "attr": "dex",
+  "level": 38,
+  "support": true
+ },
+ {
+  "name": "Cluster Traps Support",
+  "attr": "dex",
+  "level": 38,
+  "support": true
+ },
+ {
+  "name": "Decay Support",
+  "attr": "int",
+  "level": 38,
+  "support": true
+ },
+ {
+  "name": "Eternal Blessing Support",
+  "attr": "str",
+  "level": 38,
+  "support": true
+ },
+ {
+  "name": "Fist of War Support",
+  "attr": "str",
+  "level": 38,
+  "support": true
+ },
+ {
+  "name": "Frigid Bond Support",
+  "attr": "int",
+  "level": 38,
+  "support": true
+ },
+ {
+  "name": "Greater Multiple Projectiles Support",
+  "attr": "dex",
+  "level": 38,
+  "support": true
+ },
+ {
+  "name": "Greater Volley Support",
+  "attr": "dex",
+  "level": 38,
+  "support": true
+ },
+ {
+  "name": "Hex Bloom Support",
+  "attr": "int",
+  "level": 38,
+  "support": true
+ },
+ {
+  "name": "Hextouch Support",
+  "attr": "int",
+  "level": 38,
+  "support": true
+ },
+ {
+  "name": "Ignite Proliferation Support",
+  "attr": "int",
+  "level": 38,
+  "support": true
+ },
+ {
+  "name": "Immolate Support",
+  "attr": "int",
+  "level": 38,
+  "support": true
+ },
+ {
+  "name": "Increased Area of Effect Support",
+  "attr": "int",
+  "level": 38,
+  "support": true
+ },
+ {
+  "name": "Mark On Hit Support",
+  "attr": "dex",
+  "level": 38,
+  "support": true
+ },
+ {
+  "name": "Minefield Support",
+  "attr": "int",
+  "level": 38,
+  "support": true
+ },
+ {
+  "name": "Multiple Totems Support",
+  "attr": "str",
+  "level": 38,
+  "support": true
+ },
+ {
+  "name": "Multistrike Support",
+  "attr": "str",
+  "level": 38,
+  "support": true
+ },
+ {
+  "name": "Overexertion Support",
+  "attr": "str",
+  "level": 38,
+  "support": true
+ },
+ {
+  "name": "Returning Projectiles Support",
+  "attr": "dex",
+  "level": 38,
+  "support": true
+ },
+ {
+  "name": "Rupture Support",
+  "attr": "dex",
+  "level": 38,
+  "support": true
+ },
+ {
+  "name": "Spell Echo Support",
+  "attr": "int",
+  "level": 38,
+  "support": true
+ },
+ {
+  "name": "Spellblade Support",
+  "attr": "int",
+  "level": 38,
+  "support": true
+ },
+ {
+  "name": "Trauma Support",
+  "attr": "str",
+  "level": 38,
+  "support": true
+ },
+ {
+  "name": "Unleash Support",
+  "attr": "int",
+  "level": 38,
+  "support": true
+ },
+ {
+  "name": "Vaal Soul Harvesting",
+  "attr": "none",
+  "level": 38,
+  "support": true
+ },
+ {
+  "name": "Vile Toxins Support",
+  "attr": "dex",
+  "level": 38,
+  "support": true
+ },
+ {
+  "name": "Withering Touch Support",
+  "attr": "dex",
+  "level": 38,
+  "support": true
+ },
+ {
+  "name": "Envy",
+  "attr": "int",
+  "level": 60,
+  "support": false
+ },
+ {
+  "name": "Death Aura",
+  "attr": "none",
+  "level": 62,
+  "support": false
+ },
+ {
+  "name": "Annihilation Support",
+  "attr": "str",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Awakened Added Chaos Damage Support",
+  "attr": "int",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Awakened Added Cold Damage Support",
+  "attr": "dex",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Awakened Added Fire Damage Support",
+  "attr": "str",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Awakened Added Lightning Damage Support",
+  "attr": "int",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Awakened Ancestral Call Support",
+  "attr": "str",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Awakened Arrow Nova Support",
+  "attr": "dex",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Awakened Blasphemy Support",
+  "attr": "int",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Awakened Brutality Support",
+  "attr": "str",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Awakened Burning Damage Support",
+  "attr": "str",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Awakened Cast On Critical Strike Support",
+  "attr": "dex",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Awakened Cast While Channelling Support",
+  "attr": "int",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Awakened Chain Support",
+  "attr": "dex",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Awakened Cold Penetration Support",
+  "attr": "dex",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Awakened Controlled Destruction Support",
+  "attr": "int",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Awakened Deadly Ailments Support",
+  "attr": "dex",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Awakened Elemental Damage with Attacks Support",
+  "attr": "str",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Awakened Elemental Focus Support",
+  "attr": "int",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Awakened Empower Support",
+  "attr": "str",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Awakened Enhance Support",
+  "attr": "dex",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Awakened Enlighten Support",
+  "attr": "int",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Awakened Fire Penetration Support",
+  "attr": "str",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Awakened Fork Support",
+  "attr": "dex",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Awakened Generosity Support",
+  "attr": "str",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Awakened Greater Multiple Projectiles Support",
+  "attr": "dex",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Awakened Hextouch Support",
+  "attr": "int",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Awakened Increased Area of Effect Support",
+  "attr": "int",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Awakened Lightning Penetration Support",
+  "attr": "int",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Awakened Melee Physical Damage Support",
+  "attr": "str",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Awakened Melee Splash Support",
+  "attr": "str",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Awakened Minion Damage Support",
+  "attr": "int",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Awakened Multistrike Support",
+  "attr": "str",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Awakened Spell Cascade Support",
+  "attr": "int",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Awakened Spell Echo Support",
+  "attr": "int",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Awakened Swift Affliction Support",
+  "attr": "dex",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Awakened Unbound Ailments Support",
+  "attr": "int",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Awakened Unleash Support",
+  "attr": "int",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Awakened Vicious Projectiles Support",
+  "attr": "dex",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Awakened Void Manipulation Support",
+  "attr": "dex",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Bloodsoaked Banner Support",
+  "attr": "str",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Bonespire Support",
+  "attr": "str",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Cast on Ward Break Support",
+  "attr": "dex",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Companionship Support",
+  "attr": "dex",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Congregation Support",
+  "attr": "int",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Cooldown Recovery Support",
+  "attr": "int",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Cull the Weak Support",
+  "attr": "dex",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Divine Sentinel Support",
+  "attr": "str",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Eclipse Support",
+  "attr": "none",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Edify Support",
+  "attr": "str",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Eldritch Blasphemy Support",
+  "attr": "int",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Fissure Support",
+  "attr": "str",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Foulgrasp Support",
+  "attr": "int",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Frostmage Support",
+  "attr": "int",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Gluttony Support",
+  "attr": "int",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Greater Ancestral Call Support",
+  "attr": "str",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Greater Chain Support",
+  "attr": "dex",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Greater Devour Support",
+  "attr": "int",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Greater Fork Support",
+  "attr": "dex",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Greater Kinetic Instability Support",
+  "attr": "int",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Greater Multistrike Support",
+  "attr": "str",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Greater Spell Cascade Support",
+  "attr": "int",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Greater Spell Echo Support",
+  "attr": "int",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Greater Unleash Support",
+  "attr": "int",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Harrowing Throng Support",
+  "attr": "int",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Hexpass Support",
+  "attr": "int",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Hextoad Support",
+  "attr": "int",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Hiveborn Support",
+  "attr": "int",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Invention Support",
+  "attr": "dex",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Invert the Rules Support",
+  "attr": "int",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Lethal Dose Support",
+  "attr": "dex",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Machinations Support",
+  "attr": "dex",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Magnetism Support",
+  "attr": "dex",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Minion Pact Support",
+  "attr": "int",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Overheat Support",
+  "attr": "str",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Overloaded Intensity Support",
+  "attr": "int",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Pacifism Support",
+  "attr": "dex",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Pyre Support",
+  "attr": "str",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Scornful Herald Support",
+  "attr": "int",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Transfusion Support",
+  "attr": "str",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Unholy Trinity Support",
+  "attr": "dex",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Vaal Sacrifice Support",
+  "attr": "int",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Vaal Temptation Support",
+  "attr": "str",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Void Shockwave Support",
+  "attr": "str",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Voidstorm Support",
+  "attr": "dex",
+  "level": 72,
+  "support": true
+ },
+ {
+  "name": "Ward Support",
+  "attr": "int",
+  "level": 72,
+  "support": true
+ }
+]

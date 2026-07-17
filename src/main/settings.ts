@@ -9,6 +9,7 @@ export interface Hotkeys {
   prevZone: string
   nextZone: string
   toggleDevTools: string
+  openSettings: string
 }
 
 export interface Settings {
@@ -16,6 +17,10 @@ export interface Settings {
   profile: string
   /** id of the selected gem preset (build); null = none */
   gemPreset: string | null
+  /** показывать ли блок маршрута (акты); false = только камни */
+  routeVisible: boolean
+  /** последний известный уровень персонажа (переживает ротацию Client.txt) */
+  charLevel: number | null
   bounds: { x?: number; y?: number; width: number; height: number }
   hotkeys: Hotkeys
 }
@@ -24,6 +29,8 @@ const DEFAULTS: Settings = {
   clientLogPath: null,
   profile: 'default',
   gemPreset: null,
+  routeVisible: false,
+  charLevel: null,
   bounds: { width: 400, height: 640 },
   hotkeys: {
     toggleOverlay: 'Ctrl+Alt+O',
@@ -31,7 +38,8 @@ const DEFAULTS: Settings = {
     toggleLayout: 'Ctrl+Alt+L',
     prevZone: 'Ctrl+Alt+Left',
     nextZone: 'Ctrl+Alt+Right',
-    toggleDevTools: 'Ctrl+Alt+D'
+    toggleDevTools: 'Ctrl+Alt+D',
+    openSettings: 'Ctrl+Alt+G'
   }
 }
 

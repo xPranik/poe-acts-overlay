@@ -1,0 +1,56 @@
+# Файл сгенерирован окном настроек камней — ручные комментарии при сохранении теряются.
+[preset]
+name = "Witch — RF"
+
+[[zone]]
+name = "Lioneye's Watch"
+act = 1
+
+[[zone.gems]]
+kind = "gem-reward"
+quest = "Ледяной хуй"
+items = [ "Flame Wall", "Elemental Proliferation Support" ]
+
+[[zone.gems]]
+kind = "gem-buy"
+vendor = "После ледяного хуя"
+items = [ "Holy Flame Totem", "Shield Charge" ]
+
+[[zone.gems]]
+kind = "gem-reward"
+quest = "Краб"
+items = [ "Combustion Support" ]
+
+[[zone.gems]]
+kind = "gem-reward"
+quest = "Пират"
+items = [ "Scorching Ray" ]
+
+[[zone]]
+name = "The Forest Encampment"
+act = 2
+
+[[zone.gems]]
+kind = "gem-reward"
+quest = "После лабы"
+items = [ "Arctic Armour" ]
+
+[[zone.gems]]
+kind = "gem-buy"
+vendor = "После лабы"
+items = [ "Righteous Fire", "Summon Skitterbots" ]
+
+[[zone.gems]]
+kind = "gem-buy"
+vendor = "После бандита сверху"
+items = [ "Righteous Fire", "Infused Channelling Support", "Efficacy Support" ]
+
+[[zone]]
+name = "Highgate"
+act = 4
+
+[[zone.gems]]
+kind = "gem-buy"
+vendor = "купи хуйню"
+items = [ "Righteous Fire" ]
+

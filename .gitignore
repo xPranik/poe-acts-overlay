@@ -3,3 +3,5 @@ out/
 dist/
 *.log
 *.tsbuildinfo
+.claude/settings.local.json
+tmp/

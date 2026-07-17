@@ -2,7 +2,9 @@ import fs from 'node:fs'
 import path from 'node:path'
 import chokidar, { FSWatcher } from 'chokidar'
 import { parse as parseToml } from 'smol-toml'
-import type { GemPreset, Guide, GuideAct, GuideStep, GuideZone, StepKind } from '../shared/types'
+import type { GemPreset, Guide, GuideAct, GuideStep, GuideZone, PresetZone, StepKind } from '../shared/types'
+import { getZoneActEarliest } from './area-levels'
+import { gemEntryText, parseGemEntry } from './preset-store'
 
 const KINDS: StepKind[] = ['normal', 'gem-buy', 'gem-reward']
 
@@ -56,20 +58,29 @@ function parsePreset(fileName: string, id: string, raw: string): GemPreset {
   const doc = parseToml(raw) as Record<string, unknown>
   const meta = (doc.preset ?? {}) as Record<string, unknown>
   const zonesRaw = Array.isArray(doc.zone) ? doc.zone : []
-  const zones: Record<string, GuideStep[]> = {}
+  const zones: PresetZone[] = []
   zonesRaw.forEach((z, i) => {
     const zone = z as Record<string, unknown>
     const name = asString(zone.name)
     if (!name) throw new Error(`${fileName}: [[zone]] #${i + 1} без name`)
+    // акт указан явно или выводится по имени (различает повторные города 6/8/9)
+    const act = typeof zone.act === 'number' ? zone.act : getZoneActEarliest(name)
     // accept `gems` (natural) or `steps` (same shape); gems default to gem-buy
     const gemsRaw = Array.isArray(zone.gems)
       ? zone.gems
       : Array.isArray(zone.steps)
         ? zone.steps
         : []
-    const gems = gemsRaw.map((s, j) => parseStep(s, `${fileName}: зона "${name}"`, j, 'gem-buy'))
-    // merge if a zone name appears twice
-    zones[name] = (zones[name] ?? []).concat(gems)
+    // запись камня: либо готовый text, либо структурные поля (quest/vendor/items),
+    // из которых текст синтезируется — схема описана в preset-store
+    const gems = gemsRaw.map((s, j): GuideStep => {
+      const entry = parseGemEntry(s, `${fileName}: зона "${name}"`, j)
+      return { text: gemEntryText(entry), kind: entry.kind }
+    })
+    // сливаем блоки с одинаковыми (акт, имя)
+    const existing = zones.find((zn) => zn.name === name && zn.act === act)
+    if (existing) existing.steps.push(...gems)
+    else zones.push({ name, act, steps: gems })
   })
   return { id, name: asString(meta.name) ?? id, zones }
 }
