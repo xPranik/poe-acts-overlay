@@ -49,7 +49,7 @@ export function gemEntryText(entry: GemEntry): string {
 }
 
 const ID_RE = /^[\w-]+$/
- 
+
 function presetPath(guidesRoot: string, profile: string, id: string): string {
   if (!ID_RE.test(id)) throw new Error(`Недопустимый id пресета: "${id}"`)
   return path.join(guidesRoot, profile, 'gems', `${id}.toml`)

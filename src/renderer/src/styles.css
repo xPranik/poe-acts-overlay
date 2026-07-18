@@ -4,12 +4,28 @@
   box-sizing: border-box;
 }
 
-html,
+/* html фиксирован по высоте окна и служит запасным скроллером: когда окно
+   упирается в потолок высоты экрана, лишний контент прокручивается здесь.
+   body/#root/.panel растут по контенту — это позволяет main подгонять окно. */
+html {
+  background: transparent;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
 body,
 #root {
   background: transparent;
-  overflow: hidden;
-  height: 100%;
+}
+
+html::-webkit-scrollbar {
+  width: 6px;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: rgba(127, 163, 176, 0.3);
+  border-radius: 3px;
 }
 
 body {
@@ -17,13 +33,20 @@ body {
   font-size: 13px;
   color: #e8e2d0;
   user-select: none;
-  height: 100%;
+}
+
+/* Корень оверлея: основной контент слева, окно забегов — справа от него. */
+.overlay-root {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 8px;
 }
 
 .panel {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  flex: 0 0 auto;
   background: rgba(14, 17, 20, 0.68);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -50,6 +73,144 @@ body {
 .panel.collapsed .no-zone {
   flex: none;
   padding: 8px 12px;
+}
+
+/* --- таймер по актам: самостоятельная панель справа от основного контента --- */
+.timer {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+  width: 240px;
+  gap: 5px;
+  padding: 9px 12px;
+  background: rgba(14, 17, 20, 0.68);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(127, 163, 176, 0.18);
+  border-radius: 6px;
+  font-variant-numeric: tabular-nums;
+}
+
+.timer-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.timer-total {
+  font-size: 22px;
+  font-weight: 600;
+  color: #e6edf1;
+  letter-spacing: 0.5px;
+}
+
+.timer-total.ahead {
+  color: #6fce87;
+}
+
+.timer-total.behind {
+  color: #e08585;
+}
+
+.timer-status {
+  font-size: 11px;
+  color: #6c7680;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.timer-splits {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.timer-splits li {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: baseline;
+  gap: 8px;
+  padding: 2px 0;
+  font-size: 12px;
+}
+
+.timer-splits li.current {
+  color: #e6edf1;
+}
+
+/* ещё не пройденный акт — ориентир по PB, приглушённо */
+.timer-splits li.pending .split-act,
+.timer-splits li.pending .split-time {
+  color: #5a636b;
+}
+
+.split-act {
+  color: #9aa4ad;
+}
+
+.split-delta {
+  font-size: 11px;
+  min-width: 52px;
+  text-align: right;
+  color: #6c7680;
+}
+
+.split-delta.ahead {
+  color: #6fce87;
+}
+
+.split-delta.behind {
+  color: #e08585;
+}
+
+.split-delta.gold {
+  color: #d8b24a;
+}
+
+.split-time {
+  min-width: 62px;
+  text-align: right;
+  color: #c2cbd2;
+}
+
+.timer-buttons {
+  display: flex;
+  gap: 4px;
+}
+
+.timer-buttons button {
+  flex: 1;
+  padding: 4px 2px;
+  font-size: 11px;
+  color: #c2cbd2;
+  background: rgba(127, 163, 176, 0.1);
+  border: 1px solid rgba(127, 163, 176, 0.2);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.timer-buttons button.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 26px;
+  padding: 0;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.timer-buttons button:hover:not(:disabled) {
+  background: rgba(127, 163, 176, 0.22);
+}
+
+.timer-buttons button:disabled {
+  opacity: 0.4;
+  cursor: default;
 }
 
 .drag-strip {
@@ -129,6 +290,22 @@ body {
   text-overflow: ellipsis;
   width: 100%;
   text-align: end;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+}
+
+.trial-badge {
+  color: #e8c46a;
+  margin-right: 5px;
+  font-weight: 400;
+  display: inline-flex;
+  align-items: center;
+}
+
+.trial-badge img {
+  width: 24px;
 }
 
 .exp-strip {
@@ -341,14 +518,16 @@ body {
 .layout-box {
   border-bottom: 1px solid rgba(127, 163, 176, 0.18);
   background: rgba(0, 0, 0, 0.35);
-  max-height: 45%;
   display: flex;
   justify-content: center;
+  overflow: hidden;
 }
 
+/* Фиксированный потолок в px, а не %, — панель теперь растёт по контенту,
+   поэтому процент/vh дал бы обратную связь с авто-ресайзом окна. */
 .layout-box img {
   max-width: 100%;
-  max-height: 100%;
+  max-height: 320px;
   object-fit: contain;
 }
 

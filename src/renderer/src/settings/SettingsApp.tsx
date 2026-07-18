@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import type { AppState, GemEntry, PresetSource } from '../../../shared/types'
 import actTowns from '../data/act-towns.json'
 import { GemPicker } from './GemPicker'
+import { RunsHistory } from './RunsHistory'
 import './settings.css'
 
 const ID_RE = /^[\w-]+$/
@@ -263,6 +264,8 @@ export function SettingsApp(): React.JSX.Element {
             </div>
           </>
         )}
+
+        <RunsHistory />
       </main>
     </div>
   )

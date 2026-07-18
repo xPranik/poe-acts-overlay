@@ -1,0 +1,14 @@
+[
+  { "name": "The Lower Prison", "act": 1 },
+  { "name": "The Crypt Level 1", "act": 2 },
+  { "name": "The Chamber of Sins Level 2", "act": 2 },
+  { "name": "The Crematorium", "act": 3 },
+  { "name": "The Catacombs", "act": 3 },
+  { "name": "The Imperial Gardens", "act": 3 },
+  { "name": "The Lower Prison", "act": 6 },
+  { "name": "The Crypt", "act": 7 },
+  { "name": "The Chamber of Sins Level 2", "act": 7 },
+  { "name": "The Bath House", "act": 8 },
+  { "name": "The Tunnel", "act": 9 },
+  { "name": "The Ossuary", "act": 10 }
+]
