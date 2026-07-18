@@ -1,6 +1,6 @@
 import { contextBridge, ipcRenderer } from 'electron'
 import type { Language } from '../shared/i18n'
-import type { AppState, PresetSource, Run } from '../shared/types'
+import type { AppState, PresetSource, Run, UpdateStatus } from '../shared/types'
 
 type SaveResult = { ok: true } | { ok: false; error: string }
 
@@ -72,6 +72,10 @@ const api = {
   clearRuns: (): Promise<Run[]> => ipcRenderer.invoke('clear-runs'),
   setLanguage: (lang: Language): void => {
     ipcRenderer.send('set-language', lang)
+  },
+  checkForUpdates: (): Promise<UpdateStatus> => ipcRenderer.invoke('check-for-updates'),
+  openExternal: (url: string): void => {
+    ipcRenderer.send('open-external', url)
   }
 }
 

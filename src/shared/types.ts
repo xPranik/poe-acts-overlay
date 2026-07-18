@@ -75,6 +75,13 @@ export type LogStatus =
   | { kind: 'ok'; path: string }
   | { kind: 'missing'; message: string }
 
+export type UpdateStatus =
+  | { kind: 'idle' }
+  | { kind: 'checking' }
+  | { kind: 'up-to-date' }
+  | { kind: 'available'; version: string; url: string }
+  | { kind: 'error'; message: string }
+
 /** Один сплит: акт `act` завершён на отметке `cumulativeMs` от старта забега. */
 export interface ActSplit {
   act: number
@@ -147,6 +154,8 @@ export interface AppState {
   timer: TimerState
   /** язык интерфейса */
   language: Language
+  /** результат последней проверки обновлений на GitHub Releases */
+  updateStatus: UpdateStatus
 }
 
 export function stepKey(act: number, zone: string, stepText: string): string {

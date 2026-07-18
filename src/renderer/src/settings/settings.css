@@ -2,12 +2,54 @@
 
 .settings-root {
   display: flex;
+  flex-direction: column;
   height: 100vh;
   overflow: hidden;
   background: #12161a;
   color: #e8e2d0;
   font-size: 13px;
   user-select: none;
+}
+
+.settings-tabs {
+  flex-shrink: 0;
+  display: flex;
+  gap: 4px;
+  padding: 10px 12px 0;
+  border-bottom: 1px solid rgba(127, 163, 176, 0.18);
+  -webkit-app-region: drag;
+}
+
+.settings-tabs button {
+  -webkit-app-region: no-drag;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 5px 5px 0 0;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: #7f8a93;
+  cursor: pointer;
+}
+
+.settings-tabs button:hover:not(.active) {
+  color: #c2cbd2;
+}
+
+.settings-tabs button.active {
+  color: #e8e2d0;
+  background: rgba(90, 160, 232, 0.12);
+  border-color: rgba(90, 160, 232, 0.4);
+  border-bottom-color: transparent;
+}
+
+.settings-body {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
 }
 
 .settings-root input,
@@ -367,12 +409,7 @@
   font-style: italic;
 }
 
-/* история забегов — внизу редактора */
-
-.runs {
-  margin-top: 8px;
-  border-top: 1px solid rgba(127, 163, 176, 0.18);
-}
+/* история забегов — своя вкладка */
 
 .runs-head {
   display: flex;
@@ -391,7 +428,7 @@
   padding: 3px 8px;
 }
 
-.runs-settings {
+.settings-row {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -413,6 +450,16 @@
 .target-acts button.active {
   background: rgba(127, 163, 176, 0.25);
   border-color: rgba(127, 163, 176, 0.6);
+}
+
+.update-link {
+  font-size: 11px;
+  color: #ffcf7f;
+  cursor: pointer;
+}
+
+.update-link:hover {
+  text-decoration: underline;
 }
 
 .runs-list {

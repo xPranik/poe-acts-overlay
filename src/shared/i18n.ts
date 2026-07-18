@@ -43,6 +43,7 @@ export interface Messages {
   levelAbbrev: (n: number) => string
   nothingFound: string
 
+  generalTabTitle: string
   confirmDiscardChanges: string
   presetsTitle: string
   activePresetOn: string
@@ -75,6 +76,12 @@ export interface Messages {
   presetExistsMsg: (id: string) => string
   confirmDeletePresetMsg: (id: string) => string
   languageTitle: string
+  updateSectionTitle: string
+  checkUpdateBtn: string
+  checkingUpdate: string
+  updateUpToDate: string
+  updateCheckError: string
+  updateAvailable: (version: string) => string
 
   clientLogNotFound: string
   clientLogNotFoundHint: string
@@ -148,6 +155,7 @@ const ru: Messages = {
   levelAbbrev: (n) => `ур. ${n}`,
   nothingFound: 'Ничего не найдено',
 
+  generalTabTitle: 'Общие',
   confirmDiscardChanges: 'Несохранённые изменения будут потеряны. Продолжить?',
   presetsTitle: 'Пресеты',
   activePresetOn: 'Активен в оверлее — нажми, чтобы убрать',
@@ -180,6 +188,12 @@ const ru: Messages = {
   presetExistsMsg: (id) => `Пресет "${id}" уже существует`,
   confirmDeletePresetMsg: (id) => `Удалить пресет "${id}"? Файл gems/${id}.toml будет стёрт.`,
   languageTitle: 'Язык',
+  updateSectionTitle: 'Обновления',
+  checkUpdateBtn: 'Проверить обновление',
+  checkingUpdate: 'Проверка...',
+  updateUpToDate: 'Установлена последняя версия',
+  updateCheckError: 'Не удалось проверить обновление',
+  updateAvailable: (version) => `Доступно обновление v${version}`,
 
   clientLogNotFound: 'Client.txt не найден',
   clientLogNotFoundHint: 'Client.txt не найден — укажи путь через иконку в трее',
@@ -257,6 +271,7 @@ const en: Messages = {
   levelAbbrev: (n) => `lvl ${n}`,
   nothingFound: 'Nothing found',
 
+  generalTabTitle: 'General',
   confirmDiscardChanges: 'Unsaved changes will be lost. Continue?',
   presetsTitle: 'Presets',
   activePresetOn: 'Active in overlay — click to remove',
@@ -289,6 +304,12 @@ const en: Messages = {
   presetExistsMsg: (id) => `Preset "${id}" already exists`,
   confirmDeletePresetMsg: (id) => `Delete preset "${id}"? File gems/${id}.toml will be erased.`,
   languageTitle: 'Language',
+  updateSectionTitle: 'Updates',
+  checkUpdateBtn: 'Check for updates',
+  checkingUpdate: 'Checking...',
+  updateUpToDate: "You're up to date",
+  updateCheckError: "Couldn't check for updates",
+  updateAvailable: (version) => `Update v${version} available`,
 
   clientLogNotFound: 'Client.txt not found',
   clientLogNotFoundHint: 'Client.txt not found — set the path via the tray icon',
