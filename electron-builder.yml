@@ -1,0 +1,18 @@
+appId: com.xpranik.poe-acts-overlay
+productName: PoE Acts Overlay
+directories:
+  buildResources: build
+files:
+  - out/**
+  - package.json
+# guides must sit NEXT TO the exe (settings.ts guidesRoot uses dirname(exe)/guides)
+extraFiles:
+  - from: guides
+    to: guides
+    filter: ["**/*"]
+# Chromium ships locale .pak files for every language (~47MB); the overlay's UI is
+# English-only, so only en-US is needed.
+electronLanguages: ["en-US"]
+compression: maximum
+win:
+  icon: build/icon.ico

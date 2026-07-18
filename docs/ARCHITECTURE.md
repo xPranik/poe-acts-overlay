@@ -45,7 +45,7 @@ LogWatcher (src/main/log-watcher.ts)
    │  GEN_RE    → instance area level (feeds next onZone)
    ▼
 index.ts handlers
-   onZoneEntered → resolveZone(guide, act, zone)   [zone-tracker.ts, forward-bias]
+   onZoneEntered → resolveZone(guide, act, zone, charLevel)   [zone-tracker.ts, level-disambiguated]
                  → getStaticArea(name, act)         [area-levels.ts → zone-levels.json]
                  → hasTrial(name, act)              [trial-zones.ts → trial-zones.json]
                  → runTimer.advanceTo(act)          [timer.ts]
@@ -77,7 +77,7 @@ over IPC; main mutates `state` and pushes a fresh copy.
 | `guide-loader.ts` | Loads a guide profile from TOML (acts + gem presets) and hot-reloads. | `loadGuide(guidesRoot, profile): Guide`, `watchGuide(guidesRoot, profile, onReload): FSWatcher` (chokidar, `ignoreInitial`, depth 2, 150ms debounce). Uses `parseGemEntry`/`gemEntryText` + `getZoneActEarliest`. |
 | `preset-store.ts` | Single source of truth for the gem-entry schema; read/write `gems/<id>.toml`. | `parseGemEntry()`, `gemEntryText()`, `readPresetSource()`, `writePreset()`, `deletePreset()`. `ID_RE=/^[\w-]+$/`. `writePreset` prepends a "generated file" header. |
 | `area-levels.ts` | Static zone→monster-level lookup from `data/zone-levels.json`. | `interface ZoneLevel`, `getStaticArea(name, act)` (nearest-act match), `getZoneActEarliest(name)`. In-memory `Map` built at import. |
-| `zone-tracker.ts` | Resolve a log zone name to a guide position with forward bias. | `interface ZonePosition`, `resolveZone(guide, currentAct, zoneName)`. Pure. |
+| `zone-tracker.ts` | Resolve a log zone name to a guide position; disambiguates repeated zone names (e.g. Lioneye's Watch in act 1 vs 6) by closest static area level to `charLevel`, falling back to forward bias. | `interface ZonePosition`, `resolveZone(guide, currentAct, zoneName, charLevel?)`. Pure. |
 | `trial-zones.ts` | Whether `(act, name)` has a Labyrinth trial, from `data/trial-zones.json`. | `interface TrialZone`, `hasTrial(name, act)`. In-memory `Set` keyed `` `${act}|${name}` ``. |
 | `settings.ts` | Persist settings, per-profile progress, per-profile run history under `userData`; default hotkeys; resolve guides root. | `interface Hotkeys`, `interface Settings`, `loadSettings`/`saveSettings`, `loadProgress`/`saveProgress`, `loadRuns`/`saveRun`/`deleteRun`/`clearRuns` (`MAX_RUNS=50`), `guidesRoot()`. |
 | `timer.ts` | Electron-independent speedrun-by-act timer with PB / Sum-of-Best. | `FINAL_ACT=10`, `initialTimerState()`, `computeComparison(runs)`, `interface RunTimerDeps`, `class RunTimer` (`start`/`advanceTo`/`manualSplit`/`pause`/`resume`/`togglePause`/`finish`/`undo`/`reset`/`toggleVisible`/`reloadHistory`). Persists only through injected deps. |

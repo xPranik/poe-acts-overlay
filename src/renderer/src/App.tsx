@@ -1,11 +1,11 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { expMultiplier, fullExpRange } from '../../shared/exp'
+import { messages } from '../../shared/i18n'
 import type { AppState, GuideAct, GuideStep, GuideZone } from '../../shared/types'
 import { gemStepKey, stepKey } from '../../shared/types'
 import { Markup } from './Markup'
 import { Timer } from './Timer'
 import trialIcon from './assets/trial.png'
-import gemsIcon from './assets/gem-icon.png'
 
 export default function App(): React.JSX.Element {
   const [state, setState] = useState<AppState | null>(null)
@@ -45,8 +45,9 @@ export default function App(): React.JSX.Element {
     }
   }, [hasState])
 
-  if (!state) return <div className="panel">Загрузка...</div>
+  if (!state) return <div className="panel">{messages.ru.loading}</div>
 
+  const t = messages[state.language]
   const act = state.guide.acts.find((a) => a.number === state.currentAct)
   const zone = act && state.currentZoneIndex >= 0 ? act.zones[state.currentZoneIndex] : undefined
 
@@ -77,14 +78,14 @@ export default function App(): React.JSX.Element {
           <ZoneView state={state} zone={zone} />
         ) : (
           <div className="no-zone">
-            {state.currentZone
-              ? `Нет заметок для зоны «${state.currentZone}»`
-              : 'Ожидание входа в зону...'}
+            {state.currentZone ? t.noNotesForZone(state.currentZone) : t.waitingForZone}
           </div>
         )}
         <Footer state={state} />
       </div>
-      {state.timer.visible && <Timer timer={state.timer} acts={actNumbers} />}
+      {state.timer.visible && (
+        <Timer timer={state.timer} acts={actNumbers} language={state.language} />
+      )}
     </div>
   )
 }
@@ -98,9 +99,10 @@ function Header({
   act?: GuideAct
   zone?: GuideZone
 }): React.JSX.Element {
+  const t = messages[state.language]
   return (
     <div className="header">
-      <div className="drag-strip" title="Перетащить оверлей" />
+      <div className="drag-strip" title={t.dragOverlayTitle} />
       <div className="header-row">
         <div className="act-nav">
           <button onClick={() => window.api.navAct(-1)}>‹</button>
@@ -109,11 +111,12 @@ function Header({
         </div>
         <span className={state.hasTrial ? "zone-title trial-zone-title" : "zone-title"}>
           {state.hasTrial && (
-            <span className="trial-badge" title="В этой зоне испытание Лабиринта">
+            <span className="trial-badge" title={t.trialTooltip}>
               <img src={trialIcon} alt="trial" />
             </span>
           )}
-          {zone?.name ?? state.currentZone ?? '—'}
+          <span className="zone-name">{zone?.name ?? state.currentZone ?? '—'}</span>
+          <ExpBadge state={state} />
         </span>
         <div className="zone-nav">
           <button onClick={() => window.api.navZone(-1)}>‹</button>
@@ -122,54 +125,54 @@ function Header({
         <div className="header-actions">
           <button
             className={state.routeVisible ? 'active' : ''}
-            title={state.routeVisible ? 'Скрыть маршрут' : 'Показать маршрут'}
+            title={state.routeVisible ? t.hideRoute : t.showRoute}
             onClick={() => window.api.toggleRoute()}
           >
             ▤
           </button>
           <button
             className={state.timer.visible ? 'active' : ''}
-            title="Таймер забегов (Ctrl+Alt+T)"
+            title={t.runTimerTitle}
             onClick={() => window.api.timerToggleVisible()}
           >
             ⏱
           </button>
-          <button title="Настройки камней (Ctrl+Alt+G)" onClick={() => window.api.openSettings()}>
+          <button title={t.gemSettingsTitle} onClick={() => window.api.openSettings()}>
             ⚙
           </button>
         </div>
       </div>
-      <ExpStrip state={state} />
       <div className="header-divider" />
     </div>
   )
 }
 
-/** Индикатор опыта: зелёный «min | уровень | max» без штрафа, красный «NN% (−d)» со штрафом. */
-function ExpStrip({ state }: { state: AppState }): React.JSX.Element | null {
+/** Индикатор опыта рядом с названием зоны: зелёный «min|уровень|max» без штрафа, красный «NN% (−d)» со штрафом. */
+function ExpBadge({ state }: { state: AppState }): React.JSX.Element | null {
   const lvl = state.charLevel
   const area = state.areaLevel
   if (lvl === null || area === null) return null
   const mult = expMultiplier(lvl, area)
-  const hint = `Зона ${area} ур. · персонаж ${lvl} ур.`
+  const hint = messages[state.language].expHint(area, lvl)
   if (mult >= 0.995) {
     const { min, max } = fullExpRange(lvl)
     return (
-      <div className="exp-strip exp-ok" title={hint}>
-        {min} | {lvl} | {max}
-      </div>
+      <span className="exp-badge exp-ok" title={hint}>
+        {min}|{lvl}|{max}
+      </span>
     )
   }
   const diff = area - lvl
   return (
-    <div className="exp-strip exp-penalty" title={hint}>
-      {Math.round(mult * 100)}% опыта ({diff > 0 ? '+' : '−'}
+    <span className="exp-badge exp-penalty" title={hint}>
+      {Math.round(mult * 100)}% ({diff > 0 ? '+' : '−'}
       {Math.abs(diff)})
-    </div>
+    </span>
   )
 }
 
 function ZoneView({ state, zone }: { state: AppState; zone: GuideZone }): React.JSX.Element {
+  const t = messages[state.language]
   const act = state.currentAct
   const normal = useMemo(() => zone.steps.filter((s) => s.kind === 'normal'), [zone])
   const inlineGems = useMemo(() => zone.steps.filter((s) => s.kind !== 'normal'), [zone])
@@ -210,30 +213,13 @@ function ZoneView({ state, zone }: { state: AppState; zone: GuideZone }): React.
         )}
         {zone.layout && (
           <button className="layout-toggle" onClick={() => window.api.toggleLayout()}>
-            {state.layoutVisible ? 'Скрыть лайаут' : 'Показать лайаут (Ctrl+Alt+L)'}
+            {state.layoutVisible ? t.hideLayout : t.showLayout}
           </button>
         )}
       </div>
     )}
     {(presets.length > 0 || hasGems) && (
         <div className="gems">
-          <div className="gems-head">
-            <span className="gems-title"><img src={gemsIcon} alt="Gems" /> Камни</span>
-            {presets.length > 0 && (
-              <select
-                className="preset-select"
-                value={state.activePreset ?? ''}
-                onChange={(e) => window.api.setPreset(e.target.value || null)}
-              >
-                <option value="">— без билда —</option>
-                {presets.map((p) => (
-                  <option key={p.id} value={p.id}>
-                    {p.name}
-                  </option>
-                ))}
-              </select>
-            )}
-          </div>
           {hasGems ? (
             <ul className="steps">
               {inlineGems.map((s) => (
@@ -258,7 +244,7 @@ function ZoneView({ state, zone }: { state: AppState; zone: GuideZone }): React.
             </ul>
           ) : (
             <div className="gems-empty">
-              {state.activePreset ? 'В этой зоне камней нет' : 'Выбери билд для плана камней'}
+              {state.activePreset ? t.noGemsInZone : t.pickBuildHint}
             </div>
           )}
         </div>
@@ -299,15 +285,16 @@ function StepRow({
 }
 
 function Footer({ state }: { state: AppState }): React.JSX.Element {
+  const t = messages[state.language]
   return (
     <div className="footer">
       {state.logStatus.kind === 'missing' && (
         <span className="log-missing">⚠ {state.logStatus.message}</span>
       )}
       {state.interactive ? (
-        <span className="mode on">режим кликов — Ctrl+Alt+I чтобы отпустить мышь</span>
+        <span className="mode on">{t.clickModeOn}</span>
       ) : (
-        <span className="mode">Ctrl+Alt+I — кликать · Ctrl+Alt+O — скрыть</span>
+        <span className="mode">{t.clickModeOff}</span>
       )}
     </div>
   )

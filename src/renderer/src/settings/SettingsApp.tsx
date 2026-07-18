@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react'
+import type { Language } from '../../../shared/i18n'
+import { messages } from '../../../shared/i18n'
 import type { AppState, GemEntry, PresetSource } from '../../../shared/types'
 import actTowns from '../data/act-towns.json'
 import { GemPicker } from './GemPicker'
@@ -26,12 +28,13 @@ export function SettingsApp(): React.JSX.Element {
     return window.api.onState(setState)
   }, [])
 
-  if (!state) return <div className="settings-root">Загрузка...</div>
+  if (!state) return <div className="settings-root">{messages.ru.loading}</div>
 
+  const t = messages[state.language]
   const presets = state.guide.presets
 
   async function select(id: string): Promise<void> {
-    if (dirty && !confirm('Несохранённые изменения будут потеряны. Продолжить?')) return
+    if (dirty && !confirm(t.confirmDiscardChanges)) return
     const src = await window.api.getPresetSource(id)
     setSelectedId(id)
     setSource(src ?? { id, name: id, zones: [] })
@@ -73,11 +76,11 @@ export function SettingsApp(): React.JSX.Element {
   async function createPreset(): Promise<void> {
     const id = newId.trim()
     if (!ID_RE.test(id)) {
-      setMessage('Id пресета: только латиница/цифры/дефис/подчёркивание, без пробелов')
+      setMessage(t.invalidPresetIdMsg)
       return
     }
     if (presets.some((p) => p.id === id)) {
-      setMessage(`Пресет "${id}" уже существует`)
+      setMessage(t.presetExistsMsg(id))
       return
     }
     const res = await window.api.savePreset({ id, name: id, zones: [] })
@@ -94,7 +97,7 @@ export function SettingsApp(): React.JSX.Element {
     let id = `${source.id}-copy`
     let n = 2
     while (presets.some((p) => p.id === id)) id = `${source.id}-copy${n++}`
-    const res = await window.api.savePreset({ ...source, id, name: `${source.name} (копия)` })
+    const res = await window.api.savePreset({ ...source, id, name: `${source.name} ${t.copySuffix}` })
     if (!res.ok) {
       setMessage(res.error)
       return
@@ -103,7 +106,7 @@ export function SettingsApp(): React.JSX.Element {
   }
 
   async function remove(id: string): Promise<void> {
-    if (!confirm(`Удалить пресет "${id}"? Файл gems/${id}.toml будет стёрт.`)) return
+    if (!confirm(t.confirmDeletePresetMsg(id))) return
     const res = await window.api.deletePreset(id)
     if (!res.ok) {
       setMessage(res.error)
@@ -123,35 +126,47 @@ export function SettingsApp(): React.JSX.Element {
   return (
     <div className="settings-root">
       <aside className="preset-list">
-        <div className="pane-title">Пресеты</div>
-        {presets.map((p) => (
-          <div
-            key={p.id}
-            className={`preset-item ${p.id === selectedId ? 'selected' : ''}`}
-            onClick={() => select(p.id)}
-          >
-            <span className="preset-item-name">{p.name}</span>
-            <button
-              className="icon-btn"
-              title="Удалить пресет"
-              onClick={(e) => {
-                e.stopPropagation()
-                remove(p.id)
-              }}
+        <div className="preset-list-scroll">
+          <div className="pane-title">{t.presetsTitle}</div>
+          {presets.map((p) => (
+            <div
+              key={p.id}
+              className={`preset-item ${p.id === selectedId ? 'selected' : ''}`}
+              onClick={() => select(p.id)}
             >
-              ✕
-            </button>
-          </div>
-        ))}
-        {presets.length === 0 && <div className="hint">Пресетов пока нет</div>}
+              <button
+                className={`icon-btn active-toggle ${state.activePreset === p.id ? 'is-active' : ''}`}
+                title={state.activePreset === p.id ? t.activePresetOn : t.activePresetOff}
+                onClick={(e) => {
+                  e.stopPropagation()
+                  window.api.setPreset(state.activePreset === p.id ? null : p.id)
+                }}
+              >
+                {state.activePreset === p.id ? '★' : '☆'}
+              </button>
+              <span className="preset-item-name">{p.name}</span>
+              <button
+                className="icon-btn"
+                title={t.deletePresetTitle}
+                onClick={(e) => {
+                  e.stopPropagation()
+                  remove(p.id)
+                }}
+              >
+                ✕
+              </button>
+            </div>
+          ))}
+          {presets.length === 0 && <div className="hint">{t.noPresetsYet}</div>}
+        </div>
         <div className="new-preset">
           <input
-            placeholder="id нового пресета"
+            placeholder={t.newPresetIdPlaceholder}
             value={newId}
             onChange={(e) => setNewId(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && createPreset()}
           />
-          <button onClick={createPreset}>+ создать</button>
+          <button onClick={createPreset}>{t.createBtn}</button>
         </div>
       </aside>
 
@@ -166,20 +181,20 @@ export function SettingsApp(): React.JSX.Element {
         {message && <div className="banner error">⚠ {message}</div>}
 
         {!source ? (
-          <div className="hint big">Выбери пресет слева или создай новый</div>
+          <div className="hint big">{t.pickOrCreateHint}</div>
         ) : (
           <>
             <div className="editor-head">
               <input
                 className="preset-name"
                 value={source.name}
-                title="Название пресета"
+                title={t.presetNameTitle}
                 onChange={(e) => update((d) => (d.name = e.target.value))}
               />
               <span className="preset-id">gems/{source.id}.toml</span>
-              <button onClick={duplicate}>Дублировать</button>
+              <button onClick={duplicate}>{t.duplicateBtn}</button>
               <button className="primary" disabled={!dirty} onClick={save}>
-                {dirty ? 'Сохранить' : 'Сохранено'}
+                {dirty ? t.saveBtn : t.savedBtn}
               </button>
             </div>
 
@@ -188,11 +203,11 @@ export function SettingsApp(): React.JSX.Element {
                 <div className="zone-block-head">
                   <span className="zone-block-name">
                     {zone.name}
-                    <span className="zone-block-act">Акт {zone.act}</span>
+                    <span className="zone-block-act">{t.actLabel(zone.act)}</span>
                   </span>
                   <button
                     className="icon-btn"
-                    title="Убрать зону из пресета"
+                    title={t.removeZoneFromPresetTitle}
                     onClick={() =>
                       update((d) => {
                         d.zones.splice(zi, 1)
@@ -206,6 +221,7 @@ export function SettingsApp(): React.JSX.Element {
                   <EntryRow
                     key={gi}
                     gem={gem}
+                    language={state.language}
                     canUp={gi > 0}
                     canDown={gi < zone.gems.length - 1}
                     pickerOpen={picker?.zi === zi && picker.index === gi}
@@ -239,7 +255,7 @@ export function SettingsApp(): React.JSX.Element {
                     setPicker({ zi, index: zone.gems.length })
                   }}
                 >
-                  + запись
+                  {t.addEntryBtn}
                 </button>
               </section>
             ))}
@@ -250,14 +266,14 @@ export function SettingsApp(): React.JSX.Element {
                 onChange={(e) => {
                   const idx = e.target.value
                   if (idx === '') return
-                  const t = availableTowns[Number(idx)]
-                  update((d) => d.zones.push({ name: t.name, act: t.act, gems: [] }))
+                  const town = availableTowns[Number(idx)]
+                  update((d) => d.zones.push({ name: town.name, act: town.act, gems: [] }))
                 }}
               >
-                <option value="">+ добавить зону...</option>
-                {availableTowns.map((t, i) => (
-                  <option key={`${t.act}|${t.name}`} value={i}>
-                    {t.name} (Акт {t.act})
+                <option value="">{t.addZoneOption}</option>
+                {availableTowns.map((town, i) => (
+                  <option key={`${town.act}|${town.name}`} value={i}>
+                    {town.name} ({t.actLabel(town.act)})
                   </option>
                 ))}
               </select>
@@ -266,7 +282,7 @@ export function SettingsApp(): React.JSX.Element {
         )}
 
         <div className="runs-settings">
-          <span className="pane-title">Дистанция забега</span>
+          <span className="pane-title">{t.runDistanceTitle}</span>
           <div className="target-acts">
             {[1, 3, 5, 10].map((n) => (
               <button
@@ -274,13 +290,31 @@ export function SettingsApp(): React.JSX.Element {
                 className={state.timer.targetActs === n ? 'active' : ''}
                 onClick={() => window.api.setTargetActs(n)}
               >
-                {n} {n === 1 ? 'акт' : 'актов'}
+                {n} {t.actsWord(n)}
               </button>
             ))}
           </div>
         </div>
 
-        <RunsHistory />
+        <div className="runs-settings">
+          <span className="pane-title">{t.languageTitle}</span>
+          <div className="target-acts">
+            <button
+              className={state.language === 'ru' ? 'active' : ''}
+              onClick={() => window.api.setLanguage('ru')}
+            >
+              RU
+            </button>
+            <button
+              className={state.language === 'en' ? 'active' : ''}
+              onClick={() => window.api.setLanguage('en')}
+            >
+              EN
+            </button>
+          </div>
+        </div>
+
+        <RunsHistory language={state.language} />
       </main>
     </div>
   )
@@ -288,6 +322,7 @@ export function SettingsApp(): React.JSX.Element {
 
 function EntryRow({
   gem,
+  language,
   canUp,
   canDown,
   pickerOpen,
@@ -298,6 +333,7 @@ function EntryRow({
   onDelete
 }: {
   gem: GemEntry
+  language: Language
   canUp: boolean
   canDown: boolean
   pickerOpen: boolean
@@ -307,6 +343,7 @@ function EntryRow({
   onMove: (delta: number) => void
   onDelete: () => void
 }): React.JSX.Element {
+  const t = messages[language]
   const legacy = !!gem.text && (!gem.items || gem.items.length === 0)
   return (
     <div className={`entry ${gem.kind}`}>
@@ -315,38 +352,38 @@ function EntryRow({
           value={gem.kind}
           onChange={(e) => onChange({ ...gem, kind: e.target.value as GemEntry['kind'] })}
         >
-          <option value="gem-reward">Награда</option>
-          <option value="gem-buy">Покупка</option>
+          <option value="gem-reward">{t.rewardOption}</option>
+          <option value="gem-buy">{t.buyOption}</option>
         </select>
         {!legacy &&
           (gem.kind === 'gem-reward' ? (
             <input
-              placeholder="квест (напр. Enemy at the Gate)"
+              placeholder={t.questPlaceholder}
               value={gem.quest ?? ''}
               onChange={(e) => onChange({ ...gem, quest: e.target.value || undefined })}
             />
           ) : (
             <input
-              placeholder="продавец (напр. Nessa)"
+              placeholder={t.vendorPlaceholder}
               value={gem.vendor ?? ''}
               onChange={(e) => onChange({ ...gem, vendor: e.target.value || undefined })}
             />
           ))}
         <span className="entry-spacer" />
-        <button className="icon-btn" disabled={!canUp} title="Выше" onClick={() => onMove(-1)}>
+        <button className="icon-btn" disabled={!canUp} title={t.upTitle} onClick={() => onMove(-1)}>
           ↑
         </button>
-        <button className="icon-btn" disabled={!canDown} title="Ниже" onClick={() => onMove(1)}>
+        <button className="icon-btn" disabled={!canDown} title={t.downTitle} onClick={() => onMove(1)}>
           ↓
         </button>
-        <button className="icon-btn" title="Удалить запись" onClick={onDelete}>
+        <button className="icon-btn" title={t.deleteEntryTitle} onClick={onDelete}>
           ✕
         </button>
       </div>
       {legacy ? (
         <textarea
           className="legacy-text"
-          title="Свободный текст записи (легаси-формат)"
+          title={t.legacyTextTitle}
           value={gem.text}
           onChange={(e) => onChange({ ...gem, text: e.target.value })}
         />
@@ -357,7 +394,7 @@ function EntryRow({
               {name}
               <button
                 className="icon-btn"
-                title="Убрать камень"
+                title={t.removeGemTitle}
                 onClick={() => onChange({ ...gem, items: gem.items!.filter((n) => n !== name) })}
               >
                 ✕
@@ -365,12 +402,13 @@ function EntryRow({
             </span>
           ))}
           <button className="add-gem" onClick={pickerOpen ? onClosePicker : onOpenPicker}>
-            + камень
+            {t.addGemBtn}
           </button>
         </div>
       )}
       {pickerOpen && !legacy && (
         <GemPicker
+          language={language}
           onClose={onClosePicker}
           onPick={(name) => {
             if (!(gem.items ?? []).includes(name)) {

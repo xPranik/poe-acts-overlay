@@ -2,6 +2,8 @@ import fs from 'node:fs'
 import path from 'node:path'
 import chokidar, { FSWatcher } from 'chokidar'
 import { parse as parseToml } from 'smol-toml'
+import type { Language } from '../shared/i18n'
+import { messages } from '../shared/i18n'
 import type { GemPreset, Guide, GuideAct, GuideStep, GuideZone, PresetZone, StepKind } from '../shared/types'
 import { getZoneActEarliest } from './area-levels'
 import { gemEntryText, parseGemEntry } from './preset-store'
@@ -16,33 +18,34 @@ function parseStep(
   raw: unknown,
   where: string,
   index: number,
-  defaultKind: StepKind
+  defaultKind: StepKind,
+  lang: Language
 ): GuideStep {
   const step = raw as Record<string, unknown>
   const text = asString(step.text)
-  if (!text) throw new Error(`${where}, шаг #${index + 1} без text`)
+  if (!text) throw new Error(messages[lang].stepMissingTextError(where, index))
   const kind = asString(step.kind) ?? defaultKind
   if (!KINDS.includes(kind as StepKind)) {
-    throw new Error(`${where}, шаг "${text}": неизвестный kind "${kind}"`)
+    throw new Error(messages[lang].stepUnknownKindError(where, text, kind))
   }
   return { text, kind: kind as StepKind }
 }
 
-function parseAct(fileName: string, raw: string): GuideAct {
+function parseAct(fileName: string, raw: string, lang: Language): GuideAct {
   const doc = parseToml(raw) as Record<string, unknown>
   const actMeta = (doc.act ?? {}) as Record<string, unknown>
   const number = typeof actMeta.number === 'number' ? actMeta.number : NaN
   if (!Number.isInteger(number) || number < 1) {
-    throw new Error(`${fileName}: [act].number должен быть целым числом >= 1`)
+    throw new Error(messages[lang].actNumberInvalidError(fileName))
   }
   const zonesRaw = Array.isArray(doc.zone) ? doc.zone : []
   const zones: GuideZone[] = zonesRaw.map((z, i) => {
     const zone = z as Record<string, unknown>
     const name = asString(zone.name)
-    if (!name) throw new Error(`${fileName}: [[zone]] #${i + 1} без name`)
+    if (!name) throw new Error(messages[lang].zoneMissingNameError(fileName, i))
     const stepsRaw = Array.isArray(zone.steps) ? zone.steps : []
     const steps = stepsRaw.map((s, j) =>
-      parseStep(s, `${fileName}: зона "${name}"`, j, 'normal')
+      parseStep(s, `${fileName}: зона "${name}"`, j, 'normal', lang)
     )
     return { name, notes: asString(zone.notes), layout: asString(zone.layout), steps }
   })
@@ -54,7 +57,7 @@ function parseAct(fileName: string, raw: string): GuideAct {
 }
 
 /** A gem preset (build): [preset].name + [[zone]] blocks whose gems default to gem-buy. */
-function parsePreset(fileName: string, id: string, raw: string): GemPreset {
+function parsePreset(fileName: string, id: string, raw: string, lang: Language): GemPreset {
   const doc = parseToml(raw) as Record<string, unknown>
   const meta = (doc.preset ?? {}) as Record<string, unknown>
   const zonesRaw = Array.isArray(doc.zone) ? doc.zone : []
@@ -62,7 +65,7 @@ function parsePreset(fileName: string, id: string, raw: string): GemPreset {
   zonesRaw.forEach((z, i) => {
     const zone = z as Record<string, unknown>
     const name = asString(zone.name)
-    if (!name) throw new Error(`${fileName}: [[zone]] #${i + 1} без name`)
+    if (!name) throw new Error(messages[lang].zoneMissingNameError(fileName, i))
     // акт указан явно или выводится по имени (различает повторные города 6/8/9)
     const act = typeof zone.act === 'number' ? zone.act : getZoneActEarliest(name)
     // accept `gems` (natural) or `steps` (same shape); gems default to gem-buy
@@ -74,8 +77,8 @@ function parsePreset(fileName: string, id: string, raw: string): GemPreset {
     // запись камня: либо готовый text, либо структурные поля (quest/vendor/items),
     // из которых текст синтезируется — схема описана в preset-store
     const gems = gemsRaw.map((s, j): GuideStep => {
-      const entry = parseGemEntry(s, `${fileName}: зона "${name}"`, j)
-      return { text: gemEntryText(entry), kind: entry.kind }
+      const entry = parseGemEntry(s, `${fileName}: зона "${name}"`, j, lang)
+      return { text: gemEntryText(entry, lang), kind: entry.kind }
     })
     // сливаем блоки с одинаковыми (акт, имя)
     const existing = zones.find((zn) => zn.name === name && zn.act === act)
@@ -85,19 +88,19 @@ function parsePreset(fileName: string, id: string, raw: string): GemPreset {
   return { id, name: asString(meta.name) ?? id, zones }
 }
 
-export function loadGuide(guidesRoot: string, profile: string): Guide {
+export function loadGuide(guidesRoot: string, profile: string, lang: Language): Guide {
   const dir = path.join(guidesRoot, profile)
   const guide: Guide = { profile, acts: [], presets: [], errors: [] }
   let files: string[] = []
   try {
     files = fs.readdirSync(dir).filter((f) => f.toLowerCase().endsWith('.toml'))
   } catch {
-    guide.errors.push(`Папка гайда не найдена: ${dir}`)
+    guide.errors.push(messages[lang].guideDirNotFoundError(dir))
     return guide
   }
   for (const file of files.sort()) {
     try {
-      guide.acts.push(parseAct(file, fs.readFileSync(path.join(dir, file), 'utf-8')))
+      guide.acts.push(parseAct(file, fs.readFileSync(path.join(dir, file), 'utf-8'), lang))
     } catch (e) {
       guide.errors.push(e instanceof Error ? e.message : String(e))
     }
@@ -115,7 +118,9 @@ export function loadGuide(guidesRoot: string, profile: string): Guide {
   for (const file of presetFiles.sort()) {
     const id = file.replace(/\.toml$/i, '')
     try {
-      guide.presets.push(parsePreset(`gems/${file}`, id, fs.readFileSync(path.join(gemsDir, file), 'utf-8')))
+      guide.presets.push(
+        parsePreset(`gems/${file}`, id, fs.readFileSync(path.join(gemsDir, file), 'utf-8'), lang)
+      )
     } catch (e) {
       guide.errors.push(e instanceof Error ? e.message : String(e))
     }
@@ -127,6 +132,7 @@ export function loadGuide(guidesRoot: string, profile: string): Guide {
 export function watchGuide(
   guidesRoot: string,
   profile: string,
+  getLang: () => Language,
   onReload: (guide: Guide) => void
 ): FSWatcher {
   const dir = path.join(guidesRoot, profile)
@@ -135,7 +141,7 @@ export function watchGuide(
   watcher.on('all', (_event, changedPath) => {
     if (!changedPath.toLowerCase().endsWith('.toml')) return
     if (debounce) clearTimeout(debounce)
-    debounce = setTimeout(() => onReload(loadGuide(guidesRoot, profile)), 150)
+    debounce = setTimeout(() => onReload(loadGuide(guidesRoot, profile, getLang())), 150)
   })
   return watcher
 }

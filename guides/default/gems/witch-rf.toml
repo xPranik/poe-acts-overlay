@@ -51,11 +51,11 @@ vendor = "После бандита сверху"
 items = [ "Righteous Fire", "Infused Channelling Support", "Efficacy Support" ]
 
 [[zone]]
-name = "Highgate"
-act = 4
+name = "The Sarn Encampment"
+act = 3
 
 [[zone.gems]]
-kind = "gem-buy"
-vendor = "купи хуйню"
-items = [ "Righteous Fire" ]
+kind = "gem-reward"
+quest = "Спавнер"
+items = [ "Flammability" ]
 

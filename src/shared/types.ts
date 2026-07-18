@@ -1,3 +1,5 @@
+import type { Language } from './i18n'
+
 export type StepKind = 'normal' | 'gem-buy' | 'gem-reward'
 
 export interface GuideStep {
@@ -143,6 +145,8 @@ export interface AppState {
   progress: Record<string, boolean>
   /** состояние speedrun-таймера по актам */
   timer: TimerState
+  /** язык интерфейса */
+  language: Language
 }
 
 export function stepKey(act: number, zone: string, stepText: string): string {

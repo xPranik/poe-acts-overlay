@@ -2,7 +2,8 @@
 
 .settings-root {
   display: flex;
-  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
   background: #12161a;
   color: #e8e2d0;
   font-size: 13px;
@@ -75,6 +76,12 @@
   border-right: 1px solid rgba(127, 163, 176, 0.18);
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+}
+
+.preset-list-scroll {
+  flex: 1;
+  min-height: 0;
   overflow-y: auto;
 }
 
@@ -100,10 +107,19 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  flex: 1;
+}
+
+.active-toggle {
+  color: #5b6570 !important;
+}
+
+.active-toggle.is-active {
+  color: #d8b24a !important;
 }
 
 .new-preset {
-  margin-top: auto;
+  flex-shrink: 0;
   padding: 10px 12px;
   display: flex;
   gap: 6px;

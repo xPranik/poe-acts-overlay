@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react'
+import type { Language } from '../../shared/i18n'
+import { messages } from '../../shared/i18n'
 import type { TimerState } from '../../shared/types'
 
 /** mm:ss или h:mm:ss; showMs добавляет десятые доли секунды. */
@@ -93,11 +95,14 @@ function buildRows(t: TimerState, elapsed: number, acts: number[]): Row[] {
 
 export function Timer({
   timer,
-  acts
+  acts,
+  language
 }: {
   timer: TimerState
   acts: number[]
+  language: Language
 }): React.JSX.Element | null {
+  const t = messages[language]
   const [now, setNow] = useState(() => Date.now())
 
   useEffect(() => {
@@ -126,10 +131,10 @@ export function Timer({
           {fmt(elapsed, true)}
         </span>
         <span className="timer-status">
-          {timer.status === 'idle' && 'готов'}
-          {running && `Акт ${timer.currentAct}`}
-          {paused && 'пауза'}
-          {timer.status === 'finished' && 'финиш'}
+          {timer.status === 'idle' && t.timerIdle}
+          {running && t.actLabel(timer.currentAct)}
+          {paused && t.timerPaused}
+          {timer.status === 'finished' && t.timerFinished}
         </span>
       </div>
 
@@ -140,7 +145,7 @@ export function Timer({
               key={r.act}
               className={`${r.current ? 'current' : ''} ${r.pending ? 'pending' : ''}`}
             >
-              <span className="split-act">Акт {r.act}</span>
+              <span className="split-act">{t.actLabel(r.act)}</span>
               <span className={`split-delta ${deltaClass(r.delta)} ${r.gold ? 'gold' : ''}`}>
                 {r.delta != null ? fmtDelta(r.delta) : ''}
               </span>
@@ -157,8 +162,8 @@ export function Timer({
           type="button"
           className="icon"
           onClick={() => window.api.timerStartSplit()}
-          title="Старт / Сплит (следующий акт)"
-          aria-label="Старт / Сплит"
+          title={t.startSplitTitle}
+          aria-label={t.startSplitTitle}
         >
           {timer.status === 'idle' || timer.status === 'finished' ? '▶' : '⏭'}
         </button>
@@ -167,8 +172,8 @@ export function Timer({
           className="icon"
           disabled={!active}
           onClick={() => window.api.timerPause()}
-          title="Пауза / Продолжить"
-          aria-label="Пауза / Продолжить"
+          title={t.pauseResumeTitle}
+          aria-label={t.pauseResumeTitle}
         >
           {running ? '⏸' : '⏯'}
         </button>
@@ -177,8 +182,8 @@ export function Timer({
           className="icon"
           disabled={timer.splits.length === 0 && !active}
           onClick={() => window.api.timerUndo()}
-          title="Отменить последний сплит"
-          aria-label="Отменить последний сплит"
+          title={t.undoSplitTitle}
+          aria-label={t.undoSplitTitle}
         >
           ↶
         </button>
@@ -187,8 +192,8 @@ export function Timer({
           className="icon"
           disabled={!active}
           onClick={() => window.api.timerFinish()}
-          title="Завершить забег"
-          aria-label="Завершить забег"
+          title={t.finishRunTitle}
+          aria-label={t.finishRunTitle}
         >
           ⏹
         </button>
@@ -196,8 +201,8 @@ export function Timer({
           type="button"
           className="icon"
           onClick={() => window.api.timerReset()}
-          title="Сбросить таймер"
-          aria-label="Сбросить таймер"
+          title={t.resetTimerTitle}
+          aria-label={t.resetTimerTitle}
         >
           ↺
         </button>
