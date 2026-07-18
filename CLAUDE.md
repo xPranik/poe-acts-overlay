@@ -9,6 +9,59 @@ Guidance for AI assistants working in this repository.
   PR titles, or PR bodies. Commits are authored solely by the repository owner.
 - Commit or push only when explicitly asked.
 
+## Release process
+
+When the user says **"release current changes version X.Y.Z"** (or the Russian equivalent,
+"зарелизь текущие изменения версия X.Y.Z"), run the full pipeline below without asking for
+confirmation at each step — this instruction is the standing authorization for the push, PR
+merge, and public GitHub release it performs. Only stop and ask if something in the pipeline
+actually fails or looks wrong (build error, typecheck failure, dirty working tree with
+unrelated changes, version already released, etc).
+
+1. **Sanity-check the tree.** `git status` — make sure only intended changes are present.
+   Run `npm run typecheck` before doing anything else; fix or ask if it fails.
+2. **Bump the version.** Set `"version"` in `package.json` to `X.Y.Z`, keep the trailing
+   newline, then run `npm install --package-lock-only` to sync `package-lock.json`.
+3. **Branch, commit, push.** From `main`:
+   ```
+   git checkout -b feat/<short-kebab-description>
+   git add -A
+   git commit -m "<summary of the actual changes — see Commit & PR rules above>"
+   git push -u origin feat/<short-kebab-description>
+   ```
+4. **PR + merge immediately.** Don't wait for manual review/merge on GitHub — this project is
+   solo-maintained and the user has pre-approved this:
+   ```
+   gh pr create --title "..." --body "..."
+   gh pr merge <number> --merge --delete-branch
+   git checkout main && git pull --ff-only
+   ```
+   If `gh` isn't on `PATH` in the Bash tool, add it: `export PATH="$PATH:/c/Program Files/GitHub CLI"`.
+5. **Build the installer** (not `npm run build:unpack`, which only produces the unpacked
+   `--dir` build for local testing):
+   ```
+   rm -rf dist/
+   npm run build
+   npx electron-builder --win
+   ```
+   Electron-builder occasionally hits an `EBUSY` from Windows Defender locking the freshly
+   extracted `electron.exe`; retry a few times (15s apart) if it fails — see
+   `scripts/build-app.cjs` for the same pattern. Expect `dist/PoE Acts Overlay Setup X.Y.Z.exe`
+   (~90MB) plus a `.blockmap`. The exe is unsigned — `signing with signtool.exe` in the build
+   log is a no-op, not real Authenticode signing; don't be surprised the file is still
+   `NotSigned` (`Get-AuthenticodeSignature`).
+6. **Publish the GitHub release:**
+   ```
+   gh release create vX.Y.Z "dist/PoE Acts Overlay Setup X.Y.Z.exe" \
+     --title "PoE Acts Overlay vX.Y.Z" --notes "<changelog>"
+   ```
+   Release notes: a short "What's new" bullet list of the actual changes, an install blurb,
+   and this SmartScreen note (the installer isn't code-signed):
+   > Windows may show a SmartScreen warning since the installer isn't code-signed — click
+   > "More info" → "Run anyway" to proceed.
+7. Report back the release URL. Do not attempt to fix the SmartScreen warning itself
+   (no-op — it requires paid code signing) unless the user separately asks about it.
+
 ## Project
 
 PoE Acts Overlay — an Electron + React overlay for Path of Exile 1 leveling. It tails
