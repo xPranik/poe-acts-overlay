@@ -1,44 +1,44 @@
 # PoE Acts Overlay
 
-Оверлей-помощник для прохождения актов Path of Exile 1. Следит за `Client.txt` и
-автоматически показывает подсказки для зоны, в которой находится персонаж:
-маршрут, чеклист шагов, план камней, лайаут зоны.
+An overlay assistant for leveling through Path of Exile 1 acts. It tails `Client.txt`
+and automatically shows guidance for the zone the character is in: route, step
+checklist, gem plan, zone layout.
 
-**Игра должна работать в режиме Windowed Fullscreen** (иначе оверлей не будет виден поверх).
+**The game must run in Windowed Fullscreen mode** (otherwise the overlay won't show on top).
 
-## Запуск
+## Running
 
 ```powershell
 npm install
 npm run dev
 ```
 
-Путь к `Client.txt` ищется автоматически по стандартным местам установки.
-Если не нашёлся — выбери вручную через меню иконки в трее.
+The path to `Client.txt` is auto-detected from standard install locations.
+If it isn't found, pick it manually from the tray icon menu.
 
-## Документация разработчика
+## Developer docs
 
-- [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) — процессы, поток данных, IPC, состояние.
-- [docs/TASK-MAP.md](docs/TASK-MAP.md) — что где менять + скрипты и запуск без игры.
-- [docs/DATA-FORMATS.md](docs/DATA-FORMATS.md) — форматы TOML/JSON, разметка, общие типы.
+- [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) — processes, data flow, IPC, state.
+- [docs/TASK-MAP.md](docs/TASK-MAP.md) — what to change where + scripts and running without the game.
+- [docs/DATA-FORMATS.md](docs/DATA-FORMATS.md) — TOML/JSON formats, markup, shared types.
 
-## Хоткеи
+## Hotkeys
 
-| Хоткей | Действие |
+| Hotkey | Action |
 |---|---|
-| `Ctrl+Alt+O` | показать/скрыть оверлей |
-| `Ctrl+Alt+I` | режим кликов (иначе мышь проходит сквозь оверлей) |
-| `Ctrl+Alt+L` | показать/скрыть лайаут зоны |
-| `Ctrl+Alt+←` / `Ctrl+Alt+→` | предыдущая/следующая зона вручную |
+| `Ctrl+Alt+O` | show/hide overlay |
+| `Ctrl+Alt+I` | click-through toggle (otherwise the mouse passes through the overlay) |
+| `Ctrl+Alt+L` | show/hide zone layout |
+| `Ctrl+Alt+←` / `Ctrl+Alt+→` | previous/next zone manually |
 
-Хоткеи можно поменять в `%APPDATA%\poe-acts-overlay\settings.json`.
-Перетащить панель: включить режим кликов и тянуть за полосатую полоску сверху.
+Hotkeys can be changed in `%APPDATA%\poe-acts-overlay\settings.json`.
+To move the panel: enable click-through mode and drag the striped bar at the top.
 
-## Гайды
+## Guides
 
-Гайды лежат в [guides/default/](guides/default/) — по TOML-файлу на акт.
-Файлы можно править при запущенном оверлее — изменения подхватываются сразу (hot-reload).
-Ошибки парсинга показываются прямо в оверлее.
+Guides live in [guides/default/](guides/default/) — one TOML file per act.
+Files can be edited while the overlay is running — changes are picked up immediately
+(hot-reload). Parsing errors are shown right in the overlay.
 
 ```toml
 [act]
@@ -46,57 +46,58 @@ number = 1
 title = "Act 1"
 
 [[zone]]
-name = "The Coast"                  # точно как пишет игра в логе (английский)
-layout = "layouts/a1-coast.png"     # опционально: картинка из guides/default/layouts/
+name = "The Coast"                  # exactly as the game writes it in the log (English)
+layout = "layouts/a1-coast.png"     # optional: image from guides/default/layouts/
 notes = """
-Произвольный текст под названием зоны.
+Free-form text under the zone name.
 """
 
-  [[zone.steps]]                    # шаг чеклиста (кликается в режиме кликов)
-  text = "Взять waypoint"
+  [[zone.steps]]                    # checklist step (clickable in click-through mode)
+  text = "Take the waypoint"
 
   [[zone.steps]]
-  text = "Купить Steelskin у Nessa"
-  kind = "gem-buy"                  # подсветка: gem-buy (купить) / gem-reward (награда)
+  text = "Buy Steelskin from Nessa"
+  kind = "gem-buy"                  # highlight: gem-buy (purchase) / gem-reward (quest reward)
 ```
 
-- Зона может встречаться в файле один раз; шаги отмечаются кликом, прогресс
-  сохраняется (`%APPDATA%\poe-acts-overlay\progress-default.json`).
-- Сброс прогресса — в меню трея (для нового персонажа).
-- Картинки лайаутов клади в `guides/default/layouts/` и указывай в `layout`.
-- Одноимённые зоны из частей 1 и 2 (The Coast в A1 и A6) различаются автоматически
-  по последнему определённому акту.
+- A zone can appear only once per file; steps are checked off by clicking, progress
+  is saved (`%APPDATA%\poe-acts-overlay\progress-default.json`).
+- Reset progress from the tray menu (for a new character).
+- Put layout images in `guides/default/layouts/` and reference them via `layout`.
+- Same-named zones from parts 1 and 2 (The Coast in A1 and A6) are distinguished
+  automatically by the last-detected act.
 
-## Импорт маршрута exile-leveling
+## Importing the exile-leveling route
 
-Стартовые гайды сгенерированы из маршрута [exile-leveling](https://github.com/HeartofPhos/exile-leveling) (MIT).
-Перегенерировать (перезапишет файлы!):
+The starter guides are generated from the
+[exile-leveling](https://github.com/HeartofPhos/exile-leveling) route (MIT).
+To regenerate (overwrites files!):
 
 ```powershell
-npm run import-guide                # в guides/default/
-npm run import-guide -- myprofile   # в guides/myprofile/
+npm run import-guide                # into guides/default/
+npm run import-guide -- myprofile   # into guides/myprofile/
 ```
 
-Профиль гайдов переключается полем `profile` в `settings.json`.
+The guide profile is switched via the `profile` field in `settings.json`.
 
-## Тест без игры
+## Testing without the game
 
 ```powershell
-# запустить оверлей с тестовым логом
+# run the overlay against a test log
 $env:POE_OVERLAY_LOG = "D:\tmp\Client.txt"; npm run dev
 
-# в другом терминале: эмулировать вход в зону / рестарт игры / демо-прогон
+# in another terminal: emulate entering a zone / game restart / demo run
 npm run fake-log -- D:\tmp\Client.txt "The Coast"
 npx tsx scripts/fake-log.ts D:\tmp\Client.txt --reset
 npx tsx scripts/fake-log.ts D:\tmp\Client.txt --demo
 ```
 
-## Как это работает
+## How it works
 
-- `src/main/log-watcher.ts` — тейлинг `Client.txt` (поллинг размера, чтение только
-  новых байт, обработка обнуления файла при рестарте игры), строки
+- `src/main/log-watcher.ts` — tails `Client.txt` (polls file size, reads only new
+  bytes, handles truncation on game restart), matching lines
   `: You have entered <Zone>.`
-- `src/main/guide-loader.ts` — загрузка TOML-гайдов + hot-reload (chokidar).
-- `src/main/zone-tracker.ts` — привязка зоны из лога к акту гайда.
-- `src/renderer/` — React-интерфейс панели.
-- Прозрачное always-on-top окно Electron с `setIgnoreMouseEvents` (click-through).
+- `src/main/guide-loader.ts` — loads TOML guides + hot-reload (chokidar).
+- `src/main/zone-tracker.ts` — maps the log zone to the guide act.
+- `src/renderer/` — React panel UI.
+- A transparent always-on-top Electron window with `setIgnoreMouseEvents` (click-through).

@@ -1,4 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
+import type { Language } from '../../../shared/i18n'
+import { messages } from '../../../shared/i18n'
 import type { Run } from '../../../shared/types'
 
 function fmt(ms: number | null): string {
@@ -15,7 +17,8 @@ function fmtDate(epoch: number): string {
   return new Date(epoch).toLocaleString()
 }
 
-export function RunsHistory(): React.JSX.Element {
+export function RunsHistory({ language }: { language: Language }): React.JSX.Element {
+  const t = messages[language]
   const [runs, setRuns] = useState<Run[]>([])
 
   const refresh = useCallback((): void => {
@@ -37,24 +40,24 @@ export function RunsHistory(): React.JSX.Element {
   return (
     <section className="runs">
       <div className="runs-head">
-        <span className="pane-title">Забеги</span>
+        <span className="pane-title">{t.runsTitle}</span>
         <div className="runs-actions">
-          <button onClick={refresh}>обновить</button>
+          <button onClick={refresh}>{t.refreshBtn}</button>
           <button
             disabled={runs.length === 0}
             onClick={async () => {
-              if (confirm('Удалить все сохранённые забеги?')) {
+              if (confirm(t.confirmClearRuns)) {
                 setRuns(await window.api.clearRuns())
               }
             }}
           >
-            очистить
+            {t.clearBtn}
           </button>
         </div>
       </div>
 
       {runs.length === 0 ? (
-        <div className="hint">Забегов пока нет</div>
+        <div className="hint">{t.noRunsYet}</div>
       ) : (
         <ul className="runs-list">
           {runs.map((r) => (
@@ -65,7 +68,7 @@ export function RunsHistory(): React.JSX.Element {
               <span className="run-date">{fmtDate(r.startedAt)}</span>
               <span className="run-profile">{r.profile}</span>
               <span className="run-acts">
-                {r.splits.length}/{r.targetActs} {r.targetActs === 1 ? 'акт' : 'актов'}
+                {r.splits.length}/{r.targetActs} {t.actsWord(r.targetActs)}
               </span>
               <span className="run-total">
                 {fmt(r.totalMs)}
@@ -73,7 +76,7 @@ export function RunsHistory(): React.JSX.Element {
               </span>
               <button
                 className="icon-btn"
-                title="Удалить забег"
+                title={t.deleteRunTitle}
                 onClick={async () => setRuns(await window.api.deleteRun(r.id))}
               >
                 ✕

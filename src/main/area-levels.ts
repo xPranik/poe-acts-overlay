@@ -26,6 +26,13 @@ export function getStaticArea(name: string, act: number): ZoneLevel | null {
   return best
 }
 
+/** Статический уровень зоны конкретного акта (без бонуса ближайшего акта) — для разрешения дублей имён по charLevel. */
+export function getAreaLevelForAct(name: string, act: number): number | null {
+  const list = byName.get(name)
+  if (!list) return null
+  return list.find((z) => z.act === act)?.level ?? null
+}
+
 /** Ранний акт, в котором встречается зона (для легаси-пресетов без явного act). */
 export function getZoneActEarliest(name: string): number {
   const list = byName.get(name)

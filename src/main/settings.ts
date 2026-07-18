@@ -1,6 +1,7 @@
 import { app } from 'electron'
 import fs from 'node:fs'
 import path from 'node:path'
+import type { Language } from '../shared/i18n'
 import type { Run } from '../shared/types'
 
 export interface Hotkeys {
@@ -35,6 +36,8 @@ export interface Settings {
   timerVisible: boolean
   /** дистанция забега в актах (1/3/5/10) */
   targetActs: number
+  /** язык интерфейса */
+  language: Language
 }
 
 const DEFAULTS: Settings = {
@@ -60,7 +63,8 @@ const DEFAULTS: Settings = {
   },
   finishZone: null,
   timerVisible: false,
-  targetActs: 10
+  targetActs: 10,
+  language: 'ru'
 }
 
 function settingsPath(): string {

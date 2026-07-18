@@ -1,4 +1,5 @@
 import { contextBridge, ipcRenderer } from 'electron'
+import type { Language } from '../shared/i18n'
 import type { AppState, PresetSource, Run } from '../shared/types'
 
 type SaveResult = { ok: true } | { ok: false; error: string }
@@ -68,7 +69,10 @@ const api = {
   },
   getRuns: (): Promise<Run[]> => ipcRenderer.invoke('get-runs'),
   deleteRun: (id: string): Promise<Run[]> => ipcRenderer.invoke('delete-run', id),
-  clearRuns: (): Promise<Run[]> => ipcRenderer.invoke('clear-runs')
+  clearRuns: (): Promise<Run[]> => ipcRenderer.invoke('clear-runs'),
+  setLanguage: (lang: Language): void => {
+    ipcRenderer.send('set-language', lang)
+  }
 }
 
 contextBridge.exposeInMainWorld('api', api)

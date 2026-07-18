@@ -13,8 +13,10 @@ import {
   Tray
 } from 'electron'
 import path from 'node:path'
-import appIcon from '../../resources/icon.webp?asset'
+import appIcon from '../../resources/icon.ico?asset'
 import { pathToFileURL } from 'node:url'
+import type { Language } from '../shared/i18n'
+import { messages } from '../shared/i18n'
 import type { AppState, Guide, PresetSource } from '../shared/types'
 import { getStaticArea } from './area-levels'
 import { hasTrial } from './trial-zones'
@@ -61,9 +63,10 @@ const state: AppState = {
   charLevel: settings.charLevel,
   areaLevel: null,
   hasTrial: false,
-  logStatus: { kind: 'missing', message: 'Client.txt не найден' },
+  logStatus: { kind: 'missing', message: messages[settings.language].clientLogNotFound },
   progress: loadProgress(settings.profile),
-  timer: runTimer.state
+  timer: runTimer.state,
+  language: settings.language
 }
 
 // реальные уровни инстансов из строк "Generating level N area ..." по имени зоны
@@ -95,7 +98,7 @@ function updateAreaLevel(): void {
 function onZoneEntered(zoneName: string, areaLevel: number | null = null): void {
   if (areaLevel !== null) instanceLevels.set(zoneName, areaLevel)
   state.currentZone = zoneName
-  const pos = resolveZone(state.guide, state.currentAct, zoneName)
+  const pos = resolveZone(state.guide, state.currentAct, zoneName, state.charLevel)
   if (pos) {
     state.currentAct = pos.act
     state.currentZoneIndex = pos.zoneIndex
@@ -128,7 +131,7 @@ function setGuide(guide: Guide): void {
   state.guide = guide
   // re-resolve the current zone against the freshly loaded guide
   if (state.currentZone) {
-    const pos = resolveZone(guide, state.currentAct, state.currentZone)
+    const pos = resolveZone(guide, state.currentAct, state.currentZone, state.charLevel)
     state.currentZoneIndex = pos ? pos.zoneIndex : -1
     if (pos) state.currentAct = pos.act
   }
@@ -160,6 +163,15 @@ function setActivePreset(id: string | null): void {
   pushState()
 }
 
+function setLanguage(lang: Language): void {
+  settings.language = lang
+  saveSettings(settings)
+  state.language = lang
+  setGuide(loadGuide(guidesRoot(), settings.profile, settings.language))
+  updateTrayMenu()
+  pushState()
+}
+
 /** Старт/сплит одной клавишей: если забег не идёт — старт с текущего акта, иначе ручной сплит. */
 function timerStartSplit(): void {
   const t = runTimer.state
@@ -185,7 +197,7 @@ function startLogWatcher(): void {
   if (!logPath) {
     state.logStatus = {
       kind: 'missing',
-      message: 'Client.txt не найден — укажи путь через иконку в трее'
+      message: messages[settings.language].clientLogNotFoundHint
     }
     pushState()
     return
@@ -279,9 +291,10 @@ function buildTray(): void {
 /** (Re)builds the tray menu — called on startup and whenever presets change. */
 function updateTrayMenu(): void {
   if (!tray) return
+  const t = messages[settings.language]
   const presetItems: Electron.MenuItemConstructorOptions[] = [
     {
-      label: '— без камней —',
+      label: t.noGemsPresetOption,
       type: 'radio',
       checked: state.activePreset === null,
       click: () => setActivePreset(null)
@@ -294,33 +307,33 @@ function updateTrayMenu(): void {
     }))
   ]
   const menu = Menu.buildFromTemplate([
-    { label: 'Показать/скрыть оверлей', click: toggleOverlay },
+    { label: t.toggleOverlayMenuLabel, click: toggleOverlay },
     {
       label: runTimer.state.visible
-        ? `Скрыть таймер забегов (${settings.hotkeys.timerToggleVisible})`
-        : `Показать таймер забегов (${settings.hotkeys.timerToggleVisible})`,
+        ? t.hideRunTimerMenuLabel(settings.hotkeys.timerToggleVisible)
+        : t.showRunTimerMenuLabel(settings.hotkeys.timerToggleVisible),
       click: () => {
         timerToggleVisible()
         updateTrayMenu()
       }
     },
     {
-      label: 'Режим кликов (interactive)',
+      label: t.clickModeMenuLabel,
       click: () => setInteractive(!state.interactive)
     },
     { type: 'separator' },
     {
-      label: 'Билд (камни)',
+      label: t.buildMenuLabel,
       submenu: state.guide.presets.length > 0
         ? presetItems
-        : [{ label: 'Нет пресетов — создай gems/<билд>.toml', enabled: false }]
+        : [{ label: t.noPresetsMenuLabel, enabled: false }]
     },
     { type: 'separator' },
     {
-      label: 'Выбрать Client.txt...',
+      label: t.chooseClientLogMenuLabel,
       click: async () => {
         const res = await dialog.showOpenDialog({
-          title: 'Выбери Client.txt',
+          title: t.chooseClientLogDialogTitle,
           filters: [{ name: 'Client.txt', extensions: ['txt'] }],
           properties: ['openFile']
         })
@@ -332,35 +345,21 @@ function updateTrayMenu(): void {
       }
     },
     {
-      label: 'Настройки камней...',
+      label: t.gemSettingsMenuLabel,
       click: openSettingsWindow
     },
     {
-      label: 'Открыть папку гайдов',
+      label: t.openGuidesFolderMenuLabel,
       click: () => {
         shell.openPath(path.join(guidesRoot(), settings.profile))
       }
     },
     {
-      label: 'Перечитать гайды',
-      click: () => setGuide(loadGuide(guidesRoot(), settings.profile))
+      label: t.reloadGuidesMenuLabel,
+      click: () => setGuide(loadGuide(guidesRoot(), settings.profile, settings.language))
     },
     { type: 'separator' },
-    {
-      label: state.charLevel !== null ? `Сбросить уровень (сейчас ${state.charLevel})` : 'Сбросить уровень',
-      enabled: state.charLevel !== null,
-      click: resetCharLevel
-    },
-    {
-      label: 'Сбросить прогресс',
-      click: () => {
-        state.progress = {}
-        saveProgress(settings.profile, state.progress)
-        pushState()
-      }
-    },
-    { type: 'separator' },
-    { label: 'Выход', click: () => app.quit() }
+    { label: t.quitMenuLabel, click: () => app.quit() }
   ])
   tray.setContextMenu(menu)
 }
@@ -414,7 +413,7 @@ function openSettingsWindow(): void {
     height: 620,
     autoHideMenuBar: true,
     icon: appIcon,
-    title: 'Настройки камней — PoE Acts Overlay',
+    title: messages[settings.language].settingsWindowTitle,
     webPreferences: {
       preload: path.join(__dirname, '../preload/index.js'),
       sandbox: false
@@ -574,14 +573,14 @@ function registerIpc(): void {
   })
   ipcMain.handle('get-preset-source', (_e, id: string) => {
     try {
-      return readPresetSource(guidesRoot(), settings.profile, id)
+      return readPresetSource(guidesRoot(), settings.profile, id, settings.language)
     } catch {
       return null
     }
   })
   ipcMain.handle('save-preset', (_e, src: PresetSource) => {
     try {
-      writePreset(guidesRoot(), settings.profile, src)
+      writePreset(guidesRoot(), settings.profile, src, settings.language)
       return { ok: true as const }
     } catch (e) {
       return { ok: false as const, error: e instanceof Error ? e.message : String(e) }
@@ -589,12 +588,13 @@ function registerIpc(): void {
   })
   ipcMain.handle('delete-preset', (_e, id: string) => {
     try {
-      deletePreset(guidesRoot(), settings.profile, id)
+      deletePreset(guidesRoot(), settings.profile, id, settings.language)
       return { ok: true as const }
     } catch (e) {
       return { ok: false as const, error: e instanceof Error ? e.message : String(e) }
     }
   })
+  ipcMain.on('set-language', (_e, lang: Language) => setLanguage(lang))
 }
 
 /** Serves layout images from the guide profile directory as guide:///<relative-path>. */
@@ -621,8 +621,8 @@ if (!gotLock) {
     createWindow()
     buildTray()
     registerHotkeys()
-    setGuide(loadGuide(guidesRoot(), settings.profile))
-    watchGuide(guidesRoot(), settings.profile, setGuide)
+    setGuide(loadGuide(guidesRoot(), settings.profile, settings.language))
+    watchGuide(guidesRoot(), settings.profile, () => settings.language, setGuide)
     startLogWatcher()
   })
 }
