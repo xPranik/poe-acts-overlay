@@ -111,6 +111,7 @@ export interface Messages {
   gemUnknownKindError: (where: string, index: number, kind: string) => string
   gemNeedsTextOrItemsError: (where: string, index: number) => string
   invalidPresetIdError: (id: string) => string
+  portionUnknownQuestError: (where: string, index: number, quest: string) => string
 }
 
 const ru: Messages = {
@@ -226,7 +227,9 @@ const ru: Messages = {
     `${where}, камень #${index + 1}: неизвестный kind "${kind}"`,
   gemNeedsTextOrItemsError: (where, index) =>
     `${where}, камень #${index + 1}: нужен text или непустой items`,
-  invalidPresetIdError: (id) => `Недопустимый id пресета: "${id}"`
+  invalidPresetIdError: (id) => `Недопустимый id пресета: "${id}"`,
+  portionUnknownQuestError: (where, index, quest) =>
+    `${where}, [[portion]] #${index + 1}: неизвестный quest "${quest}" (см. id в quest-rewards.json)`
 }
 
 const en: Messages = {
@@ -341,7 +344,9 @@ const en: Messages = {
     `${where}, gem #${index + 1}: unknown kind "${kind}"`,
   gemNeedsTextOrItemsError: (where, index) =>
     `${where}, gem #${index + 1}: needs text or non-empty items`,
-  invalidPresetIdError: (id) => `Invalid preset id: "${id}"`
+  invalidPresetIdError: (id) => `Invalid preset id: "${id}"`,
+  portionUnknownQuestError: (where, index, quest) =>
+    `${where}, [[portion]] #${index + 1}: unknown quest "${quest}" (see ids in quest-rewards.json)`
 }
 
 export const messages: Record<Language, Messages> = { ru, en }

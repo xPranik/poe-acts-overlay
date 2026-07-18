@@ -40,7 +40,7 @@ export function SettingsApp(): React.JSX.Element {
     if (dirty && !confirm(t.confirmDiscardChanges)) return
     const src = await window.api.getPresetSource(id)
     setSelectedId(id)
-    setSource(src ?? { id, name: id, zones: [] })
+    setSource(src ?? { id, name: id, zones: [], portions: [] })
     setDirty(false)
     setMessage(null)
     setPicker(null)
@@ -86,7 +86,7 @@ export function SettingsApp(): React.JSX.Element {
       setMessage(t.presetExistsMsg(id))
       return
     }
-    const res = await window.api.savePreset({ id, name: id, zones: [] })
+    const res = await window.api.savePreset({ id, name: id, zones: [], portions: [] })
     if (!res.ok) {
       setMessage(res.error)
       return

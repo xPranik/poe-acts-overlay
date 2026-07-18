@@ -4,9 +4,21 @@ import chokidar, { FSWatcher } from 'chokidar'
 import { parse as parseToml } from 'smol-toml'
 import type { Language } from '../shared/i18n'
 import { messages } from '../shared/i18n'
-import type { GemPreset, Guide, GuideAct, GuideStep, GuideZone, PresetZone, StepKind } from '../shared/types'
+import type {
+  CharClass,
+  GemPortion,
+  GemPreset,
+  Guide,
+  GuideAct,
+  GuideStep,
+  GuideZone,
+  PresetZone,
+  StepKind
+} from '../shared/types'
+import { CHAR_CLASSES } from '../shared/types'
+import { questRewardById } from '../shared/quest-rewards'
 import { getZoneActEarliest } from './area-levels'
-import { gemEntryText, parseGemEntry } from './preset-store'
+import { gemEntryText, parseGemEntry, parsePortion, portionSteps } from './preset-store'
 
 const KINDS: StepKind[] = ['normal', 'gem-buy', 'gem-reward']
 
@@ -85,7 +97,21 @@ function parsePreset(fileName: string, id: string, raw: string, lang: Language):
     if (existing) existing.steps.push(...gems)
     else zones.push({ name, act, steps: gems })
   })
-  return { id, name: asString(meta.name) ?? id, zones }
+  const clsRaw = asString(meta.class)
+  // невалидный класс не роняет пресет: фильтрация гемов просто отключается
+  const cls = CHAR_CLASSES.includes(clsRaw as CharClass) ? (clsRaw as CharClass) : undefined
+  // [[portion]] → GemPortion: триггер и заголовки берём из quest-rewards.json
+  const portionsRaw = Array.isArray(doc.portion) ? doc.portion : []
+  const portions: GemPortion[] = []
+  portionsRaw.forEach((p, i) => {
+    const src = parsePortion(p, fileName, i, lang)
+    const q = questRewardById(src.quest)
+    if (!q) return
+    const steps = portionSteps(src, lang)
+    if (steps.length === 0) return // пустая порция ничего не показывает
+    portions.push({ quest: q.id, questName: q.name, zone: q.zone, act: q.act, steps })
+  })
+  return { id, name: asString(meta.name) ?? id, class: cls, zones, portions }
 }
 
 export function loadGuide(guidesRoot: string, profile: string, lang: Language): Guide {

@@ -3,7 +3,9 @@ import path from 'node:path'
 import { parse as parseToml, stringify as stringifyToml } from 'smol-toml'
 import type { Language } from '../shared/i18n'
 import { messages } from '../shared/i18n'
-import type { GemEntry, PresetSource } from '../shared/types'
+import type { CharClass, GemEntry, GuideStep, PresetPortion, PresetSource } from '../shared/types'
+import { CHAR_CLASSES } from '../shared/types'
+import { questRewardById } from '../shared/quest-rewards'
 import { getZoneActEarliest } from './area-levels'
 
 /**
@@ -56,6 +58,50 @@ export function gemEntryText(entry: GemEntry, lang: Language): string {
   return entry.vendor ? `${t.buyPrefix} ${entry.vendor}: ${items}` : `${t.buyPrefix}: ${items}`
 }
 
+function asStringList(v: unknown): string[] {
+  return Array.isArray(v)
+    ? v.filter((it): it is string => typeof it === 'string' && it.trim() !== '')
+    : []
+}
+
+/** Разбор [[portion]]: квест-триггер обязан существовать в quest-rewards.json. */
+export function parsePortion(
+  raw: unknown,
+  where: string,
+  index: number,
+  lang: Language
+): PresetPortion {
+  const p = raw as Record<string, unknown>
+  const quest = asString(p.quest)
+  if (!quest || !questRewardById(quest)) {
+    throw new Error(messages[lang].portionUnknownQuestError(where, index, quest ?? ''))
+  }
+  return { quest, take: asStringList(p.take), buy: asStringList(p.buy) }
+}
+
+/**
+ * Синтез шагов порции: заголовки/зона берутся из quest-rewards.json,
+ * тексты — через gemEntryText (единый маркап с обычными записями камней).
+ */
+export function portionSteps(portion: PresetPortion, lang: Language): GuideStep[] {
+  const q = questRewardById(portion.quest)
+  if (!q) return []
+  const steps: GuideStep[] = []
+  if (portion.take.length > 0) {
+    steps.push({
+      kind: 'gem-reward',
+      text: gemEntryText({ kind: 'gem-reward', quest: q.name, items: portion.take }, lang)
+    })
+  }
+  if (portion.buy.length > 0) {
+    steps.push({
+      kind: 'gem-buy',
+      text: gemEntryText({ kind: 'gem-buy', vendor: q.vendorNpc, items: portion.buy }, lang)
+    })
+  }
+  return steps
+}
+
 const ID_RE = /^[\w-]+$/
 
 function presetPath(guidesRoot: string, profile: string, id: string, lang: Language): string {
@@ -77,6 +123,9 @@ export function readPresetSource(
   }
   const doc = parseToml(raw) as Record<string, unknown>
   const meta = (doc.preset ?? {}) as Record<string, unknown>
+  const clsRaw = asString(meta.class)
+  // невалидный класс не роняет пресет: гемы просто не фильтруются в редакторе
+  const cls = CHAR_CLASSES.includes(clsRaw as CharClass) ? (clsRaw as CharClass) : undefined
   const zonesRaw = Array.isArray(doc.zone) ? doc.zone : []
   const zones: PresetSource['zones'] = []
   zonesRaw.forEach((z, i) => {
@@ -92,7 +141,9 @@ export function readPresetSource(
     if (existing) existing.gems.push(...gems)
     else zones.push({ name, act, gems })
   })
-  return { id, name: asString(meta.name) ?? id, zones }
+  const portionsRaw = Array.isArray(doc.portion) ? doc.portion : []
+  const portions = portionsRaw.map((p, i) => parsePortion(p, `gems/${id}.toml`, i, lang))
+  return { id, name: asString(meta.name) ?? id, class: cls, zones, portions }
 }
 
 export function writePreset(
@@ -103,7 +154,13 @@ export function writePreset(
 ): void {
   const file = presetPath(guidesRoot, profile, src.id, lang)
   const doc = {
-    preset: { name: src.name },
+    preset: src.class ? { name: src.name, class: src.class } : { name: src.name },
+    portion: src.portions.map((p) => {
+      const out: Record<string, unknown> = { quest: p.quest }
+      if (p.take.length > 0) out.take = p.take
+      if (p.buy.length > 0) out.buy = p.buy
+      return out
+    }),
     zone: src.zones.map((z) => ({
       name: z.name,
       act: z.act,
