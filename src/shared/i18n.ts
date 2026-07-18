@@ -61,6 +61,15 @@ export interface Messages {
   removeZoneFromPresetTitle: string
   addEntryBtn: string
   addZoneOption: string
+  classLabel: string
+  classNoneOption: string
+  portionsSectionTitle: string
+  portionsHint: string
+  portionTakeLabel: string
+  portionBuyLabel: string
+  addPortionOption: string
+  addGemOption: string
+  removePortionTitle: string
   runDistanceTitle: string
   rewardOption: string
   buyOption: string
@@ -174,6 +183,16 @@ const ru: Messages = {
   removeZoneFromPresetTitle: 'Убрать зону из пресета',
   addEntryBtn: '+ запись',
   addZoneOption: '+ добавить зону...',
+  classLabel: 'Класс',
+  classNoneOption: 'Любой класс',
+  portionsSectionTitle: 'Порции камней (по квестам)',
+  portionsHint:
+    'Камни показываются после прохождения квеста: порция появляется в оверлее, когда вы доходите до следующей зоны после квестовой',
+  portionTakeLabel: 'Забрать',
+  portionBuyLabel: 'Купить',
+  addPortionOption: '+ добавить квест...',
+  addGemOption: '+ камень...',
+  removePortionTitle: 'Убрать квест из пресета',
   runDistanceTitle: 'Дистанция забега',
   rewardOption: 'Награда',
   buyOption: 'Покупка',
@@ -292,6 +311,16 @@ const en: Messages = {
   removeZoneFromPresetTitle: 'Remove zone from preset',
   addEntryBtn: '+ entry',
   addZoneOption: '+ add zone...',
+  classLabel: 'Class',
+  classNoneOption: 'Any class',
+  portionsSectionTitle: 'Gem portions (by quest)',
+  portionsHint:
+    'Gems are shown after the quest is completed: a portion appears in the overlay once you reach the next zone after the quest zone',
+  portionTakeLabel: 'Take',
+  portionBuyLabel: 'Buy',
+  addPortionOption: '+ add quest...',
+  addGemOption: '+ gem...',
+  removePortionTitle: 'Remove quest from preset',
   runDistanceTitle: 'Run distance',
   rewardOption: 'Reward',
   buyOption: 'Buy',
