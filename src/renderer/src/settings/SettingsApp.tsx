@@ -265,6 +265,21 @@ export function SettingsApp(): React.JSX.Element {
           </>
         )}
 
+        <div className="runs-settings">
+          <span className="pane-title">Дистанция забега</span>
+          <div className="target-acts">
+            {[1, 3, 5, 10].map((n) => (
+              <button
+                key={n}
+                className={state.timer.targetActs === n ? 'active' : ''}
+                onClick={() => window.api.setTargetActs(n)}
+              >
+                {n} {n === 1 ? 'акт' : 'актов'}
+              </button>
+            ))}
+          </div>
+        </div>
+
         <RunsHistory />
       </main>
     </div>

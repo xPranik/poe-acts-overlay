@@ -1,25 +1,34 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { expMultiplier, fullExpRange } from '../../shared/exp'
 import type { AppState, GuideAct, GuideStep, GuideZone } from '../../shared/types'
 import { gemStepKey, stepKey } from '../../shared/types'
 import { Markup } from './Markup'
 import { Timer } from './Timer'
 import trialIcon from './assets/trial.png'
+import gemsIcon from './assets/gem-icon.png'
 
 export default function App(): React.JSX.Element {
   const [state, setState] = useState<AppState | null>(null)
+  const rootRef = useRef<HTMLDivElement>(null)
+  const hasState = state !== null
 
   useEffect(() => {
     window.api.getState().then(setState)
     return window.api.onState(setState)
   }, [])
 
-  // Сообщаем main актуальную высоту контента, чтобы окно подгонялось под него.
+  // Сообщаем main актуальные размеры контента, чтобы окно подгонялось под него.
+  // Ширину меряем по overlay-root.scrollWidth: его box (width: fit-content)
+  // ограничен шириной окна, поэтому bounding-rect не даёт окну расти — а scrollWidth
+  // учитывает контент, вылезающий за ужатый box (панель/таймер с flex-shrink: 0),
+  // и при этом уменьшается, когда таймер скрыт.
   useEffect(() => {
+    const el = rootRef.current
+    if (!el) return
     let raf = 0
     const report = (): void => {
       window.api.reportContentSize(
-        Math.ceil(document.body.scrollWidth),
+        Math.ceil(el.scrollWidth),
         Math.ceil(document.body.scrollHeight)
       )
     }
@@ -27,23 +36,27 @@ export default function App(): React.JSX.Element {
       cancelAnimationFrame(raf)
       raf = requestAnimationFrame(report)
     })
+    ro.observe(el)
     ro.observe(document.body)
     report()
     return () => {
       cancelAnimationFrame(raf)
       ro.disconnect()
     }
-  }, [])
+  }, [hasState])
 
   if (!state) return <div className="panel">Загрузка...</div>
 
   const act = state.guide.acts.find((a) => a.number === state.currentAct)
   const zone = act && state.currentZoneIndex >= 0 ? act.zones[state.currentZoneIndex] : undefined
 
-  const actNumbers = state.guide.acts.map((a) => a.number)
+  // В LiveSplit показываем только выбранную в настройках дистанцию забега (1/3/5/10 актов).
+  const actNumbers = state.guide.acts
+    .map((a) => a.number)
+    .filter((n) => n <= state.timer.targetActs)
 
   return (
-    <div className="overlay-root">
+    <div className="overlay-root" ref={rootRef}>
       <div
         className={`panel ${state.interactive ? 'interactive' : ''} ${state.routeVisible ? '' : 'collapsed'}`}
       >
@@ -94,7 +107,7 @@ function Header({
           <span className="act-title">{act ? act.title : `Act ${state.currentAct}`}</span>
           <button onClick={() => window.api.navAct(1)}>›</button>
         </div>
-        <span className="zone-title">
+        <span className={state.hasTrial ? "zone-title trial-zone-title" : "zone-title"}>
           {state.hasTrial && (
             <span className="trial-badge" title="В этой зоне испытание Лабиринта">
               <img src={trialIcon} alt="trial" />
@@ -205,7 +218,7 @@ function ZoneView({ state, zone }: { state: AppState; zone: GuideZone }): React.
     {(presets.length > 0 || hasGems) && (
         <div className="gems">
           <div className="gems-head">
-            <span className="gems-title">💎 Камни</span>
+            <span className="gems-title"><img src={gemsIcon} alt="Gems" /> Камни</span>
             {presets.length > 0 && (
               <select
                 className="preset-select"

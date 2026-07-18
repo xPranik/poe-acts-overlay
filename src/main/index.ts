@@ -13,6 +13,7 @@ import {
   Tray
 } from 'electron'
 import path from 'node:path'
+import appIcon from '../../resources/icon.webp?asset'
 import { pathToFileURL } from 'node:url'
 import type { AppState, Guide, PresetSource } from '../shared/types'
 import { getStaticArea } from './area-levels'
@@ -44,7 +45,8 @@ const settings = loadSettings()
 // speedrun-таймер по актам; state.timer держит ссылку на его состояние (мутируется на месте)
 const runTimer = new RunTimer(
   { profile: () => settings.profile, loadRuns, saveRun },
-  settings.timerVisible
+  settings.timerVisible,
+  settings.targetActs
 )
 
 const state: AppState = {
@@ -248,8 +250,8 @@ function navAct(delta: number): void {
   pushState()
 }
 
-function trayIcon(): Electron.NativeImage {
-  // 16x16 solid amber square, generated in-memory (BGRA)
+/** Fallback: 16x16 solid amber square, generated in-memory (BGRA). */
+function fallbackTrayIcon(): Electron.NativeImage {
   const size = 16
   const buf = Buffer.alloc(size * size * 4)
   for (let i = 0; i < size * size; i++) {
@@ -259,6 +261,12 @@ function trayIcon(): Electron.NativeImage {
     buf[i * 4 + 3] = 255 // A
   }
   return nativeImage.createFromBitmap(buf, { width: size, height: size })
+}
+
+function trayIcon(): Electron.NativeImage {
+  const img = nativeImage.createFromPath(appIcon)
+  if (img.isEmpty()) return fallbackTrayIcon()
+  return img.resize({ width: 16, height: 16 })
 }
 
 function buildTray(): void {
@@ -369,6 +377,7 @@ function createWindow(): void {
     skipTaskbar: true,
     hasShadow: false,
     show: false,
+    icon: appIcon,
     webPreferences: {
       preload: path.join(__dirname, '../preload/index.js'),
       sandbox: false
@@ -404,6 +413,7 @@ function openSettingsWindow(): void {
     width: 780,
     height: 620,
     autoHideMenuBar: true,
+    icon: appIcon,
     title: 'Настройки камней — PoE Acts Overlay',
     webPreferences: {
       preload: path.join(__dirname, '../preload/index.js'),
@@ -514,6 +524,13 @@ function registerIpc(): void {
     pushState()
   })
   ipcMain.on('timer-toggle-visible', timerToggleVisible)
+  // смена дистанции забега (число актов); только вне активного забега
+  ipcMain.on('set-target-acts', (_e, n: number) => {
+    runTimer.setTargetActs(n)
+    settings.targetActs = runTimer.state.targetActs
+    saveSettings(settings)
+    pushState()
+  })
   // история забегов для окна настроек
   ipcMain.handle('get-runs', () => loadRuns(settings.profile))
   ipcMain.handle('delete-run', (_e, id: string) => {
@@ -539,6 +556,10 @@ function registerIpc(): void {
     const area = screen.getDisplayMatching(b).workArea
     const width = Math.max(120, Math.min(w, area.width))
     const height = Math.max(80, Math.min(h, area.height))
+    // Ширину определяет только контент: фиксируем min==max по ширине, чтобы её
+    // нельзя было менять мышкой. По высоте ресайз остаётся доступен.
+    win.setMinimumSize(width, 80)
+    win.setMaximumSize(width, area.height)
     if (width === b.width && height === b.height) return
     // Левый край окна (основной контент) держим на месте; окно растёт вправо.
     // Если правый край вылезает за рабочую область — сдвигаем окно влево, чтобы

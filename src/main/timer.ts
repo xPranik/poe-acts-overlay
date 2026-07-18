@@ -3,7 +3,7 @@ import type { ActSplit, Run, TimerState } from '../shared/types'
 /** Последний акт кампании — вход в его финальную зону завершает забег. */
 export const FINAL_ACT = 10
 
-export function initialTimerState(visible = false): TimerState {
+export function initialTimerState(visible = false, targetActs = FINAL_ACT): TimerState {
   return {
     status: 'idle',
     accumulatedMs: 0,
@@ -12,7 +12,8 @@ export function initialTimerState(visible = false): TimerState {
     splits: [],
     visible,
     pb: null,
-    bestSegments: null
+    bestSegments: null,
+    targetActs
   }
 }
 
@@ -20,7 +21,10 @@ export function initialTimerState(visible = false): TimerState {
  * PB = завершённый забег с минимальным итогом; bestSegments = минимальный сегмент
  * каждого акта по всем забегам (Sum of Best / «золото»).
  */
-export function computeComparison(runs: Run[]): {
+export function computeComparison(
+  runs: Run[],
+  targetActs: number
+): {
   pb: ActSplit[] | null
   bestSegments: Record<number, number> | null
 } {
@@ -29,6 +33,8 @@ export function computeComparison(runs: Run[]): {
   const best: Record<number, number> = {}
 
   for (const run of runs) {
+    // сравнение раздельно по дистанции; старые записи без поля трактуем как 10
+    if ((run.targetActs ?? FINAL_ACT) !== targetActs) continue
     if (run.completed && run.totalMs != null && run.totalMs < pbTotal) {
       pbTotal = run.totalMs
       pb = run.splits
@@ -64,11 +70,15 @@ export class RunTimer {
   private deps: RunTimerDeps
   private now: () => number
   private startedAt = 0
+  /** акт старта текущего забега */
+  private startAct = 1
+  /** целевой акт финиша: min(startAct + targetActs - 1, FINAL_ACT) */
+  private endAct = FINAL_ACT
 
-  constructor(deps: RunTimerDeps, visible = false) {
+  constructor(deps: RunTimerDeps, visible = false, targetActs = FINAL_ACT) {
     this.deps = deps
     this.now = deps.now ?? Date.now
-    this.state = initialTimerState(visible)
+    this.state = initialTimerState(visible, targetActs)
     this.refreshComparison()
   }
 
@@ -78,7 +88,10 @@ export class RunTimer {
   }
 
   private refreshComparison(): void {
-    const { pb, bestSegments } = computeComparison(this.deps.loadRuns(this.deps.profile()))
+    const { pb, bestSegments } = computeComparison(
+      this.deps.loadRuns(this.deps.profile()),
+      this.state.targetActs
+    )
     this.state.pb = pb
     this.state.bestSegments = bestSegments
   }
@@ -88,10 +101,13 @@ export class RunTimer {
     const s = this.state
     if (s.status === 'running' || s.status === 'paused') return
     this.startedAt = this.now()
+    this.startAct = Math.max(1, currentAct)
+    // финиш через targetActs актов от старта, но не дальше финального акта кампании
+    this.endAct = Math.min(this.startAct + s.targetActs - 1, FINAL_ACT)
     s.status = 'running'
     s.accumulatedMs = 0
     s.runningSince = this.startedAt
-    s.currentAct = Math.max(1, currentAct)
+    s.currentAct = this.startAct
     s.splits = []
     this.refreshComparison()
   }
@@ -102,17 +118,20 @@ export class RunTimer {
     if (s.status !== 'running') return
     if (newAct <= s.currentAct) return
     const e = this.elapsed()
-    while (s.currentAct < newAct) {
+    // не перешагиваем через целевой финиш — доводим до endAct и завершаем
+    const target = Math.min(newAct, this.endAct)
+    while (s.currentAct < target) {
       s.splits.push({ act: s.currentAct, cumulativeMs: e })
       s.currentAct++
     }
+    if (s.currentAct >= this.endAct) this.finish()
   }
 
-  /** Ручной сплит (дубль авто): на финальном акте завершает забег. */
+  /** Ручной сплит (дубль авто): на целевом акте завершает забег. */
   manualSplit(): void {
     const s = this.state
     if (s.status !== 'running') return
-    if (s.currentAct >= FINAL_ACT) {
+    if (s.currentAct >= this.endAct) {
       this.finish()
       return
     }
@@ -156,7 +175,8 @@ export class RunTimer {
       finishedAt: this.now(),
       splits: [...s.splits],
       totalMs: total,
-      completed: s.currentAct >= FINAL_ACT
+      completed: s.currentAct >= this.endAct,
+      targetActs: s.targetActs
     }
     this.deps.saveRun(run.profile, run)
     this.refreshComparison()
@@ -187,6 +207,14 @@ export class RunTimer {
 
   toggleVisible(): void {
     this.state.visible = !this.state.visible
+  }
+
+  /** Сменить дистанцию (число актов). Применимо только вне активного забега. */
+  setTargetActs(n: number): void {
+    if (this.state.status === 'running' || this.state.status === 'paused') return
+    this.state.targetActs = Math.max(1, Math.min(Math.round(n), FINAL_ACT))
+    // PB/сегменты считаются раздельно по дистанции — пересчитать
+    this.refreshComparison()
   }
 
   /** Перечитать историю забегов (после удаления/очистки извне) и пересчитать PB/сегменты. */

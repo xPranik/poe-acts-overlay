@@ -37,10 +37,11 @@ body {
 
 /* Корень оверлея: основной контент слева, окно забегов — справа от него. */
 .overlay-root {
-  display: flex;
+  display: inline-flex;
   flex-direction: row;
   align-items: flex-start;
   gap: 8px;
+  width: fit-content;
 }
 
 .panel {
@@ -296,6 +297,10 @@ body {
   gap: 4px;
 }
 
+.zone-title.trial-zone-title {
+  color: #13d865;
+}
+
 .trial-badge {
   color: #e8c46a;
   margin-right: 5px;
@@ -485,6 +490,13 @@ body {
   letter-spacing: 0.6px;
   color: #8ab3c0;
   font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+}
+
+.gems-title img {
+  width: 16px;
+  height: 16px; 
 }
 
 .preset-select {

@@ -88,6 +88,8 @@ export interface Run {
   splits: ActSplit[]
   totalMs: number | null
   completed: boolean
+  /** дистанция забега в актах (1/3/5/10); отсутствие в старых записях трактуется как 10 */
+  targetActs: number
 }
 
 export type TimerStatus = 'idle' | 'running' | 'paused' | 'finished'
@@ -113,6 +115,8 @@ export interface TimerState {
   pb: ActSplit[] | null
   /** акт → лучший сегмент (мс) по всем забегам, null если истории нет */
   bestSegments: Record<number, number> | null
+  /** целевая дистанция забега в актах (1/3/5/10) */
+  targetActs: number
 }
 
 export interface AppState {

@@ -64,7 +64,9 @@ export function RunsHistory(): React.JSX.Element {
             >
               <span className="run-date">{fmtDate(r.startedAt)}</span>
               <span className="run-profile">{r.profile}</span>
-              <span className="run-acts">{r.splits.length}/10 актов</span>
+              <span className="run-acts">
+                {r.splits.length}/{r.targetActs} {r.targetActs === 1 ? 'акт' : 'актов'}
+              </span>
               <span className="run-total">
                 {fmt(r.totalMs)}
                 {r.id === pbId ? ' ★' : ''}

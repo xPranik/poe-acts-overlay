@@ -33,6 +33,8 @@ export interface Settings {
   finishZone: string | null
   /** показывать ли панель таймера */
   timerVisible: boolean
+  /** дистанция забега в актах (1/3/5/10) */
+  targetActs: number
 }
 
 const DEFAULTS: Settings = {
@@ -57,7 +59,8 @@ const DEFAULTS: Settings = {
     timerToggleVisible: 'Ctrl+Alt+T'
   },
   finishZone: null,
-  timerVisible: false
+  timerVisible: false,
+  targetActs: 10
 }
 
 function settingsPath(): string {

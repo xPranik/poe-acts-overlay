@@ -375,6 +375,30 @@
   padding: 3px 8px;
 }
 
+.runs-settings {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.target-acts {
+  display: flex;
+  gap: 4px;
+}
+
+.target-acts button {
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.target-acts button.active {
+  background: rgba(127, 163, 176, 0.25);
+  border-color: rgba(127, 163, 176, 0.6);
+}
+
 .runs-list {
   list-style: none;
   margin: 0;

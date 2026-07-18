@@ -63,6 +63,9 @@ const api = {
   timerToggleVisible: (): void => {
     ipcRenderer.send('timer-toggle-visible')
   },
+  setTargetActs: (n: number): void => {
+    ipcRenderer.send('set-target-acts', n)
+  },
   getRuns: (): Promise<Run[]> => ipcRenderer.invoke('get-runs'),
   deleteRun: (id: string): Promise<Run[]> => ipcRenderer.invoke('delete-run', id),
   clearRuns: (): Promise<Run[]> => ipcRenderer.invoke('clear-runs')

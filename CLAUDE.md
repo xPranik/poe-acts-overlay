@@ -15,6 +15,14 @@ PoE Acts Overlay — an Electron + React overlay for Path of Exile 1 leveling. I
 the game's `Client.txt` to detect the current zone and shows per-zone guidance (route,
 gem plan, zone layouts) from hot-reloaded TOML guides.
 
+## Docs — read these first
+
+Before touching the project, use the maps in `docs/` instead of re-reading everything:
+
+- [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) — processes, data flow, IPC channels, state shape.
+- [docs/TASK-MAP.md](docs/TASK-MAP.md) — "I want to change X → touch these files" cookbook + scripts.
+- [docs/DATA-FORMATS.md](docs/DATA-FORMATS.md) — guide/gem TOML, inline markup grammar, JSON data, shared types.
+
 ## Commands
 
 - `npm run dev` — run the overlay (electron-vite dev with HMR)
