@@ -4,10 +4,7 @@ import type { AppState, GuideAct, GuideStep, GuideZone } from '../../shared/type
 import { gemStepKey, stepKey } from '../../shared/types'
 import { Markup } from './Markup'
 import { Timer } from './Timer'
-import actTowns from './data/act-towns.json'
 import trialIcon from './assets/trial.png'
-
-const TOWNS = actTowns as Array<{ name: string; act: number }>
 
 export default function App(): React.JSX.Element {
   const [state, setState] = useState<AppState | null>(null)
@@ -166,25 +163,15 @@ function ZoneView({ state, zone }: { state: AppState; zone: GuideZone }): React.
 
   const presets = state.guide.presets
   const preset = presets.find((p) => p.id === state.activePreset) ?? null
-  const isTown = useMemo(
-    () => TOWNS.some((t) => t.name === zone.name && t.act === act),
-    [zone, act]
-  )
-  // В городе показываем весь план камней акта (город — место закупки/линковки),
-  // ключ прогресса при этом остаётся привязан к исходной зоне камня. В обычной
-  // зоне — только её камни: точное совпадение (акт, имя), иначе по имени (легаси).
+  // Камни привязаны к АКТУ, а не к отдельной зоне: показываем весь план камней
+  // текущего акта в любой зоне этого акта (город лишь одна из локаций акта).
+  // Ключ прогресса при этом остаётся привязан к исходной зоне камня.
   const presetGems = useMemo<Array<{ zoneName: string; step: GuideStep }>>(() => {
     if (!preset) return []
-    if (isTown) {
-      return preset.zones
-        .filter((z) => z.act === act)
-        .flatMap((z) => z.steps.map((step) => ({ zoneName: z.name, step })))
-    }
-    const zoneGems =
-      preset.zones.find((z) => z.name === zone.name && z.act === act) ??
-      preset.zones.find((z) => z.name === zone.name)
-    return (zoneGems?.steps ?? []).map((step) => ({ zoneName: zoneGems!.name, step }))
-  }, [preset, isTown, act, zone])
+    return preset.zones
+      .filter((z) => z.act === act)
+      .flatMap((z) => z.steps.map((step) => ({ zoneName: z.name, step })))
+  }, [preset, act])
   const hasGems = inlineGems.length + presetGems.length > 0
 
   return (
