@@ -2,6 +2,26 @@ import type { Language } from './i18n'
 
 export type StepKind = 'normal' | 'gem-buy' | 'gem-reward'
 
+/** Классы персонажей PoE — фильтруют доступность квестовых наград. */
+export type CharClass =
+  | 'Marauder'
+  | 'Witch'
+  | 'Scion'
+  | 'Ranger'
+  | 'Duelist'
+  | 'Shadow'
+  | 'Templar'
+
+export const CHAR_CLASSES: CharClass[] = [
+  'Marauder',
+  'Witch',
+  'Scion',
+  'Ranger',
+  'Duelist',
+  'Shadow',
+  'Templar'
+]
+
 export interface GuideStep {
   text: string
   kind: StepKind
@@ -31,13 +51,32 @@ export interface PresetZone {
   steps: GuideStep[]
 }
 
+/**
+ * Скомпилированная «порция» камней: становится видимой, когда игрок дошёл до
+ * зоны-триггера квеста (см. quest-rewards.json), и сменяется следующей порцией.
+ */
+export interface GemPortion {
+  /** id квеста-триггера (a1q5, ...) из quest-rewards.json */
+  quest: string
+  /** имя квеста — заголовок порции в оверлее */
+  questName: string
+  /** зона-триггер: дойдя до неё, игрок открывает эту порцию */
+  zone: string
+  act: number
+  steps: GuideStep[]
+}
+
 export interface GemPreset {
   /** stable id = preset file name without extension */
   id: string
   /** display name from [preset].name, falls back to id */
   name: string
+  /** класс персонажа; фильтрует квестовые награды в редакторе */
+  class?: CharClass
   /** зоны с камнями; ищутся по (акт, имя) с фолбэком на имя */
   zones: PresetZone[]
+  /** прогрессивные порции: показывается последняя, чей триггер уже достигнут */
+  portions: GemPortion[]
 }
 
 /**
@@ -56,11 +95,27 @@ export interface GemEntry {
   items?: string[]
 }
 
+/**
+ * Порция в исходном TOML ([[portion]]): квест-триггер + что забрать наградой
+ * и что докупить у торговца после него. Тексты и зона синтезируются из
+ * quest-rewards.json при загрузке.
+ */
+export interface PresetPortion {
+  /** id квеста из quest-rewards.json (a1q5, ...) */
+  quest: string
+  /** забрать наградой за квест */
+  take: string[]
+  /** купить у торговца после квеста */
+  buy: string[]
+}
+
 /** Пресет в исходном (редактируемом) виде — то, что лежит в gems/<id>.toml. */
 export interface PresetSource {
   id: string
   name: string
+  class?: CharClass
   zones: Array<{ name: string; act: number; gems: GemEntry[] }>
+  portions: PresetPortion[]
 }
 
 export interface Guide {
