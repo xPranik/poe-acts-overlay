@@ -73,6 +73,52 @@ export type LogStatus =
   | { kind: 'ok'; path: string }
   | { kind: 'missing'; message: string }
 
+/** Один сплит: акт `act` завершён на отметке `cumulativeMs` от старта забега. */
+export interface ActSplit {
+  act: number
+  cumulativeMs: number
+}
+
+/** Сохранённый забег со сплитами по актам. */
+export interface Run {
+  id: string
+  profile: string
+  startedAt: number
+  finishedAt: number | null
+  splits: ActSplit[]
+  totalMs: number | null
+  completed: boolean
+  /** дистанция забега в актах (1/3/5/10); отсутствие в старых записях трактуется как 10 */
+  targetActs: number
+}
+
+export type TimerStatus = 'idle' | 'running' | 'paused' | 'finished'
+
+/**
+ * Состояние таймера в main. Renderer тикает локально из `runningSince`/`accumulatedMs`
+ * (те же часы машины), IPC шлёт только дискретные события.
+ * elapsed = accumulatedMs + (runningSince ? Date.now() - runningSince : 0)
+ */
+export interface TimerState {
+  status: TimerStatus
+  /** замороженный elapsed (мс), накопленный до текущего resume */
+  accumulatedMs: number
+  /** epoch мс последнего resume; null в паузе/idle/finished */
+  runningSince: number | null
+  /** акт, который сейчас идёт */
+  currentAct: number
+  /** сплиты текущего забега */
+  splits: ActSplit[]
+  /** тоггл панели таймера */
+  visible: boolean
+  /** сплиты Personal Best забега (для Δ), null если истории нет */
+  pb: ActSplit[] | null
+  /** акт → лучший сегмент (мс) по всем забегам, null если истории нет */
+  bestSegments: Record<number, number> | null
+  /** целевая дистанция забега в актах (1/3/5/10) */
+  targetActs: number
+}
+
 export interface AppState {
   guide: Guide
   currentAct: number
@@ -90,9 +136,13 @@ export interface AppState {
   charLevel: number | null
   /** уровень монстров текущей зоны (из лога или данных exile-leveling), null = неизвестен/город */
   areaLevel: number | null
+  /** есть ли в текущей зоне испытание Лабиринта (по (act, name), см. trial-zones.ts) */
+  hasTrial: boolean
   logStatus: LogStatus
   /** checked step keys */
   progress: Record<string, boolean>
+  /** состояние speedrun-таймера по актам */
+  timer: TimerState
 }
 
 export function stepKey(act: number, zone: string, stepText: string): string {

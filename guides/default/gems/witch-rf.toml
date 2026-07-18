@@ -26,6 +26,11 @@ kind = "gem-reward"
 quest = "Пират"
 items = [ "Scorching Ray" ]
 
+[[zone.gems]]
+kind = "gem-buy"
+vendor = "После Пирата"
+items = [ "Vitality" ]
+
 [[zone]]
 name = "The Forest Encampment"
 act = 2

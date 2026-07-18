@@ -1,5 +1,6 @@
 import { useMemo } from 'react'
 import { parseMarkup, TokenType } from '../../shared/markup'
+import { gemColor } from './gemAttrs'
 import craftingIcon from './assets/crafting.png'
 import portalIcon from './assets/portal.png'
 import questIcon from './assets/quest.png'
@@ -26,7 +27,11 @@ export function Markup({ text }: { text: string }): React.JSX.Element {
         seg.type === 'text' ? (
           <span key={i}>{seg.text}</span>
         ) : (
-          <span key={i} className={`mk mk-${seg.type}`}>
+          <span
+            key={i}
+            className={`mk mk-${seg.type}`}
+            style={seg.type === 'item' ? { color: gemColor(seg.text) } : undefined}
+          >
             {ICONS[seg.type] && <img className="mk-icon" src={ICONS[seg.type]} alt="" />}
             {seg.text}
           </span>

@@ -1,5 +1,5 @@
 import { contextBridge, ipcRenderer } from 'electron'
-import type { AppState, PresetSource } from '../shared/types'
+import type { AppState, PresetSource, Run } from '../shared/types'
 
 type SaveResult = { ok: true } | { ok: false; error: string }
 
@@ -40,7 +40,35 @@ const api = {
   getPresetSource: (id: string): Promise<PresetSource | null> =>
     ipcRenderer.invoke('get-preset-source', id),
   savePreset: (src: PresetSource): Promise<SaveResult> => ipcRenderer.invoke('save-preset', src),
-  deletePreset: (id: string): Promise<SaveResult> => ipcRenderer.invoke('delete-preset', id)
+  deletePreset: (id: string): Promise<SaveResult> => ipcRenderer.invoke('delete-preset', id),
+  reportContentSize: (width: number, height: number): void => {
+    ipcRenderer.send('content-resize', { width, height })
+  },
+  // --- таймер по актам ---
+  timerStartSplit: (): void => {
+    ipcRenderer.send('timer-start-split')
+  },
+  timerPause: (): void => {
+    ipcRenderer.send('timer-pause')
+  },
+  timerFinish: (): void => {
+    ipcRenderer.send('timer-finish')
+  },
+  timerReset: (): void => {
+    ipcRenderer.send('timer-reset')
+  },
+  timerUndo: (): void => {
+    ipcRenderer.send('timer-undo')
+  },
+  timerToggleVisible: (): void => {
+    ipcRenderer.send('timer-toggle-visible')
+  },
+  setTargetActs: (n: number): void => {
+    ipcRenderer.send('set-target-acts', n)
+  },
+  getRuns: (): Promise<Run[]> => ipcRenderer.invoke('get-runs'),
+  deleteRun: (id: string): Promise<Run[]> => ipcRenderer.invoke('delete-run', id),
+  clearRuns: (): Promise<Run[]> => ipcRenderer.invoke('clear-runs')
 }
 
 contextBridge.exposeInMainWorld('api', api)

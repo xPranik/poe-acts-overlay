@@ -1,21 +1,5 @@
 import { useMemo, useState } from 'react'
-import gems from '../data/gems.json'
-
-interface GemInfo {
-  name: string
-  attr: string
-  level: number
-  support: boolean
-}
-
-const GEM_LIST = gems as GemInfo[]
-
-const ATTR_COLORS: Record<string, string> = {
-  str: '#e06060',
-  dex: '#4ec98a',
-  int: '#5aa0e8',
-  none: '#c8c8c8'
-}
+import { ATTR_COLORS, GEM_LIST } from '../gemAttrs'
 
 /** Поисковый список всех камней умений (данные exile-leveling). */
 export function GemPicker({

@@ -8,17 +8,31 @@ import {
   nativeImage,
   net,
   protocol,
+  screen,
   shell,
   Tray
 } from 'electron'
 import path from 'node:path'
+import appIcon from '../../resources/icon.webp?asset'
 import { pathToFileURL } from 'node:url'
 import type { AppState, Guide, PresetSource } from '../shared/types'
 import { getStaticArea } from './area-levels'
+import { hasTrial } from './trial-zones'
 import { loadGuide, watchGuide } from './guide-loader'
 import { extractZone, findClientLog, LogWatcher } from './log-watcher'
 import { deletePreset, readPresetSource, writePreset } from './preset-store'
-import { guidesRoot, loadProgress, loadSettings, saveProgress, saveSettings } from './settings'
+import {
+  clearRuns,
+  deleteRun,
+  guidesRoot,
+  loadProgress,
+  loadRuns,
+  loadSettings,
+  saveProgress,
+  saveRun,
+  saveSettings
+} from './settings'
+import { RunTimer } from './timer'
 import { resolveZone } from './zone-tracker'
 
 let win: BrowserWindow | null = null
@@ -27,6 +41,13 @@ let tray: Tray | null = null
 let logWatcher: LogWatcher | null = null
 
 const settings = loadSettings()
+
+// speedrun-таймер по актам; state.timer держит ссылку на его состояние (мутируется на месте)
+const runTimer = new RunTimer(
+  { profile: () => settings.profile, loadRuns, saveRun },
+  settings.timerVisible,
+  settings.targetActs
+)
 
 const state: AppState = {
   guide: { profile: settings.profile, acts: [], presets: [], errors: [] },
@@ -39,8 +60,10 @@ const state: AppState = {
   routeVisible: settings.routeVisible,
   charLevel: settings.charLevel,
   areaLevel: null,
+  hasTrial: false,
   logStatus: { kind: 'missing', message: 'Client.txt не найден' },
-  progress: loadProgress(settings.profile)
+  progress: loadProgress(settings.profile),
+  timer: runTimer.state
 }
 
 // реальные уровни инстансов из строк "Generating level N area ..." по имени зоны
@@ -56,8 +79,10 @@ function updateAreaLevel(): void {
   const name = state.currentZone
   if (!name) {
     state.areaLevel = null
+    state.hasTrial = false
     return
   }
+  state.hasTrial = hasTrial(name, state.currentAct)
   const stat = getStaticArea(name, state.currentAct)
   if (stat?.town) {
     // штраф опыта в городе — шум, индикатор не показываем
@@ -78,6 +103,8 @@ function onZoneEntered(zoneName: string, areaLevel: number | null = null): void 
     state.currentZoneIndex = -1
   }
   updateAreaLevel()
+  // авто-сплит таймера по актам (форвард-онли): вход в акт N фиксирует акты < N
+  if (runTimer.state.status === 'running') runTimer.advanceTo(state.currentAct)
   pushState()
 }
 
@@ -130,6 +157,22 @@ function setActivePreset(id: string | null): void {
   settings.gemPreset = id
   saveSettings(settings)
   updateTrayMenu()
+  pushState()
+}
+
+/** Старт/сплит одной клавишей: если забег не идёт — старт с текущего акта, иначе ручной сплит. */
+function timerStartSplit(): void {
+  const t = runTimer.state
+  if (t.status === 'idle' || t.status === 'finished') runTimer.start(state.currentAct)
+  else runTimer.manualSplit()
+  pushState()
+}
+
+/** Тоггл панели таймера + сохранение в настройки. */
+function timerToggleVisible(): void {
+  runTimer.toggleVisible()
+  settings.timerVisible = runTimer.state.visible
+  saveSettings(settings)
   pushState()
 }
 
@@ -207,8 +250,8 @@ function navAct(delta: number): void {
   pushState()
 }
 
-function trayIcon(): Electron.NativeImage {
-  // 16x16 solid amber square, generated in-memory (BGRA)
+/** Fallback: 16x16 solid amber square, generated in-memory (BGRA). */
+function fallbackTrayIcon(): Electron.NativeImage {
   const size = 16
   const buf = Buffer.alloc(size * size * 4)
   for (let i = 0; i < size * size; i++) {
@@ -218,6 +261,12 @@ function trayIcon(): Electron.NativeImage {
     buf[i * 4 + 3] = 255 // A
   }
   return nativeImage.createFromBitmap(buf, { width: size, height: size })
+}
+
+function trayIcon(): Electron.NativeImage {
+  const img = nativeImage.createFromPath(appIcon)
+  if (img.isEmpty()) return fallbackTrayIcon()
+  return img.resize({ width: 16, height: 16 })
 }
 
 function buildTray(): void {
@@ -246,6 +295,15 @@ function updateTrayMenu(): void {
   ]
   const menu = Menu.buildFromTemplate([
     { label: 'Показать/скрыть оверлей', click: toggleOverlay },
+    {
+      label: runTimer.state.visible
+        ? `Скрыть таймер забегов (${settings.hotkeys.timerToggleVisible})`
+        : `Показать таймер забегов (${settings.hotkeys.timerToggleVisible})`,
+      click: () => {
+        timerToggleVisible()
+        updateTrayMenu()
+      }
+    },
     {
       label: 'Режим кликов (interactive)',
       click: () => setInteractive(!state.interactive)
@@ -319,6 +377,7 @@ function createWindow(): void {
     skipTaskbar: true,
     hasShadow: false,
     show: false,
+    icon: appIcon,
     webPreferences: {
       preload: path.join(__dirname, '../preload/index.js'),
       sandbox: false
@@ -354,6 +413,7 @@ function openSettingsWindow(): void {
     width: 780,
     height: 620,
     autoHideMenuBar: true,
+    icon: appIcon,
     title: 'Настройки камней — PoE Acts Overlay',
     webPreferences: {
       preload: path.join(__dirname, '../preload/index.js'),
@@ -396,6 +456,20 @@ function registerHotkeys(): void {
   bind(hk.prevZone, () => navZone(-1))
   bind(hk.nextZone, () => navZone(1))
   bind(hk.openSettings, openSettingsWindow)
+  bind(hk.timerStartSplit, timerStartSplit)
+  bind(hk.timerPause, () => {
+    runTimer.togglePause()
+    pushState()
+  })
+  bind(hk.timerReset, () => {
+    runTimer.reset()
+    pushState()
+  })
+  bind(hk.timerUndo, () => {
+    runTimer.undo()
+    pushState()
+  })
+  bind(hk.timerToggleVisible, timerToggleVisible)
   bind(hk.toggleDevTools, () => {
     const wc = win?.webContents
     if (!wc) return
@@ -431,6 +505,73 @@ function registerIpc(): void {
     shell.openPath(path.join(guidesRoot(), settings.profile))
   })
   ipcMain.on('open-settings', openSettingsWindow)
+  // управление таймером кнопками из оверлея/настроек (дубль хоткеев)
+  ipcMain.on('timer-start-split', timerStartSplit)
+  ipcMain.on('timer-pause', () => {
+    runTimer.togglePause()
+    pushState()
+  })
+  ipcMain.on('timer-finish', () => {
+    runTimer.finish()
+    pushState()
+  })
+  ipcMain.on('timer-reset', () => {
+    runTimer.reset()
+    pushState()
+  })
+  ipcMain.on('timer-undo', () => {
+    runTimer.undo()
+    pushState()
+  })
+  ipcMain.on('timer-toggle-visible', timerToggleVisible)
+  // смена дистанции забега (число актов); только вне активного забега
+  ipcMain.on('set-target-acts', (_e, n: number) => {
+    runTimer.setTargetActs(n)
+    settings.targetActs = runTimer.state.targetActs
+    saveSettings(settings)
+    pushState()
+  })
+  // история забегов для окна настроек
+  ipcMain.handle('get-runs', () => loadRuns(settings.profile))
+  ipcMain.handle('delete-run', (_e, id: string) => {
+    deleteRun(settings.profile, id)
+    runTimer.reloadHistory()
+    pushState()
+    return loadRuns(settings.profile)
+  })
+  ipcMain.handle('clear-runs', () => {
+    clearRuns(settings.profile)
+    runTimer.reloadHistory()
+    pushState()
+    return [] as const
+  })
+  // Окно подгоняет свою высоту под контент рендерера; при превышении рабочей
+  // области экрана высота упирается в потолок, а лишнее скроллится (fallback в CSS).
+  ipcMain.on('content-resize', (_e, raw: { width: number; height: number }) => {
+    if (!win) return
+    const w = Math.round(Number(raw?.width))
+    const h = Math.round(Number(raw?.height))
+    if (!Number.isFinite(w) || w <= 0 || !Number.isFinite(h) || h <= 0) return
+    const b = win.getBounds()
+    const area = screen.getDisplayMatching(b).workArea
+    const width = Math.max(120, Math.min(w, area.width))
+    const height = Math.max(80, Math.min(h, area.height))
+    // Ширину определяет только контент: фиксируем min==max по ширине, чтобы её
+    // нельзя было менять мышкой. По высоте ресайз остаётся доступен.
+    win.setMinimumSize(width, 80)
+    win.setMaximumSize(width, area.height)
+    if (width === b.width && height === b.height) return
+    // Левый край окна (основной контент) держим на месте; окно растёт вправо.
+    // Если правый край вылезает за рабочую область — сдвигаем окно влево, чтобы
+    // панель забегов оставалась на экране, но не заходим левее рабочей области.
+    let x = b.x
+    if (x + width > area.x + area.width) x = area.x + area.width - width
+    if (x < area.x) x = area.x
+    let y = b.y
+    if (y + height > area.y + area.height) y = area.y + area.height - height
+    if (y < area.y) y = area.y
+    win.setBounds({ x, y, width, height })
+  })
   ipcMain.handle('get-preset-source', (_e, id: string) => {
     try {
       return readPresetSource(guidesRoot(), settings.profile, id)
