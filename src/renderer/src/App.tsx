@@ -286,10 +286,16 @@ function StepRow({
 
 function Footer({ state }: { state: AppState }): React.JSX.Element {
   const t = messages[state.language]
+  const upd = state.updateStatus
   return (
     <div className="footer">
       {state.logStatus.kind === 'missing' && (
         <span className="log-missing">⚠ {state.logStatus.message}</span>
+      )}
+      {upd.kind === 'available' && (
+        <span className="update-notice" onClick={() => window.api.openExternal(upd.url)}>
+          ⬆ {t.updateAvailable(upd.version)}
+        </span>
       )}
       {state.interactive ? (
         <span className="mode on">{t.clickModeOn}</span>

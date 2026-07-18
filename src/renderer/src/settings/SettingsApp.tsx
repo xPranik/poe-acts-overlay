@@ -12,9 +12,12 @@ const ID_RE = /^[\w-]+$/
 // города актов — единственные зоны, где покупают/забирают камни (по одному на акт 1-10)
 const TOWNS = actTowns as Array<{ name: string; act: number }>
 
-/** Окно настроек: редактор пресетов камней (gems/<id>.toml). */
+type Tab = 'presets' | 'general' | 'runs'
+
+/** Окно настроек: редактор пресетов камней (gems/<id>.toml) + общие настройки + история забегов. */
 export function SettingsApp(): React.JSX.Element {
   const [state, setState] = useState<AppState | null>(null)
+  const [tab, setTab] = useState<Tab>('general')
   const [selectedId, setSelectedId] = useState<string | null>(null)
   const [source, setSource] = useState<PresetSource | null>(null)
   const [dirty, setDirty] = useState(false)
@@ -125,197 +128,249 @@ export function SettingsApp(): React.JSX.Element {
 
   return (
     <div className="settings-root">
-      <aside className="preset-list">
-        <div className="preset-list-scroll">
-          <div className="pane-title">{t.presetsTitle}</div>
-          {presets.map((p) => (
-            <div
-              key={p.id}
-              className={`preset-item ${p.id === selectedId ? 'selected' : ''}`}
-              onClick={() => select(p.id)}
-            >
-              <button
-                className={`icon-btn active-toggle ${state.activePreset === p.id ? 'is-active' : ''}`}
-                title={state.activePreset === p.id ? t.activePresetOn : t.activePresetOff}
-                onClick={(e) => {
-                  e.stopPropagation()
-                  window.api.setPreset(state.activePreset === p.id ? null : p.id)
-                }}
-              >
-                {state.activePreset === p.id ? '★' : '☆'}
-              </button>
-              <span className="preset-item-name">{p.name}</span>
-              <button
-                className="icon-btn"
-                title={t.deletePresetTitle}
-                onClick={(e) => {
-                  e.stopPropagation()
-                  remove(p.id)
-                }}
-              >
-                ✕
-              </button>
-            </div>
+      <nav className="settings-tabs">
+        <button className={tab === 'general' ? 'active' : ''} onClick={() => setTab('general')}>
+          {t.generalTabTitle}
+        </button>
+        <button className={tab === 'presets' ? 'active' : ''} onClick={() => setTab('presets')}>
+          {t.presetsTitle}
+        </button>
+        <button className={tab === 'runs' ? 'active' : ''} onClick={() => setTab('runs')}>
+          {t.runsTitle}
+        </button>
+      </nav>
+
+      {state.guide.errors.length > 0 && (
+        <div className="banner error">
+          {state.guide.errors.map((e, i) => (
+            <div key={i}>⚠ {e}</div>
           ))}
-          {presets.length === 0 && <div className="hint">{t.noPresetsYet}</div>}
         </div>
-        <div className="new-preset">
-          <input
-            placeholder={t.newPresetIdPlaceholder}
-            value={newId}
-            onChange={(e) => setNewId(e.target.value)}
-            onKeyDown={(e) => e.key === 'Enter' && createPreset()}
-          />
-          <button onClick={createPreset}>{t.createBtn}</button>
-        </div>
-      </aside>
+      )}
 
-      <main className="editor">
-        {state.guide.errors.length > 0 && (
-          <div className="banner error">
-            {state.guide.errors.map((e, i) => (
-              <div key={i}>⚠ {e}</div>
-            ))}
-          </div>
-        )}
-        {message && <div className="banner error">⚠ {message}</div>}
-
-        {!source ? (
-          <div className="hint big">{t.pickOrCreateHint}</div>
-        ) : (
+      <div className="settings-body">
+        {tab === 'presets' && (
           <>
-            <div className="editor-head">
-              <input
-                className="preset-name"
-                value={source.name}
-                title={t.presetNameTitle}
-                onChange={(e) => update((d) => (d.name = e.target.value))}
-              />
-              <span className="preset-id">gems/{source.id}.toml</span>
-              <button onClick={duplicate}>{t.duplicateBtn}</button>
-              <button className="primary" disabled={!dirty} onClick={save}>
-                {dirty ? t.saveBtn : t.savedBtn}
-              </button>
-            </div>
-
-            {source.zones.map((zone, zi) => (
-              <section key={`${zone.act}|${zone.name}`} className="zone-block">
-                <div className="zone-block-head">
-                  <span className="zone-block-name">
-                    {zone.name}
-                    <span className="zone-block-act">{t.actLabel(zone.act)}</span>
-                  </span>
-                  <button
-                    className="icon-btn"
-                    title={t.removeZoneFromPresetTitle}
-                    onClick={() =>
-                      update((d) => {
-                        d.zones.splice(zi, 1)
-                      })
-                    }
+            <aside className="preset-list">
+              <div className="preset-list-scroll">
+                <div className="pane-title">{t.presetsTitle}</div>
+                {presets.map((p) => (
+                  <div
+                    key={p.id}
+                    className={`preset-item ${p.id === selectedId ? 'selected' : ''}`}
+                    onClick={() => select(p.id)}
                   >
-                    ✕
-                  </button>
-                </div>
-                {zone.gems.map((gem, gi) => (
-                  <EntryRow
-                    key={gi}
-                    gem={gem}
-                    language={state.language}
-                    canUp={gi > 0}
-                    canDown={gi < zone.gems.length - 1}
-                    pickerOpen={picker?.zi === zi && picker.index === gi}
-                    onOpenPicker={() => setPicker({ zi, index: gi })}
-                    onClosePicker={() => setPicker(null)}
-                    onChange={(g) =>
-                      update((d) => {
-                        d.zones[zi].gems[gi] = g
-                      })
-                    }
-                    onMove={(delta) =>
-                      update((d) => {
-                        const gems = d.zones[zi].gems
-                        const [g] = gems.splice(gi, 1)
-                        gems.splice(gi + delta, 0, g)
-                      })
-                    }
-                    onDelete={() =>
-                      update((d) => {
-                        d.zones[zi].gems.splice(gi, 1)
-                      })
-                    }
-                  />
+                    <button
+                      className={`icon-btn active-toggle ${state.activePreset === p.id ? 'is-active' : ''}`}
+                      title={state.activePreset === p.id ? t.activePresetOn : t.activePresetOff}
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        window.api.setPreset(state.activePreset === p.id ? null : p.id)
+                      }}
+                    >
+                      {state.activePreset === p.id ? '★' : '☆'}
+                    </button>
+                    <span className="preset-item-name">{p.name}</span>
+                    <button
+                      className="icon-btn"
+                      title={t.deletePresetTitle}
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        remove(p.id)
+                      }}
+                    >
+                      ✕
+                    </button>
+                  </div>
                 ))}
-                <button
-                  className="add-entry"
-                  onClick={() => {
-                    update((d) => {
-                      d.zones[zi].gems.push({ kind: 'gem-buy', items: [] })
-                    })
-                    setPicker({ zi, index: zone.gems.length })
-                  }}
-                >
-                  {t.addEntryBtn}
-                </button>
-              </section>
-            ))}
+                {presets.length === 0 && <div className="hint">{t.noPresetsYet}</div>}
+              </div>
+              <div className="new-preset">
+                <input
+                  placeholder={t.newPresetIdPlaceholder}
+                  value={newId}
+                  onChange={(e) => setNewId(e.target.value)}
+                  onKeyDown={(e) => e.key === 'Enter' && createPreset()}
+                />
+                <button onClick={createPreset}>{t.createBtn}</button>
+              </div>
+            </aside>
 
-            <div className="add-zone">
-              <select
-                value=""
-                onChange={(e) => {
-                  const idx = e.target.value
-                  if (idx === '') return
-                  const town = availableTowns[Number(idx)]
-                  update((d) => d.zones.push({ name: town.name, act: town.act, gems: [] }))
-                }}
-              >
-                <option value="">{t.addZoneOption}</option>
-                {availableTowns.map((town, i) => (
-                  <option key={`${town.act}|${town.name}`} value={i}>
-                    {town.name} ({t.actLabel(town.act)})
-                  </option>
-                ))}
-              </select>
-            </div>
+            <main className="editor">
+              {message && <div className="banner error">⚠ {message}</div>}
+
+              {!source ? (
+                <div className="hint big">{t.pickOrCreateHint}</div>
+              ) : (
+                <>
+                  <div className="editor-head">
+                    <input
+                      className="preset-name"
+                      value={source.name}
+                      title={t.presetNameTitle}
+                      onChange={(e) => update((d) => (d.name = e.target.value))}
+                    />
+                    <span className="preset-id">gems/{source.id}.toml</span>
+                    <button onClick={duplicate}>{t.duplicateBtn}</button>
+                    <button className="primary" disabled={!dirty} onClick={save}>
+                      {dirty ? t.saveBtn : t.savedBtn}
+                    </button>
+                  </div>
+
+                  {source.zones.map((zone, zi) => (
+                    <section key={`${zone.act}|${zone.name}`} className="zone-block">
+                      <div className="zone-block-head">
+                        <span className="zone-block-name">
+                          {zone.name}
+                          <span className="zone-block-act">{t.actLabel(zone.act)}</span>
+                        </span>
+                        <button
+                          className="icon-btn"
+                          title={t.removeZoneFromPresetTitle}
+                          onClick={() =>
+                            update((d) => {
+                              d.zones.splice(zi, 1)
+                            })
+                          }
+                        >
+                          ✕
+                        </button>
+                      </div>
+                      {zone.gems.map((gem, gi) => (
+                        <EntryRow
+                          key={gi}
+                          gem={gem}
+                          language={state.language}
+                          canUp={gi > 0}
+                          canDown={gi < zone.gems.length - 1}
+                          pickerOpen={picker?.zi === zi && picker.index === gi}
+                          onOpenPicker={() => setPicker({ zi, index: gi })}
+                          onClosePicker={() => setPicker(null)}
+                          onChange={(g) =>
+                            update((d) => {
+                              d.zones[zi].gems[gi] = g
+                            })
+                          }
+                          onMove={(delta) =>
+                            update((d) => {
+                              const gems = d.zones[zi].gems
+                              const [g] = gems.splice(gi, 1)
+                              gems.splice(gi + delta, 0, g)
+                            })
+                          }
+                          onDelete={() =>
+                            update((d) => {
+                              d.zones[zi].gems.splice(gi, 1)
+                            })
+                          }
+                        />
+                      ))}
+                      <button
+                        className="add-entry"
+                        onClick={() => {
+                          update((d) => {
+                            d.zones[zi].gems.push({ kind: 'gem-buy', items: [] })
+                          })
+                          setPicker({ zi, index: zone.gems.length })
+                        }}
+                      >
+                        {t.addEntryBtn}
+                      </button>
+                    </section>
+                  ))}
+
+                  <div className="add-zone">
+                    <select
+                      value=""
+                      onChange={(e) => {
+                        const idx = e.target.value
+                        if (idx === '') return
+                        const town = availableTowns[Number(idx)]
+                        update((d) => d.zones.push({ name: town.name, act: town.act, gems: [] }))
+                      }}
+                    >
+                      <option value="">{t.addZoneOption}</option>
+                      {availableTowns.map((town, i) => (
+                        <option key={`${town.act}|${town.name}`} value={i}>
+                          {town.name} ({t.actLabel(town.act)})
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </>
+              )}
+            </main>
           </>
         )}
 
-        <div className="runs-settings">
-          <span className="pane-title">{t.runDistanceTitle}</span>
-          <div className="target-acts">
-            {[1, 3, 5, 10].map((n) => (
-              <button
-                key={n}
-                className={state.timer.targetActs === n ? 'active' : ''}
-                onClick={() => window.api.setTargetActs(n)}
-              >
-                {n} {t.actsWord(n)}
-              </button>
-            ))}
-          </div>
-        </div>
+        {tab === 'general' && (
+          <main className="editor">
+            <div className="settings-row">
+              <span className="pane-title">{t.languageTitle}</span>
+              <div className="target-acts">
+                <button
+                  className={state.language === 'ru' ? 'active' : ''}
+                  onClick={() => window.api.setLanguage('ru')}
+                >
+                  RU
+                </button>
+                <button
+                  className={state.language === 'en' ? 'active' : ''}
+                  onClick={() => window.api.setLanguage('en')}
+                >
+                  EN
+                </button>
+              </div>
+            </div>
 
-        <div className="runs-settings">
-          <span className="pane-title">{t.languageTitle}</span>
-          <div className="target-acts">
-            <button
-              className={state.language === 'ru' ? 'active' : ''}
-              onClick={() => window.api.setLanguage('ru')}
-            >
-              RU
-            </button>
-            <button
-              className={state.language === 'en' ? 'active' : ''}
-              onClick={() => window.api.setLanguage('en')}
-            >
-              EN
-            </button>
-          </div>
-        </div>
+            <div className="settings-row">
+              <span className="pane-title">{t.updateSectionTitle}</span>
+              <div className="target-acts">
+                <button onClick={() => window.api.checkForUpdates()}>
+                  {state.updateStatus.kind === 'checking' ? t.checkingUpdate : t.checkUpdateBtn}
+                </button>
+                {(() => {
+                  const upd = state.updateStatus
+                  if (upd.kind === 'up-to-date') return <span>{t.updateUpToDate}</span>
+                  if (upd.kind === 'error') return <span>{t.updateCheckError}</span>
+                  if (upd.kind === 'available') {
+                    return (
+                      <span
+                        className="update-link"
+                        onClick={() => window.api.openExternal(upd.url)}
+                      >
+                        {t.updateAvailable(upd.version)}
+                      </span>
+                    )
+                  }
+                  return null
+                })()}
+              </div>
+            </div>
+          </main>
+        )}
 
-        <RunsHistory language={state.language} />
-      </main>
+        {tab === 'runs' && (
+          <main className="editor">
+            <div className="settings-row">
+              <span className="pane-title">{t.runDistanceTitle}</span>
+              <div className="target-acts">
+                {[1, 3, 5, 10].map((n) => (
+                  <button
+                    key={n}
+                    className={state.timer.targetActs === n ? 'active' : ''}
+                    onClick={() => window.api.setTargetActs(n)}
+                  >
+                    {n} {t.actsWord(n)}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <RunsHistory language={state.language} />
+          </main>
+        )}
+      </div>
     </div>
   )
 }

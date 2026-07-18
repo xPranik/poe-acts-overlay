@@ -35,6 +35,7 @@ import {
   saveSettings
 } from './settings'
 import { RunTimer } from './timer'
+import { checkForUpdate } from './updates'
 import { resolveZone } from './zone-tracker'
 
 let win: BrowserWindow | null = null
@@ -66,7 +67,8 @@ const state: AppState = {
   logStatus: { kind: 'missing', message: messages[settings.language].clientLogNotFound },
   progress: loadProgress(settings.profile),
   timer: runTimer.state,
-  language: settings.language
+  language: settings.language,
+  updateStatus: { kind: 'idle' }
 }
 
 // реальные уровни инстансов из строк "Generating level N area ..." по имени зоны
@@ -75,6 +77,13 @@ const instanceLevels = new Map<string, number>()
 function pushState(): void {
   win?.webContents.send('state', state)
   settingsWin?.webContents.send('state', state)
+}
+
+async function runUpdateCheck(): Promise<void> {
+  state.updateStatus = { kind: 'checking' }
+  pushState()
+  state.updateStatus = await checkForUpdate(app.getVersion())
+  pushState()
 }
 
 /** Уровень текущей зоны: реальный инстанс из лога, иначе статика exile-leveling; город — null. */
@@ -595,6 +604,13 @@ function registerIpc(): void {
     }
   })
   ipcMain.on('set-language', (_e, lang: Language) => setLanguage(lang))
+  ipcMain.handle('check-for-updates', async () => {
+    await runUpdateCheck()
+    return state.updateStatus
+  })
+  ipcMain.on('open-external', (_e, url: string) => {
+    shell.openExternal(url)
+  })
 }
 
 /** Serves layout images from the guide profile directory as guide:///<relative-path>. */
@@ -624,6 +640,7 @@ if (!gotLock) {
     setGuide(loadGuide(guidesRoot(), settings.profile, settings.language))
     watchGuide(guidesRoot(), settings.profile, () => settings.language, setGuide)
     startLogWatcher()
+    void runUpdateCheck()
   })
 }
 

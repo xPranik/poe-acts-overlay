@@ -5,3 +5,7 @@ dist/
 *.tsbuildinfo
 .claude/settings.local.json
 tmp/
+
+# gem presets are personal build data, not part of the shipped guide
+guides/*/gems/*
+!guides/*/gems/.gitkeep

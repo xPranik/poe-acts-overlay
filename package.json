@@ -1,6 +1,6 @@
 {
   "name": "poe-acts-overlay",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Path of Exile acts leveling overlay with Client.txt zone tracking",
   "main": "out/main/index.js",
   "private": true,

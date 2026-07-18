@@ -64,7 +64,7 @@ const DEFAULTS: Settings = {
   finishZone: null,
   timerVisible: false,
   targetActs: 10,
-  language: 'ru'
+  language: 'en'
 }
 
 function settingsPath(): string {
