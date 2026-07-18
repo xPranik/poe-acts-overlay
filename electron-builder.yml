@@ -16,3 +16,6 @@ electronLanguages: ["en-US"]
 compression: maximum
 win:
   icon: build/icon.ico
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
