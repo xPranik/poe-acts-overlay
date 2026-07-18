@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { expMultiplier, fullExpRange } from '../../shared/exp'
 import { messages } from '../../shared/i18n'
-import type { AppState, GuideAct, GuideStep, GuideZone } from '../../shared/types'
+import type { AppState, GemPortion, GuideAct, GuideStep, GuideZone } from '../../shared/types'
 import { gemStepKey, stepKey } from '../../shared/types'
 import { Markup } from './Markup'
 import { Timer } from './Timer'
@@ -188,7 +188,31 @@ function ZoneView({ state, zone }: { state: AppState; zone: GuideZone }): React.
       .filter((z) => z.act === act)
       .flatMap((z) => z.steps.map((step) => ({ zoneName: z.name, step })))
   }, [preset, act])
-  const hasGems = inlineGems.length + presetGems.length > 0
+
+  // Прогрессивные порции: показываем последнюю порцию, чья зона-триггер уже
+  // достигнута (по позиции зоны внутри акта в маршруте). Порции из прошлых
+  // актов считаются достигнутыми; будущие — скрыты до прихода в зону-триггер.
+  const activePortion = useMemo<GemPortion | null>(() => {
+    if (!preset || preset.portions.length === 0) return null
+    const zoneIdx = (a: number, name: string): number => {
+      const ga = state.guide.acts.find((x) => x.number === a)
+      return ga ? ga.zones.findIndex((z) => z.name === name) : -1
+    }
+    const curIdx = state.currentZoneIndex >= 0 ? state.currentZoneIndex : zoneIdx(act, zone.name)
+    let found: GemPortion | null = null
+    for (const p of preset.portions) {
+      if (p.act < act) {
+        found = p
+        continue
+      }
+      if (p.act !== act) continue
+      const trigIdx = zoneIdx(p.act, p.zone)
+      if (trigIdx >= 0 && curIdx >= 0 && trigIdx <= curIdx) found = p
+    }
+    return found
+  }, [preset, act, zone, state.guide.acts, state.currentZoneIndex])
+
+  const hasGems = inlineGems.length + presetGems.length > 0 || activePortion !== null
 
   return (
     <>{state.routeVisible && (
@@ -221,6 +245,23 @@ function ZoneView({ state, zone }: { state: AppState; zone: GuideZone }): React.
     {(presets.length > 0 || hasGems) && (
         <div className="gems">
           {hasGems ? (
+            <>
+            {preset && activePortion && (
+              <div className="portion">
+                <div className="portion-title">{activePortion.questName}</div>
+                <ul className="steps">
+                  {activePortion.steps.map((s) => (
+                    <StepRow
+                      key={`q:${activePortion.quest}:${s.text}`}
+                      state={state}
+                      keyValue={gemStepKey(activePortion.act, activePortion.zone, preset.id, s.text)}
+                      text={s.text}
+                      kind={s.kind}
+                    />
+                  ))}
+                </ul>
+              </div>
+            )}
             <ul className="steps">
               {inlineGems.map((s) => (
                 <StepRow
@@ -242,6 +283,7 @@ function ZoneView({ state, zone }: { state: AppState; zone: GuideZone }): React.
                   />
                 ))}
             </ul>
+            </>
           ) : (
             <div className="gems-empty">
               {state.activePreset ? t.noGemsInZone : t.pickBuildHint}
