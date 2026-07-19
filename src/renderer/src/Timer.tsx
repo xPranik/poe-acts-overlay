@@ -28,6 +28,15 @@ export function liveElapsed(t: TimerState, now: number): number {
   return t.accumulatedMs + (t.runningSince != null ? now - t.runningSince : 0)
 }
 
+export const CLOSE_THRESHOLD_MS = 10_000
+
+export function deltaColorClass(delta: number | null): string {
+  if (delta == null) return ''
+  if (delta <= 0) return 'ahead'
+  if (delta <= CLOSE_THRESHOLD_MS) return 'close'
+  return 'behind'
+}
+
 interface Row {
   act: number
   cumulativeMs: number | null
@@ -121,13 +130,10 @@ export function Timer({
   const paused = timer.status === 'paused'
   const active = running || paused
 
-  const deltaClass = (d: number | null): string =>
-    d == null ? '' : d > 0 ? 'behind' : 'ahead'
-
   return (
     <div className={`timer status-${timer.status}`}>
       <div className="timer-head">
-        <span className={`timer-total ${active ? deltaClass(rows[rows.length - 1]?.delta ?? null) : ''}`}>
+        <span className={`timer-total ${active ? deltaColorClass(rows[rows.length - 1]?.delta ?? null) : ''}`}>
           {fmt(elapsed, true)}
         </span>
         <span className="timer-status">
@@ -146,7 +152,7 @@ export function Timer({
               className={`${r.current ? 'current' : ''} ${r.pending ? 'pending' : ''}`}
             >
               <span className="split-act">{t.actLabel(r.act)}</span>
-              <span className={`split-delta ${deltaClass(r.delta)} ${r.gold ? 'gold' : ''}`}>
+              <span className={`split-delta ${deltaColorClass(r.delta)} ${r.gold ? 'gold' : ''}`}>
                 {r.delta != null ? fmtDelta(r.delta) : ''}
               </span>
               <span className="split-time">

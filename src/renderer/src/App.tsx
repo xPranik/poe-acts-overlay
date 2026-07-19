@@ -11,7 +11,7 @@ import type {
 } from '../../shared/types'
 import { gemStepKey, stepKey } from '../../shared/types'
 import { Markup } from './Markup'
-import { Timer, fmt, liveElapsed } from './Timer'
+import { Timer, fmt, liveElapsed, deltaColorClass } from './Timer'
 import trialIcon from './assets/trial.png'
 
 export default function App(): React.JSX.Element {
@@ -106,11 +106,17 @@ function MiniTimer({ timer }: { timer: TimerState }): React.JSX.Element {
     const id = setInterval(() => setNow(Date.now()), 250)
     return () => clearInterval(id)
   }, [timer.status, timer.runningSince])
-  return (
-    <span className={`mini-timer${timer.status === 'paused' ? ' mini-timer-paused' : ''}`}>
-      {fmt(liveElapsed(timer, now))}
-    </span>
-  )
+  const elapsed = liveElapsed(timer, now)
+  const pbCum = timer.pb?.find((s) => s.act === timer.currentAct)?.cumulativeMs
+  const delta = pbCum != null ? elapsed - pbCum : null
+  const classes = [
+    'mini-timer',
+    timer.status === 'paused' ? 'mini-timer-paused' : '',
+    deltaColorClass(delta)
+  ]
+    .filter(Boolean)
+    .join(' ')
+  return <span className={classes}>{fmt(elapsed)}</span>
 }
 
 function Header({

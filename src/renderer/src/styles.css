@@ -139,6 +139,10 @@ body {
   color: #e08585;
 }
 
+.timer-total.close {
+  color: #e0a955;
+}
+
 .timer-status {
   font-size: 11px;
   color: #6c7680;
@@ -193,6 +197,10 @@ body {
 
 .split-delta.behind {
   color: #e08585;
+}
+
+.split-delta.close {
+  color: #e0a955;
 }
 
 .split-delta.gold {
@@ -303,6 +311,18 @@ body {
 
 .header-actions .mini-timer-paused {
   color: #5b6570;
+}
+
+.header-actions .mini-timer.ahead {
+  color: #6fce87;
+}
+
+.header-actions .mini-timer.close {
+  color: #e0a955;
+}
+
+.header-actions .mini-timer.behind {
+  color: #e08585;
 }
 
 .act-title {
