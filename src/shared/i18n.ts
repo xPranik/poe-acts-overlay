@@ -19,6 +19,8 @@ export interface Messages {
   clickModeOn: string
   clickModeOff: string
   actLabel: (n: number) => string
+  checkpointLabel: (zone: string) => string
+  finishCheckpointLabel: string
 
   timerIdle: string
   timerPaused: string
@@ -125,6 +127,26 @@ export interface Messages {
   portionUnknownQuestError: (where: string, index: number, quest: string) => string
 }
 
+const ACT1_CHECKPOINT_LABELS_RU: Record<string, string> = {
+  'The Coast': 'Берег',
+  'The Mud Flats': 'Топи',
+  'The Ledge': 'Уступ',
+  'The Lower Prison': 'Нижняя тюрьма',
+  "Prisoner's Gate": 'Врата узника',
+  'The Ship Graveyard': 'Кладбище кораблей',
+  'The Cavern of Wrath': 'Пещера Гнева'
+}
+
+const ACT1_CHECKPOINT_LABELS_EN: Record<string, string> = {
+  'The Coast': 'Coast',
+  'The Mud Flats': 'Mud Flats',
+  'The Ledge': 'Ledge',
+  'The Lower Prison': 'Lower Prison',
+  "Prisoner's Gate": "Prisoner's Gate",
+  'The Ship Graveyard': 'Ship Graveyard',
+  'The Cavern of Wrath': 'Cavern of Wrath'
+}
+
 const ru: Messages = {
   loading: 'Загрузка...',
   dragOverlayTitle: 'Перетащить оверлей',
@@ -143,6 +165,8 @@ const ru: Messages = {
   clickModeOn: 'режим кликов — Ctrl+Alt+I чтобы отпустить мышь',
   clickModeOff: 'Ctrl+Alt+I — кликать · Ctrl+Alt+O — скрыть',
   actLabel: (n) => `Акт ${n}`,
+  checkpointLabel: (zone) => ACT1_CHECKPOINT_LABELS_RU[zone] ?? zone,
+  finishCheckpointLabel: 'Финиш',
 
   timerIdle: 'готов',
   timerPaused: 'пауза',
@@ -273,6 +297,8 @@ const en: Messages = {
   clickModeOn: 'click mode — Ctrl+Alt+I to release the mouse',
   clickModeOff: 'Ctrl+Alt+I — click · Ctrl+Alt+O — hide',
   actLabel: (n) => `Act ${n}`,
+  checkpointLabel: (zone) => ACT1_CHECKPOINT_LABELS_EN[zone] ?? zone,
+  finishCheckpointLabel: 'Finish',
 
   timerIdle: 'ready',
   timerPaused: 'paused',

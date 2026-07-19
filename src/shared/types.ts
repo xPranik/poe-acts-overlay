@@ -143,6 +143,12 @@ export interface ActSplit {
   cumulativeMs: number
 }
 
+/** Один сплит зоны-чекпоинта акта 1 (режим таймера "1 акт"). */
+export interface ZoneSplit {
+  zone: string
+  cumulativeMs: number
+}
+
 /** Сохранённый забег со сплитами по актам. */
 export interface Run {
   id: string
@@ -150,6 +156,8 @@ export interface Run {
   startedAt: number
   finishedAt: number | null
   splits: ActSplit[]
+  /** сплиты по зонам-чекпоинтам акта 1; заполняется только когда targetActs === 1 */
+  zoneSplits?: ZoneSplit[]
   totalMs: number | null
   completed: boolean
   /** дистанция забега в актах (1/3/5/10); отсутствие в старых записях трактуется как 10 */
@@ -173,12 +181,18 @@ export interface TimerState {
   currentAct: number
   /** сплиты текущего забега */
   splits: ActSplit[]
+  /** сплиты по зонам-чекпоинтам акта 1 текущего забега (только режим targetActs === 1) */
+  zoneSplits: ZoneSplit[]
   /** тоггл панели таймера */
   visible: boolean
   /** сплиты Personal Best забега (для Δ), null если истории нет */
   pb: ActSplit[] | null
+  /** сплиты по зонам-чекпоинтам PB-забега (targetActs === 1), null если истории нет */
+  zonePb: ZoneSplit[] | null
   /** акт → лучший сегмент (мс) по всем забегам, null если истории нет */
   bestSegments: Record<number, number> | null
+  /** зона-чекпоинт → лучший сегмент (мс) по всем 1-актовым забегам, null если истории нет */
+  bestZoneSegments: Record<string, number> | null
   /** целевая дистанция забега в актах (1/3/5/10) */
   targetActs: number
 }
