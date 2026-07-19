@@ -276,6 +276,16 @@ body {
   color: #a7c5cf;
 }
 
+.header-actions .mini-timer {
+  font-variant-numeric: tabular-nums;
+  font-size: 11px;
+  color: #7fa3b0;
+}
+
+.header-actions .mini-timer-paused {
+  color: #5b6570;
+}
+
 .act-title {
   font-weight: 600;
   color: #7fa3b0;
