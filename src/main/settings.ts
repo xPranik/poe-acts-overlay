@@ -2,7 +2,7 @@ import { app } from 'electron'
 import fs from 'node:fs'
 import path from 'node:path'
 import type { Language } from '../shared/i18n'
-import type { Run } from '../shared/types'
+import type { Run, TimerPosition } from '../shared/types'
 
 export interface Hotkeys {
   toggleOverlay: string
@@ -37,6 +37,8 @@ export interface Settings {
   finishZone: string | null
   /** показывать ли панель таймера */
   timerVisible: boolean
+  /** позиция панели таймера относительно основной панели */
+  timerPosition: TimerPosition
   /** дистанция забега в актах (1/3/5/10) */
   targetActs: number
   /** язык интерфейса */
@@ -67,12 +69,20 @@ const DEFAULTS: Settings = {
   },
   finishZone: null,
   timerVisible: false,
+  timerPosition: 'right',
   targetActs: 10,
   language: 'en'
 }
 
 function settingsPath(): string {
   return path.join(app.getPath('userData'), 'settings.json')
+}
+
+export const TIMER_POSITIONS: readonly TimerPosition[] = ['top', 'bottom', 'left', 'right']
+
+/** Неизвестное значение (ручная правка settings.json) трактуем как 'right'. */
+export function normalizeTimerPosition(v: unknown): TimerPosition {
+  return TIMER_POSITIONS.includes(v as TimerPosition) ? (v as TimerPosition) : 'right'
 }
 
 export function loadSettings(): Settings {
@@ -82,7 +92,8 @@ export function loadSettings(): Settings {
       ...DEFAULTS,
       ...raw,
       bounds: { ...DEFAULTS.bounds, ...raw.bounds },
-      hotkeys: { ...DEFAULTS.hotkeys, ...raw.hotkeys }
+      hotkeys: { ...DEFAULTS.hotkeys, ...raw.hotkeys },
+      timerPosition: normalizeTimerPosition(raw.timerPosition)
     }
   } catch {
     return { ...DEFAULTS }

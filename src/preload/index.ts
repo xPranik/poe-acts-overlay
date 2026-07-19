@@ -1,6 +1,6 @@
 import { contextBridge, ipcRenderer } from 'electron'
 import type { Language } from '../shared/i18n'
-import type { AppState, PresetSource, Run, UpdateStatus } from '../shared/types'
+import type { AppState, PresetSource, Run, TimerPosition, UpdateStatus } from '../shared/types'
 
 type SaveResult = { ok: true } | { ok: false; error: string }
 
@@ -66,6 +66,9 @@ const api = {
   },
   setTargetActs: (n: number): void => {
     ipcRenderer.send('set-target-acts', n)
+  },
+  setTimerPosition: (pos: TimerPosition): void => {
+    ipcRenderer.send('set-timer-position', pos)
   },
   getRuns: (): Promise<Run[]> => ipcRenderer.invoke('get-runs'),
   deleteRun: (id: string): Promise<Run[]> => ipcRenderer.invoke('delete-run', id),

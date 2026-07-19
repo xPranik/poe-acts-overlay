@@ -183,6 +183,9 @@ export interface TimerState {
   targetActs: number
 }
 
+/** Позиция панели таймера относительно основной панели оверлея. */
+export type TimerPosition = 'top' | 'bottom' | 'left' | 'right'
+
 export interface AppState {
   guide: Guide
   currentAct: number
@@ -210,6 +213,8 @@ export interface AppState {
   reachedZoneIndex: Record<number, number>
   /** состояние speedrun-таймера по актам */
   timer: TimerState
+  /** позиция панели таймера относительно основной панели */
+  timerPosition: TimerPosition
   /** язык интерфейса */
   language: Language
   /** результат последней проверки обновлений на GitHub Releases */

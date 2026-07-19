@@ -17,7 +17,7 @@ import appIcon from '../../resources/icon.ico?asset'
 import { pathToFileURL } from 'node:url'
 import type { Language } from '../shared/i18n'
 import { messages } from '../shared/i18n'
-import type { AppState, Guide, PresetSource } from '../shared/types'
+import type { AppState, Guide, PresetSource, TimerPosition } from '../shared/types'
 import { getStaticArea } from './area-levels'
 import { hasTrial } from './trial-zones'
 import { loadGuide, watchGuide } from './guide-loader'
@@ -34,7 +34,8 @@ import {
   saveProgress,
   saveRouteProgress,
   saveRun,
-  saveSettings
+  saveSettings,
+  TIMER_POSITIONS
 } from './settings'
 import { RunTimer } from './timer'
 import { checkForUpdate } from './updates'
@@ -70,6 +71,7 @@ const state: AppState = {
   progress: loadProgress(settings.profile),
   reachedZoneIndex: loadRouteProgress(settings.profile),
   timer: runTimer.state,
+  timerPosition: settings.timerPosition,
   language: settings.language,
   updateStatus: { kind: 'idle' }
 }
@@ -573,6 +575,14 @@ function registerIpc(): void {
   ipcMain.on('set-target-acts', (_e, n: number) => {
     runTimer.setTargetActs(n)
     settings.targetActs = runTimer.state.targetActs
+    saveSettings(settings)
+    pushState()
+  })
+  // позиция панели таймера (сверху/снизу/слева/справа от основной панели)
+  ipcMain.on('set-timer-position', (_e, pos: unknown) => {
+    if (!TIMER_POSITIONS.includes(pos as TimerPosition)) return
+    settings.timerPosition = pos as TimerPosition
+    state.timerPosition = settings.timerPosition
     saveSettings(settings)
     pushState()
   })
