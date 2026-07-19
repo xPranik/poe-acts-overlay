@@ -17,22 +17,25 @@ import appIcon from '../../resources/icon.ico?asset'
 import { pathToFileURL } from 'node:url'
 import type { Language } from '../shared/i18n'
 import { messages } from '../shared/i18n'
-import type { AppState, Guide, PresetSource } from '../shared/types'
+import type { AppState, Guide, PresetSource, TimerPosition } from '../shared/types'
 import { getStaticArea } from './area-levels'
 import { hasTrial } from './trial-zones'
 import { loadGuide, watchGuide } from './guide-loader'
-import { extractZone, findClientLog, LogWatcher } from './log-watcher'
+import { extractZone, findClientLog, LogWatcher, type LevelUp } from './log-watcher'
 import { deletePreset, readPresetSource, writePreset } from './preset-store'
 import {
   clearRuns,
   deleteRun,
   guidesRoot,
   loadProgress,
+  loadRouteProgress,
   loadRuns,
   loadSettings,
   saveProgress,
+  saveRouteProgress,
   saveRun,
-  saveSettings
+  saveSettings,
+  TIMER_POSITIONS
 } from './settings'
 import { RunTimer } from './timer'
 import { checkForUpdate } from './updates'
@@ -66,7 +69,9 @@ const state: AppState = {
   hasTrial: false,
   logStatus: { kind: 'missing', message: messages[settings.language].clientLogNotFound },
   progress: loadProgress(settings.profile),
+  reachedZoneIndex: loadRouteProgress(settings.profile),
   timer: runTimer.state,
+  timerPosition: settings.timerPosition,
   language: settings.language,
   updateStatus: { kind: 'idle' }
 }
@@ -111,18 +116,51 @@ function onZoneEntered(zoneName: string, areaLevel: number | null = null): void 
   if (pos) {
     state.currentAct = pos.act
     state.currentZoneIndex = pos.zoneIndex
+    // форвард-онли риска: запоминаем самый дальний реально достигнутый zoneIndex
+    // акта, чтобы бэктрекинг в раннюю зону (например, в хаб) не откатывал
+    // показанную порцию гемов назад
+    const prevReached = state.reachedZoneIndex[pos.act] ?? -1
+    if (pos.zoneIndex > prevReached) {
+      state.reachedZoneIndex[pos.act] = pos.zoneIndex
+      saveRouteProgress(settings.profile, state.reachedZoneIndex)
+    }
   } else {
     state.currentZoneIndex = -1
   }
   updateAreaLevel()
-  // авто-сплит таймера по актам (форвард-онли): вход в акт N фиксирует акты < N
-  if (runTimer.state.status === 'running') runTimer.advanceTo(state.currentAct)
+  if (runTimer.state.status === 'running') {
+    // чекпоинты зон акта 1 (режим "1 акт"); no-op вне этого режима
+    runTimer.onZoneEntered(zoneName)
+    // авто-сплит таймера по актам (форвард-онли): вход в акт N фиксирует акты < N
+    runTimer.advanceTo(state.currentAct)
+  }
   pushState()
 }
 
-function onLevelUp(level: number): void {
-  state.charLevel = level
-  settings.charLevel = level
+// имя своего перса подтверждено в этой сессии (уже видели его левел-ап);
+// пока не подтверждено, первый левел-ап с незнакомым именем = новый персонаж
+let ownNameConfirmed = false
+
+function onLevelUp(up: LevelUp): void {
+  if (settings.ownCharName === null || up.name === settings.ownCharName) {
+    settings.ownCharName = up.name
+    ownNameConfirmed = true
+  } else if (!ownNameConfirmed) {
+    // первый левел-ап после перезапуска оверлея с другим именем — считаем,
+    // что начат новый персонаж: перепривязываем имя и сбрасываем прогресс
+    // маршрута (риску и чеклист), чтобы не тащить их от прошлого забега
+    settings.ownCharName = up.name
+    ownNameConfirmed = true
+    state.progress = {}
+    state.reachedZoneIndex = {}
+    saveProgress(settings.profile, state.progress)
+    saveRouteProgress(settings.profile, state.reachedZoneIndex)
+  } else {
+    // левел-ап согрупника — игнорируем
+    return
+  }
+  state.charLevel = up.level
+  settings.charLevel = up.level
   saveSettings(settings)
   updateTrayMenu()
   pushState()
@@ -131,6 +169,9 @@ function onLevelUp(level: number): void {
 function resetCharLevel(): void {
   state.charLevel = null
   settings.charLevel = null
+  // отвязываем имя — следующий левел-ап привяжет его заново
+  settings.ownCharName = null
+  ownNameConfirmed = false
   saveSettings(settings)
   updateTrayMenu()
   pushState()
@@ -506,7 +547,9 @@ function registerIpc(): void {
   ipcMain.on('toggle-route', toggleRoute)
   ipcMain.on('reset-progress', () => {
     state.progress = {}
+    state.reachedZoneIndex = {}
     saveProgress(settings.profile, state.progress)
+    saveRouteProgress(settings.profile, state.reachedZoneIndex)
     pushState()
   })
   ipcMain.on('open-guides-folder', () => {
@@ -536,6 +579,14 @@ function registerIpc(): void {
   ipcMain.on('set-target-acts', (_e, n: number) => {
     runTimer.setTargetActs(n)
     settings.targetActs = runTimer.state.targetActs
+    saveSettings(settings)
+    pushState()
+  })
+  // позиция панели таймера (сверху/снизу/слева/справа от основной панели)
+  ipcMain.on('set-timer-position', (_e, pos: unknown) => {
+    if (!TIMER_POSITIONS.includes(pos as TimerPosition)) return
+    settings.timerPosition = pos as TimerPosition
+    state.timerPosition = settings.timerPosition
     saveSettings(settings)
     pushState()
   })

@@ -1,0 +1,9470 @@
+[
+ {
+  "id": "a1q1",
+  "name": "Enemy at the Gate",
+  "act": 1,
+  "zone": "The Twilight Strand",
+  "npc": "Tarkleigh",
+  "vendorNpc": "Nessa",
+  "rewards": [
+   {
+    "name": "Blight",
+    "classes": [
+     "Witch",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Caustic Arrow",
+    "classes": [
+     "Ranger"
+    ]
+   },
+   {
+    "name": "Cleave",
+    "classes": [
+     "Duelist"
+    ]
+   },
+   {
+    "name": "Cobra Lash",
+    "classes": [
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Ethereal Knives",
+    "classes": [
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Explosive Trap",
+    "classes": [
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Freezing Pulse",
+    "classes": [
+     "Witch",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Frost Blades",
+    "classes": [
+     "Ranger"
+    ]
+   },
+   {
+    "name": "Frostbolt",
+    "classes": [
+     "Templar"
+    ]
+   },
+   {
+    "name": "Galvanic Arrow",
+    "classes": [
+     "Duelist",
+     "Ranger"
+    ]
+   },
+   {
+    "name": "Glacial Hammer",
+    "classes": [
+     "Templar"
+    ]
+   },
+   {
+    "name": "Ground Slam",
+    "classes": [
+     "Marauder"
+    ]
+   },
+   {
+    "name": "Ice Shot",
+    "classes": [
+     "Ranger"
+    ]
+   },
+   {
+    "name": "Kinetic Bolt",
+    "classes": [
+     "Witch"
+    ]
+   },
+   {
+    "name": "Lightning Tendrils",
+    "classes": [
+     "Witch",
+     "Templar",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Molten Strike",
+    "classes": [
+     "Templar",
+     "Marauder",
+     "Duelist",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Perforate",
+    "classes": [
+     "Duelist"
+    ]
+   },
+   {
+    "name": "Purifying Flame",
+    "classes": [
+     "Templar"
+    ]
+   },
+   {
+    "name": "Raise Zombie",
+    "classes": [
+     "Witch"
+    ]
+   },
+   {
+    "name": "Rolling Magma",
+    "classes": [
+     "Witch",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Shield Crush",
+    "classes": [
+     "Marauder"
+    ]
+   },
+   {
+    "name": "Smite",
+    "classes": [
+     "Templar"
+    ]
+   },
+   {
+    "name": "Split Arrow",
+    "classes": [
+     "Ranger",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Splitting Steel",
+    "classes": [
+     "Duelist",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Stormblast Mine",
+    "classes": [
+     "Shadow"
+    ]
+   }
+  ],
+  "vendor": [
+   {
+    "name": "Arcane Surge Support",
+    "classes": [
+     "Witch"
+    ]
+   },
+   {
+    "name": "Blight",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Burning Arrow",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Scion",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Caustic Arrow",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Scion",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Chance to Bleed Support",
+    "classes": [
+     "Duelist"
+    ]
+   },
+   {
+    "name": "Chance to Poison Support",
+    "classes": [
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Cleave",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Ranger",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Cobra Lash",
+    "classes": [
+     "Ranger",
+     "Scion",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Double Strike",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Ranger",
+     "Scion",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Dual Strike",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Ranger",
+     "Scion",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Ethereal Knives",
+    "classes": [
+     "Marauder",
+     "Shadow",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Explosive Trap",
+    "classes": [
+     "Ranger",
+     "Scion",
+     "Shadow",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Fireball",
+    "classes": [
+     "Marauder",
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Freezing Pulse",
+    "classes": [
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Frost Blades",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Scion",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Frostbolt",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Galvanic Arrow",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Glacial Hammer",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Ground Slam",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Hallow Support",
+    "classes": [
+     "Templar"
+    ]
+   },
+   {
+    "name": "Heavy Strike",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Scion",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Holy Strike",
+    "classes": [
+     "Scion",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Ice Shot",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Kinetic Bolt",
+    "classes": [
+     "Ranger",
+     "Scion",
+     "Shadow",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Lightning Tendrils",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Molten Strike",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Scion",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Momentum Support",
+    "classes": [
+     "Scion",
+     "Ranger"
+    ]
+   },
+   {
+    "name": "Perforate",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Ranger",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Purifying Flame",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Raise Zombie",
+    "classes": [
+     "Scion",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Rolling Magma",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Ruthless Support",
+    "classes": [
+     "Marauder"
+    ]
+   },
+   {
+    "name": "Shield Crush",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Scion",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Smite",
+    "classes": [
+     "Marauder",
+     "Scion",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Spark",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Spectral Throw",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Ranger",
+     "Scion",
+     "Shadow",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Split Arrow",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Scion",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Splitting Steel",
+    "classes": [
+     "Duelist",
+     "Scion",
+     "Ranger"
+    ]
+   },
+   {
+    "name": "Stormblast Mine",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Viper Strike",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Scion",
+     "Shadow"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "a1q5",
+  "name": "Mercy Mission",
+  "act": 1,
+  "zone": "The Tidal Island",
+  "npc": "Nessa",
+  "vendorNpc": "Nessa",
+  "rewards": [
+   {
+    "name": "Arcane Surge Support",
+    "classes": [
+     "Templar",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Chance to Bleed Support",
+    "classes": [
+     "Templar",
+     "Marauder",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Chance to Poison Support",
+    "classes": [
+     "Witch",
+     "Duelist",
+     "Ranger",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Elemental Proliferation Support",
+    "classes": [
+     "Witch",
+     "Templar",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Momentum Support",
+    "classes": [
+     "Marauder",
+     "Duelist",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Ruthless Support",
+    "classes": [
+     "Templar",
+     "Duelist",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Ancestral Call Support",
+    "classes": [
+     "Templar",
+     "Marauder",
+     "Duelist",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Infused Channelling Support",
+    "classes": [
+     "Witch",
+     "Templar",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Mirage Archer Support",
+    "classes": [
+     "Duelist",
+     "Ranger"
+    ]
+   },
+   {
+    "name": "Pierce Support",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Spell Cascade Support",
+    "classes": [
+     "Witch",
+     "Templar",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Summon Phantasm Support",
+    "classes": [
+     "Witch",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Swift Assembly Support",
+    "classes": [
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Volley Support",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Shadow",
+     "Scion"
+    ]
+   }
+  ],
+  "vendor": [
+   {
+    "name": "Arcane Surge Support",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Chance to Bleed Support",
+    "classes": [
+     "Marauder",
+     "Ranger",
+     "Scion",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Chance to Poison Support",
+    "classes": [
+     "Ranger",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Elemental Proliferation Support",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Witch",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Hallow Support",
+    "classes": [
+     "Marauder",
+     "Scion",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Momentum Support",
+    "classes": [
+     "Marauder",
+     "Duelist",
+     "Shadow",
+     "Scion",
+     "Ranger"
+    ]
+   },
+   {
+    "name": "Prismatic Burst Support",
+    "classes": [
+     "Templar",
+     "Shadow",
+     "Witch",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Ruthless Support",
+    "classes": [
+     "Duelist",
+     "Scion",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Ancestral Call Support",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Ranger",
+     "Scion",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Infused Channelling Support",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Mirage Archer Support",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Scion",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Pierce Support",
+    "classes": [
+     "Duelist",
+     "Scion",
+     "Shadow",
+     "Ranger"
+    ]
+   },
+   {
+    "name": "Spell Cascade Support",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Summon Phantasm Support",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Swift Assembly Support",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Scion",
+     "Shadow",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Volley Support",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Ranger",
+     "Scion",
+     "Shadow",
+     "Witch"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "a1q4",
+  "name": "Breaking Some Eggs",
+  "act": 1,
+  "zone": "The Mud Flats",
+  "npc": "Tarkleigh",
+  "vendorNpc": "Nessa",
+  "rewards": [
+   {
+    "name": "Bear Trap",
+    "classes": [
+     "Ranger",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Blood and Sand",
+    "classes": [
+     "Duelist"
+    ]
+   },
+   {
+    "name": "Contagion",
+    "classes": [
+     "Witch",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Crushing Fist",
+    "classes": [
+     "Marauder",
+     "Duelist"
+    ]
+   },
+   {
+    "name": "Dash",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Decoy Totem",
+    "classes": [
+     "Marauder",
+     "Duelist",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Detonate Dead",
+    "classes": [
+     "Witch",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Flame Wall",
+    "classes": [
+     "Witch",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Frost Bomb",
+    "classes": [
+     "Witch",
+     "Templar",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Frostblink",
+    "classes": [
+     "Witch",
+     "Templar",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Holy Flame Totem",
+    "classes": [
+     "Templar"
+    ]
+   },
+   {
+    "name": "Orb of Storms",
+    "classes": [
+     "Witch",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Puncture",
+    "classes": [
+     "Duelist",
+     "Ranger"
+    ]
+   },
+   {
+    "name": "Shield Charge",
+    "classes": [
+     "Templar",
+     "Marauder",
+     "Duelist",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Shrapnel Ballista",
+    "classes": [
+     "Ranger"
+    ]
+   },
+   {
+    "name": "Sniper's Mark",
+    "classes": [
+     "Duelist",
+     "Ranger"
+    ]
+   },
+   {
+    "name": "Steelskin",
+    "classes": [
+     "Marauder"
+    ]
+   },
+   {
+    "name": "Summon Holy Relic",
+    "classes": [
+     "Templar"
+    ]
+   },
+   {
+    "name": "Summon Raging Spirit",
+    "classes": [
+     "Witch"
+    ]
+   },
+   {
+    "name": "Vigilant Strike",
+    "classes": [
+     "Templar",
+     "Marauder",
+     "Duelist",
+     "Scion"
+    ]
+   },
+   {
+    "name": "War Banner",
+    "classes": [
+     "Duelist"
+    ]
+   }
+  ],
+  "vendor": [
+   {
+    "name": "Animate Weapon",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Bear Trap",
+    "classes": [
+     "Marauder",
+     "Ranger",
+     "Scion",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Blood and Sand",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Ranger",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Contagion",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Conversion Trap",
+    "classes": [
+     "Ranger",
+     "Scion",
+     "Shadow",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Crushing Fist",
+    "classes": [
+     "Marauder",
+     "Duelist",
+     "Templar",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Dash",
+    "classes": []
+   },
+   {
+    "name": "Decoy Totem",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Ranger",
+     "Scion",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Detonate Dead",
+    "classes": [
+     "Ranger",
+     "Shadow",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Devouring Totem",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Ranger",
+     "Scion",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Flame Wall",
+    "classes": [
+     "Witch",
+     "Templar",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Frost Bomb",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Frost Wall",
+    "classes": [
+     "Duelist",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Frostblink",
+    "classes": []
+   },
+   {
+    "name": "Holy Flame Totem",
+    "classes": [
+     "Marauder",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Orb of Storms",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Puncture",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Rejuvenation Totem",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Scion",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Shield Charge",
+    "classes": []
+   },
+   {
+    "name": "Shrapnel Ballista",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Ranger",
+     "Scion",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Sniper's Mark",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Steelskin",
+    "classes": [
+     "Templar",
+     "Marauder",
+     "Duelist",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Summon Holy Relic",
+    "classes": [
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Summon Raging Spirit",
+    "classes": [
+     "Scion",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Vigilant Strike",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Ranger",
+     "Scion",
+     "Templar"
+    ]
+   },
+   {
+    "name": "War Banner",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Ranger",
+     "Scion",
+     "Templar"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "a1q2",
+  "name": "The Caged Brute",
+  "act": 1,
+  "zone": "The Lower Prison",
+  "npc": "Nessa",
+  "vendorNpc": "Nessa",
+  "rewards": [
+   {
+    "name": "Added Cold Damage Support",
+    "classes": [
+     "Ranger",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Added Fire Damage Support",
+    "classes": [
+     "Templar",
+     "Marauder",
+     "Duelist",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Added Lightning Damage Support",
+    "classes": [
+     "Witch",
+     "Templar",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Arrow Nova Support",
+    "classes": [
+     "Ranger"
+    ]
+   },
+   {
+    "name": "Combustion Support",
+    "classes": [
+     "Witch",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Devour Support",
+    "classes": [
+     "Witch"
+    ]
+   },
+   {
+    "name": "Efficacy Support",
+    "classes": [
+     "Witch"
+    ]
+   },
+   {
+    "name": "Faster Attacks Support",
+    "classes": [
+     "Marauder",
+     "Duelist",
+     "Ranger",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Flamewood Support",
+    "classes": [
+     "Marauder"
+    ]
+   },
+   {
+    "name": "Infernal Legion Support",
+    "classes": [
+     "Witch"
+    ]
+   },
+   {
+    "name": "Lifetap Support",
+    "classes": [
+     "Templar",
+     "Marauder",
+     "Duelist",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Maim Support",
+    "classes": [
+     "Duelist"
+    ]
+   },
+   {
+    "name": "Manaforged Arrows Support",
+    "classes": [
+     "Ranger"
+    ]
+   },
+   {
+    "name": "Melee Splash Support",
+    "classes": [
+     "Templar",
+     "Marauder",
+     "Duelist",
+     "Ranger",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Minion Damage Support",
+    "classes": [
+     "Witch"
+    ]
+   },
+   {
+    "name": "Multiple Projectiles Support",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Multiple Traps Support",
+    "classes": [
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Unbound Ailments Support",
+    "classes": [
+     "Witch",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Void Manipulation Support",
+    "classes": [
+     "Witch",
+     "Ranger",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Blink Arrow",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Bodyswap",
+    "classes": [
+     "Witch"
+    ]
+   },
+   {
+    "name": "Clarity",
+    "classes": [
+     "Witch",
+     "Templar",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Enduring Cry",
+    "classes": [
+     "Marauder",
+     "Duelist"
+    ]
+   },
+   {
+    "name": "Flame Dash",
+    "classes": [
+     "Witch",
+     "Templar",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Intimidating Cry",
+    "classes": [
+     "Marauder",
+     "Duelist"
+    ]
+   },
+   {
+    "name": "Leap Slam",
+    "classes": [
+     "Templar",
+     "Marauder",
+     "Duelist",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Lightning Warp",
+    "classes": [
+     "Witch"
+    ]
+   },
+   {
+    "name": "Mirror Arrow",
+    "classes": [
+     "Ranger"
+    ]
+   },
+   {
+    "name": "Precision",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Siphoning Trap",
+    "classes": [
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Smoke Mine",
+    "classes": [
+     "Ranger",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Summon Skeletons",
+    "classes": [
+     "Witch"
+    ]
+   },
+   {
+    "name": "Unearth",
+    "classes": [
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Vitality",
+    "classes": [
+     "Templar",
+     "Marauder",
+     "Duelist",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Whirling Blades",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Wither",
+    "classes": [
+     "Witch"
+    ]
+   },
+   {
+    "name": "Withering Step",
+    "classes": [
+     "Shadow",
+     "Scion"
+    ]
+   }
+  ],
+  "vendor": [
+   {
+    "name": "Added Cold Damage Support",
+    "classes": [
+     "Ranger",
+     "Scion",
+     "Shadow",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Added Fire Damage Support",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Ranger",
+     "Scion",
+     "Shadow",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Added Lightning Damage Support",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Additional Accuracy Support",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Ranger",
+     "Scion",
+     "Shadow",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Arrow Nova Support",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Scion",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Ballista Totem Support",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Scion",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Blastchain Mine Support",
+    "classes": [
+     "Ranger",
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Blind Support",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Ranger",
+     "Scion",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Chance to Flee Support",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Ranger",
+     "Scion",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Combustion Support",
+    "classes": [
+     "Marauder",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Devour Support",
+    "classes": [
+     "Witch",
+     "Templar",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Efficacy Support",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Faster Attacks Support",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Ranger",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Flamewood Support",
+    "classes": [
+     "Marauder",
+     "Templar",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Increased Critical Strikes Support",
+    "classes": [
+     "Ranger",
+     "Scion",
+     "Shadow",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Infernal Legion Support",
+    "classes": [
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Knockback Support",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Scion",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Life Gain on Hit Support",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Scion",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Lifetap Support",
+    "classes": [
+     "Marauder",
+     "Templar",
+     "Duelist",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Locus Mine Support",
+    "classes": [
+     "Ranger",
+     "Witch",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Maim Support",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Ranger",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Manaforged Arrows Support",
+    "classes": [
+     "Ranger",
+     "Scion",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Melee Splash Support",
+    "classes": []
+   },
+   {
+    "name": "Minion Damage Support",
+    "classes": [
+     "Scion",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Multiple Projectiles Support",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Scion",
+     "Shadow",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Multiple Traps Support",
+    "classes": [
+     "Ranger",
+     "Scion",
+     "Shadow",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Spell Totem Support",
+    "classes": [
+     "Marauder",
+     "Scion",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Stun Support",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Scion",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Trap Support",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Scion",
+     "Shadow",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Unbound Ailments Support",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Void Manipulation Support",
+    "classes": [
+     "Ranger",
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Blink Arrow",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Scion",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Bodyswap",
+    "classes": [
+     "Ranger",
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Clarity",
+    "classes": []
+   },
+   {
+    "name": "Enduring Cry",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Scion",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Flame Dash",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Flicker Strike",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Ranger",
+     "Scion",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Intimidating Cry",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Scion",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Leap Slam",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Ranger",
+     "Scion",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Lightning Warp",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Precision",
+    "classes": []
+   },
+   {
+    "name": "Siphoning Trap",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Smoke Mine",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Ranger",
+     "Shadow",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Summon Skeletons",
+    "classes": [
+     "Scion",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Unearth",
+    "classes": [
+     "Ranger",
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Vitality",
+    "classes": []
+   },
+   {
+    "name": "Whirling Blades",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Wither",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Withering Step",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Scion",
+     "Shadow",
+     "Witch"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "a1q3",
+  "name": "The Siren's Cadence",
+  "act": 1,
+  "zone": "The Cavern of Wrath",
+  "npc": "Nessa",
+  "vendorNpc": "Nessa",
+  "rewards": [
+   {
+    "name": "Absolution",
+    "classes": [
+     "Templar"
+    ]
+   },
+   {
+    "name": "Arc",
+    "classes": [
+     "Witch"
+    ]
+   },
+   {
+    "name": "Blade Vortex",
+    "classes": [
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Blazing Salvo",
+    "classes": [
+     "Witch",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Chain Hook",
+    "classes": [
+     "Marauder"
+    ]
+   },
+   {
+    "name": "Creeping Frost",
+    "classes": [
+     "Witch"
+    ]
+   },
+   {
+    "name": "Earthshatter",
+    "classes": [
+     "Marauder",
+     "Duelist"
+    ]
+   },
+   {
+    "name": "Elemental Hit",
+    "classes": [
+     "Ranger"
+    ]
+   },
+   {
+    "name": "Essence Drain",
+    "classes": [
+     "Witch",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Exsanguinate",
+    "classes": [
+     "Scion"
+    ]
+   },
+   {
+    "name": "Fire Trap",
+    "classes": [
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Flesh Offering",
+    "classes": [
+     "Witch"
+    ]
+   },
+   {
+    "name": "Holy Sweep",
+    "classes": [
+     "Marauder",
+     "Duelist"
+    ]
+   },
+   {
+    "name": "Ice Nova",
+    "classes": [
+     "Witch",
+     "Templar",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Icicle Mine",
+    "classes": [
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Infernal Blow",
+    "classes": [
+     "Marauder"
+    ]
+   },
+   {
+    "name": "Lacerate",
+    "classes": [
+     "Duelist"
+    ]
+   },
+   {
+    "name": "Lightning Arrow",
+    "classes": [
+     "Ranger"
+    ]
+   },
+   {
+    "name": "Lightning Strike",
+    "classes": [
+     "Ranger"
+    ]
+   },
+   {
+    "name": "Lightning Trap",
+    "classes": [
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Manabond",
+    "classes": [
+     "Witch",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Poisonous Concoction",
+    "classes": [
+     "Ranger"
+    ]
+   },
+   {
+    "name": "Rain of Arrows",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Reave",
+    "classes": [
+     "Ranger",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Scorching Ray",
+    "classes": [
+     "Witch",
+     "Templar",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Searing Bond",
+    "classes": [
+     "Templar"
+    ]
+   },
+   {
+    "name": "Shattering Steel",
+    "classes": [
+     "Duelist"
+    ]
+   },
+   {
+    "name": "Siege Ballista",
+    "classes": [
+     "Ranger"
+    ]
+   },
+   {
+    "name": "Spectral Helix",
+    "classes": [
+     "Scion"
+    ]
+   },
+   {
+    "name": "Static Strike",
+    "classes": [
+     "Templar",
+     "Marauder",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Storm Brand",
+    "classes": [
+     "Templar"
+    ]
+   },
+   {
+    "name": "Storm Burst",
+    "classes": [
+     "Templar",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Storm Call",
+    "classes": [
+     "Templar"
+    ]
+   },
+   {
+    "name": "Sunder",
+    "classes": [
+     "Marauder"
+    ]
+   },
+   {
+    "name": "Toxic Rain",
+    "classes": [
+     "Ranger"
+    ]
+   },
+   {
+    "name": "Venom Gyre",
+    "classes": [
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Volatile Dead",
+    "classes": [
+     "Witch",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Volcanic Fissure",
+    "classes": [
+     "Marauder"
+    ]
+   },
+   {
+    "name": "Voltaxic Burst",
+    "classes": [
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Wintertide Brand",
+    "classes": [
+     "Templar"
+    ]
+   }
+  ],
+  "vendor": [
+   {
+    "name": "Absolution",
+    "classes": [
+     "Marauder",
+     "Witch",
+     "Templar",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Arc",
+    "classes": [
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Barrage",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Scion",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Blade Trap",
+    "classes": [
+     "Ranger",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Blade Vortex",
+    "classes": [
+     "Ranger",
+     "Scion",
+     "Shadow",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Blazing Salvo",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Bone Offering",
+    "classes": [
+     "Scion",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Chain Hook",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Creeping Frost",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Earthshatter",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Scion",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Elemental Hit",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Scion",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Essence Drain",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Exsanguinate",
+    "classes": [
+     "Marauder",
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Fire Trap",
+    "classes": [
+     "Ranger",
+     "Scion",
+     "Shadow",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Flame Surge",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Flesh Offering",
+    "classes": [
+     "Scion",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Holy Sweep",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Ice Nova",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Ice Spear",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Icicle Mine",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Incinerate",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Infernal Blow",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Ranger",
+     "Scion",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Kinetic Fusillade",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Lacerate",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Ranger",
+     "Scion",
+     "Shadow",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Lightning Arrow",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Lightning Strike",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Scion",
+     "Shadow",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Lightning Trap",
+    "classes": [
+     "Ranger",
+     "Scion",
+     "Shadow",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Manabond",
+    "classes": [
+     "Templar",
+     "Witch",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Poisonous Concoction",
+    "classes": [
+     "Duelist",
+     "Shadow",
+     "Scion",
+     "Ranger"
+    ]
+   },
+   {
+    "name": "Power Siphon",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Rain of Arrows",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Scion",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Reave",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Scorching Ray",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Searing Bond",
+    "classes": [
+     "Marauder",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Shattering Steel",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Siege Ballista",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Scion",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Spectral Helix",
+    "classes": [
+     "Marauder",
+     "Templar",
+     "Duelist",
+     "Ranger",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Spirit Offering",
+    "classes": [
+     "Scion",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Static Strike",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Ranger",
+     "Scion",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Storm Brand",
+    "classes": [
+     "Scion",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Storm Burst",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Storm Call",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Sunder",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Scion",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Toxic Rain",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Scion",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Venom Gyre",
+    "classes": [
+     "Ranger",
+     "Scion",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Volatile Dead",
+    "classes": [
+     "Ranger",
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Voltaxic Burst",
+    "classes": [
+     "Shadow",
+     "Scion",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Wintertide Brand",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "a2q6",
+  "name": "Intruders in Black",
+  "act": 2,
+  "zone": "The Chamber of Sins Level 1",
+  "npc": "Greust",
+  "vendorNpc": "Yeena",
+  "rewards": [
+   {
+    "name": "Ancestral Cry",
+    "classes": [
+     "Marauder",
+     "Duelist"
+    ]
+   },
+   {
+    "name": "Arcane Cloak",
+    "classes": [
+     "Witch",
+     "Templar",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Arctic Armour",
+    "classes": [
+     "Witch",
+     "Ranger",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Assassin's Mark",
+    "classes": [
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Blade Blast",
+    "classes": [
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Blood Rage",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Brand Recall",
+    "classes": [
+     "Templar"
+    ]
+   },
+   {
+    "name": "Cold Snap",
+    "classes": [
+     "Witch",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Corrupting Fever",
+    "classes": [
+     "Marauder",
+     "Duelist",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Defiance Banner",
+    "classes": [
+     "Duelist"
+    ]
+   },
+   {
+    "name": "Desecrate",
+    "classes": [
+     "Witch"
+    ]
+   },
+   {
+    "name": "Divine Retribution",
+    "classes": [
+     "Templar"
+    ]
+   },
+   {
+    "name": "Ensnaring Arrow",
+    "classes": [
+     "Ranger"
+    ]
+   },
+   {
+    "name": "Eviscerate",
+    "classes": [
+     "Marauder",
+     "Duelist"
+    ]
+   },
+   {
+    "name": "Flesh and Stone",
+    "classes": [
+     "Duelist"
+    ]
+   },
+   {
+    "name": "Frenzy",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Galvanic Field",
+    "classes": [
+     "Witch"
+    ]
+   },
+   {
+    "name": "Glacial Shield Swipe",
+    "classes": [
+     "Duelist"
+    ]
+   },
+   {
+    "name": "Herald of Agony",
+    "classes": [
+     "Ranger",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Herald of Ash",
+    "classes": [
+     "Witch",
+     "Templar",
+     "Marauder",
+     "Duelist",
+     "Ranger",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Herald of Ice",
+    "classes": [
+     "Witch",
+     "Templar",
+     "Marauder",
+     "Duelist",
+     "Ranger",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Herald of Purity",
+    "classes": [
+     "Templar"
+    ]
+   },
+   {
+    "name": "Herald of Thunder",
+    "classes": [
+     "Witch",
+     "Templar",
+     "Marauder",
+     "Duelist",
+     "Ranger",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Molten Shell",
+    "classes": [
+     "Marauder"
+    ]
+   },
+   {
+    "name": "Poacher's Mark",
+    "classes": [
+     "Duelist",
+     "Ranger"
+    ]
+   },
+   {
+    "name": "Seismic Cry",
+    "classes": [
+     "Marauder",
+     "Duelist"
+    ]
+   },
+   {
+    "name": "Shield of Light",
+    "classes": [
+     "Templar"
+    ]
+   },
+   {
+    "name": "Summon Skitterbots",
+    "classes": [
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Swordstorm",
+    "classes": [
+     "Duelist"
+    ]
+   },
+   {
+    "name": "Wall of Force",
+    "classes": [
+     "Witch"
+    ]
+   },
+   {
+    "name": "Warlord's Mark",
+    "classes": [
+     "Marauder",
+     "Duelist"
+    ]
+   },
+   {
+    "name": "Wave of Conviction",
+    "classes": [
+     "Templar"
+    ]
+   }
+  ],
+  "vendor": [
+   {
+    "name": "Ancestral Cry",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Scion",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Arcane Cloak",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Arctic Armour",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Assassin's Mark",
+    "classes": [
+     "Ranger",
+     "Shadow",
+     "Duelist",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Blade Blast",
+    "classes": [
+     "Ranger",
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Blood Rage",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Ranger",
+     "Scion",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Brand Recall",
+    "classes": [
+     "Marauder",
+     "Scion",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Cold Snap",
+    "classes": [
+     "Ranger",
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Corrupting Fever",
+    "classes": [
+     "Marauder",
+     "Duelist",
+     "Scion",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Defiance Banner",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Scion",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Desecrate",
+    "classes": [
+     "Ranger",
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Divine Retribution",
+    "classes": [
+     "Templar",
+     "Witch",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Ensnaring Arrow",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Scion",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Eviscerate",
+    "classes": [
+     "Marauder",
+     "Duelist",
+     "Templar",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Flesh and Stone",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Forbidden Rite",
+    "classes": [
+     "Witch",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Frenzy",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Ranger",
+     "Scion",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Galvanic Field",
+    "classes": [
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Glacial Shield Swipe",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Ranger",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Herald of Agony",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Scion",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Herald of Ash",
+    "classes": []
+   },
+   {
+    "name": "Herald of Ice",
+    "classes": []
+   },
+   {
+    "name": "Herald of Purity",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Scion",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Herald of Thunder",
+    "classes": []
+   },
+   {
+    "name": "Molten Shell",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Scion",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Poacher's Mark",
+    "classes": [
+     "Shadow",
+     "Duelist",
+     "Ranger",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Righteous Fire",
+    "classes": [
+     "Marauder",
+     "Scion",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Seismic Cry",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Scion",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Shield of Light",
+    "classes": [
+     "Templar",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Summon Skitterbots",
+    "classes": [
+     "Ranger",
+     "Scion",
+     "Shadow",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Swordstorm",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Tempest Shield",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Wall of Force",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Warlord's Mark",
+    "classes": [
+     "Marauder",
+     "Duelist",
+     "Ranger",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Wave of Conviction",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "a2q4",
+  "name": "Sharp and Cruel",
+  "act": 2,
+  "zone": "The Weaver's Chambers",
+  "npc": "Silk",
+  "vendorNpc": "Yeena",
+  "rewards": [
+   {
+    "name": "Close Combat Support",
+    "classes": [
+     "Marauder",
+     "Duelist",
+     "Ranger"
+    ]
+   },
+   {
+    "name": "Concentrated Effect Support",
+    "classes": [
+     "Witch",
+     "Templar",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Controlled Destruction Support",
+    "classes": [
+     "Witch",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Cruelty Support",
+    "classes": [
+     "Witch",
+     "Templar",
+     "Marauder",
+     "Duelist",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Deadly Ailments Support",
+    "classes": [
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Elemental Damage with Attacks Support",
+    "classes": [
+     "Templar",
+     "Marauder",
+     "Duelist",
+     "Ranger",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Elemental Focus Support",
+    "classes": [
+     "Witch",
+     "Templar",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Exemplar Support",
+    "classes": [
+     "Templar"
+    ]
+   },
+   {
+    "name": "Faster Casting Support",
+    "classes": [
+     "Witch",
+     "Templar",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Fresh Meat Support",
+    "classes": [
+     "Witch"
+    ]
+   },
+   {
+    "name": "Kinetic Instability Support",
+    "classes": [
+     "Witch"
+    ]
+   },
+   {
+    "name": "Living Lightning Support",
+    "classes": [
+     "Witch"
+    ]
+   },
+   {
+    "name": "Melee Physical Damage Support",
+    "classes": [
+     "Templar",
+     "Marauder",
+     "Duelist",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Minion Speed Support",
+    "classes": [
+     "Witch"
+    ]
+   },
+   {
+    "name": "Nightblade Support",
+    "classes": [
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Overcharge Support",
+    "classes": [
+     "Witch"
+    ]
+   },
+   {
+    "name": "Predator Support",
+    "classes": [
+     "Witch"
+    ]
+   },
+   {
+    "name": "Rage Support",
+    "classes": [
+     "Marauder",
+     "Duelist"
+    ]
+   },
+   {
+    "name": "Sacred Wisps Support",
+    "classes": [
+     "Witch"
+    ]
+   },
+   {
+    "name": "Sadism Support",
+    "classes": [
+     "Duelist",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Shockwave Support",
+    "classes": [
+     "Templar",
+     "Marauder"
+    ]
+   },
+   {
+    "name": "Trap and Mine Damage Support",
+    "classes": [
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Trinity Support",
+    "classes": [
+     "Witch",
+     "Ranger",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Vicious Projectiles Support",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Volatility Support",
+    "classes": [
+     "Marauder"
+    ]
+   }
+  ],
+  "vendor": [
+   {
+    "name": "Bloodlust Support",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Ranger",
+     "Scion",
+     "Shadow",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Close Combat Support",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Ranger",
+     "Scion",
+     "Shadow",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Cold to Fire Support",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Concentrated Effect Support",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Controlled Destruction Support",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Cruelty Support",
+    "classes": [
+     "Marauder",
+     "Templar",
+     "Witch",
+     "Scion",
+     "Duelist"
+    ]
+   },
+   {
+    "name": "Culling Strike Support",
+    "classes": []
+   },
+   {
+    "name": "Damage on Full Life Support",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Scion",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Deadly Ailments Support",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Elemental Damage with Attacks Support",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Ranger",
+     "Scion",
+     "Shadow",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Elemental Focus Support",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Endurance Charge on Melee Stun Support",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Scion",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Exemplar Support",
+    "classes": [
+     "Scion",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Faster Casting Support",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Fresh Meat Support",
+    "classes": [
+     "Witch",
+     "Templar",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Increased Critical Damage Support",
+    "classes": [
+     "Ranger",
+     "Scion",
+     "Shadow",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Iron Grip Support",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Ranger",
+     "Scion",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Iron Will Support",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Scion",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Kinetic Instability Support",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Living Lightning Support",
+    "classes": [
+     "Scion",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Melee Physical Damage Support",
+    "classes": []
+   },
+   {
+    "name": "Minion Life Support",
+    "classes": [
+     "Scion",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Minion Speed Support",
+    "classes": [
+     "Scion",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Nightblade Support",
+    "classes": [
+     "Ranger",
+     "Scion",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Overcharge Support",
+    "classes": [
+     "Ranger",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Physical to Lightning Support",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Ranger",
+     "Scion",
+     "Shadow",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Point Blank Support",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Scion",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Power Charge On Critical Support",
+    "classes": [
+     "Ranger",
+     "Scion",
+     "Shadow",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Predator Support",
+    "classes": [
+     "Scion",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Rage Support",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Ranger",
+     "Scion",
+     "Shadow",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Sacred Wisps Support",
+    "classes": [
+     "Ranger",
+     "Scion",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Sadism Support",
+    "classes": []
+   },
+   {
+    "name": "Shockwave Support",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Scion",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Trap and Mine Damage Support",
+    "classes": [
+     "Ranger",
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Trinity Support",
+    "classes": [
+     "Witch",
+     "Shadow",
+     "Duelist",
+     "Ranger",
+     "Templar",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Vicious Projectiles Support",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Volatility Support",
+    "classes": [
+     "Marauder",
+     "Templar",
+     "Duelist",
+     "Scion"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "a3q1",
+  "name": "Lost in Love",
+  "act": 3,
+  "zone": "The Crematorium",
+  "npc": "Maramoa",
+  "vendorNpc": "Clarissa",
+  "rewards": [
+   {
+    "name": "Alchemist's Mark",
+    "classes": [
+     "Ranger"
+    ]
+   },
+   {
+    "name": "Anger",
+    "classes": [
+     "Marauder",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Bane",
+    "classes": [
+     "Witch",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Battlemage's Cry",
+    "classes": [
+     "Templar"
+    ]
+   },
+   {
+    "name": "Conductivity",
+    "classes": [
+     "Witch",
+     "Templar",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Despair",
+    "classes": [
+     "Witch",
+     "Ranger",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Determination",
+    "classes": [
+     "Marauder"
+    ]
+   },
+   {
+    "name": "Discipline",
+    "classes": [
+     "Witch"
+    ]
+   },
+   {
+    "name": "Dread Banner",
+    "classes": [
+     "Duelist"
+    ]
+   },
+   {
+    "name": "Elemental Weakness",
+    "classes": [
+     "Witch",
+     "Templar",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Enfeeble",
+    "classes": [
+     "Witch",
+     "Templar",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Flammability",
+    "classes": [
+     "Witch",
+     "Templar",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Frostbite",
+    "classes": [
+     "Witch",
+     "Templar",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "General's Cry",
+    "classes": [
+     "Marauder"
+    ]
+   },
+   {
+    "name": "Grace",
+    "classes": [
+     "Duelist",
+     "Ranger"
+    ]
+   },
+   {
+    "name": "Hatred",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Infernal Cry",
+    "classes": [
+     "Marauder"
+    ]
+   },
+   {
+    "name": "Malevolence",
+    "classes": [
+     "Witch",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Petrified Blood",
+    "classes": [
+     "Marauder",
+     "Duelist",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Plague Bearer",
+    "classes": [
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Pride",
+    "classes": [
+     "Marauder",
+     "Duelist"
+    ]
+   },
+   {
+    "name": "Punishment",
+    "classes": [
+     "Templar",
+     "Marauder",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Purity of Elements",
+    "classes": [
+     "Witch"
+    ]
+   },
+   {
+    "name": "Rallying Cry",
+    "classes": [
+     "Duelist"
+    ]
+   },
+   {
+    "name": "Spellslinger",
+    "classes": [
+     "Witch"
+    ]
+   },
+   {
+    "name": "Temporal Chains",
+    "classes": [
+     "Witch",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Vengeful Cry",
+    "classes": [
+     "Marauder"
+    ]
+   },
+   {
+    "name": "Vulnerability",
+    "classes": [
+     "Templar",
+     "Marauder",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Wrath",
+    "classes": [
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Zealotry",
+    "classes": [
+     "Witch",
+     "Templar",
+     "Scion"
+    ]
+   }
+  ],
+  "vendor": [
+   {
+    "name": "Alchemist's Mark",
+    "classes": [
+     "Ranger",
+     "Scion",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Anger",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Ranger",
+     "Scion",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Autoexertion",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Scion",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Automation",
+    "classes": []
+   },
+   {
+    "name": "Bane",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Battlemage's Cry",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Scion",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Conductivity",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Despair",
+    "classes": [
+     "Ranger",
+     "Scion",
+     "Shadow",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Determination",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Discipline",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Dread Banner",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Ranger",
+     "Scion",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Elemental Weakness",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Energy Blade",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Enfeeble",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Flammability",
+    "classes": [
+     "Marauder",
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Frostbite",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch",
+     "Ranger"
+    ]
+   },
+   {
+    "name": "General's Cry",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Scion",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Grace",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Haste",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Scion",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Hatred",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Ranger",
+     "Scion",
+     "Shadow",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Infernal Cry",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Scion",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Malevolence",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Petrified Blood",
+    "classes": [
+     "Marauder",
+     "Duelist",
+     "Scion",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Plague Bearer",
+    "classes": [
+     "Ranger",
+     "Scion",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Pride",
+    "classes": []
+   },
+   {
+    "name": "Punishment",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Scion",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Purity of Elements",
+    "classes": []
+   },
+   {
+    "name": "Purity of Fire",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Scion",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Purity of Ice",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Scion",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Purity of Lightning",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Rallying Cry",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Scion",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Spellslinger",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Temporal Chains",
+    "classes": [
+     "Witch",
+     "Scion",
+     "Shadow",
+     "Ranger"
+    ]
+   },
+   {
+    "name": "Vengeful Cry",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Vulnerability",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Scion",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Wrath",
+    "classes": [
+     "Ranger",
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Zealotry",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "a3q8",
+  "name": "Sever the Right Hand",
+  "act": 3,
+  "zone": "The Ebony Barracks",
+  "npc": "Maramoa",
+  "vendorNpc": "Clarissa",
+  "rewards": [
+   {
+    "name": "Armageddon Brand",
+    "classes": [
+     "Templar"
+    ]
+   },
+   {
+    "name": "Artillery Ballista",
+    "classes": [
+     "Ranger"
+    ]
+   },
+   {
+    "name": "Ball Lightning",
+    "classes": [
+     "Witch",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Blade Flurry",
+    "classes": [
+     "Ranger",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Bladefall",
+    "classes": [
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Bladestorm",
+    "classes": [
+     "Duelist"
+    ]
+   },
+   {
+    "name": "Blast Rain",
+    "classes": [
+     "Duelist",
+     "Ranger"
+    ]
+   },
+   {
+    "name": "Charged Dash",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Conflagration",
+    "classes": [
+     "Ranger"
+    ]
+   },
+   {
+    "name": "Consecrated Path",
+    "classes": [
+     "Templar"
+    ]
+   },
+   {
+    "name": "Crackling Lance",
+    "classes": [
+     "Witch"
+    ]
+   },
+   {
+    "name": "Cremation",
+    "classes": [
+     "Witch",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Cyclone",
+    "classes": [
+     "Marauder",
+     "Duelist",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Divine Blast",
+    "classes": [
+     "Templar"
+    ]
+   },
+   {
+    "name": "Divine Ire",
+    "classes": [
+     "Templar",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Dominating Blow",
+    "classes": [
+     "Templar"
+    ]
+   },
+   {
+    "name": "Earthquake",
+    "classes": [
+     "Marauder"
+    ]
+   },
+   {
+    "name": "Explosive Concoction",
+    "classes": [
+     "Ranger"
+    ]
+   },
+   {
+    "name": "Eye of Winter",
+    "classes": [
+     "Witch"
+    ]
+   },
+   {
+    "name": "Firestorm",
+    "classes": [
+     "Witch",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Flameblast",
+    "classes": [
+     "Witch",
+     "Templar",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Flamethrower Trap",
+    "classes": [
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Glacial Cascade",
+    "classes": [
+     "Witch"
+    ]
+   },
+   {
+    "name": "Hexblast",
+    "classes": [
+     "Witch",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Holy Hammers",
+    "classes": [
+     "Templar"
+    ]
+   },
+   {
+    "name": "Ice Crash",
+    "classes": [
+     "Templar",
+     "Marauder",
+     "Duelist"
+    ]
+   },
+   {
+    "name": "Kinetic Blast",
+    "classes": [
+     "Witch"
+    ]
+   },
+   {
+    "name": "Kinetic Rain",
+    "classes": [
+     "Witch"
+    ]
+   },
+   {
+    "name": "Lancing Steel",
+    "classes": [
+     "Duelist"
+    ]
+   },
+   {
+    "name": "Lightning Conduit",
+    "classes": [
+     "Witch"
+    ]
+   },
+   {
+    "name": "Lightning Spire Trap",
+    "classes": [
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Penance Brand",
+    "classes": [
+     "Templar"
+    ]
+   },
+   {
+    "name": "Pestilent Strike",
+    "classes": [
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Pyroclast Mine",
+    "classes": [
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Rage Vortex",
+    "classes": [
+     "Marauder"
+    ]
+   },
+   {
+    "name": "Raise Spectre",
+    "classes": [
+     "Witch"
+    ]
+   },
+   {
+    "name": "Reap",
+    "classes": [
+     "Scion"
+    ]
+   },
+   {
+    "name": "Scourge Arrow",
+    "classes": [
+     "Ranger"
+    ]
+   },
+   {
+    "name": "Seismic Trap",
+    "classes": [
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Shock Nova",
+    "classes": [
+     "Templar"
+    ]
+   },
+   {
+    "name": "Shockwave Totem",
+    "classes": [
+     "Templar"
+    ]
+   },
+   {
+    "name": "Somatic Shell",
+    "classes": [
+     "Witch"
+    ]
+   },
+   {
+    "name": "Soulrend",
+    "classes": [
+     "Witch",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Spectral Shield Throw",
+    "classes": [
+     "Duelist"
+    ]
+   },
+   {
+    "name": "Storm Rain",
+    "classes": [
+     "Ranger"
+    ]
+   },
+   {
+    "name": "Stormbind",
+    "classes": [
+     "Witch",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Summon Reaper",
+    "classes": [
+     "Witch"
+    ]
+   },
+   {
+    "name": "Tectonic Slam",
+    "classes": [
+     "Marauder",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Thunderstorm",
+    "classes": [
+     "Duelist",
+     "Ranger"
+    ]
+   },
+   {
+    "name": "Tornado Shot",
+    "classes": [
+     "Ranger",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Wild Strike",
+    "classes": [
+     "Ranger"
+    ]
+   }
+  ],
+  "vendor": [
+   {
+    "name": "Animate Guardian",
+    "classes": []
+   },
+   {
+    "name": "Armageddon Brand",
+    "classes": [
+     "Scion",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Artillery Ballista",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Ranger",
+     "Scion",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Ball Lightning",
+    "classes": [
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Blade Flurry",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Scion",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Bladefall",
+    "classes": [
+     "Ranger",
+     "Scion",
+     "Shadow",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Bladestorm",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Blast Rain",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Boneshatter",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Scion",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Charged Dash",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Ranger",
+     "Scion",
+     "Shadow",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Conflagration",
+    "classes": [
+     "Ranger"
+    ]
+   },
+   {
+    "name": "Consecrated Path",
+    "classes": [
+     "Marauder",
+     "Scion",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Crackling Lance",
+    "classes": [
+     "Shadow",
+     "Templar",
+     "Witch",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Cremation",
+    "classes": [
+     "Ranger",
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Cyclone",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Ranger",
+     "Scion",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Dark Pact",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Discharge",
+    "classes": []
+   },
+   {
+    "name": "Divine Blast",
+    "classes": [
+     "Marauder",
+     "Templar",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Divine Ire",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Dominating Blow",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Scion",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Earthquake",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Scion",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Explosive Arrow",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Ranger"
+    ]
+   },
+   {
+    "name": "Explosive Concoction",
+    "classes": [
+     "Duelist",
+     "Shadow",
+     "Scion",
+     "Ranger"
+    ]
+   },
+   {
+    "name": "Eye of Winter",
+    "classes": [
+     "Templar",
+     "Shadow",
+     "Scion",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Firestorm",
+    "classes": [
+     "Shadow",
+     "Scion",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Flameblast",
+    "classes": [
+     "Marauder",
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Flamethrower Trap",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Glacial Cascade",
+    "classes": [
+     "Shadow",
+     "Templar",
+     "Witch",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Hexblast",
+    "classes": [
+     "Shadow",
+     "Templar",
+     "Witch",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Ice Crash",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Ranger",
+     "Scion",
+     "Shadow",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Ice Trap",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Kinetic Blast",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Kinetic Rain",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Lancing Steel",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Lightning Conduit",
+    "classes": [
+     "Shadow",
+     "Witch",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Lightning Spire Trap",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Penance Brand",
+    "classes": [
+     "Scion",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Pestilent Strike",
+    "classes": [
+     "Ranger",
+     "Scion",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Pyroclast Mine",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Rage Vortex",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Scion",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Raise Spectre",
+    "classes": [
+     "Scion",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Reap",
+    "classes": [
+     "Marauder",
+     "Templar",
+     "Witch",
+     "Scion",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Scourge Arrow",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Scion",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Seismic Trap",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Shock Nova",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Shockwave Totem",
+    "classes": [
+     "Marauder",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Somatic Shell",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Soulrend",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Spectral Shield Throw",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Ranger",
+     "Scion",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Storm Rain",
+    "classes": [
+     "Duelist",
+     "Shadow",
+     "Scion",
+     "Ranger"
+    ]
+   },
+   {
+    "name": "Stormbind",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Summon Reaper",
+    "classes": [
+     "Witch",
+     "Templar",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Tectonic Slam",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Scion",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Thunderstorm",
+    "classes": [
+     "Ranger",
+     "Duelist",
+     "Scion",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Tornado Shot",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Scion",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Vortex",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Wild Strike",
+    "classes": [
+     "Ranger",
+     "Scion",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Winter Orb",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "a3q12",
+  "name": "A Fixture of Fate",
+  "act": 3,
+  "zone": "The Library",
+  "npc": "Siosa",
+  "vendorNpc": "Siosa",
+  "rewards": [
+   {
+    "name": "Archmage Support",
+    "classes": [
+     "Witch",
+     "Templar",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Arrogance Support",
+    "classes": [
+     "Templar",
+     "Marauder",
+     "Duelist",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Blasphemy Support",
+    "classes": [
+     "Witch",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Blessed Call Support",
+    "classes": [
+     "Templar"
+    ]
+   },
+   {
+    "name": "Bloodthirst Support",
+    "classes": [
+     "Marauder",
+     "Duelist",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Burning Damage Support",
+    "classes": [
+     "Witch",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Charged Mines Support",
+    "classes": [
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Charged Traps Support",
+    "classes": [
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Cold Penetration Support",
+    "classes": [
+     "Witch",
+     "Templar",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Controlled Blaze Support",
+    "classes": [
+     "Marauder"
+    ]
+   },
+   {
+    "name": "Corrupting Cry Support",
+    "classes": [
+     "Marauder",
+     "Duelist"
+    ]
+   },
+   {
+    "name": "Critical Strike Affliction Support",
+    "classes": [
+     "Ranger",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Energy Leech Support",
+    "classes": [
+     "Witch",
+     "Templar",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Excommunicate Support",
+    "classes": [
+     "Templar"
+    ]
+   },
+   {
+    "name": "Expert Retaliation Support",
+    "classes": [
+     "Duelist"
+    ]
+   },
+   {
+    "name": "Faster Projectiles Support",
+    "classes": [
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Feeding Frenzy Support",
+    "classes": [
+     "Witch"
+    ]
+   },
+   {
+    "name": "Fire Penetration Support",
+    "classes": [
+     "Witch",
+     "Templar",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Focused Ballista Support",
+    "classes": [
+     "Ranger"
+    ]
+   },
+   {
+    "name": "Focused Channelling Support",
+    "classes": [
+     "Witch",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Fork Support",
+    "classes": [
+     "Ranger"
+    ]
+   },
+   {
+    "name": "Fortify Support",
+    "classes": [
+     "Templar",
+     "Marauder",
+     "Duelist",
+     "Ranger",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Guardian's Blessing Support",
+    "classes": [
+     "Templar"
+    ]
+   },
+   {
+    "name": "High-Impact Mine Support",
+    "classes": [
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Hypothermia Support",
+    "classes": [
+     "Duelist",
+     "Ranger"
+    ]
+   },
+   {
+    "name": "Ice Bite Support",
+    "classes": [
+     "Ranger",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Impale Support",
+    "classes": [
+     "Marauder",
+     "Duelist",
+     "Ranger"
+    ]
+   },
+   {
+    "name": "Impending Doom Support",
+    "classes": [
+     "Witch",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Innervate Support",
+    "classes": [
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Intensify Support",
+    "classes": [
+     "Witch",
+     "Templar",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Life Leech Support",
+    "classes": [
+     "Marauder",
+     "Duelist",
+     "Ranger",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Lightning Penetration Support",
+    "classes": [
+     "Witch",
+     "Templar",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Meat Shield Support",
+    "classes": [
+     "Witch"
+    ]
+   },
+   {
+    "name": "More Duration Support",
+    "classes": [
+     "Marauder"
+    ]
+   },
+   {
+    "name": "Pinpoint Support",
+    "classes": [
+     "Witch",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Pulverise Support",
+    "classes": [
+     "Templar",
+     "Marauder",
+     "Duelist"
+    ]
+   },
+   {
+    "name": "Sacrifice Support",
+    "classes": [
+     "Witch"
+    ]
+   },
+   {
+    "name": "Second Wind Support",
+    "classes": [
+     "Ranger",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Swift Affliction Support",
+    "classes": [
+     "Witch",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Swiftbrand Support",
+    "classes": [
+     "Templar"
+    ]
+   },
+   {
+    "name": "Urgent Orders Support",
+    "classes": [
+     "Marauder",
+     "Duelist"
+    ]
+   },
+   {
+    "name": "Windburst Support",
+    "classes": [
+     "Duelist",
+     "Ranger"
+    ]
+   }
+  ],
+  "vendor": [
+   {
+    "name": "Arcane Surge Support",
+    "classes": []
+   },
+   {
+    "name": "Blight",
+    "classes": []
+   },
+   {
+    "name": "Burning Arrow",
+    "classes": []
+   },
+   {
+    "name": "Caustic Arrow",
+    "classes": []
+   },
+   {
+    "name": "Chance to Bleed Support",
+    "classes": []
+   },
+   {
+    "name": "Chance to Poison Support",
+    "classes": []
+   },
+   {
+    "name": "Cleave",
+    "classes": []
+   },
+   {
+    "name": "Cobra Lash",
+    "classes": []
+   },
+   {
+    "name": "Double Strike",
+    "classes": []
+   },
+   {
+    "name": "Dual Strike",
+    "classes": []
+   },
+   {
+    "name": "Elemental Proliferation Support",
+    "classes": []
+   },
+   {
+    "name": "Ethereal Knives",
+    "classes": []
+   },
+   {
+    "name": "Explosive Trap",
+    "classes": []
+   },
+   {
+    "name": "Fireball",
+    "classes": []
+   },
+   {
+    "name": "Freezing Pulse",
+    "classes": []
+   },
+   {
+    "name": "Frost Blades",
+    "classes": []
+   },
+   {
+    "name": "Frostbolt",
+    "classes": []
+   },
+   {
+    "name": "Galvanic Arrow",
+    "classes": []
+   },
+   {
+    "name": "Glacial Hammer",
+    "classes": []
+   },
+   {
+    "name": "Ground Slam",
+    "classes": []
+   },
+   {
+    "name": "Hallow Support",
+    "classes": []
+   },
+   {
+    "name": "Heavy Strike",
+    "classes": []
+   },
+   {
+    "name": "Holy Strike",
+    "classes": []
+   },
+   {
+    "name": "Ice Shot",
+    "classes": []
+   },
+   {
+    "name": "Kinetic Bolt",
+    "classes": []
+   },
+   {
+    "name": "Lightning Tendrils",
+    "classes": []
+   },
+   {
+    "name": "Molten Strike",
+    "classes": []
+   },
+   {
+    "name": "Momentum Support",
+    "classes": []
+   },
+   {
+    "name": "Perforate",
+    "classes": []
+   },
+   {
+    "name": "Prismatic Burst Support",
+    "classes": []
+   },
+   {
+    "name": "Purifying Flame",
+    "classes": []
+   },
+   {
+    "name": "Raise Zombie",
+    "classes": []
+   },
+   {
+    "name": "Rolling Magma",
+    "classes": []
+   },
+   {
+    "name": "Ruthless Support",
+    "classes": []
+   },
+   {
+    "name": "Shield Crush",
+    "classes": []
+   },
+   {
+    "name": "Smite",
+    "classes": []
+   },
+   {
+    "name": "Spark",
+    "classes": []
+   },
+   {
+    "name": "Spectral Throw",
+    "classes": []
+   },
+   {
+    "name": "Split Arrow",
+    "classes": []
+   },
+   {
+    "name": "Splitting Steel",
+    "classes": []
+   },
+   {
+    "name": "Stormblast Mine",
+    "classes": []
+   },
+   {
+    "name": "Viper Strike",
+    "classes": []
+   },
+   {
+    "name": "Ancestral Call Support",
+    "classes": []
+   },
+   {
+    "name": "Animate Weapon",
+    "classes": []
+   },
+   {
+    "name": "Bear Trap",
+    "classes": []
+   },
+   {
+    "name": "Blood and Sand",
+    "classes": []
+   },
+   {
+    "name": "Contagion",
+    "classes": []
+   },
+   {
+    "name": "Conversion Trap",
+    "classes": []
+   },
+   {
+    "name": "Crushing Fist",
+    "classes": []
+   },
+   {
+    "name": "Dash",
+    "classes": []
+   },
+   {
+    "name": "Decoy Totem",
+    "classes": []
+   },
+   {
+    "name": "Detonate Dead",
+    "classes": []
+   },
+   {
+    "name": "Devouring Totem",
+    "classes": []
+   },
+   {
+    "name": "Flame Wall",
+    "classes": []
+   },
+   {
+    "name": "Frost Bomb",
+    "classes": []
+   },
+   {
+    "name": "Frost Wall",
+    "classes": []
+   },
+   {
+    "name": "Frostblink",
+    "classes": []
+   },
+   {
+    "name": "Holy Flame Totem",
+    "classes": []
+   },
+   {
+    "name": "Infused Channelling Support",
+    "classes": []
+   },
+   {
+    "name": "Mirage Archer Support",
+    "classes": []
+   },
+   {
+    "name": "Orb of Storms",
+    "classes": []
+   },
+   {
+    "name": "Pierce Support",
+    "classes": []
+   },
+   {
+    "name": "Puncture",
+    "classes": []
+   },
+   {
+    "name": "Rejuvenation Totem",
+    "classes": []
+   },
+   {
+    "name": "Shield Charge",
+    "classes": []
+   },
+   {
+    "name": "Shrapnel Ballista",
+    "classes": []
+   },
+   {
+    "name": "Sniper's Mark",
+    "classes": []
+   },
+   {
+    "name": "Spell Cascade Support",
+    "classes": []
+   },
+   {
+    "name": "Steelskin",
+    "classes": []
+   },
+   {
+    "name": "Summon Holy Relic",
+    "classes": []
+   },
+   {
+    "name": "Summon Phantasm Support",
+    "classes": []
+   },
+   {
+    "name": "Summon Raging Spirit",
+    "classes": []
+   },
+   {
+    "name": "Swift Assembly Support",
+    "classes": []
+   },
+   {
+    "name": "Vigilant Strike",
+    "classes": []
+   },
+   {
+    "name": "Volley Support",
+    "classes": []
+   },
+   {
+    "name": "War Banner",
+    "classes": []
+   },
+   {
+    "name": "Added Cold Damage Support",
+    "classes": []
+   },
+   {
+    "name": "Added Fire Damage Support",
+    "classes": []
+   },
+   {
+    "name": "Added Lightning Damage Support",
+    "classes": []
+   },
+   {
+    "name": "Additional Accuracy Support",
+    "classes": []
+   },
+   {
+    "name": "Arrow Nova Support",
+    "classes": []
+   },
+   {
+    "name": "Ballista Totem Support",
+    "classes": []
+   },
+   {
+    "name": "Blastchain Mine Support",
+    "classes": []
+   },
+   {
+    "name": "Blind Support",
+    "classes": []
+   },
+   {
+    "name": "Chance to Flee Support",
+    "classes": []
+   },
+   {
+    "name": "Combustion Support",
+    "classes": []
+   },
+   {
+    "name": "Detonate Mines",
+    "classes": []
+   },
+   {
+    "name": "Devour Support",
+    "classes": []
+   },
+   {
+    "name": "Efficacy Support",
+    "classes": []
+   },
+   {
+    "name": "Faster Attacks Support",
+    "classes": []
+   },
+   {
+    "name": "Flamewood Support",
+    "classes": []
+   },
+   {
+    "name": "Increased Critical Strikes Support",
+    "classes": []
+   },
+   {
+    "name": "Infernal Legion Support",
+    "classes": []
+   },
+   {
+    "name": "Knockback Support",
+    "classes": []
+   },
+   {
+    "name": "Life Gain on Hit Support",
+    "classes": []
+   },
+   {
+    "name": "Lifetap Support",
+    "classes": []
+   },
+   {
+    "name": "Locus Mine Support",
+    "classes": []
+   },
+   {
+    "name": "Maim Support",
+    "classes": []
+   },
+   {
+    "name": "Manaforged Arrows Support",
+    "classes": []
+   },
+   {
+    "name": "Melee Splash Support",
+    "classes": []
+   },
+   {
+    "name": "Minion Damage Support",
+    "classes": []
+   },
+   {
+    "name": "Multiple Projectiles Support",
+    "classes": []
+   },
+   {
+    "name": "Multiple Traps Support",
+    "classes": []
+   },
+   {
+    "name": "Spell Totem Support",
+    "classes": []
+   },
+   {
+    "name": "Stun Support",
+    "classes": []
+   },
+   {
+    "name": "Trap Support",
+    "classes": []
+   },
+   {
+    "name": "Unbound Ailments Support",
+    "classes": []
+   },
+   {
+    "name": "Void Manipulation Support",
+    "classes": []
+   },
+   {
+    "name": "Blink Arrow",
+    "classes": []
+   },
+   {
+    "name": "Bodyswap",
+    "classes": []
+   },
+   {
+    "name": "Clarity",
+    "classes": []
+   },
+   {
+    "name": "Enduring Cry",
+    "classes": []
+   },
+   {
+    "name": "Flame Dash",
+    "classes": []
+   },
+   {
+    "name": "Flicker Strike",
+    "classes": []
+   },
+   {
+    "name": "Intimidating Cry",
+    "classes": []
+   },
+   {
+    "name": "Leap Slam",
+    "classes": []
+   },
+   {
+    "name": "Lightning Warp",
+    "classes": []
+   },
+   {
+    "name": "Mirror Arrow",
+    "classes": []
+   },
+   {
+    "name": "Precision",
+    "classes": []
+   },
+   {
+    "name": "Siphoning Trap",
+    "classes": []
+   },
+   {
+    "name": "Smoke Mine",
+    "classes": []
+   },
+   {
+    "name": "Summon Skeletons",
+    "classes": []
+   },
+   {
+    "name": "Unearth",
+    "classes": []
+   },
+   {
+    "name": "Vitality",
+    "classes": []
+   },
+   {
+    "name": "Whirling Blades",
+    "classes": []
+   },
+   {
+    "name": "Wither",
+    "classes": []
+   },
+   {
+    "name": "Withering Step",
+    "classes": []
+   },
+   {
+    "name": "Absolution",
+    "classes": []
+   },
+   {
+    "name": "Arc",
+    "classes": []
+   },
+   {
+    "name": "Barrage",
+    "classes": []
+   },
+   {
+    "name": "Blade Trap",
+    "classes": []
+   },
+   {
+    "name": "Blade Vortex",
+    "classes": []
+   },
+   {
+    "name": "Blazing Salvo",
+    "classes": []
+   },
+   {
+    "name": "Bone Offering",
+    "classes": []
+   },
+   {
+    "name": "Chain Hook",
+    "classes": []
+   },
+   {
+    "name": "Creeping Frost",
+    "classes": []
+   },
+   {
+    "name": "Earthshatter",
+    "classes": []
+   },
+   {
+    "name": "Elemental Hit",
+    "classes": []
+   },
+   {
+    "name": "Essence Drain",
+    "classes": []
+   },
+   {
+    "name": "Exsanguinate",
+    "classes": []
+   },
+   {
+    "name": "Fire Trap",
+    "classes": []
+   },
+   {
+    "name": "Flame Surge",
+    "classes": []
+   },
+   {
+    "name": "Flesh Offering",
+    "classes": []
+   },
+   {
+    "name": "Holy Sweep",
+    "classes": []
+   },
+   {
+    "name": "Ice Nova",
+    "classes": []
+   },
+   {
+    "name": "Ice Spear",
+    "classes": []
+   },
+   {
+    "name": "Icicle Mine",
+    "classes": []
+   },
+   {
+    "name": "Incinerate",
+    "classes": []
+   },
+   {
+    "name": "Infernal Blow",
+    "classes": []
+   },
+   {
+    "name": "Kinetic Fusillade",
+    "classes": []
+   },
+   {
+    "name": "Lacerate",
+    "classes": []
+   },
+   {
+    "name": "Lightning Arrow",
+    "classes": []
+   },
+   {
+    "name": "Lightning Strike",
+    "classes": []
+   },
+   {
+    "name": "Lightning Trap",
+    "classes": []
+   },
+   {
+    "name": "Manabond",
+    "classes": []
+   },
+   {
+    "name": "Poisonous Concoction",
+    "classes": []
+   },
+   {
+    "name": "Power Siphon",
+    "classes": []
+   },
+   {
+    "name": "Rain of Arrows",
+    "classes": []
+   },
+   {
+    "name": "Reave",
+    "classes": []
+   },
+   {
+    "name": "Scorching Ray",
+    "classes": []
+   },
+   {
+    "name": "Searing Bond",
+    "classes": []
+   },
+   {
+    "name": "Shattering Steel",
+    "classes": []
+   },
+   {
+    "name": "Siege Ballista",
+    "classes": []
+   },
+   {
+    "name": "Spectral Helix",
+    "classes": []
+   },
+   {
+    "name": "Spirit Offering",
+    "classes": []
+   },
+   {
+    "name": "Static Strike",
+    "classes": []
+   },
+   {
+    "name": "Storm Brand",
+    "classes": []
+   },
+   {
+    "name": "Storm Burst",
+    "classes": []
+   },
+   {
+    "name": "Storm Call",
+    "classes": []
+   },
+   {
+    "name": "Sunder",
+    "classes": []
+   },
+   {
+    "name": "Toxic Rain",
+    "classes": []
+   },
+   {
+    "name": "Venom Gyre",
+    "classes": []
+   },
+   {
+    "name": "Volatile Dead",
+    "classes": []
+   },
+   {
+    "name": "Voltaxic Burst",
+    "classes": []
+   },
+   {
+    "name": "Wintertide Brand",
+    "classes": []
+   },
+   {
+    "name": "Ancestral Cry",
+    "classes": []
+   },
+   {
+    "name": "Arcane Cloak",
+    "classes": []
+   },
+   {
+    "name": "Arctic Armour",
+    "classes": []
+   },
+   {
+    "name": "Assassin's Mark",
+    "classes": []
+   },
+   {
+    "name": "Blade Blast",
+    "classes": []
+   },
+   {
+    "name": "Blood Rage",
+    "classes": []
+   },
+   {
+    "name": "Brand Recall",
+    "classes": []
+   },
+   {
+    "name": "Cold Snap",
+    "classes": []
+   },
+   {
+    "name": "Corrupting Fever",
+    "classes": []
+   },
+   {
+    "name": "Defiance Banner",
+    "classes": []
+   },
+   {
+    "name": "Desecrate",
+    "classes": []
+   },
+   {
+    "name": "Divine Retribution",
+    "classes": []
+   },
+   {
+    "name": "Ensnaring Arrow",
+    "classes": []
+   },
+   {
+    "name": "Eviscerate",
+    "classes": []
+   },
+   {
+    "name": "Flesh and Stone",
+    "classes": []
+   },
+   {
+    "name": "Forbidden Rite",
+    "classes": []
+   },
+   {
+    "name": "Frenzy",
+    "classes": []
+   },
+   {
+    "name": "Glacial Shield Swipe",
+    "classes": []
+   },
+   {
+    "name": "Herald of Agony",
+    "classes": []
+   },
+   {
+    "name": "Herald of Ash",
+    "classes": []
+   },
+   {
+    "name": "Herald of Ice",
+    "classes": []
+   },
+   {
+    "name": "Herald of Purity",
+    "classes": []
+   },
+   {
+    "name": "Herald of Thunder",
+    "classes": []
+   },
+   {
+    "name": "Molten Shell",
+    "classes": []
+   },
+   {
+    "name": "Poacher's Mark",
+    "classes": []
+   },
+   {
+    "name": "Righteous Fire",
+    "classes": []
+   },
+   {
+    "name": "Seismic Cry",
+    "classes": []
+   },
+   {
+    "name": "Shield of Light",
+    "classes": []
+   },
+   {
+    "name": "Summon Skitterbots",
+    "classes": []
+   },
+   {
+    "name": "Swordstorm",
+    "classes": []
+   },
+   {
+    "name": "Tempest Shield",
+    "classes": []
+   },
+   {
+    "name": "Wall of Force",
+    "classes": []
+   },
+   {
+    "name": "Warlord's Mark",
+    "classes": []
+   },
+   {
+    "name": "Wave of Conviction",
+    "classes": []
+   },
+   {
+    "name": "Bloodlust Support",
+    "classes": []
+   },
+   {
+    "name": "Close Combat Support",
+    "classes": []
+   },
+   {
+    "name": "Cold to Fire Support",
+    "classes": []
+   },
+   {
+    "name": "Concentrated Effect Support",
+    "classes": []
+   },
+   {
+    "name": "Controlled Destruction Support",
+    "classes": []
+   },
+   {
+    "name": "Cruelty Support",
+    "classes": []
+   },
+   {
+    "name": "Culling Strike Support",
+    "classes": []
+   },
+   {
+    "name": "Damage on Full Life Support",
+    "classes": []
+   },
+   {
+    "name": "Deadly Ailments Support",
+    "classes": []
+   },
+   {
+    "name": "Elemental Damage with Attacks Support",
+    "classes": []
+   },
+   {
+    "name": "Elemental Focus Support",
+    "classes": []
+   },
+   {
+    "name": "Endurance Charge on Melee Stun Support",
+    "classes": []
+   },
+   {
+    "name": "Exemplar Support",
+    "classes": []
+   },
+   {
+    "name": "Faster Casting Support",
+    "classes": []
+   },
+   {
+    "name": "Fresh Meat Support",
+    "classes": []
+   },
+   {
+    "name": "Increased Critical Damage Support",
+    "classes": []
+   },
+   {
+    "name": "Iron Grip Support",
+    "classes": []
+   },
+   {
+    "name": "Iron Will Support",
+    "classes": []
+   },
+   {
+    "name": "Kinetic Instability Support",
+    "classes": []
+   },
+   {
+    "name": "Living Lightning Support",
+    "classes": []
+   },
+   {
+    "name": "Melee Physical Damage Support",
+    "classes": []
+   },
+   {
+    "name": "Minion Life Support",
+    "classes": []
+   },
+   {
+    "name": "Minion Speed Support",
+    "classes": []
+   },
+   {
+    "name": "Nightblade Support",
+    "classes": []
+   },
+   {
+    "name": "Physical to Lightning Support",
+    "classes": []
+   },
+   {
+    "name": "Point Blank Support",
+    "classes": []
+   },
+   {
+    "name": "Power Charge On Critical Support",
+    "classes": []
+   },
+   {
+    "name": "Predator Support",
+    "classes": []
+   },
+   {
+    "name": "Rage Support",
+    "classes": []
+   },
+   {
+    "name": "Sacred Wisps Support",
+    "classes": []
+   },
+   {
+    "name": "Sadism Support",
+    "classes": []
+   },
+   {
+    "name": "Shockwave Support",
+    "classes": []
+   },
+   {
+    "name": "Trap and Mine Damage Support",
+    "classes": []
+   },
+   {
+    "name": "Trinity Support",
+    "classes": []
+   },
+   {
+    "name": "Vicious Projectiles Support",
+    "classes": []
+   },
+   {
+    "name": "Volatility Support",
+    "classes": []
+   },
+   {
+    "name": "Anger",
+    "classes": []
+   },
+   {
+    "name": "Autoexertion",
+    "classes": []
+   },
+   {
+    "name": "Automation",
+    "classes": []
+   },
+   {
+    "name": "Bane",
+    "classes": []
+   },
+   {
+    "name": "Battlemage's Cry",
+    "classes": []
+   },
+   {
+    "name": "Conductivity",
+    "classes": []
+   },
+   {
+    "name": "Convocation",
+    "classes": []
+   },
+   {
+    "name": "Despair",
+    "classes": []
+   },
+   {
+    "name": "Determination",
+    "classes": []
+   },
+   {
+    "name": "Discipline",
+    "classes": []
+   },
+   {
+    "name": "Dread Banner",
+    "classes": []
+   },
+   {
+    "name": "Elemental Weakness",
+    "classes": []
+   },
+   {
+    "name": "Energy Blade",
+    "classes": []
+   },
+   {
+    "name": "Enfeeble",
+    "classes": []
+   },
+   {
+    "name": "Flammability",
+    "classes": []
+   },
+   {
+    "name": "Frostbite",
+    "classes": []
+   },
+   {
+    "name": "General's Cry",
+    "classes": []
+   },
+   {
+    "name": "Grace",
+    "classes": []
+   },
+   {
+    "name": "Haste",
+    "classes": []
+   },
+   {
+    "name": "Hatred",
+    "classes": []
+   },
+   {
+    "name": "Infernal Cry",
+    "classes": []
+   },
+   {
+    "name": "Malevolence",
+    "classes": []
+   },
+   {
+    "name": "Petrified Blood",
+    "classes": []
+   },
+   {
+    "name": "Plague Bearer",
+    "classes": []
+   },
+   {
+    "name": "Pride",
+    "classes": []
+   },
+   {
+    "name": "Punishment",
+    "classes": []
+   },
+   {
+    "name": "Purity of Elements",
+    "classes": []
+   },
+   {
+    "name": "Purity of Fire",
+    "classes": []
+   },
+   {
+    "name": "Purity of Ice",
+    "classes": []
+   },
+   {
+    "name": "Purity of Lightning",
+    "classes": []
+   },
+   {
+    "name": "Rallying Cry",
+    "classes": []
+   },
+   {
+    "name": "Spellslinger",
+    "classes": []
+   },
+   {
+    "name": "Temporal Chains",
+    "classes": []
+   },
+   {
+    "name": "Vengeful Cry",
+    "classes": []
+   },
+   {
+    "name": "Vulnerability",
+    "classes": []
+   },
+   {
+    "name": "Wrath",
+    "classes": []
+   },
+   {
+    "name": "Zealotry",
+    "classes": []
+   },
+   {
+    "name": "Animate Guardian",
+    "classes": []
+   },
+   {
+    "name": "Armageddon Brand",
+    "classes": []
+   },
+   {
+    "name": "Artillery Ballista",
+    "classes": []
+   },
+   {
+    "name": "Ball Lightning",
+    "classes": []
+   },
+   {
+    "name": "Blade Flurry",
+    "classes": []
+   },
+   {
+    "name": "Bladefall",
+    "classes": []
+   },
+   {
+    "name": "Bladestorm",
+    "classes": []
+   },
+   {
+    "name": "Blast Rain",
+    "classes": []
+   },
+   {
+    "name": "Boneshatter",
+    "classes": []
+   },
+   {
+    "name": "Charged Dash",
+    "classes": []
+   },
+   {
+    "name": "Conflagration",
+    "classes": []
+   },
+   {
+    "name": "Consecrated Path",
+    "classes": []
+   },
+   {
+    "name": "Crackling Lance",
+    "classes": []
+   },
+   {
+    "name": "Cremation",
+    "classes": []
+   },
+   {
+    "name": "Cyclone",
+    "classes": []
+   },
+   {
+    "name": "Dark Pact",
+    "classes": []
+   },
+   {
+    "name": "Discharge",
+    "classes": []
+   },
+   {
+    "name": "Divine Blast",
+    "classes": []
+   },
+   {
+    "name": "Divine Ire",
+    "classes": []
+   },
+   {
+    "name": "Dominating Blow",
+    "classes": []
+   },
+   {
+    "name": "Earthquake",
+    "classes": []
+   },
+   {
+    "name": "Explosive Arrow",
+    "classes": []
+   },
+   {
+    "name": "Explosive Concoction",
+    "classes": []
+   },
+   {
+    "name": "Eye of Winter",
+    "classes": []
+   },
+   {
+    "name": "Firestorm",
+    "classes": []
+   },
+   {
+    "name": "Flameblast",
+    "classes": []
+   },
+   {
+    "name": "Flamethrower Trap",
+    "classes": []
+   },
+   {
+    "name": "Glacial Cascade",
+    "classes": []
+   },
+   {
+    "name": "Hexblast",
+    "classes": []
+   },
+   {
+    "name": "Ice Crash",
+    "classes": []
+   },
+   {
+    "name": "Ice Trap",
+    "classes": []
+   },
+   {
+    "name": "Kinetic Blast",
+    "classes": []
+   },
+   {
+    "name": "Kinetic Rain",
+    "classes": []
+   },
+   {
+    "name": "Lancing Steel",
+    "classes": []
+   },
+   {
+    "name": "Lightning Spire Trap",
+    "classes": []
+   },
+   {
+    "name": "Penance Brand",
+    "classes": []
+   },
+   {
+    "name": "Pestilent Strike",
+    "classes": []
+   },
+   {
+    "name": "Pyroclast Mine",
+    "classes": []
+   },
+   {
+    "name": "Rage Vortex",
+    "classes": []
+   },
+   {
+    "name": "Raise Spectre",
+    "classes": []
+   },
+   {
+    "name": "Reap",
+    "classes": []
+   },
+   {
+    "name": "Scourge Arrow",
+    "classes": []
+   },
+   {
+    "name": "Seismic Trap",
+    "classes": []
+   },
+   {
+    "name": "Shock Nova",
+    "classes": []
+   },
+   {
+    "name": "Shockwave Totem",
+    "classes": []
+   },
+   {
+    "name": "Somatic Shell",
+    "classes": []
+   },
+   {
+    "name": "Soulrend",
+    "classes": []
+   },
+   {
+    "name": "Spectral Shield Throw",
+    "classes": []
+   },
+   {
+    "name": "Storm Rain",
+    "classes": []
+   },
+   {
+    "name": "Stormbind",
+    "classes": []
+   },
+   {
+    "name": "Summon Reaper",
+    "classes": []
+   },
+   {
+    "name": "Tectonic Slam",
+    "classes": []
+   },
+   {
+    "name": "Thunderstorm",
+    "classes": []
+   },
+   {
+    "name": "Tornado Shot",
+    "classes": []
+   },
+   {
+    "name": "Vortex",
+    "classes": []
+   },
+   {
+    "name": "Wild Strike",
+    "classes": []
+   },
+   {
+    "name": "Winter Orb",
+    "classes": []
+   },
+   {
+    "name": "Added Chaos Damage Support",
+    "classes": []
+   },
+   {
+    "name": "Advanced Traps Support",
+    "classes": []
+   },
+   {
+    "name": "Archmage Support",
+    "classes": []
+   },
+   {
+    "name": "Arrogance Support",
+    "classes": []
+   },
+   {
+    "name": "Blasphemy Support",
+    "classes": []
+   },
+   {
+    "name": "Blessed Call Support",
+    "classes": []
+   },
+   {
+    "name": "Bloodthirst Support",
+    "classes": []
+   },
+   {
+    "name": "Burning Damage Support",
+    "classes": []
+   },
+   {
+    "name": "Charged Mines Support",
+    "classes": []
+   },
+   {
+    "name": "Charged Traps Support",
+    "classes": []
+   },
+   {
+    "name": "Cold Penetration Support",
+    "classes": []
+   },
+   {
+    "name": "Controlled Blaze Support",
+    "classes": []
+   },
+   {
+    "name": "Corrupting Cry Support",
+    "classes": []
+   },
+   {
+    "name": "Critical Strike Affliction Support",
+    "classes": []
+   },
+   {
+    "name": "Cursed Ground Support",
+    "classes": []
+   },
+   {
+    "name": "Elemental Army Support",
+    "classes": []
+   },
+   {
+    "name": "Energy Leech Support",
+    "classes": []
+   },
+   {
+    "name": "Excommunicate Support",
+    "classes": []
+   },
+   {
+    "name": "Expert Retaliation Support",
+    "classes": []
+   },
+   {
+    "name": "Faster Projectiles Support",
+    "classes": []
+   },
+   {
+    "name": "Feeding Frenzy Support",
+    "classes": []
+   },
+   {
+    "name": "Fire Penetration Support",
+    "classes": []
+   },
+   {
+    "name": "Focused Ballista Support",
+    "classes": []
+   },
+   {
+    "name": "Focused Channelling Support",
+    "classes": []
+   },
+   {
+    "name": "Fork Support",
+    "classes": []
+   },
+   {
+    "name": "Fortify Support",
+    "classes": []
+   },
+   {
+    "name": "Generosity Support",
+    "classes": []
+   },
+   {
+    "name": "Guardian's Blessing Support",
+    "classes": []
+   },
+   {
+    "name": "High-Impact Mine Support",
+    "classes": []
+   },
+   {
+    "name": "Hypothermia Support",
+    "classes": []
+   },
+   {
+    "name": "Ice Bite Support",
+    "classes": []
+   },
+   {
+    "name": "Impale Support",
+    "classes": []
+   },
+   {
+    "name": "Impending Doom Support",
+    "classes": []
+   },
+   {
+    "name": "Innervate Support",
+    "classes": []
+   },
+   {
+    "name": "Inspiration Support",
+    "classes": []
+   },
+   {
+    "name": "Intensify Support",
+    "classes": []
+   },
+   {
+    "name": "Item Rarity Support",
+    "classes": []
+   },
+   {
+    "name": "Less Duration Support",
+    "classes": []
+   },
+   {
+    "name": "Life Leech Support",
+    "classes": []
+   },
+   {
+    "name": "Lightning Penetration Support",
+    "classes": []
+   },
+   {
+    "name": "Mana Leech Support",
+    "classes": []
+   },
+   {
+    "name": "Meat Shield Support",
+    "classes": []
+   },
+   {
+    "name": "More Duration Support",
+    "classes": []
+   },
+   {
+    "name": "Pinpoint Support",
+    "classes": []
+   },
+   {
+    "name": "Pulverise Support",
+    "classes": []
+   },
+   {
+    "name": "Sacrifice Support",
+    "classes": []
+   },
+   {
+    "name": "Second Wind Support",
+    "classes": []
+   },
+   {
+    "name": "Slower Projectiles Support",
+    "classes": []
+   },
+   {
+    "name": "Swift Affliction Support",
+    "classes": []
+   },
+   {
+    "name": "Swiftbrand Support",
+    "classes": []
+   },
+   {
+    "name": "Urgent Orders Support",
+    "classes": []
+   },
+   {
+    "name": "Windburst Support",
+    "classes": []
+   }
+  ]
+ },
+ {
+  "id": "a4q2",
+  "name": "Breaking the Seal",
+  "act": 4,
+  "zone": "The Dried Lake",
+  "npc": "Oyun",
+  "vendorNpc": "Petarus and Vanja",
+  "rewards": [
+   {
+    "name": "Ambush",
+    "classes": [
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Berserk",
+    "classes": [
+     "Marauder"
+    ]
+   },
+   {
+    "name": "Flame Link",
+    "classes": [
+     "Scion"
+    ]
+   },
+   {
+    "name": "Frost Shield",
+    "classes": [
+     "Witch",
+     "Templar",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Frozen Legion",
+    "classes": [
+     "Templar"
+    ]
+   },
+   {
+    "name": "Hydrosphere",
+    "classes": [
+     "Witch",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Intuitive Link",
+    "classes": [
+     "Scion"
+    ]
+   },
+   {
+    "name": "Sigil of Power",
+    "classes": [
+     "Witch",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Snipe",
+    "classes": [
+     "Ranger"
+    ]
+   },
+   {
+    "name": "Soul Link",
+    "classes": [
+     "Scion"
+    ]
+   },
+   {
+    "name": "Summon Carrion Golem",
+    "classes": [
+     "Witch",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Summon Chaos Golem",
+    "classes": [
+     "Witch",
+     "Templar",
+     "Marauder",
+     "Duelist",
+     "Ranger",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Summon Flame Golem",
+    "classes": [
+     "Witch",
+     "Templar",
+     "Marauder",
+     "Duelist",
+     "Ranger",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Summon Ice Golem",
+    "classes": [
+     "Witch",
+     "Templar",
+     "Marauder",
+     "Duelist",
+     "Ranger",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Summon Lightning Golem",
+    "classes": [
+     "Witch",
+     "Templar",
+     "Marauder",
+     "Duelist",
+     "Ranger",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Summon Stone Golem",
+    "classes": [
+     "Witch",
+     "Templar",
+     "Marauder",
+     "Duelist",
+     "Ranger",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Temporal Rift",
+    "classes": [
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Tornado",
+    "classes": [
+     "Ranger",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Void Sphere",
+    "classes": [
+     "Witch",
+     "Templar",
+     "Shadow",
+     "Scion"
+    ]
+   }
+  ],
+  "vendor": [
+   {
+    "name": "Ambush",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Scion",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Berserk",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Scion",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Destructive Link",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Flame Link",
+    "classes": [
+     "Scion",
+     "Marauder",
+     "Templar",
+     "Duelist"
+    ]
+   },
+   {
+    "name": "Frost Shield",
+    "classes": [
+     "Witch",
+     "Templar",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Frozen Legion",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Templar",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Hydrosphere",
+    "classes": [
+     "Witch",
+     "Templar",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Immortal Call",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Scion",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Intuitive Link",
+    "classes": [
+     "Duelist",
+     "Shadow",
+     "Ranger",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Phase Run",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Scion",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Protective Link",
+    "classes": [
+     "Scion",
+     "Marauder",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Sigil of Power",
+    "classes": [
+     "Witch",
+     "Templar",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Snipe",
+    "classes": [
+     "Duelist",
+     "Shadow",
+     "Scion",
+     "Ranger"
+    ]
+   },
+   {
+    "name": "Soul Link",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Summon Carrion Golem",
+    "classes": [
+     "Ranger",
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Summon Chaos Golem",
+    "classes": []
+   },
+   {
+    "name": "Summon Flame Golem",
+    "classes": []
+   },
+   {
+    "name": "Summon Ice Golem",
+    "classes": []
+   },
+   {
+    "name": "Summon Lightning Golem",
+    "classes": []
+   },
+   {
+    "name": "Summon Stone Golem",
+    "classes": []
+   },
+   {
+    "name": "Temporal Rift",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Ranger",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Tornado",
+    "classes": [
+     "Ranger",
+     "Scion",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Vampiric Link",
+    "classes": [
+     "Scion",
+     "Duelist",
+     "Ranger"
+    ]
+   },
+   {
+    "name": "Void Sphere",
+    "classes": [
+     "Witch",
+     "Templar",
+     "Shadow",
+     "Scion"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "a4q1",
+  "name": "The Eternal Nightmare",
+  "act": 4,
+  "zone": "The Harvest",
+  "npc": "Dialla",
+  "vendorNpc": "Petarus and Vanja",
+  "rewards": [
+   {
+    "name": "Arcanist Brand",
+    "classes": [
+     "Templar"
+    ]
+   },
+   {
+    "name": "Barrage Support",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Behead Support",
+    "classes": [
+     "Marauder",
+     "Duelist"
+    ]
+   },
+   {
+    "name": "Bonechill Support",
+    "classes": [
+     "Witch",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Brutality Support",
+    "classes": [
+     "Marauder"
+    ]
+   },
+   {
+    "name": "Chain Support",
+    "classes": [
+     "Witch",
+     "Templar",
+     "Marauder",
+     "Duelist",
+     "Ranger",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Cluster Traps Support",
+    "classes": [
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Decay Support",
+    "classes": [
+     "Witch",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Eternal Blessing Support",
+    "classes": [
+     "Marauder"
+    ]
+   },
+   {
+    "name": "Fist of War Support",
+    "classes": [
+     "Templar",
+     "Marauder",
+     "Duelist"
+    ]
+   },
+   {
+    "name": "Frigid Bond Support",
+    "classes": [
+     "Templar",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Greater Multiple Projectiles Support",
+    "classes": [
+     "Witch",
+     "Templar",
+     "Marauder",
+     "Duelist",
+     "Ranger",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Greater Volley Support",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Hex Bloom Support",
+    "classes": [
+     "Witch"
+    ]
+   },
+   {
+    "name": "Ignite Proliferation Support",
+    "classes": [
+     "Templar"
+    ]
+   },
+   {
+    "name": "Immolate Support",
+    "classes": [
+     "Witch",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Increased Area of Effect Support",
+    "classes": [
+     "Witch",
+     "Templar",
+     "Marauder",
+     "Duelist",
+     "Ranger",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Minefield Support",
+    "classes": [
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Multiple Totems Support",
+    "classes": [
+     "Templar",
+     "Marauder"
+    ]
+   },
+   {
+    "name": "Multistrike Support",
+    "classes": [
+     "Witch",
+     "Templar",
+     "Marauder",
+     "Duelist",
+     "Ranger",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Overexertion Support",
+    "classes": [
+     "Marauder"
+    ]
+   },
+   {
+    "name": "Returning Projectiles Support",
+    "classes": [
+     "Ranger",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Rupture Support",
+    "classes": [
+     "Ranger"
+    ]
+   },
+   {
+    "name": "Spell Echo Support",
+    "classes": [
+     "Witch",
+     "Templar",
+     "Marauder",
+     "Duelist",
+     "Ranger",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Spellblade Support",
+    "classes": [
+     "Templar"
+    ]
+   },
+   {
+    "name": "Trauma Support",
+    "classes": [
+     "Marauder",
+     "Duelist"
+    ]
+   },
+   {
+    "name": "Unleash Support",
+    "classes": [
+     "Witch",
+     "Templar",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Vile Toxins Support",
+    "classes": [
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Withering Touch Support",
+    "classes": [
+     "Ranger",
+     "Shadow"
+    ]
+   }
+  ],
+  "vendor": [
+   {
+    "name": "Arcanist Brand",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Barrage Support",
+    "classes": []
+   },
+   {
+    "name": "Behead Support",
+    "classes": [
+     "Templar",
+     "Scion",
+     "Marauder",
+     "Duelist"
+    ]
+   },
+   {
+    "name": "Bonechill Support",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Brutality Support",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Cast On Critical Strike Support",
+    "classes": []
+   },
+   {
+    "name": "Cast on Death Support",
+    "classes": []
+   },
+   {
+    "name": "Cast on Melee Kill Support",
+    "classes": []
+   },
+   {
+    "name": "Cast when Damage Taken Support",
+    "classes": []
+   },
+   {
+    "name": "Cast when Stunned Support",
+    "classes": []
+   },
+   {
+    "name": "Cast while Channelling Support",
+    "classes": []
+   },
+   {
+    "name": "Chain Support",
+    "classes": []
+   },
+   {
+    "name": "Cluster Traps Support",
+    "classes": [
+     "Ranger",
+     "Scion",
+     "Shadow",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Decay Support",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Eternal Blessing Support",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Templar",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Fist of War Support",
+    "classes": [
+     "Duelist",
+     "Marauder",
+     "Scion",
+     "Templar"
+    ]
+   },
+   {
+    "name": "Frigid Bond Support",
+    "classes": [
+     "Scion",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Greater Multiple Projectiles Support",
+    "classes": []
+   },
+   {
+    "name": "Greater Volley Support",
+    "classes": []
+   },
+   {
+    "name": "Hex Bloom Support",
+    "classes": [
+     "Witch",
+     "Shadow",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Hextouch Support",
+    "classes": []
+   },
+   {
+    "name": "Ignite Proliferation Support",
+    "classes": [
+     "Scion",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Immolate Support",
+    "classes": [
+     "Marauder",
+     "Scion",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Increased Area of Effect Support",
+    "classes": []
+   },
+   {
+    "name": "Mark On Hit Support",
+    "classes": []
+   },
+   {
+    "name": "Minefield Support",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Multiple Totems Support",
+    "classes": []
+   },
+   {
+    "name": "Multistrike Support",
+    "classes": []
+   },
+   {
+    "name": "Overexertion Support",
+    "classes": [
+     "Marauder",
+     "Templar",
+     "Duelist",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Returning Projectiles Support",
+    "classes": []
+   },
+   {
+    "name": "Rupture Support",
+    "classes": [
+     "Ranger",
+     "Marauder",
+     "Templar",
+     "Duelist",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Spell Echo Support",
+    "classes": []
+   },
+   {
+    "name": "Spellblade Support",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Trauma Support",
+    "classes": [
+     "Marauder",
+     "Duelist",
+     "Templar",
+     "Scion"
+    ]
+   },
+   {
+    "name": "Unleash Support",
+    "classes": [
+     "Scion",
+     "Shadow",
+     "Templar",
+     "Witch"
+    ]
+   },
+   {
+    "name": "Vile Toxins Support",
+    "classes": [
+     "Ranger",
+     "Scion",
+     "Shadow"
+    ]
+   },
+   {
+    "name": "Withering Touch Support",
+    "classes": [
+     "Duelist",
+     "Ranger",
+     "Scion",
+     "Shadow"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "a6q4",
+  "name": "Fallen from Grace",
+  "act": 6,
+  "zone": "The Twilight Strand",
+  "npc": "Lilly Roth",
+  "vendorNpc": "Lilly Roth",
+  "rewards": [],
+  "vendor": [
+   {
+    "name": "Blight",
+    "classes": []
+   },
+   {
+    "name": "Burning Arrow",
+    "classes": []
+   },
+   {
+    "name": "Caustic Arrow",
+    "classes": []
+   },
+   {
+    "name": "Cleave",
+    "classes": []
+   },
+   {
+    "name": "Cobra Lash",
+    "classes": []
+   },
+   {
+    "name": "Double Strike",
+    "classes": []
+   },
+   {
+    "name": "Dual Strike",
+    "classes": []
+   },
+   {
+    "name": "Ethereal Knives",
+    "classes": []
+   },
+   {
+    "name": "Explosive Trap",
+    "classes": []
+   },
+   {
+    "name": "Fireball",
+    "classes": []
+   },
+   {
+    "name": "Freezing Pulse",
+    "classes": []
+   },
+   {
+    "name": "Frost Blades",
+    "classes": []
+   },
+   {
+    "name": "Frostbolt",
+    "classes": []
+   },
+   {
+    "name": "Galvanic Arrow",
+    "classes": []
+   },
+   {
+    "name": "Glacial Hammer",
+    "classes": []
+   },
+   {
+    "name": "Ground Slam",
+    "classes": []
+   },
+   {
+    "name": "Heavy Strike",
+    "classes": []
+   },
+   {
+    "name": "Holy Strike",
+    "classes": []
+   },
+   {
+    "name": "Ice Shot",
+    "classes": []
+   },
+   {
+    "name": "Kinetic Bolt",
+    "classes": []
+   },
+   {
+    "name": "Lightning Tendrils",
+    "classes": []
+   },
+   {
+    "name": "Molten Strike",
+    "classes": []
+   },
+   {
+    "name": "Perforate",
+    "classes": []
+   },
+   {
+    "name": "Prismatic Burst Support",
+    "classes": []
+   },
+   {
+    "name": "Purifying Flame",
+    "classes": []
+   },
+   {
+    "name": "Raise Zombie",
+    "classes": []
+   },
+   {
+    "name": "Rolling Magma",
+    "classes": []
+   },
+   {
+    "name": "Shield Crush",
+    "classes": []
+   },
+   {
+    "name": "Smite",
+    "classes": []
+   },
+   {
+    "name": "Spark",
+    "classes": []
+   },
+   {
+    "name": "Spectral Throw",
+    "classes": []
+   },
+   {
+    "name": "Split Arrow",
+    "classes": []
+   },
+   {
+    "name": "Splitting Steel",
+    "classes": []
+   },
+   {
+    "name": "Stormblast Mine",
+    "classes": []
+   },
+   {
+    "name": "Viper Strike",
+    "classes": []
+   },
+   {
+    "name": "Ancestral Call Support",
+    "classes": []
+   },
+   {
+    "name": "Animate Weapon",
+    "classes": []
+   },
+   {
+    "name": "Bear Trap",
+    "classes": []
+   },
+   {
+    "name": "Blood and Sand",
+    "classes": []
+   },
+   {
+    "name": "Contagion",
+    "classes": []
+   },
+   {
+    "name": "Conversion Trap",
+    "classes": []
+   },
+   {
+    "name": "Crushing Fist",
+    "classes": []
+   },
+   {
+    "name": "Dash",
+    "classes": []
+   },
+   {
+    "name": "Decoy Totem",
+    "classes": []
+   },
+   {
+    "name": "Detonate Dead",
+    "classes": []
+   },
+   {
+    "name": "Devouring Totem",
+    "classes": []
+   },
+   {
+    "name": "Flame Wall",
+    "classes": []
+   },
+   {
+    "name": "Frost Bomb",
+    "classes": []
+   },
+   {
+    "name": "Frost Wall",
+    "classes": []
+   },
+   {
+    "name": "Frostblink",
+    "classes": []
+   },
+   {
+    "name": "Holy Flame Totem",
+    "classes": []
+   },
+   {
+    "name": "Infused Channelling Support",
+    "classes": []
+   },
+   {
+    "name": "Mirage Archer Support",
+    "classes": []
+   },
+   {
+    "name": "Orb of Storms",
+    "classes": []
+   },
+   {
+    "name": "Pierce Support",
+    "classes": []
+   },
+   {
+    "name": "Puncture",
+    "classes": []
+   },
+   {
+    "name": "Rejuvenation Totem",
+    "classes": []
+   },
+   {
+    "name": "Shield Charge",
+    "classes": []
+   },
+   {
+    "name": "Shrapnel Ballista",
+    "classes": []
+   },
+   {
+    "name": "Sniper's Mark",
+    "classes": []
+   },
+   {
+    "name": "Spell Cascade Support",
+    "classes": []
+   },
+   {
+    "name": "Steelskin",
+    "classes": []
+   },
+   {
+    "name": "Summon Holy Relic",
+    "classes": []
+   },
+   {
+    "name": "Summon Phantasm Support",
+    "classes": []
+   },
+   {
+    "name": "Summon Raging Spirit",
+    "classes": []
+   },
+   {
+    "name": "Swift Assembly Support",
+    "classes": []
+   },
+   {
+    "name": "Vigilant Strike",
+    "classes": []
+   },
+   {
+    "name": "Volley Support",
+    "classes": []
+   },
+   {
+    "name": "War Banner",
+    "classes": []
+   },
+   {
+    "name": "Added Cold Damage Support",
+    "classes": []
+   },
+   {
+    "name": "Added Fire Damage Support",
+    "classes": []
+   },
+   {
+    "name": "Added Lightning Damage Support",
+    "classes": []
+   },
+   {
+    "name": "Additional Accuracy Support",
+    "classes": []
+   },
+   {
+    "name": "Arrow Nova Support",
+    "classes": []
+   },
+   {
+    "name": "Ballista Totem Support",
+    "classes": []
+   },
+   {
+    "name": "Blastchain Mine Support",
+    "classes": []
+   },
+   {
+    "name": "Blind Support",
+    "classes": []
+   },
+   {
+    "name": "Chance to Flee Support",
+    "classes": []
+   },
+   {
+    "name": "Combustion Support",
+    "classes": []
+   },
+   {
+    "name": "Detonate Mines",
+    "classes": []
+   },
+   {
+    "name": "Devour Support",
+    "classes": []
+   },
+   {
+    "name": "Efficacy Support",
+    "classes": []
+   },
+   {
+    "name": "Flamewood Support",
+    "classes": []
+   },
+   {
+    "name": "Increased Critical Strikes Support",
+    "classes": []
+   },
+   {
+    "name": "Infernal Legion Support",
+    "classes": []
+   },
+   {
+    "name": "Knockback Support",
+    "classes": []
+   },
+   {
+    "name": "Life Gain on Hit Support",
+    "classes": []
+   },
+   {
+    "name": "Lifetap Support",
+    "classes": []
+   },
+   {
+    "name": "Locus Mine Support",
+    "classes": []
+   },
+   {
+    "name": "Maim Support",
+    "classes": []
+   },
+   {
+    "name": "Manaforged Arrows Support",
+    "classes": []
+   },
+   {
+    "name": "Melee Splash Support",
+    "classes": []
+   },
+   {
+    "name": "Minion Damage Support",
+    "classes": []
+   },
+   {
+    "name": "Multiple Projectiles Support",
+    "classes": []
+   },
+   {
+    "name": "Multiple Traps Support",
+    "classes": []
+   },
+   {
+    "name": "Spell Totem Support",
+    "classes": []
+   },
+   {
+    "name": "Stun Support",
+    "classes": []
+   },
+   {
+    "name": "Trap Support",
+    "classes": []
+   },
+   {
+    "name": "Unbound Ailments Support",
+    "classes": []
+   },
+   {
+    "name": "Void Manipulation Support",
+    "classes": []
+   },
+   {
+    "name": "Blink Arrow",
+    "classes": []
+   },
+   {
+    "name": "Bodyswap",
+    "classes": []
+   },
+   {
+    "name": "Clarity",
+    "classes": []
+   },
+   {
+    "name": "Enduring Cry",
+    "classes": []
+   },
+   {
+    "name": "Flame Dash",
+    "classes": []
+   },
+   {
+    "name": "Flicker Strike",
+    "classes": []
+   },
+   {
+    "name": "Intimidating Cry",
+    "classes": []
+   },
+   {
+    "name": "Leap Slam",
+    "classes": []
+   },
+   {
+    "name": "Lightning Warp",
+    "classes": []
+   },
+   {
+    "name": "Mirror Arrow",
+    "classes": []
+   },
+   {
+    "name": "Precision",
+    "classes": []
+   },
+   {
+    "name": "Siphoning Trap",
+    "classes": []
+   },
+   {
+    "name": "Smoke Mine",
+    "classes": []
+   },
+   {
+    "name": "Summon Skeletons",
+    "classes": []
+   },
+   {
+    "name": "Unearth",
+    "classes": []
+   },
+   {
+    "name": "Vitality",
+    "classes": []
+   },
+   {
+    "name": "Whirling Blades",
+    "classes": []
+   },
+   {
+    "name": "Wither",
+    "classes": []
+   },
+   {
+    "name": "Withering Step",
+    "classes": []
+   },
+   {
+    "name": "Absolution",
+    "classes": []
+   },
+   {
+    "name": "Arc",
+    "classes": []
+   },
+   {
+    "name": "Barrage",
+    "classes": []
+   },
+   {
+    "name": "Blade Trap",
+    "classes": []
+   },
+   {
+    "name": "Blade Vortex",
+    "classes": []
+   },
+   {
+    "name": "Blazing Salvo",
+    "classes": []
+   },
+   {
+    "name": "Bone Offering",
+    "classes": []
+   },
+   {
+    "name": "Chain Hook",
+    "classes": []
+   },
+   {
+    "name": "Creeping Frost",
+    "classes": []
+   },
+   {
+    "name": "Earthshatter",
+    "classes": []
+   },
+   {
+    "name": "Elemental Hit",
+    "classes": []
+   },
+   {
+    "name": "Essence Drain",
+    "classes": []
+   },
+   {
+    "name": "Exsanguinate",
+    "classes": []
+   },
+   {
+    "name": "Fire Trap",
+    "classes": []
+   },
+   {
+    "name": "Flame Surge",
+    "classes": []
+   },
+   {
+    "name": "Flesh Offering",
+    "classes": []
+   },
+   {
+    "name": "Holy Sweep",
+    "classes": []
+   },
+   {
+    "name": "Ice Nova",
+    "classes": []
+   },
+   {
+    "name": "Ice Spear",
+    "classes": []
+   },
+   {
+    "name": "Icicle Mine",
+    "classes": []
+   },
+   {
+    "name": "Incinerate",
+    "classes": []
+   },
+   {
+    "name": "Infernal Blow",
+    "classes": []
+   },
+   {
+    "name": "Kinetic Fusillade",
+    "classes": []
+   },
+   {
+    "name": "Lacerate",
+    "classes": []
+   },
+   {
+    "name": "Lightning Arrow",
+    "classes": []
+   },
+   {
+    "name": "Lightning Strike",
+    "classes": []
+   },
+   {
+    "name": "Lightning Trap",
+    "classes": []
+   },
+   {
+    "name": "Manabond",
+    "classes": []
+   },
+   {
+    "name": "Poisonous Concoction",
+    "classes": []
+   },
+   {
+    "name": "Power Siphon",
+    "classes": []
+   },
+   {
+    "name": "Rain of Arrows",
+    "classes": []
+   },
+   {
+    "name": "Reave",
+    "classes": []
+   },
+   {
+    "name": "Scorching Ray",
+    "classes": []
+   },
+   {
+    "name": "Searing Bond",
+    "classes": []
+   },
+   {
+    "name": "Shattering Steel",
+    "classes": []
+   },
+   {
+    "name": "Siege Ballista",
+    "classes": []
+   },
+   {
+    "name": "Spectral Helix",
+    "classes": []
+   },
+   {
+    "name": "Spirit Offering",
+    "classes": []
+   },
+   {
+    "name": "Static Strike",
+    "classes": []
+   },
+   {
+    "name": "Storm Brand",
+    "classes": []
+   },
+   {
+    "name": "Storm Burst",
+    "classes": []
+   },
+   {
+    "name": "Storm Call",
+    "classes": []
+   },
+   {
+    "name": "Sunder",
+    "classes": []
+   },
+   {
+    "name": "Toxic Rain",
+    "classes": []
+   },
+   {
+    "name": "Venom Gyre",
+    "classes": []
+   },
+   {
+    "name": "Volatile Dead",
+    "classes": []
+   },
+   {
+    "name": "Voltaxic Burst",
+    "classes": []
+   },
+   {
+    "name": "Wintertide Brand",
+    "classes": []
+   },
+   {
+    "name": "Ancestral Cry",
+    "classes": []
+   },
+   {
+    "name": "Arcane Cloak",
+    "classes": []
+   },
+   {
+    "name": "Arctic Armour",
+    "classes": []
+   },
+   {
+    "name": "Assassin's Mark",
+    "classes": []
+   },
+   {
+    "name": "Blade Blast",
+    "classes": []
+   },
+   {
+    "name": "Blood Rage",
+    "classes": []
+   },
+   {
+    "name": "Brand Recall",
+    "classes": []
+   },
+   {
+    "name": "Cold Snap",
+    "classes": []
+   },
+   {
+    "name": "Corrupting Fever",
+    "classes": []
+   },
+   {
+    "name": "Defiance Banner",
+    "classes": []
+   },
+   {
+    "name": "Desecrate",
+    "classes": []
+   },
+   {
+    "name": "Divine Retribution",
+    "classes": []
+   },
+   {
+    "name": "Ensnaring Arrow",
+    "classes": []
+   },
+   {
+    "name": "Eviscerate",
+    "classes": []
+   },
+   {
+    "name": "Flesh and Stone",
+    "classes": []
+   },
+   {
+    "name": "Forbidden Rite",
+    "classes": []
+   },
+   {
+    "name": "Frenzy",
+    "classes": []
+   },
+   {
+    "name": "Glacial Shield Swipe",
+    "classes": []
+   },
+   {
+    "name": "Herald of Agony",
+    "classes": []
+   },
+   {
+    "name": "Herald of Ash",
+    "classes": []
+   },
+   {
+    "name": "Herald of Ice",
+    "classes": []
+   },
+   {
+    "name": "Herald of Purity",
+    "classes": []
+   },
+   {
+    "name": "Herald of Thunder",
+    "classes": []
+   },
+   {
+    "name": "Molten Shell",
+    "classes": []
+   },
+   {
+    "name": "Poacher's Mark",
+    "classes": []
+   },
+   {
+    "name": "Righteous Fire",
+    "classes": []
+   },
+   {
+    "name": "Seismic Cry",
+    "classes": []
+   },
+   {
+    "name": "Shield of Light",
+    "classes": []
+   },
+   {
+    "name": "Summon Skitterbots",
+    "classes": []
+   },
+   {
+    "name": "Swordstorm",
+    "classes": []
+   },
+   {
+    "name": "Tempest Shield",
+    "classes": []
+   },
+   {
+    "name": "Wall of Force",
+    "classes": []
+   },
+   {
+    "name": "Warlord's Mark",
+    "classes": []
+   },
+   {
+    "name": "Wave of Conviction",
+    "classes": []
+   },
+   {
+    "name": "Bloodlust Support",
+    "classes": []
+   },
+   {
+    "name": "Cold to Fire Support",
+    "classes": []
+   },
+   {
+    "name": "Concentrated Effect Support",
+    "classes": []
+   },
+   {
+    "name": "Cruelty Support",
+    "classes": []
+   },
+   {
+    "name": "Culling Strike Support",
+    "classes": []
+   },
+   {
+    "name": "Damage on Full Life Support",
+    "classes": []
+   },
+   {
+    "name": "Elemental Focus Support",
+    "classes": []
+   },
+   {
+    "name": "Endurance Charge on Melee Stun Support",
+    "classes": []
+   },
+   {
+    "name": "Exemplar Support",
+    "classes": []
+   },
+   {
+    "name": "Fresh Meat Support",
+    "classes": []
+   },
+   {
+    "name": "Increased Critical Damage Support",
+    "classes": []
+   },
+   {
+    "name": "Iron Grip Support",
+    "classes": []
+   },
+   {
+    "name": "Iron Will Support",
+    "classes": []
+   },
+   {
+    "name": "Kinetic Instability Support",
+    "classes": []
+   },
+   {
+    "name": "Living Lightning Support",
+    "classes": []
+   },
+   {
+    "name": "Melee Physical Damage Support",
+    "classes": []
+   },
+   {
+    "name": "Minion Life Support",
+    "classes": []
+   },
+   {
+    "name": "Physical to Lightning Support",
+    "classes": []
+   },
+   {
+    "name": "Point Blank Support",
+    "classes": []
+   },
+   {
+    "name": "Power Charge On Critical Support",
+    "classes": []
+   },
+   {
+    "name": "Sacred Wisps Support",
+    "classes": []
+   },
+   {
+    "name": "Sadism Support",
+    "classes": []
+   },
+   {
+    "name": "Shockwave Support",
+    "classes": []
+   },
+   {
+    "name": "Trinity Support",
+    "classes": []
+   },
+   {
+    "name": "Vicious Projectiles Support",
+    "classes": []
+   },
+   {
+    "name": "Volatility Support",
+    "classes": []
+   },
+   {
+    "name": "Anger",
+    "classes": []
+   },
+   {
+    "name": "Autoexertion",
+    "classes": []
+   },
+   {
+    "name": "Automation",
+    "classes": []
+   },
+   {
+    "name": "Bane",
+    "classes": []
+   },
+   {
+    "name": "Battlemage's Cry",
+    "classes": []
+   },
+   {
+    "name": "Conductivity",
+    "classes": []
+   },
+   {
+    "name": "Convocation",
+    "classes": []
+   },
+   {
+    "name": "Despair",
+    "classes": []
+   },
+   {
+    "name": "Determination",
+    "classes": []
+   },
+   {
+    "name": "Discipline",
+    "classes": []
+   },
+   {
+    "name": "Dread Banner",
+    "classes": []
+   },
+   {
+    "name": "Elemental Weakness",
+    "classes": []
+   },
+   {
+    "name": "Energy Blade",
+    "classes": []
+   },
+   {
+    "name": "Enfeeble",
+    "classes": []
+   },
+   {
+    "name": "Flammability",
+    "classes": []
+   },
+   {
+    "name": "Frostbite",
+    "classes": []
+   },
+   {
+    "name": "General's Cry",
+    "classes": []
+   },
+   {
+    "name": "Grace",
+    "classes": []
+   },
+   {
+    "name": "Haste",
+    "classes": []
+   },
+   {
+    "name": "Hatred",
+    "classes": []
+   },
+   {
+    "name": "Infernal Cry",
+    "classes": []
+   },
+   {
+    "name": "Malevolence",
+    "classes": []
+   },
+   {
+    "name": "Petrified Blood",
+    "classes": []
+   },
+   {
+    "name": "Pride",
+    "classes": []
+   },
+   {
+    "name": "Punishment",
+    "classes": []
+   },
+   {
+    "name": "Purity of Elements",
+    "classes": []
+   },
+   {
+    "name": "Purity of Fire",
+    "classes": []
+   },
+   {
+    "name": "Purity of Ice",
+    "classes": []
+   },
+   {
+    "name": "Purity of Lightning",
+    "classes": []
+   },
+   {
+    "name": "Rallying Cry",
+    "classes": []
+   },
+   {
+    "name": "Spellslinger",
+    "classes": []
+   },
+   {
+    "name": "Temporal Chains",
+    "classes": []
+   },
+   {
+    "name": "Vengeful Cry",
+    "classes": []
+   },
+   {
+    "name": "Vulnerability",
+    "classes": []
+   },
+   {
+    "name": "Wrath",
+    "classes": []
+   },
+   {
+    "name": "Zealotry",
+    "classes": []
+   },
+   {
+    "name": "Animate Guardian",
+    "classes": []
+   },
+   {
+    "name": "Armageddon Brand",
+    "classes": []
+   },
+   {
+    "name": "Artillery Ballista",
+    "classes": []
+   },
+   {
+    "name": "Ball Lightning",
+    "classes": []
+   },
+   {
+    "name": "Blade Flurry",
+    "classes": []
+   },
+   {
+    "name": "Bladefall",
+    "classes": []
+   },
+   {
+    "name": "Bladestorm",
+    "classes": []
+   },
+   {
+    "name": "Blast Rain",
+    "classes": []
+   },
+   {
+    "name": "Boneshatter",
+    "classes": []
+   },
+   {
+    "name": "Charged Dash",
+    "classes": []
+   },
+   {
+    "name": "Conflagration",
+    "classes": []
+   },
+   {
+    "name": "Consecrated Path",
+    "classes": []
+   },
+   {
+    "name": "Crackling Lance",
+    "classes": []
+   },
+   {
+    "name": "Cremation",
+    "classes": []
+   },
+   {
+    "name": "Cyclone",
+    "classes": []
+   },
+   {
+    "name": "Dark Pact",
+    "classes": []
+   },
+   {
+    "name": "Discharge",
+    "classes": []
+   },
+   {
+    "name": "Divine Blast",
+    "classes": []
+   },
+   {
+    "name": "Divine Ire",
+    "classes": []
+   },
+   {
+    "name": "Dominating Blow",
+    "classes": []
+   },
+   {
+    "name": "Earthquake",
+    "classes": []
+   },
+   {
+    "name": "Explosive Arrow",
+    "classes": []
+   },
+   {
+    "name": "Explosive Concoction",
+    "classes": []
+   },
+   {
+    "name": "Eye of Winter",
+    "classes": []
+   },
+   {
+    "name": "Firestorm",
+    "classes": []
+   },
+   {
+    "name": "Flameblast",
+    "classes": []
+   },
+   {
+    "name": "Flamethrower Trap",
+    "classes": []
+   },
+   {
+    "name": "Glacial Cascade",
+    "classes": []
+   },
+   {
+    "name": "Hexblast",
+    "classes": []
+   },
+   {
+    "name": "Ice Crash",
+    "classes": []
+   },
+   {
+    "name": "Ice Trap",
+    "classes": []
+   },
+   {
+    "name": "Kinetic Blast",
+    "classes": []
+   },
+   {
+    "name": "Kinetic Rain",
+    "classes": []
+   },
+   {
+    "name": "Lancing Steel",
+    "classes": []
+   },
+   {
+    "name": "Lightning Spire Trap",
+    "classes": []
+   },
+   {
+    "name": "Penance Brand",
+    "classes": []
+   },
+   {
+    "name": "Pestilent Strike",
+    "classes": []
+   },
+   {
+    "name": "Pyroclast Mine",
+    "classes": []
+   },
+   {
+    "name": "Rage Vortex",
+    "classes": []
+   },
+   {
+    "name": "Raise Spectre",
+    "classes": []
+   },
+   {
+    "name": "Reap",
+    "classes": []
+   },
+   {
+    "name": "Scourge Arrow",
+    "classes": []
+   },
+   {
+    "name": "Seismic Trap",
+    "classes": []
+   },
+   {
+    "name": "Shock Nova",
+    "classes": []
+   },
+   {
+    "name": "Shockwave Totem",
+    "classes": []
+   },
+   {
+    "name": "Somatic Shell",
+    "classes": []
+   },
+   {
+    "name": "Soulrend",
+    "classes": []
+   },
+   {
+    "name": "Spectral Shield Throw",
+    "classes": []
+   },
+   {
+    "name": "Storm Rain",
+    "classes": []
+   },
+   {
+    "name": "Stormbind",
+    "classes": []
+   },
+   {
+    "name": "Summon Reaper",
+    "classes": []
+   },
+   {
+    "name": "Tectonic Slam",
+    "classes": []
+   },
+   {
+    "name": "Thunderstorm",
+    "classes": []
+   },
+   {
+    "name": "Tornado Shot",
+    "classes": []
+   },
+   {
+    "name": "Vortex",
+    "classes": []
+   },
+   {
+    "name": "Wild Strike",
+    "classes": []
+   },
+   {
+    "name": "Winter Orb",
+    "classes": []
+   },
+   {
+    "name": "Added Chaos Damage Support",
+    "classes": []
+   },
+   {
+    "name": "Advanced Traps Support",
+    "classes": []
+   },
+   {
+    "name": "Archmage Support",
+    "classes": []
+   },
+   {
+    "name": "Arrogance Support",
+    "classes": []
+   },
+   {
+    "name": "Blasphemy Support",
+    "classes": []
+   },
+   {
+    "name": "Blessed Call Support",
+    "classes": []
+   },
+   {
+    "name": "Bloodthirst Support",
+    "classes": []
+   },
+   {
+    "name": "Burning Damage Support",
+    "classes": []
+   },
+   {
+    "name": "Charged Mines Support",
+    "classes": []
+   },
+   {
+    "name": "Charged Traps Support",
+    "classes": []
+   },
+   {
+    "name": "Cold Penetration Support",
+    "classes": []
+   },
+   {
+    "name": "Controlled Blaze Support",
+    "classes": []
+   },
+   {
+    "name": "Corrupting Cry Support",
+    "classes": []
+   },
+   {
+    "name": "Critical Strike Affliction Support",
+    "classes": []
+   },
+   {
+    "name": "Cursed Ground Support",
+    "classes": []
+   },
+   {
+    "name": "Elemental Army Support",
+    "classes": []
+   },
+   {
+    "name": "Energy Leech Support",
+    "classes": []
+   },
+   {
+    "name": "Excommunicate Support",
+    "classes": []
+   },
+   {
+    "name": "Expert Retaliation Support",
+    "classes": []
+   },
+   {
+    "name": "Faster Projectiles Support",
+    "classes": []
+   },
+   {
+    "name": "Feeding Frenzy Support",
+    "classes": []
+   },
+   {
+    "name": "Fire Penetration Support",
+    "classes": []
+   },
+   {
+    "name": "Focused Ballista Support",
+    "classes": []
+   },
+   {
+    "name": "Focused Channelling Support",
+    "classes": []
+   },
+   {
+    "name": "Fork Support",
+    "classes": []
+   },
+   {
+    "name": "Fortify Support",
+    "classes": []
+   },
+   {
+    "name": "Generosity Support",
+    "classes": []
+   },
+   {
+    "name": "Guardian's Blessing Support",
+    "classes": []
+   },
+   {
+    "name": "High-Impact Mine Support",
+    "classes": []
+   },
+   {
+    "name": "Hypothermia Support",
+    "classes": []
+   },
+   {
+    "name": "Ice Bite Support",
+    "classes": []
+   },
+   {
+    "name": "Impale Support",
+    "classes": []
+   },
+   {
+    "name": "Impending Doom Support",
+    "classes": []
+   },
+   {
+    "name": "Innervate Support",
+    "classes": []
+   },
+   {
+    "name": "Inspiration Support",
+    "classes": []
+   },
+   {
+    "name": "Intensify Support",
+    "classes": []
+   },
+   {
+    "name": "Item Rarity Support",
+    "classes": []
+   },
+   {
+    "name": "Less Duration Support",
+    "classes": []
+   },
+   {
+    "name": "Life Leech Support",
+    "classes": []
+   },
+   {
+    "name": "Lightning Penetration Support",
+    "classes": []
+   },
+   {
+    "name": "Mana Leech Support",
+    "classes": []
+   },
+   {
+    "name": "Meat Shield Support",
+    "classes": []
+   },
+   {
+    "name": "More Duration Support",
+    "classes": []
+   },
+   {
+    "name": "Pinpoint Support",
+    "classes": []
+   },
+   {
+    "name": "Pulverise Support",
+    "classes": []
+   },
+   {
+    "name": "Sacrifice Support",
+    "classes": []
+   },
+   {
+    "name": "Second Wind Support",
+    "classes": []
+   },
+   {
+    "name": "Slower Projectiles Support",
+    "classes": []
+   },
+   {
+    "name": "Swift Affliction Support",
+    "classes": []
+   },
+   {
+    "name": "Swiftbrand Support",
+    "classes": []
+   },
+   {
+    "name": "Urgent Orders Support",
+    "classes": []
+   },
+   {
+    "name": "Windburst Support",
+    "classes": []
+   },
+   {
+    "name": "Ambush",
+    "classes": []
+   },
+   {
+    "name": "Berserk",
+    "classes": []
+   },
+   {
+    "name": "Destructive Link",
+    "classes": []
+   },
+   {
+    "name": "Flame Link",
+    "classes": []
+   },
+   {
+    "name": "Frost Shield",
+    "classes": []
+   },
+   {
+    "name": "Frozen Legion",
+    "classes": []
+   },
+   {
+    "name": "Hydrosphere",
+    "classes": []
+   },
+   {
+    "name": "Immortal Call",
+    "classes": []
+   },
+   {
+    "name": "Intuitive Link",
+    "classes": []
+   },
+   {
+    "name": "Phase Run",
+    "classes": []
+   },
+   {
+    "name": "Protective Link",
+    "classes": []
+   },
+   {
+    "name": "Sigil of Power",
+    "classes": []
+   },
+   {
+    "name": "Snipe",
+    "classes": []
+   },
+   {
+    "name": "Soul Link",
+    "classes": []
+   },
+   {
+    "name": "Summon Carrion Golem",
+    "classes": []
+   },
+   {
+    "name": "Summon Chaos Golem",
+    "classes": []
+   },
+   {
+    "name": "Summon Flame Golem",
+    "classes": []
+   },
+   {
+    "name": "Summon Ice Golem",
+    "classes": []
+   },
+   {
+    "name": "Summon Lightning Golem",
+    "classes": []
+   },
+   {
+    "name": "Summon Stone Golem",
+    "classes": []
+   },
+   {
+    "name": "Temporal Rift",
+    "classes": []
+   },
+   {
+    "name": "Tornado",
+    "classes": []
+   },
+   {
+    "name": "Vampiric Link",
+    "classes": []
+   },
+   {
+    "name": "Void Sphere",
+    "classes": []
+   },
+   {
+    "name": "Arcanist Brand",
+    "classes": []
+   },
+   {
+    "name": "Barrage Support",
+    "classes": []
+   },
+   {
+    "name": "Behead Support",
+    "classes": []
+   },
+   {
+    "name": "Bonechill Support",
+    "classes": []
+   },
+   {
+    "name": "Brutality Support",
+    "classes": []
+   },
+   {
+    "name": "Cast On Critical Strike Support",
+    "classes": []
+   },
+   {
+    "name": "Cast on Death Support",
+    "classes": []
+   },
+   {
+    "name": "Cast on Melee Kill Support",
+    "classes": []
+   },
+   {
+    "name": "Cast when Damage Taken Support",
+    "classes": []
+   },
+   {
+    "name": "Cast when Stunned Support",
+    "classes": []
+   },
+   {
+    "name": "Cast while Channelling Support",
+    "classes": []
+   },
+   {
+    "name": "Chain Support",
+    "classes": []
+   },
+   {
+    "name": "Cluster Traps Support",
+    "classes": []
+   },
+   {
+    "name": "Decay Support",
+    "classes": []
+   },
+   {
+    "name": "Eternal Blessing Support",
+    "classes": []
+   },
+   {
+    "name": "Fist of War Support",
+    "classes": []
+   },
+   {
+    "name": "Frigid Bond Support",
+    "classes": []
+   },
+   {
+    "name": "Greater Multiple Projectiles Support",
+    "classes": []
+   },
+   {
+    "name": "Greater Volley Support",
+    "classes": []
+   },
+   {
+    "name": "Hex Bloom Support",
+    "classes": []
+   },
+   {
+    "name": "Hextouch Support",
+    "classes": []
+   },
+   {
+    "name": "Ignite Proliferation Support",
+    "classes": []
+   },
+   {
+    "name": "Immolate Support",
+    "classes": []
+   },
+   {
+    "name": "Increased Area of Effect Support",
+    "classes": []
+   },
+   {
+    "name": "Mark On Hit Support",
+    "classes": []
+   },
+   {
+    "name": "Minefield Support",
+    "classes": []
+   },
+   {
+    "name": "Multiple Totems Support",
+    "classes": []
+   },
+   {
+    "name": "Multistrike Support",
+    "classes": []
+   },
+   {
+    "name": "Overexertion Support",
+    "classes": []
+   },
+   {
+    "name": "Returning Projectiles Support",
+    "classes": []
+   },
+   {
+    "name": "Rupture Support",
+    "classes": []
+   },
+   {
+    "name": "Spell Echo Support",
+    "classes": []
+   },
+   {
+    "name": "Spellblade Support",
+    "classes": []
+   },
+   {
+    "name": "Trauma Support",
+    "classes": []
+   },
+   {
+    "name": "Unleash Support",
+    "classes": []
+   },
+   {
+    "name": "Vile Toxins Support",
+    "classes": []
+   },
+   {
+    "name": "Withering Touch Support",
+    "classes": []
+   }
+  ]
+ }
+]

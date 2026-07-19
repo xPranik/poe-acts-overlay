@@ -23,6 +23,7 @@ Background in [ARCHITECTURE.md](ARCHITECTURE.md); schemas in [DATA-FORMATS.md](D
 | Inline markup rendering | `src/renderer/src/Markup.tsx` |
 | Timer UI | `src/renderer/src/Timer.tsx` |
 | Gem colors / list | `src/renderer/src/gemAttrs.ts` + `src/renderer/src/data/gems.json` |
+| Quest gem rewards / portion triggers | `src/shared/quest-rewards.ts` + `src/shared/data/quest-rewards.json` |
 | Gem-preset editor window | `src/renderer/src/settings/*` |
 | Cross-process types | `src/shared/types.ts` |
 | Markup grammar | `src/shared/markup.ts` |
@@ -64,12 +65,16 @@ See the IPC tables in [ARCHITECTURE.md](ARCHITECTURE.md#ipc-reference).
   (`hasTrial`). Both are surfaced through `updateAreaLevel()` in `index.ts`.
 
 ### Gem-preset editor changes
-- **UI**: `src/renderer/src/settings/SettingsApp.tsx` (zones/entries) and
-  `GemPicker.tsx` (gem search). Styles in `settings/settings.css`.
-- **Persistence / schema**: `src/main/preset-store.ts` (`parseGemEntry`, `gemEntryText`,
-  `writePreset`, `readPresetSource`). The TOML schema is in
+- **UI**: `src/renderer/src/settings/SettingsApp.tsx` (class select, portions, zones/entries)
+  and `GemPicker.tsx` (gem search). Styles in `settings/settings.css`.
+- **Persistence / schema**: `src/main/preset-store.ts` (`parseGemEntry`, `parsePortion`,
+  `gemEntryText`, `writePreset`, `readPresetSource`). The TOML schema is in
   [DATA-FORMATS.md](DATA-FORMATS.md#gem-preset-toml).
-- **Overlay display**: `ZoneView` in `App.tsx` (act-scoped `preset.zones` filter).
+- **Portion compilation**: `src/main/guide-loader.ts` (`portionSteps`) turns `[[portion]]`
+  + `quest-rewards.json` into `GemPortion[]`; reward/vendor data + `gemAvailableFor` live
+  in `src/shared/quest-rewards.ts`.
+- **Overlay display**: `ZoneView` in `App.tsx` (act-scoped `preset.zones` filter;
+  `activePortion` = last portion whose trigger zone was reached).
 
 ### Timer / runs behavior
 - **Logic**: `src/main/timer.ts` (`RunTimer`, `computeComparison`, `FINAL_ACT`).
@@ -104,7 +109,7 @@ See the IPC tables in [ARCHITECTURE.md](ARCHITECTURE.md#ipc-reference).
 | `npm run build` | — | production build → `out/` |
 | `npm run typecheck` | — | `tsc` for both `tsconfig.node.json` + `tsconfig.web.json` |
 | `npm run import-guide [profile]` | `scripts/import-exile-leveling.ts` | Fetch exile-leveling routes → **overwrite** `guides/<profile>/act-*.toml` |
-| `npm run import-data` | `scripts/import-data.ts` | Refresh `gems.json`, `act-towns.json`, `zone-levels.json` (committed) |
+| `npm run import-data` | `scripts/import-data.ts` | Refresh `gems.json`, `act-towns.json`, `zone-levels.json`, `quest-rewards.json` (committed) |
 | `npm run fake-log -- <file> …` | `scripts/fake-log.ts` | Emulate Client.txt (see below) |
 
 `fake-log` flags: `<file> "Zone"` appends an entered-zone line; `--gen <n>` prepends an

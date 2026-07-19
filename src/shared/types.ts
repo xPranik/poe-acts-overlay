@@ -2,6 +2,26 @@ import type { Language } from './i18n'
 
 export type StepKind = 'normal' | 'gem-buy' | 'gem-reward'
 
+/** Классы персонажей PoE — фильтруют доступность квестовых наград. */
+export type CharClass =
+  | 'Marauder'
+  | 'Witch'
+  | 'Scion'
+  | 'Ranger'
+  | 'Duelist'
+  | 'Shadow'
+  | 'Templar'
+
+export const CHAR_CLASSES: CharClass[] = [
+  'Marauder',
+  'Witch',
+  'Scion',
+  'Ranger',
+  'Duelist',
+  'Shadow',
+  'Templar'
+]
+
 export interface GuideStep {
   text: string
   kind: StepKind
@@ -31,13 +51,32 @@ export interface PresetZone {
   steps: GuideStep[]
 }
 
+/**
+ * Скомпилированная «порция» камней: становится видимой, когда игрок дошёл до
+ * зоны-триггера квеста (см. quest-rewards.json), и сменяется следующей порцией.
+ */
+export interface GemPortion {
+  /** id квеста-триггера (a1q5, ...) из quest-rewards.json */
+  quest: string
+  /** имя квеста — заголовок порции в оверлее */
+  questName: string
+  /** зона-триггер: дойдя до неё, игрок открывает эту порцию */
+  zone: string
+  act: number
+  steps: GuideStep[]
+}
+
 export interface GemPreset {
   /** stable id = preset file name without extension */
   id: string
   /** display name from [preset].name, falls back to id */
   name: string
+  /** класс персонажа; фильтрует квестовые награды в редакторе */
+  class?: CharClass
   /** зоны с камнями; ищутся по (акт, имя) с фолбэком на имя */
   zones: PresetZone[]
+  /** прогрессивные порции: показывается последняя, чей триггер уже достигнут */
+  portions: GemPortion[]
 }
 
 /**
@@ -56,11 +95,27 @@ export interface GemEntry {
   items?: string[]
 }
 
+/**
+ * Порция в исходном TOML ([[portion]]): квест-триггер + что забрать наградой
+ * и что докупить у торговца после него. Тексты и зона синтезируются из
+ * quest-rewards.json при загрузке.
+ */
+export interface PresetPortion {
+  /** id квеста из quest-rewards.json (a1q5, ...) */
+  quest: string
+  /** забрать наградой за квест */
+  take: string[]
+  /** купить у торговца после квеста */
+  buy: string[]
+}
+
 /** Пресет в исходном (редактируемом) виде — то, что лежит в gems/<id>.toml. */
 export interface PresetSource {
   id: string
   name: string
+  class?: CharClass
   zones: Array<{ name: string; act: number; gems: GemEntry[] }>
+  portions: PresetPortion[]
 }
 
 export interface Guide {
@@ -88,6 +143,12 @@ export interface ActSplit {
   cumulativeMs: number
 }
 
+/** Один сплит зоны-чекпоинта акта 1 (режим таймера "1 акт"). */
+export interface ZoneSplit {
+  zone: string
+  cumulativeMs: number
+}
+
 /** Сохранённый забег со сплитами по актам. */
 export interface Run {
   id: string
@@ -95,6 +156,8 @@ export interface Run {
   startedAt: number
   finishedAt: number | null
   splits: ActSplit[]
+  /** сплиты по зонам-чекпоинтам акта 1; заполняется только когда targetActs === 1 */
+  zoneSplits?: ZoneSplit[]
   totalMs: number | null
   completed: boolean
   /** дистанция забега в актах (1/3/5/10); отсутствие в старых записях трактуется как 10 */
@@ -118,15 +181,24 @@ export interface TimerState {
   currentAct: number
   /** сплиты текущего забега */
   splits: ActSplit[]
+  /** сплиты по зонам-чекпоинтам акта 1 текущего забега (только режим targetActs === 1) */
+  zoneSplits: ZoneSplit[]
   /** тоггл панели таймера */
   visible: boolean
   /** сплиты Personal Best забега (для Δ), null если истории нет */
   pb: ActSplit[] | null
+  /** сплиты по зонам-чекпоинтам PB-забега (targetActs === 1), null если истории нет */
+  zonePb: ZoneSplit[] | null
   /** акт → лучший сегмент (мс) по всем забегам, null если истории нет */
   bestSegments: Record<number, number> | null
+  /** зона-чекпоинт → лучший сегмент (мс) по всем 1-актовым забегам, null если истории нет */
+  bestZoneSegments: Record<string, number> | null
   /** целевая дистанция забега в актах (1/3/5/10) */
   targetActs: number
 }
+
+/** Позиция панели таймера относительно основной панели оверлея. */
+export type TimerPosition = 'top' | 'bottom' | 'left' | 'right'
 
 export interface AppState {
   guide: Guide
@@ -150,8 +222,13 @@ export interface AppState {
   logStatus: LogStatus
   /** checked step keys */
   progress: Record<string, boolean>
+  /** форвард-онли: акт → максимальный currentZoneIndex, реально достигнутый в этом акте
+      (обновляется только из log-driven onZoneEntered, не из ручной навигации) */
+  reachedZoneIndex: Record<number, number>
   /** состояние speedrun-таймера по актам */
   timer: TimerState
+  /** позиция панели таймера относительно основной панели */
+  timerPosition: TimerPosition
   /** язык интерфейса */
   language: Language
   /** результат последней проверки обновлений на GitHub Releases */

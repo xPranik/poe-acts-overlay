@@ -1,4 +1,5 @@
-import type { ActSplit, Run, TimerState } from '../shared/types'
+import { ACT1_CHECKPOINTS } from '../shared/act1-checkpoints'
+import type { ActSplit, Run, TimerState, ZoneSplit } from '../shared/types'
 
 /** Последний акт кампании — вход в его финальную зону завершает забег. */
 export const FINAL_ACT = 10
@@ -10,9 +11,12 @@ export function initialTimerState(visible = false, targetActs = FINAL_ACT): Time
     runningSince: null,
     currentAct: 1,
     splits: [],
+    zoneSplits: [],
     visible,
     pb: null,
     bestSegments: null,
+    zonePb: null,
+    bestZoneSegments: null,
     targetActs
   }
 }
@@ -54,6 +58,42 @@ export function computeComparison(
   }
 }
 
+/**
+ * То же самое, но по зонам-чекпоинтам акта 1 (режим таймера "1 акт"). Учитывает
+ * только забеги с targetActs === 1; старые записи без zoneSplits по-прежнему
+ * конкурируют за PB по общему времени, но не дают данных для zonePb/bestZoneSegments.
+ */
+export function computeZoneComparison(runs: Run[]): {
+  zonePb: ZoneSplit[] | null
+  bestZoneSegments: Record<string, number> | null
+} {
+  let zonePb: ZoneSplit[] | null = null
+  let pbTotal = Infinity
+  const best: Record<string, number> = {}
+
+  for (const run of runs) {
+    if ((run.targetActs ?? FINAL_ACT) !== 1) continue
+    if (run.completed && run.totalMs != null && run.totalMs < pbTotal) {
+      pbTotal = run.totalMs
+      zonePb = run.zoneSplits ?? null
+    }
+    if (!run.zoneSplits) continue
+    const cumByZone = new Map(run.zoneSplits.map((s) => [s.zone, s.cumulativeMs]))
+    for (const s of run.zoneSplits) {
+      const idx = ACT1_CHECKPOINTS.indexOf(s.zone)
+      const prevCum = idx === 0 ? 0 : cumByZone.get(ACT1_CHECKPOINTS[idx - 1])
+      if (prevCum == null) continue
+      const seg = s.cumulativeMs - prevCum
+      if (seg > 0 && (best[s.zone] == null || seg < best[s.zone])) best[s.zone] = seg
+    }
+  }
+
+  return {
+    zonePb,
+    bestZoneSegments: Object.keys(best).length ? best : null
+  }
+}
+
 export interface RunTimerDeps {
   profile: () => string
   loadRuns: (profile: string) => Run[]
@@ -88,12 +128,13 @@ export class RunTimer {
   }
 
   private refreshComparison(): void {
-    const { pb, bestSegments } = computeComparison(
-      this.deps.loadRuns(this.deps.profile()),
-      this.state.targetActs
-    )
+    const runs = this.deps.loadRuns(this.deps.profile())
+    const { pb, bestSegments } = computeComparison(runs, this.state.targetActs)
     this.state.pb = pb
     this.state.bestSegments = bestSegments
+    const { zonePb, bestZoneSegments } = computeZoneComparison(runs)
+    this.state.zonePb = zonePb
+    this.state.bestZoneSegments = bestZoneSegments
   }
 
   /** Запустить забег с текущего акта (ручной старт). */
@@ -109,6 +150,7 @@ export class RunTimer {
     s.runningSince = this.startedAt
     s.currentAct = this.startAct
     s.splits = []
+    s.zoneSplits = []
     this.refreshComparison()
   }
 
@@ -125,6 +167,25 @@ export class RunTimer {
       s.currentAct++
     }
     if (s.currentAct >= this.endAct) this.finish()
+  }
+
+  /**
+   * Чекпоинт-сплит из лога (режим "1 акт"): фиксирует первый вход в зону из
+   * ACT1_CHECKPOINTS, форвард-онли — вход в более раннюю или уже пройденную
+   * зону-чекпоинт (бэктрекинг) игнорируется навсегда. No-op вне активного
+   * забега или при дистанции, отличной от 1 акта.
+   */
+  onZoneEntered(zone: string): void {
+    const s = this.state
+    if (s.status !== 'running' || s.targetActs !== 1) return
+    const idx = ACT1_CHECKPOINTS.indexOf(zone)
+    if (idx === -1) return
+    const lastIdx =
+      s.zoneSplits.length > 0
+        ? ACT1_CHECKPOINTS.indexOf(s.zoneSplits[s.zoneSplits.length - 1].zone)
+        : -1
+    if (idx <= lastIdx) return
+    s.zoneSplits.push({ zone, cumulativeMs: this.elapsed() })
   }
 
   /** Ручной сплит (дубль авто): на целевом акте завершает забег. */
@@ -174,6 +235,7 @@ export class RunTimer {
       startedAt: this.startedAt,
       finishedAt: this.now(),
       splits: [...s.splits],
+      zoneSplits: s.targetActs === 1 ? [...s.zoneSplits] : undefined,
       totalMs: total,
       completed: s.currentAct >= this.endAct,
       targetActs: s.targetActs
@@ -182,7 +244,7 @@ export class RunTimer {
     this.refreshComparison()
   }
 
-  /** Снять последний сплит (undo). */
+  /** Снять последний сплит (undo); в режиме "1 акт" снимает и последний зонный чекпоинт. */
   undo(): void {
     const s = this.state
     if (s.status === 'finished') {
@@ -191,7 +253,11 @@ export class RunTimer {
       s.runningSince = this.now()
     }
     const last = s.splits.pop()
-    if (last) s.currentAct = last.act
+    if (last) {
+      s.currentAct = last.act
+      return
+    }
+    if (s.targetActs === 1) s.zoneSplits.pop()
   }
 
   /** Сброс к idle (незавершённый забег отбрасывается). */
@@ -202,6 +268,7 @@ export class RunTimer {
     s.runningSince = null
     s.currentAct = 1
     s.splits = []
+    s.zoneSplits = []
     this.refreshComparison()
   }
 

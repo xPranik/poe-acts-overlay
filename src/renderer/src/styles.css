@@ -44,6 +44,25 @@ body {
   width: fit-content;
 }
 
+/* Позиция панели таймера: pos-right = базовый row, отдельного правила не требует. */
+.overlay-root.pos-left {
+  flex-direction: row-reverse;
+}
+
+.overlay-root.pos-bottom {
+  flex-direction: column;
+}
+
+.overlay-root.pos-top {
+  flex-direction: column-reverse;
+}
+
+/* сверху/снизу таймер растягивается до ширины основной панели */
+.overlay-root.pos-top .timer,
+.overlay-root.pos-bottom .timer {
+  width: 380px;
+}
+
 .panel {
   display: flex;
   flex-direction: column;
@@ -120,6 +139,10 @@ body {
   color: #e08585;
 }
 
+.timer-total.close {
+  color: #e0a955;
+}
+
 .timer-status {
   font-size: 11px;
   color: #6c7680;
@@ -174,6 +197,10 @@ body {
 
 .split-delta.behind {
   color: #e08585;
+}
+
+.split-delta.close {
+  color: #e0a955;
 }
 
 .split-delta.gold {
@@ -274,6 +301,28 @@ body {
 .zone-nav button:hover,
 .header-actions button:hover {
   color: #a7c5cf;
+}
+
+.header-actions .mini-timer {
+  font-variant-numeric: tabular-nums;
+  font-size: 11px;
+  color: #7fa3b0;
+}
+
+.header-actions .mini-timer-paused {
+  color: #5b6570;
+}
+
+.header-actions .mini-timer.ahead {
+  color: #6fce87;
+}
+
+.header-actions .mini-timer.close {
+  color: #e0a955;
+}
+
+.header-actions .mini-timer.behind {
+  color: #e08585;
 }
 
 .act-title {
@@ -492,6 +541,20 @@ body {
   font-size: 12px;
   color: #6c7680;
   font-style: italic;
+}
+
+/* Прогрессивная порция камней: заголовок = имя квеста-триггера */
+.portion {
+  margin-bottom: 4px;
+}
+
+.portion-title {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: #7fa3b0;
+  margin-bottom: 2px;
 }
 
 .layout-box {

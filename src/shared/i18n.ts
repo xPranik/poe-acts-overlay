@@ -19,6 +19,8 @@ export interface Messages {
   clickModeOn: string
   clickModeOff: string
   actLabel: (n: number) => string
+  checkpointLabel: (zone: string) => string
+  finishCheckpointLabel: string
 
   timerIdle: string
   timerPaused: string
@@ -61,7 +63,18 @@ export interface Messages {
   removeZoneFromPresetTitle: string
   addEntryBtn: string
   addZoneOption: string
+  classLabel: string
+  classNoneOption: string
+  portionsSectionTitle: string
+  portionsHint: string
+  portionTakeLabel: string
+  portionBuyLabel: string
+  addPortionOption: string
+  addGemOption: string
+  removePortionTitle: string
   runDistanceTitle: string
+  timerPositionTitle: string
+  timerPositionNames: Record<'top' | 'bottom' | 'left' | 'right', string>
   rewardOption: string
   buyOption: string
   questPlaceholder: string
@@ -111,6 +124,27 @@ export interface Messages {
   gemUnknownKindError: (where: string, index: number, kind: string) => string
   gemNeedsTextOrItemsError: (where: string, index: number) => string
   invalidPresetIdError: (id: string) => string
+  portionUnknownQuestError: (where: string, index: number, quest: string) => string
+}
+
+const ACT1_CHECKPOINT_LABELS_RU: Record<string, string> = {
+  'The Coast': 'Берег',
+  'The Mud Flats': 'Топи',
+  'The Ledge': 'Уступ',
+  'The Lower Prison': 'Нижняя тюрьма',
+  "Prisoner's Gate": 'Врата узника',
+  'The Ship Graveyard': 'Кладбище кораблей',
+  'The Cavern of Wrath': 'Пещера Гнева'
+}
+
+const ACT1_CHECKPOINT_LABELS_EN: Record<string, string> = {
+  'The Coast': 'Coast',
+  'The Mud Flats': 'Mud Flats',
+  'The Ledge': 'Ledge',
+  'The Lower Prison': 'Lower Prison',
+  "Prisoner's Gate": "Prisoner's Gate",
+  'The Ship Graveyard': 'Ship Graveyard',
+  'The Cavern of Wrath': 'Cavern of Wrath'
 }
 
 const ru: Messages = {
@@ -131,6 +165,8 @@ const ru: Messages = {
   clickModeOn: 'режим кликов — Ctrl+Alt+I чтобы отпустить мышь',
   clickModeOff: 'Ctrl+Alt+I — кликать · Ctrl+Alt+O — скрыть',
   actLabel: (n) => `Акт ${n}`,
+  checkpointLabel: (zone) => ACT1_CHECKPOINT_LABELS_RU[zone] ?? zone,
+  finishCheckpointLabel: 'Финиш',
 
   timerIdle: 'готов',
   timerPaused: 'пауза',
@@ -173,7 +209,19 @@ const ru: Messages = {
   removeZoneFromPresetTitle: 'Убрать зону из пресета',
   addEntryBtn: '+ запись',
   addZoneOption: '+ добавить зону...',
+  classLabel: 'Класс',
+  classNoneOption: 'Любой класс',
+  portionsSectionTitle: 'Порции камней (по квестам)',
+  portionsHint:
+    'Камни показываются после прохождения квеста: порция появляется в оверлее, когда вы доходите до следующей зоны после квестовой',
+  portionTakeLabel: 'Забрать',
+  portionBuyLabel: 'Купить',
+  addPortionOption: '+ добавить квест...',
+  addGemOption: '+ камень...',
+  removePortionTitle: 'Убрать квест из пресета',
   runDistanceTitle: 'Дистанция забега',
+  timerPositionTitle: 'Позиция таймера',
+  timerPositionNames: { top: 'Сверху', bottom: 'Снизу', left: 'Слева', right: 'Справа' },
   rewardOption: 'Награда',
   buyOption: 'Покупка',
   questPlaceholder: 'квест (напр. Enemy at the Gate)',
@@ -226,7 +274,9 @@ const ru: Messages = {
     `${where}, камень #${index + 1}: неизвестный kind "${kind}"`,
   gemNeedsTextOrItemsError: (where, index) =>
     `${where}, камень #${index + 1}: нужен text или непустой items`,
-  invalidPresetIdError: (id) => `Недопустимый id пресета: "${id}"`
+  invalidPresetIdError: (id) => `Недопустимый id пресета: "${id}"`,
+  portionUnknownQuestError: (where, index, quest) =>
+    `${where}, [[portion]] #${index + 1}: неизвестный quest "${quest}" (см. id в quest-rewards.json)`
 }
 
 const en: Messages = {
@@ -247,6 +297,8 @@ const en: Messages = {
   clickModeOn: 'click mode — Ctrl+Alt+I to release the mouse',
   clickModeOff: 'Ctrl+Alt+I — click · Ctrl+Alt+O — hide',
   actLabel: (n) => `Act ${n}`,
+  checkpointLabel: (zone) => ACT1_CHECKPOINT_LABELS_EN[zone] ?? zone,
+  finishCheckpointLabel: 'Finish',
 
   timerIdle: 'ready',
   timerPaused: 'paused',
@@ -289,7 +341,19 @@ const en: Messages = {
   removeZoneFromPresetTitle: 'Remove zone from preset',
   addEntryBtn: '+ entry',
   addZoneOption: '+ add zone...',
+  classLabel: 'Class',
+  classNoneOption: 'Any class',
+  portionsSectionTitle: 'Gem portions (by quest)',
+  portionsHint:
+    'Gems are shown after the quest is completed: a portion appears in the overlay once you reach the next zone after the quest zone',
+  portionTakeLabel: 'Take',
+  portionBuyLabel: 'Buy',
+  addPortionOption: '+ add quest...',
+  addGemOption: '+ gem...',
+  removePortionTitle: 'Remove quest from preset',
   runDistanceTitle: 'Run distance',
+  timerPositionTitle: 'Timer position',
+  timerPositionNames: { top: 'Top', bottom: 'Bottom', left: 'Left', right: 'Right' },
   rewardOption: 'Reward',
   buyOption: 'Buy',
   questPlaceholder: 'quest (e.g. Enemy at the Gate)',
@@ -341,7 +405,9 @@ const en: Messages = {
     `${where}, gem #${index + 1}: unknown kind "${kind}"`,
   gemNeedsTextOrItemsError: (where, index) =>
     `${where}, gem #${index + 1}: needs text or non-empty items`,
-  invalidPresetIdError: (id) => `Invalid preset id: "${id}"`
+  invalidPresetIdError: (id) => `Invalid preset id: "${id}"`,
+  portionUnknownQuestError: (where, index, quest) =>
+    `${where}, [[portion]] #${index + 1}: unknown quest "${quest}" (see ids in quest-rewards.json)`
 }
 
 export const messages: Record<Language, Messages> = { ru, en }

@@ -1,10 +1,17 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { expMultiplier, fullExpRange } from '../../shared/exp'
 import { messages } from '../../shared/i18n'
-import type { AppState, GuideAct, GuideStep, GuideZone } from '../../shared/types'
+import type {
+  AppState,
+  GemPortion,
+  GuideAct,
+  GuideStep,
+  GuideZone,
+  TimerState
+} from '../../shared/types'
 import { gemStepKey, stepKey } from '../../shared/types'
 import { Markup } from './Markup'
-import { Timer } from './Timer'
+import { Timer, fmt, liveElapsed, deltaColorClass } from './Timer'
 import trialIcon from './assets/trial.png'
 
 export default function App(): React.JSX.Element {
@@ -57,7 +64,7 @@ export default function App(): React.JSX.Element {
     .filter((n) => n <= state.timer.targetActs)
 
   return (
-    <div className="overlay-root" ref={rootRef}>
+    <div className={`overlay-root pos-${state.timerPosition}`} ref={rootRef}>
       <div
         className={`panel ${state.interactive ? 'interactive' : ''} ${state.routeVisible ? '' : 'collapsed'}`}
       >
@@ -88,6 +95,28 @@ export default function App(): React.JSX.Element {
       )}
     </div>
   )
+}
+
+/** Цифры вместо иконки ⏱ в шапке, когда панель таймера свёрнута, а таймер не idle. */
+function MiniTimer({ timer }: { timer: TimerState }): React.JSX.Element {
+  const [now, setNow] = useState(() => Date.now())
+  useEffect(() => {
+    if (timer.status !== 'running') return
+    setNow(Date.now())
+    const id = setInterval(() => setNow(Date.now()), 250)
+    return () => clearInterval(id)
+  }, [timer.status, timer.runningSince])
+  const elapsed = liveElapsed(timer, now)
+  const pbCum = timer.pb?.find((s) => s.act === timer.currentAct)?.cumulativeMs
+  const delta = pbCum != null ? elapsed - pbCum : null
+  const classes = [
+    'mini-timer',
+    timer.status === 'paused' ? 'mini-timer-paused' : '',
+    deltaColorClass(delta)
+  ]
+    .filter(Boolean)
+    .join(' ')
+  return <span className={classes}>{fmt(elapsed)}</span>
 }
 
 function Header({
@@ -135,7 +164,11 @@ function Header({
             title={t.runTimerTitle}
             onClick={() => window.api.timerToggleVisible()}
           >
-            ⏱
+            {!state.timer.visible && state.timer.status !== 'idle' ? (
+              <MiniTimer timer={state.timer} />
+            ) : (
+              '⏱'
+            )}
           </button>
           <button title={t.gemSettingsTitle} onClick={() => window.api.openSettings()}>
             ⚙
@@ -188,7 +221,36 @@ function ZoneView({ state, zone }: { state: AppState; zone: GuideZone }): React.
       .filter((z) => z.act === act)
       .flatMap((z) => z.steps.map((step) => ({ zoneName: z.name, step })))
   }, [preset, act])
-  const hasGems = inlineGems.length + presetGems.length > 0
+
+  // Прогрессивные порции: показываем последнюю порцию, чья зона-триггер уже
+  // достигнута (по позиции зоны внутри акта в маршруте). Порции из прошлых
+  // актов считаются достигнутыми; будущие — скрыты до прихода в зону-триггер.
+  const activePortion = useMemo<GemPortion | null>(() => {
+    if (!preset || preset.portions.length === 0) return null
+    const zoneIdx = (a: number, name: string): number => {
+      const ga = state.guide.acts.find((x) => x.number === a)
+      return ga ? ga.zones.findIndex((z) => z.name === name) : -1
+    }
+    // риска акта (форвард-онли, из main) не даёт бэктрекингу в раннюю зону
+    // (например, в хаб акта) откатить показанную порцию назад
+    const curIdx = Math.max(
+      state.currentZoneIndex >= 0 ? state.currentZoneIndex : zoneIdx(act, zone.name),
+      state.reachedZoneIndex[act] ?? -1
+    )
+    let found: GemPortion | null = null
+    for (const p of preset.portions) {
+      if (p.act < act) {
+        found = p
+        continue
+      }
+      if (p.act !== act) continue
+      const trigIdx = zoneIdx(p.act, p.zone)
+      if (trigIdx >= 0 && curIdx >= 0 && trigIdx <= curIdx) found = p
+    }
+    return found
+  }, [preset, act, zone, state.guide.acts, state.currentZoneIndex, state.reachedZoneIndex])
+
+  const hasGems = inlineGems.length + presetGems.length > 0 || activePortion !== null
 
   return (
     <>{state.routeVisible && (
@@ -221,6 +283,23 @@ function ZoneView({ state, zone }: { state: AppState; zone: GuideZone }): React.
     {(presets.length > 0 || hasGems) && (
         <div className="gems">
           {hasGems ? (
+            <>
+            {preset && activePortion && (
+              <div className="portion">
+                <div className="portion-title">{activePortion.questName}</div>
+                <ul className="steps">
+                  {activePortion.steps.map((s) => (
+                    <StepRow
+                      key={`q:${activePortion.quest}:${s.text}`}
+                      state={state}
+                      keyValue={gemStepKey(activePortion.act, activePortion.zone, preset.id, s.text)}
+                      text={s.text}
+                      kind={s.kind}
+                    />
+                  ))}
+                </ul>
+              </div>
+            )}
             <ul className="steps">
               {inlineGems.map((s) => (
                 <StepRow
@@ -242,6 +321,7 @@ function ZoneView({ state, zone }: { state: AppState; zone: GuideZone }): React.
                   />
                 ))}
             </ul>
+            </>
           ) : (
             <div className="gems-empty">
               {state.activePreset ? t.noGemsInZone : t.pickBuildHint}

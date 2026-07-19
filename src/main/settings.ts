@@ -2,7 +2,7 @@ import { app } from 'electron'
 import fs from 'node:fs'
 import path from 'node:path'
 import type { Language } from '../shared/i18n'
-import type { Run } from '../shared/types'
+import type { Run, TimerPosition } from '../shared/types'
 
 export interface Hotkeys {
   toggleOverlay: string
@@ -28,12 +28,17 @@ export interface Settings {
   routeVisible: boolean
   /** последний известный уровень персонажа (переживает ротацию Client.txt) */
   charLevel: number | null
+  /** имя своего персонажа из левел-апов — фильтр от левел-апов согрупников
+   *  и автодетект нового персонажа после перезапуска оверлея */
+  ownCharName: string | null
   bounds: { x?: number; y?: number; width: number; height: number }
   hotkeys: Hotkeys
   /** имя финальной зоны акта 10 (авто-стоп таймера); null = последняя зона гайда акта 10 */
   finishZone: string | null
   /** показывать ли панель таймера */
   timerVisible: boolean
+  /** позиция панели таймера относительно основной панели */
+  timerPosition: TimerPosition
   /** дистанция забега в актах (1/3/5/10) */
   targetActs: number
   /** язык интерфейса */
@@ -46,6 +51,7 @@ const DEFAULTS: Settings = {
   gemPreset: null,
   routeVisible: false,
   charLevel: null,
+  ownCharName: null,
   bounds: { width: 400, height: 640 },
   hotkeys: {
     toggleOverlay: 'Ctrl+Alt+O',
@@ -63,12 +69,20 @@ const DEFAULTS: Settings = {
   },
   finishZone: null,
   timerVisible: false,
+  timerPosition: 'right',
   targetActs: 10,
   language: 'en'
 }
 
 function settingsPath(): string {
   return path.join(app.getPath('userData'), 'settings.json')
+}
+
+export const TIMER_POSITIONS: readonly TimerPosition[] = ['top', 'bottom', 'left', 'right']
+
+/** Неизвестное значение (ручная правка settings.json) трактуем как 'right'. */
+export function normalizeTimerPosition(v: unknown): TimerPosition {
+  return TIMER_POSITIONS.includes(v as TimerPosition) ? (v as TimerPosition) : 'right'
 }
 
 export function loadSettings(): Settings {
@@ -78,7 +92,8 @@ export function loadSettings(): Settings {
       ...DEFAULTS,
       ...raw,
       bounds: { ...DEFAULTS.bounds, ...raw.bounds },
-      hotkeys: { ...DEFAULTS.hotkeys, ...raw.hotkeys }
+      hotkeys: { ...DEFAULTS.hotkeys, ...raw.hotkeys },
+      timerPosition: normalizeTimerPosition(raw.timerPosition)
     }
   } catch {
     return { ...DEFAULTS }
@@ -105,6 +120,23 @@ export function loadProgress(profile: string): Record<string, boolean> {
 
 export function saveProgress(profile: string, progress: Record<string, boolean>): void {
   fs.writeFileSync(progressPath(profile), JSON.stringify(progress))
+}
+
+/** Форвард-онли риска по зонам (акт → макс. достигнутый zoneIndex), отдельно на профиль. */
+function routeProgressPath(profile: string): string {
+  return path.join(app.getPath('userData'), `route-progress-${profile}.json`)
+}
+
+export function loadRouteProgress(profile: string): Record<number, number> {
+  try {
+    return JSON.parse(fs.readFileSync(routeProgressPath(profile), 'utf-8'))
+  } catch {
+    return {}
+  }
+}
+
+export function saveRouteProgress(profile: string, data: Record<number, number>): void {
+  fs.writeFileSync(routeProgressPath(profile), JSON.stringify(data))
 }
 
 /** Сохранённые забеги таймера, отдельно на каждый профиль. */
