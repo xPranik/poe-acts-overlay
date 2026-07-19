@@ -205,6 +205,9 @@ export interface AppState {
   logStatus: LogStatus
   /** checked step keys */
   progress: Record<string, boolean>
+  /** форвард-онли: акт → максимальный currentZoneIndex, реально достигнутый в этом акте
+      (обновляется только из log-driven onZoneEntered, не из ручной навигации) */
+  reachedZoneIndex: Record<number, number>
   /** состояние speedrun-таймера по актам */
   timer: TimerState
   /** язык интерфейса */

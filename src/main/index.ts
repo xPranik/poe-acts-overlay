@@ -21,16 +21,18 @@ import type { AppState, Guide, PresetSource } from '../shared/types'
 import { getStaticArea } from './area-levels'
 import { hasTrial } from './trial-zones'
 import { loadGuide, watchGuide } from './guide-loader'
-import { extractZone, findClientLog, LogWatcher } from './log-watcher'
+import { extractZone, findClientLog, LogWatcher, type LevelUp } from './log-watcher'
 import { deletePreset, readPresetSource, writePreset } from './preset-store'
 import {
   clearRuns,
   deleteRun,
   guidesRoot,
   loadProgress,
+  loadRouteProgress,
   loadRuns,
   loadSettings,
   saveProgress,
+  saveRouteProgress,
   saveRun,
   saveSettings
 } from './settings'
@@ -66,6 +68,7 @@ const state: AppState = {
   hasTrial: false,
   logStatus: { kind: 'missing', message: messages[settings.language].clientLogNotFound },
   progress: loadProgress(settings.profile),
+  reachedZoneIndex: loadRouteProgress(settings.profile),
   timer: runTimer.state,
   language: settings.language,
   updateStatus: { kind: 'idle' }
@@ -111,6 +114,14 @@ function onZoneEntered(zoneName: string, areaLevel: number | null = null): void 
   if (pos) {
     state.currentAct = pos.act
     state.currentZoneIndex = pos.zoneIndex
+    // форвард-онли риска: запоминаем самый дальний реально достигнутый zoneIndex
+    // акта, чтобы бэктрекинг в раннюю зону (например, в хаб) не откатывал
+    // показанную порцию гемов назад
+    const prevReached = state.reachedZoneIndex[pos.act] ?? -1
+    if (pos.zoneIndex > prevReached) {
+      state.reachedZoneIndex[pos.act] = pos.zoneIndex
+      saveRouteProgress(settings.profile, state.reachedZoneIndex)
+    }
   } else {
     state.currentZoneIndex = -1
   }
@@ -120,9 +131,30 @@ function onZoneEntered(zoneName: string, areaLevel: number | null = null): void 
   pushState()
 }
 
-function onLevelUp(level: number): void {
-  state.charLevel = level
-  settings.charLevel = level
+// имя своего перса подтверждено в этой сессии (уже видели его левел-ап);
+// пока не подтверждено, первый левел-ап с незнакомым именем = новый персонаж
+let ownNameConfirmed = false
+
+function onLevelUp(up: LevelUp): void {
+  if (settings.ownCharName === null || up.name === settings.ownCharName) {
+    settings.ownCharName = up.name
+    ownNameConfirmed = true
+  } else if (!ownNameConfirmed) {
+    // первый левел-ап после перезапуска оверлея с другим именем — считаем,
+    // что начат новый персонаж: перепривязываем имя и сбрасываем прогресс
+    // маршрута (риску и чеклист), чтобы не тащить их от прошлого забега
+    settings.ownCharName = up.name
+    ownNameConfirmed = true
+    state.progress = {}
+    state.reachedZoneIndex = {}
+    saveProgress(settings.profile, state.progress)
+    saveRouteProgress(settings.profile, state.reachedZoneIndex)
+  } else {
+    // левел-ап согрупника — игнорируем
+    return
+  }
+  state.charLevel = up.level
+  settings.charLevel = up.level
   saveSettings(settings)
   updateTrayMenu()
   pushState()
@@ -131,6 +163,9 @@ function onLevelUp(level: number): void {
 function resetCharLevel(): void {
   state.charLevel = null
   settings.charLevel = null
+  // отвязываем имя — следующий левел-ап привяжет его заново
+  settings.ownCharName = null
+  ownNameConfirmed = false
   saveSettings(settings)
   updateTrayMenu()
   pushState()
@@ -506,7 +541,9 @@ function registerIpc(): void {
   ipcMain.on('toggle-route', toggleRoute)
   ipcMain.on('reset-progress', () => {
     state.progress = {}
+    state.reachedZoneIndex = {}
     saveProgress(settings.profile, state.progress)
+    saveRouteProgress(settings.profile, state.reachedZoneIndex)
     pushState()
   })
   ipcMain.on('open-guides-folder', () => {

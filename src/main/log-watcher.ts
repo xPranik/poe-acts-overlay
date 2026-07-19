@@ -2,8 +2,9 @@ import fs from 'node:fs'
 import path from 'node:path'
 
 const ENTER_RE = /\] : You have entered (.+)\.\s*$/
-// левелап пишется одинаково для своего персонажа и согрупников — берём последний
-const LEVEL_RE = /\] : .+? \(\w+\) is now level (\d+)\s*$/
+// левелап пишется одинаково для своего персонажа и согрупников —
+// имя (группа 1) нужно наверху для фильтрации чужих левел-апов
+const LEVEL_RE = /\] : (.+?) \(\w+\) is now level (\d+)\s*$/
 // строка генерации инстанса идёт непосредственно перед "You have entered"
 const GEN_RE = /Generating level (\d+) area "[^"]*"/
 
@@ -45,9 +46,15 @@ export function extractZone(line: string): string | null {
   return m ? m[1] : null
 }
 
-export function extractLevel(line: string): number | null {
+export interface LevelUp {
+  /** имя персонажа из строки лога (может быть согрупник) */
+  name: string
+  level: number
+}
+
+export function extractLevel(line: string): LevelUp | null {
   const m = LEVEL_RE.exec(line)
-  return m ? parseInt(m[1], 10) : null
+  return m ? { name: m[1], level: parseInt(m[2], 10) } : null
 }
 
 export function extractAreaGen(line: string): number | null {
@@ -58,7 +65,7 @@ export function extractAreaGen(line: string): number | null {
 export interface LogEvents {
   /** вход в зону; areaLevel — уровень инстанса из строки Generating (если была) */
   onZone: (zone: string, areaLevel: number | null) => void
-  onLevel: (level: number) => void
+  onLevel: (up: LevelUp) => void
 }
 
 /**
@@ -86,7 +93,7 @@ export class LogWatcher {
     }
     const from = Math.max(0, size - TAIL_BYTES)
     const tail = this.readRange(from, size)
-    let lastLevel: number | null = null
+    let lastLevel: LevelUp | null = null
     let lastZone: { name: string; areaLevel: number | null } | null = null
     for (const raw of tail.split('\n')) {
       const line = raw.trimEnd()

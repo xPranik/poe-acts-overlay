@@ -41,7 +41,7 @@ Client.txt (game log)
    ▼
 LogWatcher (src/main/log-watcher.ts)
    │  ENTER_RE  → onZone(zone, areaLevel)
-   │  LEVEL_RE  → onLevel(level)
+   │  LEVEL_RE  → onLevel({ name, level })
    │  GEN_RE    → instance area level (feeds next onZone)
    ▼
 index.ts handlers
@@ -49,7 +49,9 @@ index.ts handlers
                  → getStaticArea(name, act)         [area-levels.ts → zone-levels.json]
                  → hasTrial(name, act)              [trial-zones.ts → trial-zones.json]
                  → runTimer.advanceTo(act)          [timer.ts]
-   onLevelUp    → state.charLevel
+   onLevelUp    → state.charLevel; фильтрует левел-апы согрупников по settings.ownCharName
+                  (первый левел-ап после запуска фиксирует имя; смена имени = новый
+                  персонаж → сброс charLevel/прогресса и новое имя)
    │  mutate the singleton `state: AppState` in place
    ▼
 pushState() → webContents.send('state', state)  →  BOTH windows
@@ -73,7 +75,7 @@ over IPC; main mutates `state` and pushes a fresh copy.
 | File | Responsibility | Key exports |
 |---|---|---|
 | `index.ts` | Entry point / orchestrator. Owns singleton `state`, windows, tray, wires everything. | `extractZone` (re-export for tests); internal `pushState`, `onZoneEntered`, `updateAreaLevel`, `createWindow`, `openSettingsWindow`, `registerIpc`, `registerHotkeys`, `registerGuideProtocol`, `updateTrayMenu` |
-| `log-watcher.ts` | Tails `Client.txt` by polling size, parses appended bytes; locates the log. | `findClientLog()`, `extractZone()`, `extractLevel()`, `extractAreaGen()`, `class LogWatcher`, `interface LogEvents`. Const `POLL_INTERVAL_MS=500`, `TAIL_BYTES=64*1024`. Regexes `ENTER_RE`/`LEVEL_RE`/`GEN_RE`. Handles file truncation on game restart (rewind to 0). |
+| `log-watcher.ts` | Tails `Client.txt` by polling size, parses appended bytes; locates the log. | `findClientLog()`, `extractZone()`, `extractLevel()` (возвращает `LevelUp {name, level}`), `extractAreaGen()`, `class LogWatcher`, `interface LogEvents`. Const `POLL_INTERVAL_MS=500`, `TAIL_BYTES=64*1024`. Regexes `ENTER_RE`/`LEVEL_RE`/`GEN_RE`. Handles file truncation on game restart (rewind to 0). |
 | `guide-loader.ts` | Loads a guide profile from TOML (acts + gem presets) and hot-reloads. | `loadGuide(guidesRoot, profile): Guide`, `watchGuide(guidesRoot, profile, onReload): FSWatcher` (chokidar, `ignoreInitial`, depth 2, 150ms debounce). Uses `parseGemEntry`/`gemEntryText` + `getZoneActEarliest`. |
 | `preset-store.ts` | Single source of truth for the gem-entry schema; read/write `gems/<id>.toml`. | `parseGemEntry()`, `gemEntryText()`, `readPresetSource()`, `writePreset()`, `deletePreset()`. `ID_RE=/^[\w-]+$/`. `writePreset` prepends a "generated file" header. |
 | `area-levels.ts` | Static zone→monster-level lookup from `data/zone-levels.json`. | `interface ZoneLevel`, `getStaticArea(name, act)` (nearest-act match), `getZoneActEarliest(name)`. In-memory `Map` built at import. |
@@ -189,6 +191,7 @@ to both windows.
 | `hasTrial` | `boolean` | `false` | `updateAreaLevel` → `hasTrial()` |
 | `logStatus` | `LogStatus` | `{kind:'missing', message}` | log watcher |
 | `progress` | `Record<string, boolean>` | `loadProgress(profile)` | toggle-step |
+| `reachedZoneIndex` | `Record<number, number>` | `loadRouteProgress(profile)` | `onZoneEntered` (forward-only ratchet, act → max zoneIndex reached; not updated by manual nav) |
 | `timer` | `TimerState` | `runTimer.state` | `timer.ts` |
 
 **Progress keys** (`src/shared/types.ts`):

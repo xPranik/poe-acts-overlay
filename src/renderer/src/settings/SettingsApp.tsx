@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import type { Language } from '../../../shared/i18n'
 import { messages } from '../../../shared/i18n'
-import type { AppState, CharClass, GemEntry, PresetSource } from '../../../shared/types'
+import type { AppState, CharClass, GemEntry, PresetPortion, PresetSource } from '../../../shared/types'
 import { CHAR_CLASSES } from '../../../shared/types'
 import type { QuestRewardGem } from '../../../shared/quest-rewards'
 import { QUEST_REWARDS, gemAvailableFor, questRewardById } from '../../../shared/quest-rewards'
@@ -18,6 +18,31 @@ const TOWNS = actTowns as Array<{ name: string; act: number }>
 // порядок квестов в quest-rewards.json = порядок прохождения; порции храним в нём же,
 // чтобы «последняя достигнутая» в оверлее выбиралась корректно
 const QUEST_ORDER = new Map(QUEST_REWARDS.map((q, i) => [q.id, i]))
+
+// акты, в которых вообще есть квесты с гем-наградами (для группировки в редакторе)
+const QUEST_ACTS = [...new Set(QUEST_REWARDS.map((q) => q.act))].sort((a, b) => a - b)
+
+// группирует порции пресета по акту их квеста-триггера, сохраняя исходный порядок
+// (порции уже отсортированы по QUEST_ORDER, так что группы выходят по актам)
+function groupPortionsByAct(
+  portions: PresetPortion[]
+): Array<{ act: number; items: Array<{ p: PresetPortion; pi: number; q: ReturnType<typeof questRewardById> }> }> {
+  const groups: Array<{
+    act: number
+    items: Array<{ p: PresetPortion; pi: number; q: ReturnType<typeof questRewardById> }>
+  }> = []
+  portions.forEach((p, pi) => {
+    const q = questRewardById(p.quest)
+    const act = q?.act ?? 0
+    let group = groups.find((g) => g.act === act)
+    if (!group) {
+      group = { act, items: [] }
+      groups.push(group)
+    }
+    group.items.push({ p, pi, q })
+  })
+  return groups.sort((a, b) => a.act - b.act)
+}
 
 type Tab = 'presets' | 'general' | 'runs'
 
@@ -248,60 +273,58 @@ export function SettingsApp(): React.JSX.Element {
                     <div className="pane-title" title={t.portionsHint}>
                       {t.portionsSectionTitle}
                     </div>
-                    {source.portions.map((p, pi) => {
-                      const q = questRewardById(p.quest)
-                      return (
-                        <div key={p.quest} className="zone-block">
-                          <div className="zone-block-head">
-                            <span className="zone-block-name">
-                              {q ? q.name : p.quest}
-                              {q && (
-                                <span className="zone-block-act">
-                                  {t.actLabel(q.act)} · {q.zone}
-                                </span>
-                              )}
-                            </span>
-                            <button
-                              className="icon-btn"
-                              title={t.removePortionTitle}
-                              onClick={() =>
-                                update((d) => {
-                                  d.portions.splice(pi, 1)
-                                })
-                              }
-                            >
-                              ✕
-                            </button>
+                    {groupPortionsByAct(source.portions).map(({ act, items }) => (
+                      <div key={act} className="portion-group">
+                        <div className="portion-group-title">{t.actLabel(act)}</div>
+                        {items.map(({ p, pi, q }) => (
+                          <div key={p.quest} className="zone-block">
+                            <div className="zone-block-head">
+                              <span className="zone-block-name">
+                                {q ? q.name : p.quest}
+                                {q && <span className="zone-block-act">{q.zone}</span>}
+                              </span>
+                              <button
+                                className="icon-btn"
+                                title={t.removePortionTitle}
+                                onClick={() =>
+                                  update((d) => {
+                                    d.portions.splice(pi, 1)
+                                  })
+                                }
+                              >
+                                ✕
+                              </button>
+                            </div>
+                            {q && (
+                              <>
+                                <GemChips
+                                  label={t.portionTakeLabel}
+                                  addLabel={t.addGemOption}
+                                  selected={p.take}
+                                  options={q.rewards.filter((g) => gemAvailableFor(g, source.class))}
+                                  max={1}
+                                  onChange={(names) =>
+                                    update((d) => {
+                                      d.portions[pi].take = names
+                                    })
+                                  }
+                                />
+                                <BuyGemChips
+                                  label={t.portionBuyLabel}
+                                  language={state.language}
+                                  selected={p.buy}
+                                  onChange={(names) =>
+                                    update((d) => {
+                                      d.portions[pi].buy = names
+                                    })
+                                  }
+                                />
+                              </>
+                            )}
                           </div>
-                          {q && (
-                            <>
-                              <GemChips
-                                label={t.portionTakeLabel}
-                                addLabel={t.addGemOption}
-                                selected={p.take}
-                                options={q.rewards.filter((g) => gemAvailableFor(g, source.class))}
-                                onChange={(names) =>
-                                  update((d) => {
-                                    d.portions[pi].take = names
-                                  })
-                                }
-                              />
-                              <GemChips
-                                label={t.portionBuyLabel}
-                                addLabel={t.addGemOption}
-                                selected={p.buy}
-                                options={q.vendor.filter((g) => gemAvailableFor(g, source.class))}
-                                onChange={(names) =>
-                                  update((d) => {
-                                    d.portions[pi].buy = names
-                                  })
-                                }
-                              />
-                            </>
-                          )}
-                        </div>
-                      )
-                    })}
+                        ))}
+                      </div>
+                    ))}
                     <div className="add-zone">
                       <select
                         value=""
@@ -318,13 +341,21 @@ export function SettingsApp(): React.JSX.Element {
                         }}
                       >
                         <option value="">{t.addPortionOption}</option>
-                        {QUEST_REWARDS.filter(
-                          (q) => !source.portions.some((p) => p.quest === q.id)
-                        ).map((q) => (
-                          <option key={q.id} value={q.id}>
-                            {q.name} ({t.actLabel(q.act)} — {q.zone})
-                          </option>
-                        ))}
+                        {QUEST_ACTS.map((act) => {
+                          const opts = QUEST_REWARDS.filter(
+                            (q) => q.act === act && !source.portions.some((p) => p.quest === q.id)
+                          )
+                          if (opts.length === 0) return null
+                          return (
+                            <optgroup key={act} label={t.actLabel(act)}>
+                              {opts.map((q) => (
+                                <option key={q.id} value={q.id}>
+                                  {q.name} — {q.zone}
+                                </option>
+                              ))}
+                            </optgroup>
+                          )
+                        })}
                       </select>
                     </div>
                   </section>
@@ -487,21 +518,25 @@ export function SettingsApp(): React.JSX.Element {
   )
 }
 
-// чипы выбранных камней порции + селект для добавления из наград/ассортимента квеста
+// чипы выбранных камней порции + селект для добавления из наград квеста.
+// `max` ограничивает число выбранных камней (в игре за квест берут только один).
 function GemChips({
   label,
   addLabel,
   selected,
   options,
+  max,
   onChange
 }: {
   label: string
   addLabel: string
   selected: string[]
   options: QuestRewardGem[]
+  max?: number
   onChange: (names: string[]) => void
 }): React.JSX.Element {
   const available = options.filter((g) => !selected.includes(g.name))
+  const atMax = max !== undefined && selected.length >= max
   return (
     <div className="gem-chips">
       <span className="gem-chips-label">{label}</span>
@@ -516,7 +551,7 @@ function GemChips({
           </button>
         </span>
       ))}
-      {available.length > 0 && (
+      {!atMax && available.length > 0 && (
         <select
           value=""
           onChange={(e) => {
@@ -532,6 +567,54 @@ function GemChips({
         </select>
       )}
     </div>
+  )
+}
+
+// чипы покупки: поиск по полному каталогу камней (а не только по ассортименту
+// этого конкретного квеста) — в игре у торговца можно докупать и то, что
+// открылось на более ранних заданиях, список не ограничен одним квестом
+function BuyGemChips({
+  label,
+  language,
+  selected,
+  onChange
+}: {
+  label: string
+  language: Language
+  selected: string[]
+  onChange: (names: string[]) => void
+}): React.JSX.Element {
+  const t = messages[language]
+  const [open, setOpen] = useState(false)
+  return (
+    <>
+      <div className="gem-chips">
+        <span className="gem-chips-label">{label}</span>
+        {selected.map((name, i) => (
+          <span key={name} className="gem-chip">
+            {name}
+            <button
+              className="icon-btn"
+              onClick={() => onChange(selected.filter((_, j) => j !== i))}
+            >
+              ✕
+            </button>
+          </span>
+        ))}
+        <button className="add-gem" onClick={() => setOpen((v) => !v)}>
+          {t.addGemBtn}
+        </button>
+      </div>
+      {open && (
+        <GemPicker
+          language={language}
+          onClose={() => setOpen(false)}
+          onPick={(name) => {
+            if (!selected.includes(name)) onChange([...selected, name])
+          }}
+        />
+      )}
+    </>
   )
 }
 

@@ -268,7 +268,23 @@
 .portions {
   display: flex;
   flex-direction: column;
+  gap: 12px;
+}
+
+.portion-group {
+  display: flex;
+  flex-direction: column;
   gap: 8px;
+}
+
+.portion-group-title {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: #ffcf91;
+  padding-bottom: 3px;
+  border-bottom: 1px solid rgba(255, 207, 145, 0.25);
 }
 
 .gem-chips {

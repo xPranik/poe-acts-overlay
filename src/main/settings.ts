@@ -28,6 +28,9 @@ export interface Settings {
   routeVisible: boolean
   /** последний известный уровень персонажа (переживает ротацию Client.txt) */
   charLevel: number | null
+  /** имя своего персонажа из левел-апов — фильтр от левел-апов согрупников
+   *  и автодетект нового персонажа после перезапуска оверлея */
+  ownCharName: string | null
   bounds: { x?: number; y?: number; width: number; height: number }
   hotkeys: Hotkeys
   /** имя финальной зоны акта 10 (авто-стоп таймера); null = последняя зона гайда акта 10 */
@@ -46,6 +49,7 @@ const DEFAULTS: Settings = {
   gemPreset: null,
   routeVisible: false,
   charLevel: null,
+  ownCharName: null,
   bounds: { width: 400, height: 640 },
   hotkeys: {
     toggleOverlay: 'Ctrl+Alt+O',
@@ -105,6 +109,23 @@ export function loadProgress(profile: string): Record<string, boolean> {
 
 export function saveProgress(profile: string, progress: Record<string, boolean>): void {
   fs.writeFileSync(progressPath(profile), JSON.stringify(progress))
+}
+
+/** Форвард-онли риска по зонам (акт → макс. достигнутый zoneIndex), отдельно на профиль. */
+function routeProgressPath(profile: string): string {
+  return path.join(app.getPath('userData'), `route-progress-${profile}.json`)
+}
+
+export function loadRouteProgress(profile: string): Record<number, number> {
+  try {
+    return JSON.parse(fs.readFileSync(routeProgressPath(profile), 'utf-8'))
+  } catch {
+    return {}
+  }
+}
+
+export function saveRouteProgress(profile: string, data: Record<number, number>): void {
+  fs.writeFileSync(routeProgressPath(profile), JSON.stringify(data))
 }
 
 /** Сохранённые забеги таймера, отдельно на каждый профиль. */

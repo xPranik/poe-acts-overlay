@@ -198,7 +198,12 @@ function ZoneView({ state, zone }: { state: AppState; zone: GuideZone }): React.
       const ga = state.guide.acts.find((x) => x.number === a)
       return ga ? ga.zones.findIndex((z) => z.name === name) : -1
     }
-    const curIdx = state.currentZoneIndex >= 0 ? state.currentZoneIndex : zoneIdx(act, zone.name)
+    // риска акта (форвард-онли, из main) не даёт бэктрекингу в раннюю зону
+    // (например, в хаб акта) откатить показанную порцию назад
+    const curIdx = Math.max(
+      state.currentZoneIndex >= 0 ? state.currentZoneIndex : zoneIdx(act, zone.name),
+      state.reachedZoneIndex[act] ?? -1
+    )
     let found: GemPortion | null = null
     for (const p of preset.portions) {
       if (p.act < act) {
@@ -210,7 +215,7 @@ function ZoneView({ state, zone }: { state: AppState; zone: GuideZone }): React.
       if (trigIdx >= 0 && curIdx >= 0 && trigIdx <= curIdx) found = p
     }
     return found
-  }, [preset, act, zone, state.guide.acts, state.currentZoneIndex])
+  }, [preset, act, zone, state.guide.acts, state.currentZoneIndex, state.reachedZoneIndex])
 
   const hasGems = inlineGems.length + presetGems.length > 0 || activePortion !== null
 

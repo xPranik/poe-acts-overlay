@@ -123,8 +123,8 @@ items  = [ "Holy Flame Totem", "Shield Charge" ]
 | `[preset]` | `name` | string | shown in the build selector |
 | | `class` | string? | `CharClass`; filters quest rewards in the editor picker |
 | `[[portion]]` | `quest` | string | quest id from `quest-rewards.json` (e.g. `a1q2`); also the portion trigger |
-| | `take` | string[] | gems to pick as the quest reward |
-| | `buy` | string[] | gems to buy from the quest's vendor NPC |
+| | `take` | string[] | gem picked as the quest reward — **at most one** (the editor caps this at 1: you only get one quest reward in-game) |
+| | `buy` | string[] | gems to buy from the quest's vendor NPC — **not** limited to `quest-rewards.json`'s `vendor` list; the editor's buy picker searches the full gem catalog (`gems.json`), since vendor stock is cumulative across quests and old unlocks stay purchasable |
 | `[[zone]]` | `name` | string | usually a town (from `act-towns.json`) |
 | | `act` | int | required; distinguishes duplicate town names |
 | `[[zone.gems]]` | `kind` | `"gem-buy" \| "gem-reward"` | vendor buy vs quest reward |
@@ -143,6 +143,14 @@ shows only the **latest portion whose trigger zone has been reached** — `App.t
 the last `GemPortion` whose `(act, zone)` is at or before the current guide position
 (earlier act, or same act with trigger zone index ≤ current zone index); portions and
 `[[zone]]` blocks are independent and can be mixed in one preset.
+
+Guide position for this comparison is the **max** of the live `currentZoneIndex` and
+`AppState.reachedZoneIndex[act]` — a forward-only ratchet updated in `onZoneEntered`
+(main process) whenever a real log-driven zone entry reaches a new zoneIndex in an act.
+This means backtracking to an earlier zone (e.g. returning to the act's town hub) does
+not regress the shown portion. Manual route navigation (`navZone`/`navAct`) does **not**
+update the ratchet. It's persisted per profile (`route-progress-<profile>.json`) and
+cleared together with the "Reset progress" action.
 
 The editable in-memory form is `PresetSource` (see below); the compiled form used by the
 overlay is `GemPreset`/`PresetZone` with `GuideStep[]`.
