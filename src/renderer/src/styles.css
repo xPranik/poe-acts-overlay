@@ -44,6 +44,25 @@ body {
   width: fit-content;
 }
 
+/* Позиция панели таймера: pos-right = базовый row, отдельного правила не требует. */
+.overlay-root.pos-left {
+  flex-direction: row-reverse;
+}
+
+.overlay-root.pos-bottom {
+  flex-direction: column;
+}
+
+.overlay-root.pos-top {
+  flex-direction: column-reverse;
+}
+
+/* сверху/снизу таймер растягивается до ширины основной панели */
+.overlay-root.pos-top .timer,
+.overlay-root.pos-bottom .timer {
+  width: 380px;
+}
+
 .panel {
   display: flex;
   flex-direction: column;

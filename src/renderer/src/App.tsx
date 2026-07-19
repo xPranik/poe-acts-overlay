@@ -64,7 +64,7 @@ export default function App(): React.JSX.Element {
     .filter((n) => n <= state.timer.targetActs)
 
   return (
-    <div className="overlay-root" ref={rootRef}>
+    <div className={`overlay-root pos-${state.timerPosition}`} ref={rootRef}>
       <div
         className={`panel ${state.interactive ? 'interactive' : ''} ${state.routeVisible ? '' : 'collapsed'}`}
       >
