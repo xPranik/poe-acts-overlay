@@ -142,13 +142,19 @@ function onZoneEntered(zoneName: string, areaLevel: number | null = null): void 
 let ownNameConfirmed = false
 
 function onLevelUp(up: LevelUp): void {
+  // левел-ап ровно до 2 уровня — почти наверняка настоящий левел-ап нового
+  // персонажа (с 1 уровня строка в лог не пишется), а не согрупника; доверяем
+  // ему даже если своё имя уже подтверждено в этой сессии — иначе смену
+  // персонажа без перезапуска оверлея не поймать
+  const looksLikeFreshChar = up.level === 2
   if (settings.ownCharName === null || up.name === settings.ownCharName) {
     settings.ownCharName = up.name
     ownNameConfirmed = true
-  } else if (!ownNameConfirmed) {
-    // первый левел-ап после перезапуска оверлея с другим именем — считаем,
-    // что начат новый персонаж: перепривязываем имя и сбрасываем прогресс
-    // маршрута (риску и чеклист), чтобы не тащить их от прошлого забега
+  } else if (!ownNameConfirmed || looksLikeFreshChar) {
+    // первый левел-ап после перезапуска оверлея с другим именем, либо левел-ап
+    // до 2 уровня в текущей сессии — считаем, что начат новый персонаж:
+    // перепривязываем имя и сбрасываем прогресс маршрута (риску и чеклист),
+    // чтобы не тащить их от прошлого забега
     settings.ownCharName = up.name
     ownNameConfirmed = true
     state.progress = {}

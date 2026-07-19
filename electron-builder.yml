@@ -4,6 +4,7 @@ directories:
   buildResources: build
 files:
   - out/**
+  - resources/**
   - package.json
 # guides must sit NEXT TO the exe (settings.ts guidesRoot uses dirname(exe)/guides)
 extraFiles:
