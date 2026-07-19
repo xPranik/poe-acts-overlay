@@ -128,8 +128,12 @@ function onZoneEntered(zoneName: string, areaLevel: number | null = null): void 
     state.currentZoneIndex = -1
   }
   updateAreaLevel()
-  // авто-сплит таймера по актам (форвард-онли): вход в акт N фиксирует акты < N
-  if (runTimer.state.status === 'running') runTimer.advanceTo(state.currentAct)
+  if (runTimer.state.status === 'running') {
+    // чекпоинты зон акта 1 (режим "1 акт"); no-op вне этого режима
+    runTimer.onZoneEntered(zoneName)
+    // авто-сплит таймера по актам (форвард-онли): вход в акт N фиксирует акты < N
+    runTimer.advanceTo(state.currentAct)
+  }
   pushState()
 }
 
