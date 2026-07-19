@@ -510,6 +510,21 @@ export function SettingsApp(): React.JSX.Element {
               </div>
             </div>
 
+            <div className="settings-row">
+              <span className="pane-title">{t.timerPositionTitle}</span>
+              <div className="target-acts">
+                {(['top', 'bottom', 'left', 'right'] as const).map((p) => (
+                  <button
+                    key={p}
+                    className={state.timerPosition === p ? 'active' : ''}
+                    onClick={() => window.api.setTimerPosition(p)}
+                  >
+                    {t.timerPositionNames[p]}
+                  </button>
+                ))}
+              </div>
+            </div>
+
             <RunsHistory language={state.language} />
           </main>
         )}

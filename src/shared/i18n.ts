@@ -71,6 +71,8 @@ export interface Messages {
   addGemOption: string
   removePortionTitle: string
   runDistanceTitle: string
+  timerPositionTitle: string
+  timerPositionNames: Record<'top' | 'bottom' | 'left' | 'right', string>
   rewardOption: string
   buyOption: string
   questPlaceholder: string
@@ -194,6 +196,8 @@ const ru: Messages = {
   addGemOption: '+ камень...',
   removePortionTitle: 'Убрать квест из пресета',
   runDistanceTitle: 'Дистанция забега',
+  timerPositionTitle: 'Позиция таймера',
+  timerPositionNames: { top: 'Сверху', bottom: 'Снизу', left: 'Слева', right: 'Справа' },
   rewardOption: 'Награда',
   buyOption: 'Покупка',
   questPlaceholder: 'квест (напр. Enemy at the Gate)',
@@ -322,6 +326,8 @@ const en: Messages = {
   addGemOption: '+ gem...',
   removePortionTitle: 'Remove quest from preset',
   runDistanceTitle: 'Run distance',
+  timerPositionTitle: 'Timer position',
+  timerPositionNames: { top: 'Top', bottom: 'Bottom', left: 'Left', right: 'Right' },
   rewardOption: 'Reward',
   buyOption: 'Buy',
   questPlaceholder: 'quest (e.g. Enemy at the Gate)',
