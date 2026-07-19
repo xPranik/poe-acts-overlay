@@ -1,10 +1,17 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { expMultiplier, fullExpRange } from '../../shared/exp'
 import { messages } from '../../shared/i18n'
-import type { AppState, GemPortion, GuideAct, GuideStep, GuideZone } from '../../shared/types'
+import type {
+  AppState,
+  GemPortion,
+  GuideAct,
+  GuideStep,
+  GuideZone,
+  TimerState
+} from '../../shared/types'
 import { gemStepKey, stepKey } from '../../shared/types'
 import { Markup } from './Markup'
-import { Timer } from './Timer'
+import { Timer, fmt, liveElapsed } from './Timer'
 import trialIcon from './assets/trial.png'
 
 export default function App(): React.JSX.Element {
@@ -90,6 +97,22 @@ export default function App(): React.JSX.Element {
   )
 }
 
+/** Цифры вместо иконки ⏱ в шапке, когда панель таймера свёрнута, а таймер не idle. */
+function MiniTimer({ timer }: { timer: TimerState }): React.JSX.Element {
+  const [now, setNow] = useState(() => Date.now())
+  useEffect(() => {
+    if (timer.status !== 'running') return
+    setNow(Date.now())
+    const id = setInterval(() => setNow(Date.now()), 250)
+    return () => clearInterval(id)
+  }, [timer.status, timer.runningSince])
+  return (
+    <span className={`mini-timer${timer.status === 'paused' ? ' mini-timer-paused' : ''}`}>
+      {fmt(liveElapsed(timer, now))}
+    </span>
+  )
+}
+
 function Header({
   state,
   act,
@@ -135,7 +158,11 @@ function Header({
             title={t.runTimerTitle}
             onClick={() => window.api.timerToggleVisible()}
           >
-            ⏱
+            {!state.timer.visible && state.timer.status !== 'idle' ? (
+              <MiniTimer timer={state.timer} />
+            ) : (
+              '⏱'
+            )}
           </button>
           <button title={t.gemSettingsTitle} onClick={() => window.api.openSettings()}>
             ⚙
