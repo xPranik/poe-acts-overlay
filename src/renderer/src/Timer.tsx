@@ -4,7 +4,7 @@ import { messages } from '../../shared/i18n'
 import type { TimerState } from '../../shared/types'
 
 /** mm:ss или h:mm:ss; showMs добавляет десятые доли секунды. */
-function fmt(ms: number, showMs = false): string {
+export function fmt(ms: number, showMs = false): string {
   if (ms < 0) ms = 0
   const totalSec = Math.floor(ms / 1000)
   const h = Math.floor(totalSec / 3600)
@@ -24,7 +24,7 @@ function fmtDelta(ms: number): string {
   return `${sign}${fmt(Math.abs(ms), true)}`
 }
 
-function liveElapsed(t: TimerState, now: number): number {
+export function liveElapsed(t: TimerState, now: number): number {
   return t.accumulatedMs + (t.runningSince != null ? now - t.runningSince : 0)
 }
 
