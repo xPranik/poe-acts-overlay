@@ -64,6 +64,8 @@ export interface GemPortion {
   zone: string
   act: number
   steps: GuideStep[]
+  /** свободный текст, показывается под заголовком порции в оверлее */
+  notes?: string
 }
 
 export interface GemPreset {
@@ -107,6 +109,8 @@ export interface PresetPortion {
   take: string[]
   /** купить у торговца после квеста */
   buy: string[]
+  /** свободный текст, показывается под заголовком порции в оверлее */
+  notes?: string
 }
 
 /** Пресет в исходном (редактируемом) виде — то, что лежит в gems/<id>.toml. */
