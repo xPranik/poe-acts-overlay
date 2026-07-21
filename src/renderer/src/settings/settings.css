@@ -303,6 +303,14 @@
   color: #7fa3b0;
 }
 
+.portion-notes-input {
+  flex: 1;
+  min-width: 0;
+  min-height: 36px;
+  resize: vertical;
+  font-size: 12px;
+}
+
 .gem-chips select {
   font-size: 12px;
   color: #7fa3b0;

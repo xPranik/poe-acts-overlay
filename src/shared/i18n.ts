@@ -9,6 +9,8 @@ export interface Messages {
   showRoute: string
   runTimerTitle: string
   gemSettingsTitle: string
+  resetProgressTitle: string
+  confirmResetProgress: string
   noNotesForZone: (zone: string) => string
   waitingForZone: string
   expHint: (area: number, lvl: number) => string
@@ -69,6 +71,8 @@ export interface Messages {
   portionsHint: string
   portionTakeLabel: string
   portionBuyLabel: string
+  portionNotesLabel: string
+  portionNotesPlaceholder: string
   addPortionOption: string
   addGemOption: string
   removePortionTitle: string
@@ -155,6 +159,8 @@ const ru: Messages = {
   showRoute: 'Показать маршрут',
   runTimerTitle: 'Таймер забегов (Ctrl+Alt+T)',
   gemSettingsTitle: 'Настройки камней (Ctrl+Alt+G)',
+  resetProgressTitle: 'Сбросить прогресс по квестам',
+  confirmResetProgress: 'Сбросить весь прогресс по квестам и маршруту? Отменить это будет нельзя.',
   noNotesForZone: (zone) => `Нет заметок для зоны «${zone}»`,
   waitingForZone: 'Ожидание входа в зону...',
   expHint: (area, lvl) => `Зона ${area} ур. · персонаж ${lvl} ур.`,
@@ -216,6 +222,8 @@ const ru: Messages = {
     'Камни показываются после прохождения квеста: порция появляется в оверлее, когда вы доходите до следующей зоны после квестовой',
   portionTakeLabel: 'Забрать',
   portionBuyLabel: 'Купить',
+  portionNotesLabel: 'Заметка',
+  portionNotesPlaceholder: 'Свободный текст (необязательно)',
   addPortionOption: '+ добавить квест...',
   addGemOption: '+ камень...',
   removePortionTitle: 'Убрать квест из пресета',
@@ -287,6 +295,8 @@ const en: Messages = {
   showRoute: 'Show route',
   runTimerTitle: 'Run timer (Ctrl+Alt+T)',
   gemSettingsTitle: 'Gem settings (Ctrl+Alt+G)',
+  resetProgressTitle: 'Reset quest progress',
+  confirmResetProgress: 'Reset all quest and route progress? This cannot be undone.',
   noNotesForZone: (zone) => `No notes for zone "${zone}"`,
   waitingForZone: 'Waiting to enter a zone...',
   expHint: (area, lvl) => `Zone lvl ${area} · character lvl ${lvl}`,
@@ -348,6 +358,8 @@ const en: Messages = {
     'Gems are shown after the quest is completed: a portion appears in the overlay once you reach the next zone after the quest zone',
   portionTakeLabel: 'Take',
   portionBuyLabel: 'Buy',
+  portionNotesLabel: 'Notes',
+  portionNotesPlaceholder: 'Free-form text (optional)',
   addPortionOption: '+ add quest...',
   addGemOption: '+ gem...',
   removePortionTitle: 'Remove quest from preset',
