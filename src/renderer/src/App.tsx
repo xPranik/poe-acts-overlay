@@ -173,6 +173,14 @@ function Header({
           <button title={t.gemSettingsTitle} onClick={() => window.api.openSettings()}>
             ⚙
           </button>
+          <button
+            title={t.resetProgressTitle}
+            onClick={() => {
+              if (confirm(t.confirmResetProgress)) window.api.resetProgress()
+            }}
+          >
+            ↺
+          </button>
         </div>
       </div>
       <div className="header-divider" />
@@ -287,17 +295,24 @@ function ZoneView({ state, zone }: { state: AppState; zone: GuideZone }): React.
             {preset && activePortion && (
               <div className="portion">
                 <div className="portion-title">{activePortion.questName}</div>
-                <ul className="steps">
-                  {activePortion.steps.map((s) => (
-                    <StepRow
-                      key={`q:${activePortion.quest}:${s.text}`}
-                      state={state}
-                      keyValue={gemStepKey(activePortion.act, activePortion.zone, preset.id, s.text)}
-                      text={s.text}
-                      kind={s.kind}
-                    />
-                  ))}
-                </ul>
+                {activePortion.notes && (
+                  <div className="notes portion-notes">
+                    <Markup text={activePortion.notes} />
+                  </div>
+                )}
+                {activePortion.steps.length > 0 && (
+                  <ul className="steps">
+                    {activePortion.steps.map((s) => (
+                      <StepRow
+                        key={`q:${activePortion.quest}:${s.text}`}
+                        state={state}
+                        keyValue={gemStepKey(activePortion.act, activePortion.zone, preset.id, s.text)}
+                        text={s.text}
+                        kind={s.kind}
+                      />
+                    ))}
+                  </ul>
+                )}
               </div>
             )}
             <ul className="steps">
