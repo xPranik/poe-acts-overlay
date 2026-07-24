@@ -102,6 +102,7 @@ class = "Witch"                    # optional; filters quest rewards in the edit
 quest = "a1q2"                     # id from quest-rewards.json (Breaking Some Eggs)
 take  = [ "Freezing Pulse" ]       # pick as quest reward
 buy   = [ "War Cry" ]              # buy from the quest's vendor NPC
+notes = "Free text, shown under the portion title in the overlay."
 
 [[zone]]
 name = "Lioneye's Watch"           # a town; where gems are bought/rewarded
@@ -125,6 +126,7 @@ items  = [ "Holy Flame Totem", "Shield Charge" ]
 | `[[portion]]` | `quest` | string | quest id from `quest-rewards.json` (e.g. `a1q2`); also the portion trigger |
 | | `take` | string[] | gem picked as the quest reward — **at most one** (the editor caps this at 1: you only get one quest reward in-game) |
 | | `buy` | string[] | gems to buy from the quest's vendor NPC — **not** limited to `quest-rewards.json`'s `vendor` list; the editor's buy picker searches the full gem catalog (`gems.json`), since vendor stock is cumulative across quests and old unlocks stay purchasable |
+| | `notes` | string? | free-form text (markup applies), shown under the portion title in the overlay; a portion with `notes` but empty `take`/`buy` is still shown instead of being dropped |
 | `[[zone]]` | `name` | string | usually a town (from `act-towns.json`) |
 | | `act` | int | required; distinguishes duplicate town names |
 | `[[zone.gems]]` | `kind` | `"gem-buy" \| "gem-reward"` | vendor buy vs quest reward |

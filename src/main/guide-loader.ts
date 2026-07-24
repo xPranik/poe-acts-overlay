@@ -108,8 +108,8 @@ function parsePreset(fileName: string, id: string, raw: string, lang: Language):
     const q = questRewardById(src.quest)
     if (!q) return
     const steps = portionSteps(src, lang)
-    if (steps.length === 0) return // пустая порция ничего не показывает
-    portions.push({ quest: q.id, questName: q.name, zone: q.zone, act: q.act, steps })
+    if (steps.length === 0 && !src.notes) return // пустая порция без заметки ничего не показывает
+    portions.push({ quest: q.id, questName: q.name, zone: q.zone, act: q.act, steps, notes: src.notes })
   })
   return { id, name: asString(meta.name) ?? id, class: cls, zones, portions }
 }

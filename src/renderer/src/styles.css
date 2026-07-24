@@ -557,6 +557,11 @@ body {
   margin-bottom: 2px;
 }
 
+.portion-notes {
+  margin: 2px 0 4px;
+  font-size: 12px;
+}
+
 .layout-box {
   border-bottom: 1px solid rgba(127, 163, 176, 0.18);
   background: rgba(0, 0, 0, 0.35);

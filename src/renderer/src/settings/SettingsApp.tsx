@@ -319,6 +319,19 @@ export function SettingsApp(): React.JSX.Element {
                                     })
                                   }
                                 />
+                                <div className="gem-chips">
+                                  <span className="gem-chips-label">{t.portionNotesLabel}</span>
+                                  <textarea
+                                    className="portion-notes-input"
+                                    placeholder={t.portionNotesPlaceholder}
+                                    value={p.notes ?? ''}
+                                    onChange={(e) =>
+                                      update((d) => {
+                                        d.portions[pi].notes = e.target.value || undefined
+                                      })
+                                    }
+                                  />
+                                </div>
                               </>
                             )}
                           </div>

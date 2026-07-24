@@ -76,7 +76,7 @@ export function parsePortion(
   if (!quest || !questRewardById(quest)) {
     throw new Error(messages[lang].portionUnknownQuestError(where, index, quest ?? ''))
   }
-  return { quest, take: asStringList(p.take), buy: asStringList(p.buy) }
+  return { quest, take: asStringList(p.take), buy: asStringList(p.buy), notes: asString(p.notes) }
 }
 
 /**
@@ -159,6 +159,7 @@ export function writePreset(
       const out: Record<string, unknown> = { quest: p.quest }
       if (p.take.length > 0) out.take = p.take
       if (p.buy.length > 0) out.buy = p.buy
+      if (p.notes) out.notes = p.notes
       return out
     }),
     zone: src.zones.map((z) => ({
